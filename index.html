@@ -67,10 +67,17 @@
       </header>
       <!--Navigation-->
       <span style='height: 0px;'>
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add" data-upgraded=",MaterialButton,MaterialRipple" style="min-height: 56px;z-index: 1016;top: -30px;position: relative;display: block;">
+        <button id='drop' onclick='drop()' class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add" data-upgraded=",MaterialButton,MaterialRipple" style="min-height: 56px;z-index: 1016;top: -30px;position: relative;display: block; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out;">
           <i class="material-icons">keyboard_arrow_down</i>
         </button>
       </span>
+      <script type='text/javascript'>
+        function drop() {
+          var hdr = document.getElementsByClassName('mdl-layout__header--waterfall');
+          var fab = document.getElementById('drop');
+          $hdr.addClass('is-compact');
+        }
+      </script>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Navigate</span>
         <nav class="mdl-navigation">
