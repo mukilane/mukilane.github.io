@@ -82,7 +82,7 @@
             <div class="pulse" style="font-size: 3rem;color: white;display: block;text-align: center;padding-bottom: 2%">Mukil Elango</span> 
             <script src="https://cdn.rawgit.com/web-animations/web-animations-js/master/web-animations.min.js"></script>
               <script>
-                $('document').ready(function(){
+                $(document).ready(function(){
                   var elem = document.querySelector('.pulse');
                   var animation = elem.animate([
                       {opacity: 0.5, transform: "scale(0.5)"},
@@ -90,7 +90,7 @@
                   ], {
                       direction: 'alternate',
                       duration: 500,
-                      iterations: 10
+                      iterations: Infinity
                   });
                 });
               </script>
