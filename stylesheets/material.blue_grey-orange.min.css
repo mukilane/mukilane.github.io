@@ -808,7 +808,7 @@ height:50px;font-family:Helvetica,Arial,sans-serif;margin:10px
 12px;top:0;left:0;color:rgb(255,255,255);z-index:4}.mdl-layout__header .mdl-layout__drawer-
 button{position:absolute;color:rgb(255,255,255);background-color:inherit}@media screen and (max-
 width:850px){.mdl-layout__header .mdl-layout__drawer-button{margin:4px}}@media screen and (max-
-width:850px){.mdl-layout__drawer-button{margin:4px;}}@media screen and (min-
+width:850px){.mdl-layout__drawer-button{margin:4px;color:rgba(0,0,0,.5)}}@media screen and (min-
 width:851px){.mdl-layout--fixed-drawer>.mdl-layout__drawer-button{display:none}}.mdl-
 layout__header{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-
 box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-
