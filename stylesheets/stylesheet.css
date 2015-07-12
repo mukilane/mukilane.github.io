@@ -79,7 +79,7 @@ body {
 .main-content ul, .main-content ol {
   margin-top: 0; }
 .main-content blockquote {
-  padding: 0 1rem;
+  padding: 0rem 1rem;
   margin-left: 0;
   color: #819198;
   border-left: 0.3rem solid #dce6f0; }
