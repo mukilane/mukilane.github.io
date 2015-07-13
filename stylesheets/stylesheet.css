@@ -182,8 +182,8 @@ body {
       @media (min-width: 840px) .mdl-cell--6-col { width: calc(50%); }
       body { background-color: #FAFAFA;}
 
-      @media (min-width: 840px) 
-      .mdl-cell--6-col { width: calc(50% - 0px) !important;}
+      @media (min-width: 840px) {
+      .mdl-cell--6-col { width: calc(50% - 0px) !important;} }
 
-      @media (min-width: 840px) 
-      .mdl-cell--12-col { width: calc(100% - 0px) !important;}
+      @media (min-width: 840px) {
+      .mdl-cell--12-col { width: calc(100% - 0px) !important;} }
