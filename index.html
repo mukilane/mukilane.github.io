@@ -61,7 +61,7 @@
           <a class="mdl-navigation__link" href="/post.html">Articles</a>
         </nav>
       </div>
-      <main class="mdl-layout__content">
+      <main class="mdl-layout__content" id='pjax-container'>
         
         <section class="main-content">
           <div class="grid-1 mdl-grid">
@@ -190,6 +190,9 @@
     </script>
     <!--Material Light-->
     <script src="javascripts/material.min.js"></script>
+    <script type="text/javascript">
+      $(document).pjax('a', '#pjax-container')
+    </script>
   </body>
 </html>
 
