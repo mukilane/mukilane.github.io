@@ -7,10 +7,37 @@
     
     <!-- Material Light -->
     <link rel="stylesheet" href="stylesheets/material.blue_grey-orange.min.css" /> 
-    <script type="text/javascript" src='javascripts/pjax-standalone.min.js'></script>
+    
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Material+Icons' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src='javascripts/pjax-standalone.min.js'></script>
+    <script type="text/javascript">
+      
+    // Ensure console is defined
+    if(typeof console === 'undefined') console = {"log":function(m){}};
+
+    // PJAX links!
+    pjax.connect({
+      'container': 'content',
+      'success': function(event){
+        var url = (typeof event.data !== 'undefined') ? event.data.url : '';
+        console.log("Successfully loaded "+ url);
+      },
+      'error': function(event){
+        var url = (typeof event.data !== 'undefined') ? event.data.url : '';
+        console.log("Could not load "+ url);
+      },
+      'ready': function(){
+        console.log("PJAX loaded!");
+      }
+    });
+    // pjax.connect('content', 'pjaxer');
+    // pjax.connect('content');
+    // pjax.connect();
+
+  
+    </script>
   </head>
   <body>
     <div class="layout-transparent mdl-layout mdl-js-layout">
@@ -190,9 +217,7 @@
     </script>
     <!--Material Light-->
     <script src="javascripts/material.min.js"></script>
-    <script type="text/javascript">
-      pjax.connect();
-    </script>
+
   </body>
 </html>
 
