@@ -7,7 +7,7 @@
     
     <!-- Material Light -->
     <link rel="stylesheet" href="stylesheets/material.blue_grey-orange.min.css" /> 
-    <script type="text/javascript" src='javascripts/pjax.js'></script>
+    <script type="text/javascript" src='javascripts/pjax-standalone.min.js'></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Material+Icons' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -55,13 +55,13 @@
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Navigate</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="/about.html">About Me</a>
-          <a class="mdl-navigation__link" href="//mukilane.github.io/portfolio.html">Portfolio</a>
-          <a class="mdl-navigation__link" href="//mukilane.github.io/contact.html">Contact</a>
-          <a class="mdl-navigation__link" href="//mukilane.github.io/post.html">Articles</a>
+          <a class="mdl-navigation__link pjaxer" href="/about.html" data-pjax='pjaxcon'>About Me</a>
+          <a class="mdl-navigation__link pjaxer" href="//mukilane.github.io/portfolio.html" data-pjax='pjaxcon'>Portfolio</a>
+          <a class="mdl-navigation__link pjaxer" href="//mukilane.github.io/contact.html" data-pjax='pjaxcon'>Contact</a>
+          <a class="mdl-navigation__link pjaxer" href="//mukilane.github.io/post.html" data-pjax='pjaxcon'>Articles</a>
         </nav>
       </div>
-      <main class="mdl-layout__content" id='pjax-container'>
+      <main class="mdl-layout__content pjaxcon" id='pjaxcon'>
         
         <section class="main-content">
           <div class="grid-1 mdl-grid">
@@ -191,7 +191,7 @@
     <!--Material Light-->
     <script src="javascripts/material.min.js"></script>
     <script type="text/javascript">
-      $(document).pjax('a', '#pjax-container')
+      pjax.connect();
     </script>
   </body>
 </html>
