@@ -13,7 +13,10 @@
     <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src='javascripts/pjax-standalone.min.js'></script>
     <script type="text/javascript">
-      pjax.connect();
+      pjax.connect({
+        'beforeSend': function(e){document.getElementById('drop').style.display ='block !important';},
+        'complete': function(e){document.getElementById('drop').style.display = 'none !important';},
+      });
     </script>
   </head>
   <body>
@@ -66,7 +69,8 @@
         </nav>
       </div>
       <main class="mdl-layout__content ">
-        
+        <div class="mdl-spinner mdl-js-spinner is-active " id="spin" style="display: none;"></div>
+
         <section class="main-content"  id='pjaxcon'>
           <div class="grid-1 mdl-grid">
             <div class="mdl-cell mdl-cell--12-col">
