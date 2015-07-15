@@ -14,8 +14,8 @@
     <script type="text/javascript" src='javascripts/pjax-standalone.min.js'></script>
     <script type="text/javascript">
       pjax.connect({
-        'beforeSend': function(e){document.getElementById('spin').style.display ='block !important';},
-        'complete': function(e){document.getElementById('spin').style.display = 'none !important';},
+        'beforeSend': document.getElementById('spin').style.display ='block !important';,
+        'complete': document.getElementById('spin').style.display = 'none !important';,
       });
     </script>
   </head>
