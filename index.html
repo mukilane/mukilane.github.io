@@ -14,7 +14,6 @@
     <script type="text/javascript" src='javascripts/pjax-standalone.min.js'></script>
     <script type="text/javascript">
       pjax.connect({
-        'beforeSend': function a() { document.getElementById('spin').style.display ='block !important'; },
         'complete': function b() {document.getElementById('spin').style.display = 'none !important';},
       });
     </script>
@@ -39,7 +38,7 @@
             <i class="material-icons">more_vert</i>
           </button>
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
-            <li class="mdl-menu__item pjaxer" onclick="javascript:location.href='/about.html'">About</li>
+            <li class="mdl-menu__item pjaxer" onclick="javascript:location.href='/about.html'" onclick="document.getElementById('spin').style.display = 'block'">About</li>
             <li class="mdl-menu__item pjaxer" onclick="javascript:location.href='/portfolio.html'">Protfolio</li>
             <li class="mdl-menu__item pjaxer" onclick="javascript:location.href='/post.html'">Articles</li>
             <li class="mdl-menu__item pjaxer" onclick="javascript:location.href='/contact.html'">Contact</li>
