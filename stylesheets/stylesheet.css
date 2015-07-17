@@ -192,3 +192,7 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover { border-bottom: 2px so
 @media (max-width: 839px) and (min-width: 480px) {
   .mdl-cell--12-col, .mdl-cell--6-col {  width: calc(100% - 0px) !important;}  }
 }
+.scale-zero {
+  transform: scale(0);
+  -webkit-transform: scale(0);
+}
