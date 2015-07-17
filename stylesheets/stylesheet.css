@@ -182,7 +182,7 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover { border-bottom: 2px so
   }
   .mdl-cell { margin: 0px !important; }
   .demo-card-image.mdl-card:hover {   z-index: 1000; box-shadow: 0 0 20px 0 rgba(0,0,0,0.2),0 5px 5px 0 rgba(0,0,0,0.24);   -webkit-filter: brightness(103%);  }
-
+  .demo-card-image.mdl-card:focus { z-index: 1000; box-shadow: 0 0 30px 0 rgba(0,0,0,0.2),0 10px 10px 0 rgba(0,0,0,0.24);}
   @media (min-width: 840px) .mdl-cell--6-col { width: calc(50%); }
   body { background-color: #FAFAFA;}
 
