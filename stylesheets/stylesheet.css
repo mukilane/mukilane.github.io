@@ -157,7 +157,7 @@ body {
 
 @media screen and (max-width:850px){.mdl-layout-title{display:none;}}
 
-nav.mdl-navigation.mdl-layout--large-screen-only a{ color: white !important; height: 100%; line-height: 64px;}
+nav.mdl-navigation.mdl-layout--large-screen-only a{ color: white !important; height: 100%; line-height: 64px; font-weight: 600;}
 nav.mdl-navigation.mdl-layout--large-screen-only a:hover { border-bottom: 2px solid white; background-color: transparent !important; border-radius: 0px !important; }
 .main-content { padding: 0px !important;}
 .grid-1 .mdl-grid { padding: 0px !important;}
