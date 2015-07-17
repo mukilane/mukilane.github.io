@@ -21,7 +21,7 @@
       <header class="mdl-layout__header mdl-layout__header--waterfall" style='display: block;' itemscope itemprop='http://schema.org/WPHeader'>
         <div class="mdl-layout__header-row" style="padding: 0 40px;">
           <!-- Title -->
-          <img src="https://lh6.googleusercontent.com/-K_VD2qg-yZo/AAAAAAAAAAI/AAAAAAAAAAA/RaPf2HfOjvA/s48/photo.jpg" style="border-radius: 50%;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);margin: 0px 15px 0 0;display: block;-webkit-transition: all .3s ease-in; width: 0;" class="title-img">
+          <img src="https://lh6.googleusercontent.com/-K_VD2qg-yZo/AAAAAAAAAAI/AAAAAAAAAAA/RaPf2HfOjvA/s48/photo.jpg" style="border-radius: 50%;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);margin: 0px 15px 0 0;display: block;-webkit-transition: all .3s ease-in; width: 0;" id="title-img">
           <span class="mdl-layout-title" style='font-family: monospace;'><a href='//mukilane.github.io' class="pjaxer" data-pjax='pjaxcon' style="color: white">Mukil Elango</a></span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
@@ -44,7 +44,7 @@
           </ul>
 
         </div>
-        <div class="mdl-layout__header-row header-banner" style="background-color: rgb(96, 125, 139) !important;height: auto;display: block; padding: 0 !important;">
+        <div class="mdl-layout__header-row" id="header-banner" style="background-color: rgb(96, 125, 139) !important;height: auto;display: block; padding: 0 !important;">
           <div>
             <img src="https://lh6.googleusercontent.com/-K_VD2qg-yZo/AAAAAAAAAAI/AAAAAAAAAAA/RaPf2HfOjvA/s200/photo.jpg" style="border-radius: 50%;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);margin: 2% auto;display: block;"> 
             <span class="pulse" style="font-size: 3rem;color: white;display: block;text-align: center;padding-bottom: 2%">Mukil Elango</span> 
@@ -209,8 +209,8 @@
       setTimeout(function() {document.getElementById('spin').style.display = 'none';}, 900);
     } 
     function fabscroll() {
-      document.getElementsByClassName('title-img').style.width = '36px';
-      document.getElementsByClassName('header-banner').hide();
+      document.getElementById('title-img').style.width = '36px';
+      document.getElementById('header-banner').hide();
       this.addClass('scale-zero');
     }
     </script>
