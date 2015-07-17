@@ -53,7 +53,7 @@
       </header>
       <!--Navigation-->
       <span style='height: 0px;'>
-        <button onclick="fabscroll()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add" data-upgraded=",MaterialButton,MaterialRipple" style="min-height: 56px;z-index: 1016;top: -30px;position: relative;display: block; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out;">
+        <button onclick="fabscroll()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent topfab" id="add" data-upgraded=",MaterialButton,MaterialRipple" style="min-height: 56px;z-index: 1016;top: -30px;position: relative;display: block; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out;">
           <i class="material-icons">keyboard_arrow_down</i>
         </button>
       </span>
@@ -211,7 +211,7 @@
     function fabscroll() {
       document.getElementById('title-img').style.width = '36px';
       $(document.getElementById('header-banner')).hide();
-      $(document.getElementById('add')).addClass('scale-zero');
+      $(document.getElementsByClassName('topfab')).addClass('scale-zero');
     }
     </script>
   </body>
