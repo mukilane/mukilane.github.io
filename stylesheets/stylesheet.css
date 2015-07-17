@@ -172,7 +172,6 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover { border-bottom: 2px so
   .demo-card-image > .mdl-card__actions {
     height: 52px;
     padding: 16px;
-    background: rgba(0, 0, 0, 0.2);
   }
   .demo-card-image__filename {
     color: #fff;
