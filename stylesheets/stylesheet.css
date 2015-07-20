@@ -95,9 +95,6 @@ body {
   word-break: keep-all; }
   .main-content table th {
     font-weight: bold; }
-  .main-content table th, .main-content table td {
-    padding: 0.5rem 1rem;
-    border: 1px solid #e9ebec; }
 .main-content dl {
   padding: 0; }
   .main-content dl dt {
