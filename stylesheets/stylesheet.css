@@ -212,3 +212,7 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover { border-bottom: 2px so
 .banner-text {
   font-size: 3rem;color: white;display: block;text-align: center;padding-bottom: 2%
 }
+.grid1 h3:after {
+  content: "¬";
+  opacity: 0.4;
+}
