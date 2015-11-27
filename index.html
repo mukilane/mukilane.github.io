@@ -15,9 +15,18 @@
     <script type="text/javascript">
       pjax.connect();
     </script>
+    <script type="text/javascript" src="components/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="components/bower_components/paper-button/paper-button.html">
+    <link rel="import" href="components/bower_components/paper-header-panel/paper-header-panel.html">
+    <link rel="import" href="components/bower_components/paper-toolbar/paper-toolbar.html">
   </head> 
   <body>
-    <div class="layout-transparent mdl-layout mdl-js-layout">
+    <div class="layout-transparent mdl-layout mdl-js-layout fullbleed layout vertical">
+      <paper-header-panel class="flex">
+        <paper-toolbar>
+          <div>Hello World!</div>
+        </paper-toolbar>
+      </paper-header-panel>
       <header class="mdl-layout__header mdl-layout__header--waterfall" style='display: block;' itemscope itemprop='http://schema.org/WPHeader'>
         <div class="mdl-layout__header-row" style="padding: 0 40px;">
           <!-- Title -->
@@ -129,24 +138,11 @@
             <div class="mdl-logo" style="font-family: monospace;">© Mukil Elango</div>
               <ul class="mdl-mini-footer--link-list" style="float: right;">
                 <li><a href="https://google.com/+MukilElango">
-                  <svg focusable="false" class="svg-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" style='height: 36px;'>
-                  <g>
-                  <g>
-                    <rect fill="none" width="24" height="24"></rect>
-                  </g>
-                    <path class="_fill-color" opacity="1" fill="#aaa" d="M20.31,10.23V7.33h-1.93v2.89h-2.89v1.93h2.89v2.89h1.93v-2.89h2.89v-1.93H20.31z M12.88,13.56l-1.06-0.82
-                    c-0.34-0.29-0.77-0.68-0.77-1.35c0-0.72,0.53-1.25,0.92-1.54c1.25-0.96,2.46-2.03,2.46-4.2c0-1.98-1.21-3.14-1.98-3.76h1.69
-                    l1.21-1.21H9.35c-4.2,0-6.37,2.61-6.37,5.55c0,2.27,1.74,4.63,4.82,4.63h0.77c-0.1,0.34-0.34,0.82-0.34,1.25
-                    c0,0.96,0.39,1.4,0.87,1.93c-1.35,0.05-3.86,0.39-5.69,1.5C1.63,16.6,1.2,18.09,1.2,19.15c0,2.22,1.98,4.34,6.32,4.34
-                    c5.16,0,7.77-2.85,7.77-5.69C15.29,15.73,14.18,14.67,12.88,13.56z M5.49,4.73c0-2.12,1.25-3.09,2.61-3.09
-                    c2.56,0,3.86,3.33,3.86,5.36c0,2.46-1.98,2.94-2.8,2.94C6.8,9.94,5.49,7,5.49,4.73z M9.02,22.1c-3.23,0-5.26-1.45-5.26-3.57
-                    s1.88-2.8,2.56-3.04C7.57,15.05,9.21,15,9.45,15c0.29,0,0.43,0,0.68,0.05c2.27,1.64,3.23,2.36,3.23,3.91
-                    C13.41,20.6,11.67,22.1,9.02,22.1z"></path>
-                    <path fill="none" d="M0,1h24v24H0V1z"></path>
-                  </g>
-                  </svg>
+                  <svg focusable="false" class="svg-icon svg-google-plus" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><path fill="none" d="M0 0h24v24H0V0z"></path><path class="_fill-color" opacity="1" fill="#000000" d="M23 11h-2V9h-2v2h-2v2h2v2h2v-2h2M8 11v2.4h4c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4S5.6 7.6 8 7.6c1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 5.7 9.9 5 8 5c-3.9 0-7 3.1-7 7s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H8z"></path><path fill="none" d="M1 5h14v14H1z"></path></svg>
                 </a></li>
-                <li><a href="https://facebook.com/mukilane"><img src="http://simpleicon.com/wp-content/uploads/facebook.svg" height="36" style="-webkit-filter: invert(66%);"></a></li>
+                <li><a href="https://facebook.com/mukilane">
+                  <svg focusable="false" class="svg-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-627 309 24 24" style="enable-background:new -627 309 24 24;" xml:space="preserve"><path class="_fill-color" opacity="1" fill="#000000" d="M-613.4,330.2v-8.4h3l0.4-3.3h-3.5v-2c0-1,0.3-1.6,1.7-1.6h1.9v-2.9c-0.4-0.1-1.4-0.1-2.7-0.1c-2.7,0-4.5,1.5-4.5,4.3v2.4 h-3v3.3h3v8.4L-613.4,330.2L-613.4,330.2z"></path></svg>
+                </li>
                 <li><a href="https://twitter.com/mukilane">
                   <svg focusable="false" class="svg-icon svg-twitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" style='height: 36px;'>
                   <g>
@@ -171,6 +167,7 @@
     <button onclick="fabscroll()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect  mdl-shadow--4dp  topfab" id="share" data-upgraded=",MaterialButton,MaterialRipple" style="min-height: 56px;z-index: 1016;bottom: 15px;position: fixed;display: block; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out;right: 35px; background-color: #E4E4E4;">
       <i class="material-icons"></i><!--Keyboard_Arrow_Down-->
     </button>
+    <paper-button tabindex="0">button</paper-button>
     <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -194,6 +191,7 @@
       $('#add').css({'transform': 'scale(0)', '-webkit-transform': 'scale(0)'});
     }
     </script>
+
   </body>
 </html>
 
