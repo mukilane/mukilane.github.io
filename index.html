@@ -1,206 +1,197 @@
-<!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
+<!DOCTYPE html>
 <html lang="en-us" itemscope itemprop='http://schema.org/WebPage'>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Polymer Starter Kit" />
-  <title>Mukil Elango</title>
-  <!-- Material Light -->
-   <link rel="stylesheet" href="stylesheets/material.blue_grey-orange.min.css" /> 
-  <!-- Place favicon.ico in the `app/` directory -->
-
-  <!-- Chrome for Android theme color -->
-  <meta name="theme-color" content="#2E3AA1">
-
-  <!-- Web Application Manifest -->
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Tile color for Win8 -->
-  <meta name="msapplication-TileColor" content="#3372DF">
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="PSK">
-  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
-
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
-  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
-
-  <!-- Tile icon for Win8 (144x144) -->
-  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-
-  <!-- build:css styles/main.css -->
-  <link rel="stylesheet" href="stylesheets/main.css">
-  <!-- endbuild-->
-
-  <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
-  <script src="components/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-  <!-- endbuild -->
-
-  <!-- will be replaced with elements/elements.vulcanized.html -->
-  <link rel="import" href="components/elements/elements.html">
-  <!-- endreplace-->
-
-  <!-- For shared styles, shared-styles.html import in elements.html -->
-  <style is="custom-style" include="shared-styles"></style>
-
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,500|Roboto:400,500|Material+Icons' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script type="text/javascript" src='javascripts/pjax-standalone.min.js'></script>
-  <script type="text/javascript">
-    pjax.connect();
-  </script>
-</head>
-
-<body unresolved class="fullbleed layout vertical">
-  <span id="browser-sync-binding"></span>
-    <template is="dom-bind" id="app">
-      
-    <paper-drawer-panel id="paperDrawerPanel">
-      <!-- Drawer Scroll Header Panel -->
-      <paper-scroll-header-panel drawer fixed>
-
-        <!-- Drawer Toolbar -->
-        <paper-toolbar id="drawerToolbar">
-          <span class="paper-font-title">Menu</span>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mukil Elango</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Material Light -->
+    <link rel="stylesheet" href="stylesheets/material.blue_grey-orange.min.css" /> 
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,500|Roboto:400,500|Material+Icons' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src='javascripts/pjax-standalone.min.js'></script>
+    <script type="text/javascript">
+      pjax.connect();
+    </script>
+    <script type="text/javascript" src="components/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="components/bower_components/paper-button/paper-button.html">
+    <link rel="import" href="components/bower_components/paper-header-panel/paper-header-panel.html">
+    <link rel="import" href="components/bower_components/paper-toolbar/paper-toolbar.html">
+  </head> 
+  <body>
+    <div class="layout-transparent mdl-layout mdl-js-layout fullbleed layout vertical">
+      <paper-header-panel class="flex">
+        <paper-toolbar>
+          <div>Hello World!</div>
         </paper-toolbar>
+      </paper-header-panel>
+      <header class="mdl-layout__header mdl-layout__header--waterfall" style='display: block;' itemscope itemprop='http://schema.org/WPHeader'>
+        <div class="mdl-layout__header-row" style="padding: 0 40px;">
+          <!-- Title -->
+          <img src="https://lh6.googleusercontent.com/-K_VD2qg-yZo/AAAAAAAAAAI/AAAAAAAAAAA/RaPf2HfOjvA/s48/photo.jpg" id="title-img">
+          <span class="mdl-layout-title" style='font-family: monospace;'><a href='//mukilane.github.io' class="pjaxer" data-pjax='pjaxcon' style="color: white">Mukil Elango</a></span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only" itemscope itemprop='http://schema.org/SiteNavigationElement'>
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect pjaxer" data-pjax='pjaxcon' href="/about" onclick="tabon()">About</a>
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect pjaxer" data-pjax='pjaxcon' href="/portfolio" onclick="tabon()">Portfolio</a>
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect pjaxer" data-pjax='pjaxcon' href="/post" onclick="tabon()">Articles</a>
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect pjaxer" data-pjax='pjaxcon' href="/profiles" onclick="tabon()">Profiles</a>
+          </nav>
+          <!-- Right aligned menu below button -->
+          <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon mdl-cell--hide-desktop">
+            <i class="material-icons">&#xE5D4;</i> <!--More_Vertical-->
+          </button>
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+            <li class="mdl-menu__item pjaxer" onclick="javascript:location.href='/about'"  >About</li>
+            <li class="mdl-menu__item pjaxer" onclick="javascript:location.href='/portfolio'">Portfolio</li>
+            <li class="mdl-menu__item pjaxer" onclick="javascript:location.href='/post'">Articles</li>
+            <li class="mdl-menu__item pjaxer" onclick="javascript:location.href='/contact'">Contact</li>
+          </ul>
 
-        <!-- Drawer Content -->
-        <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="home" href="{{baseUrl}}">
-            <iron-icon icon="home"></iron-icon>
-            <span>Home</span>
-          </a>
-
-          <a data-route="users" href="users">
-            <iron-icon icon="info"></iron-icon>
-            <span>Users</span>
-          </a>
-
-          <a data-route="contact" href="contact">
-            <iron-icon icon="mail"></iron-icon>
-            <span>Contact</span>
-          </a>
-        </paper-menu>
-      </paper-scroll-header-panel>
-
-      <!-- Main Area -->
-      <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
-
-        <!-- Main Toolbar -->
-        <paper-toolbar id="mainToolbar" class="tall">
-          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
-          <span class="flex"></span>
-
-          <!-- Toolbar icons -->
-          <paper-icon-button icon="refresh"></paper-icon-button>
-          <paper-icon-button icon="search"></paper-icon-button>
-
-          <!-- Application name -->
-          <div class="middle middle-container center horizontal layout">
-            <div class="app-name">Polymer Starter Kit</div>
-          </div>
-
-          <!-- Application sub title -->
-          <div class="bottom bottom-container center horizontal layout">
-            <div class="bottom-title paper-font-subhead">The future of the web today</div>
-          </div>
-
-        </paper-toolbar>
-
-        <!-- Main Content -->
-        <div class="content">
-          <iron-pages attr-for-selected="data-route" selected="{{route}}">
-
-            <section data-route="home">
-              <paper-material elevation="1">
-                <my-greeting></my-greeting>
-
-                <p class="paper-font-subhead">You now have:</p>
-                <my-list></my-list>
-
-                <p class="paper-font-body2">Looking for more Web App layouts? Check out our <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
-              </paper-material>
-              <paper-material elevation="1">
-                <p class="paper-font-body2">This is another card.</p>
-              </paper-material>
-
-              <paper-material elevation="1" class="paper-font-body2">
-                <h1 id="license">License</h1>
-                <p>Everything in this repo is BSD style license unless otherwise specified.</p>
-                <p>Copyright (c) 2015 The Polymer Authors. All rights reserved.</p>
-                <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
-                <ul>
-                <li>Redistributions of source code must retain the above copyright
-                notice, this list of conditions and the following disclaimer.</li>
-                <li>Redistributions in binary form must reproduce the above
-                copyright notice, this list of conditions and the following disclaimer
-                in the documentation and/or other materials provided with the
-                distribution.</li>
-                <li>Neither the name of Google Inc. nor the names of its
-                contributors may be used to endorse or promote products derived from
-                this software without specific prior written permission.</li>
-                </ul>
-                <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
-              </paper-material>
-
-            </section>
-
-            <section data-route="users">
-              <paper-material elevation="1">
-                <h2 class="page-title">Users</h2>
-                <p>This is the users section</p>
-                <a href$="{{baseUrl}}users/Addy">Addy</a><br>
-                <a href$="{{baseUrl}}users/Rob">Rob</a><br>
-                <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
-                <a href$="{{baseUrl}}users/Sam">Sam</a>
-              </paper-material>
-            </section>
-
-            <section data-route="user-info">
-              <paper-material elevation="1">
-                <h2 class="page-title">User: {{params.name}}</h2>
-                <div>This is {{params.name}}'s section</div>
-              </paper-material>
-            </section>
-
-            <section data-route="contact">
-              <paper-material elevation="1">
-                <h2 class="page-title">Contact</h2>
-                <p>This is the contact section</p>
-              </paper-material>
-            </section>
-
-          </iron-pages>
         </div>
-      </paper-scroll-header-panel>
-    </paper-drawer-panel>
+        <div class="mdl-layout__header-row" id="header-banner" style="background-color: rgb(96, 125, 139) !important;height: 300px;display: block; padding: 0 !important; transition: height .3s ease-in;">
+          <div>
+            <img class='banner-img' src="https://lh6.googleusercontent.com/-K_VD2qg-yZo/AAAAAAAAAAI/AAAAAAAAAAA/RaPf2HfOjvA/s200/photo.jpg" > 
+            <span class="banner-text" >Mukil Elango </span> 
+          </div>
+        </div>
+      </header>
+      <!--Navigation-->
+      <span style='height: 0px;'>
+        <button onclick="fabscroll()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent topfab" id="add" data-upgraded=",MaterialButton,MaterialRipple" style="min-height: 56px;z-index: 1016;top: -30px;position: relative;display: block; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out;">
+          <i class="material-icons">&#xE313;</i><!--Keyboard_Arrow_Down-->
+        </button>
+      </span>
+      <main class="mdl-layout__content ">
+        <div class="mdl-spinner mdl-js-spinner is-active " id="spin" style="display: none;margin: 0px auto; margin-top: 10%"></div>
 
-    <paper-toast id="toast">
-      <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
-    </paper-toast>
+        <section class="main-content"  id='pjaxcon'>
+          <div class="grid-1 mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col" style="background-color: rgb(40, 40, 40)">
+              <div class="mdl-card  demo-card-image" style="background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.52) 20%, transparent 60%, transparent 70%, rgba(0,0,0,0.52) 92%, rgba(0,0,0,0.6) 99%); " >
+                <a class="mdl-card__title mdl-card--expand" style="background: url(http://g-design.storage.googleapis.com/production/v3/assets/article_brand_2x1_202226-fc539618.svg);   width: 100%; align-items: baseline;" href="/about" data-pjax='pjaxcon' onclick="fabscroll()">
+                  <h3 style="font-family: 'Roboto Mono', sans-serif; color: white; margin: 0; ">More About Me
+                  </h3>
+                </a>
+                <div class="mdl-card__actions">
+                  <span class="demo-card-image__filename">About Me</span>
+                </div>
+              </div>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-card  demo-card-image" style="background-color: #7E57C2">
+                <div class="mdl-card__title mdl-card--expand"></div>
+                <div class="mdl-card__actions">
+                  <span class="demo-card-image__filename">Image.jpg</span>
+                </div>
+              </div>            
+            </div>
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-card  demo-card-image" style="background-color: #42A5F5">
+                <div class="mdl-card__title mdl-card--expand"></div>
+                <div class="mdl-card__actions">
+                  <span class="demo-card-image__filename">Image.jpg</span>
+                </div>
+              </div>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-card  demo-card-image" style="background: url(http://g-design.storage.googleapis.com/production/v3/assets/palette-perfect-209ab219.svg) center / cover;">
+                <div class="mdl-card__title mdl-card--expand"></div>
+                <div class="mdl-card__actions">
+                  <span class="demo-card-image__filename">Image.jpg</span>
+                </div>
+              </div>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-card  demo-card-image" style="background-color: #FFEE58; height: 300px">
+                <div class="mdl-card__title mdl-card--expand"></div>
+                <div class="mdl-card__actions">
+                  <span class="demo-card-image__filename">Image.jpg</span>
+                </div>
+              </div>
+              <div class="mdl-card  demo-card-image" style="background-color: #669cf6; height: 200px">
+                <div class="mdl-cell mdl-cell--6-col">
+                  <div class="mdl-card " style="background-color: #669cf6; height: 200px">
+                    <div class="mdl-card__title mdl-card--expand">
+                      <p>Follow me on Twitter more updates</p>
+                    </div>
+                    <div class="mdl-card__actions">
+                      <span class="demo-card-image__filename">Twitter</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col"></div>
+                <div class="mdl-card__title mdl-card--expand">
+                  <div class="mdl-cell mdl-cell--6-col"></div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer class="mdl-mini-footer" itemscope itemprop='http://schema.org/WPFooter'>
+          <div class="mdl-mini-footer--bottom-section" style="width: 100%;">
+            <div class="mdl-logo" style="font-family: monospace;">© Mukil Elango</div>
+              <ul class="mdl-mini-footer--link-list" style="float: right;">
+                <li><a href="https://google.com/+MukilElango">
+                  <svg focusable="false" class="svg-icon svg-google-plus" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><path fill="none" d="M0 0h24v24H0V0z"></path><path class="_fill-color" opacity="1" fill="#000000" d="M23 11h-2V9h-2v2h-2v2h2v2h2v-2h2M8 11v2.4h4c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4S5.6 7.6 8 7.6c1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 5.7 9.9 5 8 5c-3.9 0-7 3.1-7 7s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H8z"></path><path fill="none" d="M1 5h14v14H1z"></path></svg>
+                </a></li>
+                <li><a href="https://facebook.com/mukilane">
+                  <svg focusable="false" class="svg-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-627 309 24 24" style="enable-background:new -627 309 24 24;" xml:space="preserve"><path class="_fill-color" opacity="1" fill="#000000" d="M-613.4,330.2v-8.4h3l0.4-3.3h-3.5v-2c0-1,0.3-1.6,1.7-1.6h1.9v-2.9c-0.4-0.1-1.4-0.1-2.7-0.1c-2.7,0-4.5,1.5-4.5,4.3v2.4 h-3v3.3h3v8.4L-613.4,330.2L-613.4,330.2z"></path></svg>
+                </li>
+                <li><a href="https://twitter.com/mukilane">
+                  <svg focusable="false" class="svg-icon svg-twitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" style='height: 36px;'>
+                  <g>
+                    <rect x="0" fill="none" width="24" height="24"></rect>
+                    <g>
+                      <g>
+                        <rect x="0" fill="none" width="24" height="24"></rect>
+                      </g>
+                        <path class="_fill-color" opacity="1" fill="#aaa" d="M1,18.9c1.94,1.23,4.17,2.22,7.25,2.09c7.46-0.34,12.46-5.69,12.57-13.51C21.62,6.8,22.57,6,23,5.1
+                        c-0.69,0.35-1.51,0.57-2.43,0.7c0.84-0.62,1.53-1.38,1.89-2.49c-0.87,0.46-1.77,0.88-2.88,1.09c-2.62-3.18-8.9-0.61-7.8,4.12
+                        c-4.41-0.27-7.1-2.27-9.34-4.72c-1.28,2.07-0.17,5.2,1.34,6.06C3,9.82,2.41,9.58,1.85,9.32c0.08,2.6,1.51,3.85,3.52,4.52
+                        C4.76,13.97,4.08,14,3.43,13.89c0.62,1.82,1.94,2.96,4.17,3.18C6.09,18.36,3.27,19.27,1,18.9z"></path>
+                    </g>
+                  </g>
+                  </svg>
+                </a></li>
+              </ul>
+          </div>
+        </footer>
+      </main>
+    </div>
+    <button onclick="fabscroll()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect  mdl-shadow--4dp  topfab" id="share" data-upgraded=",MaterialButton,MaterialRipple" style="min-height: 56px;z-index: 1016;bottom: 15px;position: fixed;display: block; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out;right: 35px; background-color: #E4E4E4;">
+      <i class="material-icons"></i><!--Keyboard_Arrow_Down-->
+    </button>
+    <paper-button tabindex="0">button</paper-button>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-25083238-6");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+    <!--Material Light-->
+    <script src="javascripts/material.min.js"></script>
+    <script type="text/javascript">
+    function tabon() {
+      document.getElementById('spin').style.display = 'block';
+      setTimeout(function() {document.getElementById('spin').style.display = 'none';}, 900);
+    } 
+    function fabscroll() {
+      document.getElementById('title-img').style.width = '36px';
+      $(document.getElementById('header-banner')).css('height', '0');
+      $('#add').css({'transform': 'scale(0)', '-webkit-transform': 'scale(0)'});
+    }
+    </script>
 
-  </template>
-
-  <!-- build:js scripts/app.js -->
-  <script src="javascripts/app.js"></script>
-  <!-- endbuild-->
-</body>
-
+  </body>
 </html>
+
