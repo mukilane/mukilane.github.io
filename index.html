@@ -19,7 +19,7 @@
   <body>
     <div class="layout-transparent mdl-layout mdl-js-layout " style="background: url(http://getmdl.io/assets/demos/transparent.jpg);">
       <header class="mdl-layout__header  mdl-layout__header--transparent mdl-layout__header--waterfall" style='display: block;' itemscope itemprop='http://schema.org/WPHeader'>
-        <div class="mdl-layout__header-row" style="padding: 0 40px;">
+        <div class="mdl-layout__header-row fixhead" style="padding: 0 40px;">
           <!-- Title -->
           <img src="https://lh6.googleusercontent.com/-K_VD2qg-yZo/AAAAAAAAAAI/AAAAAAAAAAA/RaPf2HfOjvA/s48/photo.jpg" id="title-img">
           <span class="mdl-layout-title" style='font-family: monospace;'><a href='//mukilane.github.io' class="pjaxer" data-pjax='pjaxcon' style="color: white">Mukil Elango</a></span>
@@ -64,7 +64,7 @@
           <div class="grid-1 mdl-grid">
             <div class="mdl-cell mdl-cell--12-col" style="background-color: rgb(40, 40, 40)">
               <div class="mdl-card  demo-card-image" style="background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.52) 20%, transparent 60%, transparent 70%, rgba(0,0,0,0.52) 92%, rgba(0,0,0,0.6) 99%); " >
-                <a class="mdl-card__title mdl-card--expand" style="background: url(http://g-design.storage.googleapis.com/production/v3/assets/article_brand_2x1_202226-fc539618.svg);   width: 100%; align-items: baseline;" href="/about" data-pjax='pjaxcon' onclick="fabscroll()">
+                <a class="mdl-card__title mdl-card--expand" style="background: url(https://g-design.storage.googleapis.com/production/v3/assets/article_brand_2x1_202226-fc539618.svg);   width: 100%; align-items: baseline;" href="/about" data-pjax='pjaxcon' onclick="fabscroll()">
                   <h3 style="font-family: 'Roboto Mono', sans-serif; color: white; margin: 0; ">More About Me
                   </h3>
                 </a>
@@ -90,7 +90,7 @@
               </div>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-card  demo-card-image" style="background: url(http://g-design.storage.googleapis.com/production/v3/assets/palette-perfect-209ab219.svg) center / cover;">
+              <div class="mdl-card  demo-card-image" style="background: url(https://g-design.storage.googleapis.com/production/v3/assets/palette-perfect-209ab219.svg) center / cover;">
                 <div class="mdl-card__title mdl-card--expand"></div>
                 <div class="mdl-card__actions">
                   <span class="demo-card-image__filename">Image.jpg</span>
@@ -178,7 +178,8 @@
     } 
     function fabscroll() {
       $('#title-img').css('width', '36px');
-      $('#header-banner').css({'height': '0', '-webkit-transform': 'all .3s', 'background-color': 'rgba(96,125,139,1)'});
+      $('#header-banner').css({'height': '0', '-webkit-transition': 'all .3s', 'background-color': 'rgba(96,125,139,1)'});
+      $('.fixhead').css('background-color', 'rgba(96,125,139,0.9)');
       $('#add').css({'transform': 'scale(0)', '-webkit-transform': 'scale(0)'});
     }
     </script>
