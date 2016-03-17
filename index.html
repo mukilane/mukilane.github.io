@@ -10,7 +10,7 @@
     
     <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,500|Roboto:400,500|Material+Icons' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.jss"></script>
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script type="text/javascript" src='javascripts/pjax-standalone.min.js'></script>
     <script type="text/javascript">
       pjax.connect();
@@ -177,9 +177,9 @@
       setTimeout(function() {document.getElementById('spin').style.display = 'none';}, 900);
     } 
     function fabscroll() {
-      document.getElementById('title-img').style.width = '36px';
-      document.getElementById('header-banner').css({'height': '0 !important', '-webkit-transform': 'all .3s', 'background-color': 'rgba(96,125,139,1)'});
-      document.getElementById('add').css({'transform': 'scale(0)', '-webkit-transform': 'scale(0)'});
+      $('#title-img').style.width = '36px';
+      $('#header-banner').css({'height': '0 !important', '-webkit-transform': 'all .3s', 'background-color': 'rgba(96,125,139,1)'});
+      $('#add').css({'transform': 'scale(0)', '-webkit-transform': 'scale(0)'});
     }
     </script>
 
