@@ -218,8 +218,7 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover { border-bottom: 2px so
   transform: scale(0); 
 }
 .social-links li {
-  float: left; margin-left: 14px; padding: 0 5px;
-}
+  float: left; margin-left: 14px; }
 .social-links a {
   width: 24px; height: 24px; display: inline-block;
 }
@@ -227,4 +226,5 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover { border-bottom: 2px so
 .svg-icon:hover , .svg-icon:focus { opacity: 1; }
 .mdl-layout__container { background-color: #FAFAFA; }
 .card_footer {position: absolute; padding: 0 25px 15px 25px; bottom: 0;}
-.card_header {font-family: 'Roboto Mono', sans-serif; color: white; margin: 0; position: absolute; padding: 2% 0 0 2%;}
+.card_header {font-family: 'Roboto Mono', sans-serif; color: white !important; margin: 0; position: absolute; padding: 2% 0 0 2%; font-size: 2rem;}
+@media (max-width: 479px) .mdl-cell--6-col { width: 100% !important; }
