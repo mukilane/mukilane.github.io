@@ -214,8 +214,8 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover { border-bottom: 2px so
   opacity: 0.4;
 }
 #fabtop {
-  min-height: 56px;z-index: 1016;bottom: 15px;position: fixed; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out;right: 35px; background-color: #E4E4E4;  display: block;
-  transform: scale(0);
+  min-height: 56px;z-index: 1016;bottom: 15px;position: fixed; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out;right: 35px; background-color: #E4E4E4;  display: none;
+  transform: scale(0); 
 }
 .social-links li {
   float: left; margin-left: 14px; padding: 0 5px;
