@@ -223,6 +223,8 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover { border-bottom: 2px so
 .social-links a {
   width: 24px; height: 24px; display: inline-block;
 }
-.svg-icon { opacity: 0.78; transition: 0.2s all cubic-bezier(0.4, 0, 0.2, 1); }
+.svg-icon { opacity: 0.78; transition: 0.2s all cubic-bezier(0.4, 0, 0.2, 1); height: 24px; }
 .svg-icon:hover , .svg-icon:focus { opacity: 1; }
 .mdl-layout__container { background-color: #FAFAFA; }
+.card_footer {position: absolute; padding: 0 25px 15px 25px; bottom: 0;}
+.card_header {font-family: 'Roboto Mono', sans-serif; color: white; margin: 0; position: absolute; padding: 2% 0 0 2%;}
