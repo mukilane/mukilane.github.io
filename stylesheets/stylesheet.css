@@ -295,7 +295,7 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover {
   display: block; 
   height: 100%; 
   transition: all cubic-bezier(0.4,0,1,1) .3s; 
-  background: url(images/banner.jpg) no-repeat center center; 
+  background: url(/images/banner.jpg) no-repeat center center; 
   background-size: cover; }
   #header-banner{
     background-color: rgba(96, 125, 139, 0) !important;
