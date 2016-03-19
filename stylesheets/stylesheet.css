@@ -291,3 +291,23 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover {
 @media (min-width: 840px) { 
   .mdl-cell--6-col , .mdl-cell--12-col { 
     height: 50vw; } }
+.header {
+  display: block; 
+  height: 100%; 
+  transition: all cubic-bezier(0.4,0,1,1) .3s; 
+  background: url(images/banner.jpg) no-repeat center center; 
+  background-size: cover; }
+  #header-banner{
+    background-color: rgba(96, 125, 139, 0) !important;
+    height: 300px;
+    display: block; 
+    padding: 0 !important; 
+    transition: height .3s ease-in; }
+  #fabwrap {
+    min-height: 56px;
+    z-index: 1016;
+    top: -30px;
+    position: relative;
+    display: block; 
+    -webkit-transition: all .3s ease-in-out; 
+    transition: all .3s ease-in-out; }
