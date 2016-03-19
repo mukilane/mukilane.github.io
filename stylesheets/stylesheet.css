@@ -274,8 +274,10 @@ nav.mdl-navigation.mdl-layout--large-screen-only a:hover {
   background-color: #FAFAFA; }
 .card_footer {
   position: absolute; 
-  padding: 0 25px 15px 25px; 
-  bottom: 0;}
+  padding: 0 25px 15px 12px; 
+  bottom: 0;
+  font-family: monospace;
+  font-size: 14px; }
 .card_header {
   font-family: 'Roboto Mono', sans-serif; 
   color: white !important;  
