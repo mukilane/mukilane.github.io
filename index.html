@@ -156,6 +156,17 @@
     <button onclick="fabscroll()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect  mdl-shadow--4dp" id="fabtop" data-upgraded=",MaterialButton,MaterialRipple">
       <i class="material-icons"></i><!--Keyboard_Arrow_Down-->
     </button>
+	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyD8Jyc_TJwBwAwmkN8ETzUXKPWLiXGsEn0",
+	    authDomain: "mukil-elango.firebaseapp.com",
+	    databaseURL: "https://mukil-elango.firebaseio.com",
+	    storageBucket: "mukil-elango.appspot.com",
+	  };
+	  firebase.initializeApp(config);
+	</script>
     <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
