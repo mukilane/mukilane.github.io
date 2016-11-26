@@ -16,26 +16,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://mukilane.github.io" # the base hostname & protocol for your site
 twitter_username: mukilane
 github_username:  mukilane
-timezone: Asia/Kolkata
-permalink: /:categories/:year/:title/
-# YAML Front Matter Defaults
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      author: "Mukil Elango"
-  -
-    scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
-      permalink: /:title/
-      author: "Mukil Elango"
 
 # Build settings
 markdown: kramdown
-exclude: [vendor]

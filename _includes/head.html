@@ -9,4 +9,29 @@
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+
+  <!-- Angular Material Dependencies-->
+  <link href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500|Material+Icons" rel="stylesheet" />
+  <style type="text/css">
+    html {
+      overflow-y: hidden !important; 
+    }
+    body {
+      font-family: RobotoDraft, sans-serif;
+      overflow: hidden;
+    }
+    .md-nav-bar {
+      border: 0px !important;
+    }
+    .banner {
+      padding: 64px 32px;
+      color: rgba(0,0,0,0.67);
+    }
+    md-grid-tile:hover {
+      box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
+      z-index: 10;
+      transition: all .3s ease-in;
+    }
+  </style>
 </head>
