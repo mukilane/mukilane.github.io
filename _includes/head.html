@@ -21,17 +21,63 @@
       font-family: RobotoDraft, sans-serif;
       overflow: hidden;
     }
+    main {
+      width: 90vw;
+      margin: 0px auto;
+    }
+    footer {
+      margin-top: 5vw;
+    }
     .md-nav-bar {
       border: 0px !important;
     }
     .banner {
-      padding: 64px 32px;
+      padding: 4vw;
       color: rgba(0,0,0,0.67);
     }
     md-grid-tile:hover {
       box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
       z-index: 10;
       transition: all .3s ease-in;
+    }
+    tile-header {
+      top: 0;
+      position: absolute;
+      width: 100%;
+      font-size: 20px;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+    .tile-title {
+      font-size: 32px;
+    }
+    .adj {
+      position: relative;
+      height: 50px;
+    }
+    .scrolldef {
+      opacity: 0.67;
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+    }
+    .scrolldef.ng-enter, .scrolldef.ng-leave {
+      transition:0.5s ease-in-out all;
+    }
+    .scrolldef.ng-enter {
+      top:25px;
+      opacity: 0;
+    }
+    .scrolldef.ng-enter-active {
+      top:0px;
+    }
+    .scrolldef.ng-leave {
+      top:0px;
+    }
+    .scrolldef.ng-leave-active {
+      top:-25px;
+      opacity: 0;
     }
   </style>
 </head>

@@ -8,9 +8,17 @@
     {% include header.html %}
     <md-content>
       <div class="banner md-display-4">
-        {% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}
+        {% if page.title %}
+        {{ page.title | escape }}
+        {% else %}
+        {{ site.title | escape }}
+        <div class="adj">
+          <div class="scrolldef md-display-2" ng-animate-swap="counter" ng-bind="adjective[counter]">
+          </div>
+        </div>
+        {% endif %}
       </div>
-      <main style="width: 80vw; margin: 0px auto;">
+      <main>
         {{content}}
       </main>
       {% include footer.html %}
