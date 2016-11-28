@@ -10,7 +10,7 @@ layout: default
                 md-colspan-sm="1" md-colspan-xs="1"
                 md-rowspan-sm="1" md-rowspan-xs="1"
                 ng-class="tle" md-colors="{background: 'blue-grey-600'}" 
-                md-ink-ripple="true" ng-click="">
+                md-ink-ripple="true" ng-click="goto('/profiles');">
                 <tile-header tag="Learn more about me">
                 About Me
                 </tile-header>
@@ -22,7 +22,7 @@ layout: default
                 md-colspan-sm="1" md-colspan-xs="1"
                 md-rowspan-sm="1" md-rowspan-xs="1"
                 ng-class="tle" md-colors="{background: 'orange-600'}" 
-                md-ink-ripple="true" href="#projects">
+                md-ink-ripple="true" ng-click="goto('/projects')">
                 <tile-header tag="Collection of my Frontend projects">Front End Projects</tile-header>
                 <tile-image source="/assets/code.svg" opacity="0.67" width="500px"></tile-image>
     <md-grid-tile-footer><h3>Web Dev</h3></md-grid-tile-footer>

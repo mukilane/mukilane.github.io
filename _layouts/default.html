@@ -6,7 +6,7 @@
   <body ng-controller="main" layout="column" ng-cloak>
 
     {% include header.html %}
-    <md-content>
+    <md-content id="main">
       <div class="banner md-display-4">
         {% if page.title %}
         {{ page.title | escape }}
@@ -24,6 +24,8 @@
       {% include footer.html %}
     </md-content>
     
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
     <!-- Angular Dependencies-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
