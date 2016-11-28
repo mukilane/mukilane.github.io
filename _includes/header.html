@@ -1,44 +1,47 @@
 <md-toolbar md-scroll-shrink ng-if="true" md-colors="{background: 'grey-50'}">
-	<div class="md-toolbar-tools" layout-align="space-between center">
-	  <h3>
-	  </h3>
-		<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs>
-			<md-nav-item md-nav-click="goto('page1')" name="page1">ABOUT</md-nav-item>
-			<md-nav-item md-nav-click="goto('page2')" name="page2">PORTFOLIO</md-nav-item>
-			<md-nav-item md-nav-click="goto('page3')" name="page3">CONTACT</md-nav-item>
-			<!-- these require actual routing with ui-router or ng-route, so they won't work in the demo
-			<md-nav-item md-nav-sref="app.page4" name="page4">Page Four</md-nav-item>
-			<md-nav-item md-nav-href="#page5" name="page5">Page Five</md-nav-item>
-			-->
-		</md-nav-bar>
-		<md-menu md-position-mode="target-right target" hide-gt-xs>
-          <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-            <i class="material-icons">more_vert</i>
+  <div class="md-toolbar-tools" layout-align="space-between center">
+    <div onclick="pjax.invoke('/', 'main')" class="home md-title">
+      {% if page.title %}
+        {{site.title}}
+      {% else %}{{ escape }}
+      {% endif %}
+    </div>
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs>
+      <md-nav-item md-nav-click="" onclick="pjax.invoke('/about', 'main')" name="About">ABOUT</md-nav-item>
+      <md-nav-item md-nav-click="" onclick="pjax.invoke('/projects', 'main')" name="Projects">PORTFOLIO</md-nav-item>
+      <md-nav-item md-nav-click="" onclick="pjax.invoke('/contact', 'main')" name="Contact">CONTACT</md-nav-item>
+      <!-- these require actual routing with ui-router or ng-route, so they won't work in the demo
+      <md-nav-item md-nav-sref="app.page4" name="page4">Page Four</md-nav-item>
+      <md-nav-item md-nav-href="#page5" name="page5">Page Five</md-nav-item>
+      -->
+    </md-nav-bar>
+    <md-menu md-position-mode="target-right target" hide-gt-xs>
+      <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+      <i class="material-icons">more_vert</i>
+      </md-button>
+      <md-menu-content width="2" >
+        <md-menu-item >
+          <md-button onclick="pjax.invoke('/about', 'main')">
+            <div layout="row" flex>
+              <p flex>About</p>
+            </div>
           </md-button>
-          <md-menu-content width="2" >
-            <md-menu-item >
-              <md-button ng-click="">
-                  <div layout="row" flex>
-                    <p flex>About</p>
-                  </div>
-              </md-button>
-            </md-menu-item>
-            <md-menu-item >
-              <md-button ng-click="">
-                  <div layout="row" flex>
-                    <p flex>Contact</p>
-                  </div>
-              </md-button>
-            </md-menu-item>
-            <md-menu-item >
-              <md-button ng-click="">
-                  <div layout="row" flex>
-                    <p flex>Projects</p>
-                  </div>
-              </md-button>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu>
-	</div>
+        </md-menu-item>
+        <md-menu-item >
+          <md-button onclick="pjax.invoke('/contact', 'main')">
+            <div layout="row" flex>
+              <p flex>Contact</p>
+            </div>
+          </md-button>
+        </md-menu-item>
+        <md-menu-item >
+          <md-button onclick="pjax.invoke('/projects', 'main')">
+            <div layout="row" flex>
+              <p flex>Projects</p>
+            </div>
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </div>
 </md-toolbar>
-

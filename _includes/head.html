@@ -3,7 +3,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <title>{% if page.title %}{{ page.title | escape }} | {{site.title}}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
@@ -14,6 +14,7 @@
   <link href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500|Material+Icons" rel="stylesheet" />
   <base href="/">
+  
   <style type="text/css">
     html {
       overflow-y: hidden !important; 
@@ -29,12 +30,21 @@
     }
     footer {
       margin-top: 5vw;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+    .home {      
+      color: rgba(0,0,0,0.54);
+      font-weight: 400;
+      cursor: pointer;
     }
     .md-nav-bar {
       border: 0px !important;
     }
     .banner {
       padding: 4vw;
+      margin-bottom: 5vw;
       color: rgba(0,0,0,0.67);
     }
     md-grid-tile {
@@ -53,6 +63,7 @@
       font-size: 20px;
       padding: 16px;
       box-sizing: border-box;
+      z-index: 1;
     }
     .tile-title {
       font-size: 32px;

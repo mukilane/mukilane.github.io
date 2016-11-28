@@ -3,7 +3,7 @@
 
   {% include head.html %}
 
-  <body ng-controller="main" layout="column" ng-cloak>
+  <body ng-controller="main" layout="column" ng-cloak id="ctrl">
 
     {% include header.html %}
     <md-content id="main">
@@ -24,8 +24,13 @@
       {% include footer.html %}
     </md-content>
     
-    <!--JQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--PJAX Standalone-->
+    <script src="/scripts/pjax-standalone.min.js"></script>
+    <script type="text/javascript">
+       document.getElementById("main").addEventListener('complete', function(event){ 
+          angular.element(document.getElementById('ctrl')).scope().refresh();
+        }, false);
+    </script> 
 
     <!-- Angular Dependencies-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>

@@ -18,13 +18,21 @@ app.controller('main', function ($scope, $interval, $http, $compile, $location, 
 			$scope.counter = 0;
 		}
 	}, 5000);
+
+	$scope.refresh = function() {
+		$scope.target = angular.element(document).find('md-content');
+		$compile($scope.target.contents())($scope);
+	};
 	$scope.goto = function(dest) {
 		$.get(dest , function( response ) {
 		 	var elem  = $(response).filter('#main');
 			$scope.target = angular.element(document).find('md-content');
-			$scope.target.html(elem);
-			$location.path(dest);
-			$compile($scope.target.contents())($scope);
+			$scope.target.fadeOut(750, function() {
+				$scope.target.html(elem);
+				$location.path(dest);
+				$compile($scope.target.contents())($scope);
+				$scope.target.fadeIn(500);
+			});
 		});	
 	};
 
@@ -55,5 +63,26 @@ app.directive('tileHeader', function() {
 			name: '@',
 			tag: '@'
 		}
+	}
+});
+
+app.directive('articleImage', function() {
+	return {
+		restrict: 'E',
+		template: "<div style='background: #333;'><img ng-src='{{source}}' alt='{{alt}}' width={{width}} height={{height}}/></div>",
+		scope: {
+			source: '@',
+			width: '@',
+			height: '@',
+			alt: '@'
+		}
+	}
+});
+
+app.directive('postHeader', function() {
+	return {
+		restrict: 'E',
+		transclude: true,
+
 	}
 });
