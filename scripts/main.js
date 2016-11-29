@@ -4,9 +4,6 @@ app.config(function($mdThemingProvider) {
   	$mdThemingProvider.theme('default')
     .accentPalette('blue');
 });
-app.config(function($locationProvider) {
-	$locationProvider.html5Mode(true);
-});
 
 app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 	$scope.counter = 0;
