@@ -1,4 +1,4 @@
-var app = angular.module('port', ['ngMaterial', 'ngRoute']);
+var app = angular.module('port', ['ngMaterial']);
 
 app.config(function($mdThemingProvider) {
   	$mdThemingProvider.theme('default')
@@ -8,7 +8,7 @@ app.config(function($locationProvider) {
 	$locationProvider.html5Mode(true);
 });
 
-app.controller('main', function ($scope, $interval, $http, $compile, $location, $window) {
+app.controller('main', function ($scope, $interval, $compile, $window) {
 	$scope.counter = 0;
 	$scope.adjective = ["A Web Developer", "A Programmer", "Google Play Rising Star", "Loves OpenSource", "A Linux Admin", "Elon Musk Fan", "Philomath", "Tech Enthusiast"];
 	$interval(function() { 
@@ -23,7 +23,8 @@ app.controller('main', function ($scope, $interval, $http, $compile, $location, 
 		$scope.target = angular.element(document).find('md-content');
 		$compile($scope.target.contents())($scope);
 	};
-	$scope.goto = function(dest) {
+
+	/*$scope.goto = function(dest) {
 		$.get(dest , function( response ) {
 		 	var elem  = $(response).filter('#main');
 			$scope.target = angular.element(document).find('md-content');
@@ -34,7 +35,7 @@ app.controller('main', function ($scope, $interval, $http, $compile, $location, 
 				$scope.target.fadeIn(500);
 			});
 		});	
-	};
+	};*/
 
 	$scope.go = function (dest) {
 		$window.location.href = dest;

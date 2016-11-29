@@ -23,43 +23,39 @@ layout: default
                 md-colspan-sm="1" md-colspan-xs="1"
                 md-rowspan-sm="1" md-rowspan-xs="1"
                 ng-class="tle" md-colors="{background: 'orange-600'}" 
-                md-ink-ripple="true" ng-click="goto('/projects')">
+                md-ink-ripple="true" onclick="pjax.invoke('/projects', 'main')">
                 <tile-header tag="Collection of my Frontend projects">Front End Projects</tile-header>
                 <tile-image source="/assets/code.svg" opacity="0.67" width="500px"></tile-image>
     <md-grid-tile-footer><h3>Web Dev</h3></md-grid-tile-footer>
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="1"
-                md-colspan="2"
-                md-colspan-sm="1"
-                md-colspan-xs="1"
-                ng-class="tle" md-colors="{background: 'light-green-600'}" md-ink-ripple="true">
+  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+                ng-class="tle" md-colors="{background: 'light-green-600'}" 
+                md-ink-ripple="true" onclick="pjax.invoke('/tc', 'main');">
                 <tile-header tag="Google Play Help Forum">Google Top Contributor</tile-header>
                 <tile-image source="/assets/tc-badge.png" opacity="0.87" width="150px" style="position: absolute; right: 10%"></tile-image>
     <md-grid-tile-footer><h3>Passion</h3></md-grid-tile-footer>
   </md-grid-tile>
-  <md-grid-tile md-rowspan="1"
-                md-colspan="2"
-                md-colspan-sm="1"
-                md-colspan-xs="1"
-                ng-class="tle" md-colors="{background: 'grey-900'}" md-ink-ripple="true">
+  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" 
+                ng-class="tle" md-colors="{background: 'grey-900'}" 
+                md-ink-ripple="true" onclick="pjax.invoke('/opensource', 'main');">
                 <tile-header tag="My contributions on Github">I &lt;3 Opensource</tile-header>
                 <tile-image source="/assets/github.svg" opacity="0.87" width="150px" style="right: 10%; position: absolute; filter: invert(1)"></tile-image>
     <md-grid-tile-footer><h3>Github</h3></md-grid-tile-footer>
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="1" md-colspan="2"
-                md-colspan-sm="1" md-colspan-xs="1"
-                ng-class="tle" md-colors="{background: 'blue-600'}" md-ink-ripple="true">
+  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+                ng-class="tle" md-colors="{background: 'blue-600'}" 
+                md-ink-ripple="true" ng-click="go('https://twitter.com/mukilane');">
                 <tile-header flex=50>@mukilane</tile-header>
                 <tile-image flex=50></tile-image>
     <md-grid-tile-footer><h3>Twitter</h3></md-grid-tile-footer>
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="2" md-colspan="2"
-                md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-sm="1" md-rowspan-xs="1"
-                ng-class="tle" md-colors="{background: 'deep-purple-600'}" md-ink-ripple="true">
+  <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+                md-rowspan-sm="1" md-rowspan-xs="1" 
+                ng-class="tle" md-colors="{background: 'deep-purple-600'}" 
+                md-ink-ripple="true" onclick="pjax.invoke('/scouting', 'main')">
                 <tile-header tag="Me as a Scout">
                 Scouting
                 </tile-header>
@@ -67,9 +63,9 @@ layout: default
     <md-grid-tile-footer><h3>Passion</h3></md-grid-tile-footer>
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="1" md-colspan="2"
-                md-colspan-sm="2" md-colspan-xs="1"
-                ng-class="tle" md-colors="{background: 'red-700'}" md-ink-ripple="true">
+  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="2" md-colspan-xs="1"
+                ng-class="tle" md-colors="{background: 'red-700'}" 
+                md-ink-ripple="true" ng-click="go('https://plus.google.com/+MukilElango')">
                 +MukilElango
     <md-grid-tile-footer><h3>Google+</h3></md-grid-tile-footer>
   </md-grid-tile>
