@@ -27,12 +27,14 @@
     <!--PJAX Standalone-->
     <script src="/scripts/pjax-standalone.min.js"></script>
     <script type="text/javascript">
-       document.getElementById("main").addEventListener('complete', function(event){ 
-          angular.element(document.getElementById('ctrl')).scope().refresh();
-        }, false);
-       document.getElementById("main").addEventListener('beforeSend', function(event) {
-          angular.element(document.getElementById('ctrl')).scope().trust(event.data.url);
-       }, false);
+      pjax.connect();
+      document.getElementById("main").addEventListener('beforeSend', function(event) {
+        console.log(event.data.url);
+        angular.element(document.getElementById('ctrl')).scope().trust(event.data.url);
+      }, false);
+      document.getElementById("main").addEventListener('success', function(event){ 
+        angular.element(document.getElementById('ctrl')).scope().refresh();
+      }, false);
     </script> 
 
     <!-- Angular Dependencies-->
