@@ -30,6 +30,9 @@
        document.getElementById("main").addEventListener('complete', function(event){ 
           angular.element(document.getElementById('ctrl')).scope().refresh();
         }, false);
+       document.getElementById("main").addEventListener('beforeSend', function(event) {
+          angular.element(document.getElementById('ctrl')).scope().trust(event.data.url);
+       }, false);
     </script> 
 
     <!-- Angular Dependencies-->

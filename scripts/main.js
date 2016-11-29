@@ -8,7 +8,7 @@ app.config(function($locationProvider) {
 	$locationProvider.html5Mode(true);
 });
 
-app.controller('main', function ($scope, $interval, $compile, $window) {
+app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 	$scope.counter = 0;
 	$scope.adjective = ["A Web Developer", "A Programmer", "Google Play Rising Star", "Loves OpenSource", "A Linux Admin", "Elon Musk Fan", "Philomath", "Tech Enthusiast"];
 	$interval(function() { 
@@ -18,6 +18,10 @@ app.controller('main', function ($scope, $interval, $compile, $window) {
 			$scope.counter = 0;
 		}
 	}, 5000);
+
+	$scope.trust = function(url) {
+		$sce.trustAsUrl(url);
+	};
 
 	$scope.refresh = function() {
 		$scope.target = angular.element(document).find('md-content');
