@@ -1,4 +1,4 @@
-var app = angular.module('port', ['ngMaterial']);
+var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
 
 app.config(function($mdThemingProvider) {
   	$mdThemingProvider.theme('default')

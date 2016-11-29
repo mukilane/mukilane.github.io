@@ -14,7 +14,7 @@ layout: default
                 <tile-header tag="Learn more about me">
                 About Me
                 </tile-header>
-                <tile-image source="/assets/about.svg" opacity="0.67" width="100vw"></tile-image>
+                <tile-image source="/assets/about.svg" opacity="0.77" width="100vw"></tile-image>
     <md-grid-tile-footer><h3>About Me</h3></md-grid-tile-footer>
   </md-grid-tile>
 
@@ -44,12 +44,12 @@ layout: default
     <md-grid-tile-footer><h3>Github</h3></md-grid-tile-footer>
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                ng-class="tle" md-colors="{background: 'blue-600'}" 
-                md-ink-ripple="true" ng-click="go('https://twitter.com/mukilane');">
-                <tile-header flex=50>@mukilane</tile-header>
-                <tile-image flex=50></tile-image>
-    <md-grid-tile-footer><h3>Twitter</h3></md-grid-tile-footer>
+  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="2" md-colspan-xs="1"
+                ng-class="tle" md-colors="{background: 'brown-700'}" 
+                md-ink-ripple="true" ng-click="go('https://plus.google.com/+MukilElango')">
+                <tile-header tag="Being a student at FCC">Free Code Camp</tile-header>
+                <tile-image source="/assets/fcc.svg" opacity="0.87" width="150px" style="position: absolute; right: 10%"></tile-image>
+    <md-grid-tile-footer><h3>Community</h3></md-grid-tile-footer>
   </md-grid-tile>
 
   <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
@@ -63,10 +63,12 @@ layout: default
     <md-grid-tile-footer><h3>Passion</h3></md-grid-tile-footer>
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="2" md-colspan-xs="1"
-                ng-class="tle" md-colors="{background: 'red-700'}" 
-                md-ink-ripple="true" ng-click="go('https://plus.google.com/+MukilElango')">
-                +MukilElango
-    <md-grid-tile-footer><h3>Google+</h3></md-grid-tile-footer>
+  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+                ng-class="tle" md-colors="{background: 'amber-500'}" 
+                md-ink-ripple="true" onclick="pjax.invoke('/certificates/', 'main')">
+                <tile-header tag="Certificates that I earned">Certificates</tile-header>
+                <tile-image source="/assets/medal.svg" opacity="0.87" width="150px" style="position: absolute; right: 10%; filter: invert(1)"></tile-image>
+    <md-grid-tile-footer><h3>Certificates</h3></md-grid-tile-footer>
   </md-grid-tile>
+
 </md-grid-list>
