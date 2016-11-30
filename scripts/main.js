@@ -25,24 +25,24 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 		$compile($scope.target.contents())($scope);
 	};
 
-	/*$scope.goto = function(dest) {
-		$.get(dest , function( response ) {
-		 	var elem  = $(response).filter('#main');
-			$scope.target = angular.element(document).find('md-content');
-			$scope.target.fadeOut(750, function() {
-				$scope.target.html(elem);
-				$location.path(dest);
-				$compile($scope.target.contents())($scope);
-				$scope.target.fadeIn(500);
-			});
-		});	
-	};*/
-
 	$scope.go = function (dest) {
 		$window.location.href = dest;
 	}
 });
 
+app.directive('tile', function() {
+	return {
+		restrict: 'E',
+		transclude: true,
+		template: "<div class='tile-wrap' style='background-image: url({{image}}); opacity: {{opacity}}; background-position: {{pos}}; background-size: {{size}}' ng-transclude></div>",
+		scope: {
+			image: '@',
+			opacity: '@',
+			pos: '@',
+			size: '@'
+		}
+	}
+});
 
 app.directive('tileImage', function () {
     return {
@@ -64,6 +64,17 @@ app.directive('tileHeader', function() {
 		scope: {
 			name: '@',
 			tag: '@'
+		}
+	}
+});
+
+app.directive('tileFooter', function() {
+	return {
+		restrict: 'E',
+		transclude: true,
+		template: "<div layout='row' layout-align='space-between center'><h3 class='md-subhead' ng-transclude></h3><span><i class='material-icons'>chevron_right</i></div>",
+		scope: {
+			external: '@'
 		}
 	}
 });

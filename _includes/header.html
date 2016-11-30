@@ -8,7 +8,7 @@
     </div>
     <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs>
       <md-nav-item md-nav-click="" onclick="pjax.invoke('/about/', 'main')" name="About">ABOUT</md-nav-item>
-      <md-nav-item md-nav-click="" onclick="pjax.invoke('/projects/', 'main')" name="Projects">PORTFOLIO</md-nav-item>
+      <md-nav-item md-nav-click="" onclick="pjax.invoke('/portfolio/', 'main')" name="Projects">PORTFOLIO</md-nav-item>
       <md-nav-item md-nav-click="" onclick="pjax.invoke('/contact/', 'main')" name="Contact">CONTACT</md-nav-item>
       <!-- these require actual routing with ui-router or ng-route, so they won't work in the demo
       <md-nav-item md-nav-sref="app.page4" name="page4">Page Four</md-nav-item>
@@ -35,7 +35,7 @@
           </md-button>
         </md-menu-item>
         <md-menu-item >
-          <md-button onclick="pjax.invoke('/projects/', 'main')">
+          <md-button onclick="pjax.invoke('/portfolio/', 'main')">
             <div layout="row" flex>
               <p flex>Projects</p>
             </div>

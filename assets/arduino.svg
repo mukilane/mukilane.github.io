@@ -8,9 +8,9 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    width="720px"
-   height="490px"
+   height="380px"
    preserveAspectRatio="xMinYMin meet"
-   viewport="0 0 720 390"
+   viewport="0 0 720 380"
    id="svg2"
    inkscape:version="0.48.2 r9819"
    sodipodi:docname="arduino.svg">
@@ -78,22 +78,7 @@
       <ndash />
     </svg:text>
   </svg:g>
-  <svg:g
-     font-size="40"
-     id="g14"
-     text-anchor="middle"
-     font-family="Arial"
-     stroke="rgb(0, 151, 156)"
-     fill="rgb(0, 151, 156)">
-    <svg:g
-       style=""
-       id="text16">
-      <svg:path
-         d="m 681.55078,29.285156 0,-13.554687 -5.15625,0 0,-2.363281 13.00781,0 0,2.363281 -5.19531,0 0,13.554687 z m 9.62891,0 0,-15.917968 3.90625,0 4.02343,12.714843 3.88672,-12.714843 3.82813,0 0,15.917968 -2.42188,0 0,-13.359375 -4.10156,13.359375 -2.40234,0 -4.27735,-13.554687 0,13.554687 z"
-         style=""
-         id="path3072" />
-    </svg:g>
-  </svg:g>
+
   <svg:g
      font-size="167"
      id="g8-1"
