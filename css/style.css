@@ -1,0 +1,214 @@
+/* Main Stylesheet | Mukil Elango */
+
+/* Media Queries adapted from https://gist.github.com/eyecatchup/9e847b05f15efccc1a29  */
+/* Material Design Adaptive Breakpoints */
+
+html {
+  overflow-y: hidden !important; 
+  background: #FAFAFA;
+}
+body {
+  font-family: RobotoDraft, sans-serif;
+  overflow: hidden;
+}
+main {
+  width: 90vw;
+  margin: 0px auto;
+  position: relative;
+}
+footer {
+  margin-top: 5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap-reverse;
+  padding: 32px 16px;
+  color: rgba(0,0,0,0.67) !important;
+}
+footer a{
+  color: rgba(0,0,0,0.67) !important;
+  text-decoration: none !important;
+}
+.foot-right {
+  display: flex;
+}
+.foot-right a {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  fill: #757575;
+  background: #E0E0E0;
+  border-radius: 50%;
+  margin: 8px 16px 8px 0;
+}
+.home {      
+  color: rgba(0,0,0,0.54);
+  font-weight: 400;
+  cursor: pointer;
+}
+.md-nav-bar {
+  border: 0px !important;
+}
+.banner {
+  padding: 4vw;
+  margin-bottom: 5vw;
+  color: rgba(0,0,0,0.67);
+}
+md-grid-tile {
+  outline: none !important;
+}
+md-grid-tile:hover {
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
+  z-index: 10;
+  transition: all .3s ease-in;
+}
+tile , image-tile {
+  width: 100%;
+  height: 100%;
+}
+.tile-wrap {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+tile-header {
+  top: 0;
+  left: 0 ; 
+  position: absolute;
+  width: 100%;
+  font-size: 20px;
+  padding: 16px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+tile-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;      
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  align-items: center;
+}
+.image-tile {
+  background-image: linear-gradient(to bottom,rgba(0,0,0,.6) 0,rgba(0,0,0,.52) 20%,transparent 60%,transparent 70%,rgba(0,0,0,.52) 92%,rgba(0,0,0,.6) 99%);
+}
+.tile-title {
+  font-size: 32px;
+}
+.adj {
+  position: relative;
+  height: 50px;
+}
+.scrolldef {
+  opacity: 0.67;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+}
+.scrolldef.ng-enter, .scrolldef.ng-leave {
+  transition:0.5s cubic-bezier(0.4, 0.0, 1, 1) all;
+}
+.scrolldef.ng-enter {
+  top:25px;
+  opacity: 0;
+}
+.scrolldef.ng-enter-active {
+  top:0px;
+}
+.scrolldef.ng-leave {
+  top:0px;
+}
+.scrolldef.ng-leave-active {
+  top:-25px;
+  opacity: 0;
+}
+.fade-down {
+  animation: fade-down 0.5s cubic-bezier(0.4, 0.0, 1, 1);
+}
+.fade-up {
+  animation: fade-up 0.5s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+@keyframes fade-down {
+  from {
+    opacity: 1;
+    top: 0px;
+  }
+  to {
+    opacity: 0;
+    top: 100px;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    top: 100px;
+  }
+  to {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+/* mobile-small */
+@media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { 
+
+}
+
+/* mobile-large */
+@media all and (min-width: 361px) and (orientation: portrait) { 
+  .tile-wrap {
+    background-position: 50% 50% !important;
+  }
+  main {
+    width: 100vw;
+  }
+}
+
+/* mobile-small-landscape */
+@media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { 
+
+}
+
+/* mobile-large-landscape */
+@media all and (min-width: 481px) and (orientation: landscape) { }
+
+/* tablet-small-landscape */
+@media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) { }
+
+/* tablet-large-landscape */
+@media all and (min-width: 961px) and (orientation: landscape) { }
+
+/* tablet-small */
+@media all and (min-width: 600px) and (orientation: portrait) { }
+
+/* tablet-large */
+@media all and (min-width: 601px) and (max-width: 840px) and (orientation : portrait) { }
+
+/* desktop-x-small-landscape */
+@media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
+
+/* desktop-x-small */
+@media all and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) { }
+
+/* desktop-small-landscape */
+@media all and (min-width: 481px) and (max-width: 840px) and (orientation: landscape) { }
+
+/* desktop-small */
+@media all and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) { }
+
+/* desktop-medium-landscape */
+@media all and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) { }
+
+/* desktop-medium */
+@media all and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) { }
+
+/* desktop-large */
+@media all and (min-width: 1281px) and (max-width: 1600px) { }
+
+/* desktop-xlarge */
+@media all and (min-width: 1601px) and (max-width: 1920px) { }

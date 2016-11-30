@@ -26,7 +26,7 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 	};
 
 	$scope.go = function (dest) {
-		$window.location.href = dest;
+		$window.location.href = $sce.trustAsResourceUrl(dest);
 	}
 });
 
@@ -35,6 +35,20 @@ app.directive('tile', function() {
 		restrict: 'E',
 		transclude: true,
 		template: "<div class='tile-wrap' style='background-image: url({{image}}); opacity: {{opacity}}; background-position: {{pos}}; background-size: {{size}}' ng-transclude></div>",
+		scope: {
+			image: '@',
+			opacity: '@',
+			pos: '@',
+			size: '@'
+		}
+	}
+});
+
+app.directive('imageTile', function() {
+	return {
+		restrict: 'E',
+		transclude: true,
+		template: "<div class='tile-wrap' style='background-image: url({{image}}); opacity: {{opacity}}; background-position: {{pos}}; background-size: {{size}}'><div class='image-tile' ng-transclude></div></div>",
 		scope: {
 			image: '@',
 			opacity: '@',
@@ -72,7 +86,10 @@ app.directive('tileFooter', function() {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: "<div layout='row' layout-align='space-between center'><h3 class='md-subhead' ng-transclude></h3><span><i class='material-icons'>chevron_right</i></div>",
+		template: "<div layout='row' layout-align='space-between center'>" + 
+					"<h3 class='md-subhead' ng-transclude></h3>" + 
+					"<span><i class='material-icons'>chevron_right</i>" + 
+					"</div>",
 		scope: {
 			external: '@'
 		}
@@ -82,7 +99,9 @@ app.directive('tileFooter', function() {
 app.directive('articleImage', function() {
 	return {
 		restrict: 'E',
-		template: "<div style='background: #333;'><img ng-src='{{source}}' alt='{{alt}}' width={{width}} height={{height}}/></div>",
+		template: "<div style='background: #333;'>" + 
+					"<img ng-src='{{source}}' alt='{{alt}}' width={{width}} height={{height}}/>"+
+					"</div>",
 		scope: {
 			source: '@',
 			width: '@',
