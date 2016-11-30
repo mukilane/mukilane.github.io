@@ -71,4 +71,26 @@ layout: default
     <md-grid-tile-footer><h3>Certificates</h3></md-grid-tile-footer>
   </md-grid-tile>
 
+  <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+                md-rowspan-sm="1" md-rowspan-xs="1" 
+                ng-class="tle" md-colors="{background: 'teal-500'}" 
+                md-ink-ripple="true" onclick="pjax.invoke('/scouting/', 'main')">
+                <tile-header tag="Into the world of Physical Computing">
+                Arduino
+                </tile-header>
+                <tile-image source="/assets/arduino.svg" opacity="1" width="250px"></tile-image>
+    <md-grid-tile-footer><h3>Passion</h3></md-grid-tile-footer>
+  </md-grid-tile>
+
+  <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+                md-rowspan-sm="1" md-rowspan-xs="1" 
+                ng-class="tle" md-colors="{background: 'pink-600'}" 
+                md-ink-ripple="true" onclick="pjax.invoke('/scouting/', 'main')">
+                <tile-header tag="Building a Smart Home with credit-card sized computer">
+                Raspberry Pi
+                </tile-header>
+                <tile-image source="/assets/raspberrypi.svg" opacity="0.77" width="250px"></tile-image>
+    <md-grid-tile-footer><h3>Passion</h3></md-grid-tile-footer>
+  </md-grid-tile>
+
 </md-grid-list>

@@ -3,11 +3,11 @@
 
   {% include head.html %}
 
-  <body ng-controller="main" layout="column" ng-cloak id="ctrl">
+  <body ng-controller="main" layout="column" id="ctrl">
 
     {% include header.html %}
     <md-content id="main">
-      <div class="banner md-display-4">
+      <div class="banner md-display-4" ng-animate-ref="title">
         {% if page.title %}
         {{ page.title | escape }}
         {% else %}
@@ -18,7 +18,7 @@
         </div>
         {% endif %}
       </div>
-      <main id='content'>
+      <main id='content' ng-cloak>
         {{content}}
       </main>
       {% include footer.html %}

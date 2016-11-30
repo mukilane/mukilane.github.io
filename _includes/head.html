@@ -42,6 +42,18 @@
       color: rgba(0,0,0,0.67) !important;
       text-decoration: none !important;
     }
+    .foot-right {
+      display: flex;
+    }
+    .foot-right a {
+      width: 36px;
+      height: 36px;
+      padding: 4px;
+      fill: rgb(79, 79, 79);
+      background: #d0d0d0;
+      border-radius: 50%;
+      margin: 8px;
+    }
     .home {      
       color: rgba(0,0,0,0.54);
       font-weight: 400;
@@ -105,10 +117,10 @@
       opacity: 0;
     }
     .fade-down {
-      animation: fade-down 0.5s ease-in;
+      animation: fade-down 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940);
     }
     .fade-up {
-      animation: fade-up 0.5s ease-in;
+      animation: fade-up 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940);
     }
     @keyframes fade-down {
       from {
