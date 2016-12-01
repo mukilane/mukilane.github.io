@@ -1,0 +1,23 @@
+---
+layout: page
+title: Certificates
+permalink: /certificates
+color: amber-500
+---
+
+<md-grid-list md-cols="1" md-cols-sm="2" md-cols-gt-sm="4" md-cols-gt-md="6"
+      md-cols-gt-lg="6" md-row-height-gt-md="4:3" md-row-height="4:3"
+      md-gutter="2px" class="cert">
+	{% for cert in site.data.certificates %}
+	<md-grid-tile md-rowspan="2" md-colspan="2"
+                md-colspan-sm="1" md-colspan-xs="1"
+                md-rowspan-sm="1" md-rowspan-xs="1"
+                style="background: url('{{cert.url}}') 50% 50% / cover;">
+                <md-grid-tile-footer>
+                	<h2 class="md-subhead">{{ cert.name }}</h2>
+                	<h2 class="md-body-1">By {{ cert.publisher }}</h2>
+                </md-grid-tile-footer>
+	</md-grid-tile>
+	{% endfor %}
+
+</md-grid-list>

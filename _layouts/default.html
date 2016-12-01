@@ -7,7 +7,8 @@
 
     {% include header.html %}
     <md-content id="main">
-      <div class="banner md-display-4" ng-animate-ref="title">
+      <div class="banner md-display-4" ng-animate-ref="title" {% if page.color %} 
+      md-colors="{background: '{{page.color}}'}" {% endif %} >
         {% if page.title %}
         {{ page.title | escape }}
         {% else %}

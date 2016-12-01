@@ -6,6 +6,7 @@ app.config(function($mdThemingProvider) {
 });
 
 app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
+	$scope.gridLay = true;
 	$scope.counter = 0;
 	$scope.adjective = ["A Web Developer", "A Programmer", "Google Play Rising Star", "Loves OpenSource", "A Linux Admin", "Elon Musk Fan", "Philomath", "Tech Enthusiast"];
 	$interval(function() { 
@@ -24,6 +25,10 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 		$scope.target = angular.element(document).find('md-content');
 		$compile($scope.target.contents())($scope);
 	};
+
+	$scope.show = function($event) {
+		$scope.gridLay = false;
+	}
 
 	$scope.go = function (dest) {
 		$window.location.href = $sce.trustAsResourceUrl(dest);
@@ -108,13 +113,5 @@ app.directive('articleImage', function() {
 			height: '@',
 			alt: '@'
 		}
-	}
-});
-
-app.directive('postHeader', function() {
-	return {
-		restrict: 'E',
-		transclude: true,
-
 	}
 });

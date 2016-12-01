@@ -1,8 +1,5 @@
 /* Main Stylesheet | Mukil Elango */
 
-/* Media Queries adapted from https://gist.github.com/eyecatchup/9e847b05f15efccc1a29  */
-/* Material Design Adaptive Breakpoints */
-
 html {
   overflow-y: hidden !important; 
   background: #FAFAFA;
@@ -13,7 +10,7 @@ body {
 }
 main {
   width: 90vw;
-  margin: 0px auto;
+  margin: 5vw auto;  
   position: relative;
 }
 footer {
@@ -51,12 +48,14 @@ footer a{
   border: 0px !important;
 }
 .banner {
-  padding: 4vw;
+  padding: 6vw 4vw;
   margin-bottom: 5vw;
   color: rgba(0,0,0,0.67);
+  user-select: none;
 }
 md-grid-tile {
   outline: none !important;
+  user-select: none;
 }
 md-grid-tile:hover {
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
@@ -82,6 +81,14 @@ tile-header {
   padding: 16px;
   box-sizing: border-box;
   z-index: 1;
+  opacity: 1;
+}
+tile-header.ng-hide-add , tile-header.ng-hide-remove {
+  transition: all .3s cubic-bezier(0.4, 0.0, 1, 1);
+}
+tile-header.ng-hide {
+  top: 48px;
+  opacity: 0;
 }
 tile-footer {
   position: absolute;
@@ -154,6 +161,39 @@ tile-footer {
   }
 }
 
+/* Page */
+.article {
+  max-width: 960px;
+  width: 80%;
+  min-width: 360px;
+  margin: 0px auto;
+  color: #424242;
+  font-size: 16px !important;
+}
+
+.article p {
+  margin-bottom: 1rem;
+}
+
+/*Certificates Page*/
+.cert md-grid-tile:hover {
+  box-shadow: none !important;
+}
+
+.cert md-grid-tile-footer {
+  display: none;
+  padding: 0 16px;
+  background: rgba(0,0,0,0.30);
+  height: auto;
+}
+.cert md-grid-tile:hover md-grid-tile-footer {
+  display: flex !important;
+}
+
+
+/* Media Queries adapted from https://gist.github.com/eyecatchup/9e847b05f15efccc1a29  */
+/* Material Design Adaptive Breakpoints */
+
 /* mobile-small */
 @media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { 
 
@@ -165,7 +205,13 @@ tile-footer {
     background-position: 50% 50% !important;
   }
   main {
-    width: 100vw;
+    width: 100%;
+  }
+  .banner {
+    font-size: 72px;
+  }
+  .adj {
+    font-size: 64px;
   }
 }
 
