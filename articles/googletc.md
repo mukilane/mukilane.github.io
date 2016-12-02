@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Google Top Contributor
-permalink: /articles/googletc
+permalink: /articles/googletc/
 category: articles
 color: green-500
 type: article
