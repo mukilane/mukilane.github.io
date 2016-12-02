@@ -141,6 +141,9 @@ tile-footer {
 .fade-up {
   animation: fade-up 0.5s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
+strong, b {
+  font-weight: 500;
+}
 @keyframes fade-down {
   from {
     opacity: 1;
@@ -173,7 +176,7 @@ tile-footer {
 }
 
 .article p {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 /*Certificates Page*/
