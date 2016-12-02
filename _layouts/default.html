@@ -40,6 +40,9 @@
         toAnim.removeClass('fade-down');
         toAnim.addClass('fade-up');
       }, false);
+      document.getElementById("main").addEventListener('error', function(event) {
+        pjax.invoke('/404/', 'main'); 
+      }, false);
     </script> 
 
     <!-- Angular Dependencies-->

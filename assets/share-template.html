@@ -1,0 +1,40 @@
+---
+---
+
+<md-dialog aria-label="Share" style="max-width: 400px;">
+    <md-toolbar md-colors="{background: 'grey-50'}" >
+      <div class="md-toolbar-tools md-whiteframe-z2" style="max-height: 64px !important; height: 64px !important;">
+        <span>
+          <span class="md-headline">Share</span><br>
+          <span class="md-subhead" ng-bind='title'></span>
+        </span>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="close();">
+          <i class="material-icons">close</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <img src="/assets/fallback.jpg" width="500px">
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" layout-align="center center" layout-padding ng-show='copy' class="md-whiteframe-z2">
+        Copy Link <span ng-bind='url'></span>
+    </md-dialog-actions>
+    <md-dialog-actions class="md-whiteframe-z2" layout="row" layout-align="space-around center" layout-padding ng-hide="copy">
+      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus class="md-fab">
+        {% include icon-facebook.svg %}
+      </md-button>
+      <md-button class="md-fab" ng-click="">
+        {% include icon-gplus.svg %}
+      </md-button>
+      <md-button class="md-fab" ng-click="">
+        {% include icon-twitter.svg %}
+      </md-button>
+      <md-button class="md-fab" ng-click="copy = true;">
+        <i class="material-icons">link</i>
+      </md-button>
+    </md-dialog-actions> 
+
+</md-dialog>

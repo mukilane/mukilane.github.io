@@ -1,0 +1,33 @@
+<md-dialog aria-label="Mango (Fruit)">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span class="md-headline">Share</span>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="material-icons">close</i>
+        </md-button>
+      </div>
+      <div class="md-toolbar-tools">
+        <span class="md-display-1">Title of the Post</span>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <img src="/assets/fallback.jpg" width="500px">
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+       Not Useful
+      </md-button>
+      <md-button ng-click="answer('useful')">
+        Useful
+      </md-button>
+    </md-dialog-actions>  
+</md-dialog>

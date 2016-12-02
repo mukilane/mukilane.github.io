@@ -35,6 +35,25 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 	}
 });
 
+app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
+	$scope.copy = true;
+	$scope.title = angular.element(window.document)[0].title;
+	$scope.url = $location.absUrl();
+	$scope.openShare = function(ev) {
+		$mdDialog.show({
+		  templateUrl: '/assets/share-template.html',
+		  parent: angular.element(document.body),
+		  targetEvent: ev,
+		  controller: () => this,
+		  controllerAs: 'ctrl',
+		  clickOutsideToClose:true,
+		});
+	};
+	$scope.close = function() {
+		$mdDialog.cancel();
+	}
+});
+
 app.directive('tile', function() {
 	return {
 		restrict: 'E',

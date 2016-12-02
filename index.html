@@ -3,7 +3,8 @@ layout: default
 ---
 <md-grid-list
       md-cols="1" md-cols-sm="2" md-cols-gt-sm="4" md-cols-gt-md="4"
-      md-cols-gt-lg="6" md-row-height-gt-md="1:1" md-row-height="1:1"
+      md-cols-gt-lg="6" md-row-height-gt-md="1:1" md-row-height="1:1" 
+      md-row-height-xs="4:3"
       md-gutter="0px" md-on-layout="show($event)" ng-hide="gridLay">
 
   <md-grid-tile md-rowspan="2" md-colspan="4"
@@ -33,7 +34,7 @@ layout: default
 
   <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
                 ng-class="tle" md-colors="{background: 'light-green-600'}" 
-                md-ink-ripple="true" onclick="pjax.invoke('/tc/', 'main');">
+                md-ink-ripple="true" onclick="pjax.invoke('/articles/topcontributor/', 'main');">
                 <tile image="/assets/tc-badge.png" pos="90% 50%" opacity="0.87" size="150px" class="tile-right">
                 <tile-header tag="Google Play Help Forum" ng-hide='gridLay'>Google Top Contributor</tile-header>
                 <tile-footer>Community</tile-footer>
@@ -50,7 +51,7 @@ layout: default
 
   <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="2" md-colspan-xs="1"
                 ng-class="tle" md-colors="{background: 'brown-700'}" 
-                md-ink-ripple="true" ng-click="go('https://plus.google.com/+MukilElango')">
+                md-ink-ripple="true" onclick="pjax.invoke('/articles/fcc', 'main')">
                 <tile image="/assets/fcc.svg" opacity="0.87" size="150px" pos="90% 50%" class="tile-right">
                   <tile-header tag="Being a student at FCC" ng-hide='gridLay'>Free Code Camp</tile-header>
                   <tile-footer>Community</tile-footer>
