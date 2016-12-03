@@ -110,9 +110,10 @@ tile-footer {
 .adj {
   position: relative;
   height: 50px;
+  opacity: 0.67;
 }
 .scrolldef {
-  opacity: 0.67;
+  opacity: 1;
   position:absolute;
   top:0;
   left:0;

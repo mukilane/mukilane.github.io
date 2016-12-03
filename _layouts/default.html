@@ -7,7 +7,14 @@
 
     {% include header.html %}
     <md-content id="main">
-      <div class="banner md-display-4" ng-animate-ref="title" {% if page.color %} 
+      {% if page.category %}
+      <div class="banner md-display-3" {% if page.color %} 
+      md-colors="{background: '{{page.color}}'}" {% endif %}>
+        {{ page.title }}
+        {% if page.description %}<div class="adj md-display-1">{{ page.description }}</div>{% endif %}
+      </div>
+      {% else %}
+      <div class="banner md-display-4" {% if page.color %} 
       md-colors="{background: '{{page.color}}'}" {% endif %} >
         {% if page.title %}
         {{ page.title | escape }}
@@ -19,6 +26,7 @@
         </div>
         {% endif %}
       </div>
+      {% endif %}
       <main id='content' ng-cloak>
         {{content}}
       </main>
