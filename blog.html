@@ -1,0 +1,33 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+<div class="post-wrap" layout="column" layout-align="center center">
+	{% for post in site.posts %}
+	<div layout="row" layout-align="center center">
+		<div flex=33>
+			<div class="post-date">{{post.date}}</div>
+		</div>
+		<md-card class="post-card" flex=66 href="{{post.url}}" md-colors="{background: 'teal-500'}">
+			<md-card-title class="md-display-1">{{post.title}}</md-card-title>
+			<md-card-content class="md-subhead">{{post.excerpt}}</md-card-content>	
+		</md-card>
+	</div>
+	{% endfor %}
+</div>
+<style type="text/css">
+	.post-wrap {
+		max-width: 840px;
+		margin: 0px auto;
+	}
+	.post-date {
+		display: flex;
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		background: teal;
+		align-items: center;
+		justify-content: center;
+	}
+</style>

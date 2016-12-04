@@ -120,7 +120,7 @@ tile-footer {
   right:0;
 }
 .scrolldef.ng-enter, .scrolldef.ng-leave {
-  transition:0.5s cubic-bezier(0.4, 0.0, 1, 1) all;
+  transition:0.3s ease-out all;
 }
 .scrolldef.ng-enter {
   top:25px;
