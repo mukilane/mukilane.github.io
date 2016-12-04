@@ -123,14 +123,24 @@ app.directive('tileFooter', function() {
 app.directive('articleImage', function() {
 	return {
 		restrict: 'E',
-		template: "<div style='background: #333;'>" + 
+		template: "<div style='background: #F3F3F3; text-align: center; float: {{pos}}; margin: {{margin}}'>" + 
 					"<img ng-src='{{source}}' alt='{{alt}}' width={{width}} height={{height}}/>"+
+					"<div class='md-caption'> {{alt}}</div> "+
 					"</div>",
 		scope: {
 			source: '@',
 			width: '@',
-			height: '@',
+			pos: '@',
 			alt: '@'
-		}
+		},
+		link: function(scope) {
+			if(scope.pos == "left") {
+				scope.margin = "0 24px 24px 0";
+			} else if(scope.pos == "right") {
+				scope.margin = "0 0 24px 24px";
+			} else {
+				scope.margin = "24px 0 0 24px";
+			}
+    	},
 	}
 });

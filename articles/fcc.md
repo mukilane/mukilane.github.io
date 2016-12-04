@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Free Code Camp
-permalink: /articles/fcc
+permalink: /articles/fcc/
 category: articles
 color: brown-700
 type: article
