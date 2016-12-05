@@ -4,6 +4,10 @@ html {
   overflow-y: hidden !important; 
   background: #FAFAFA;
 }
+::selection {
+  background-color: #b3d4fc;
+  text-shadow: none;
+}
 body {
   font-family: RobotoDraft, sans-serif;
   overflow: hidden;

@@ -12,8 +12,16 @@
 
   <!--Resoure Hints-->
   <link rel="preconnect" href="/">
-  <link rel="prerender" href="/about/">
+  {% if page.title %}
+  <link rel='prerender' href="/"  pr='0.9'>
+  {% endif %}
+  {% unless page.url == '/about/' %}
+  <link rel="prerender" href="/about/" pr='0.75'>
+  {% endunless %}
+  {% unless page.url == '/portfolio' %}
   <link rel="prerender" href="/portfolio/">
+  {% endunless %}
+  
 
   <!-- Angular Material Dependencies-->
   <link href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css" rel="stylesheet" />

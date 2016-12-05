@@ -1,12 +1,28 @@
+// Service Worker
+if( 'serviceWorker' in navigator ) { //Checking whether Service worker is supported
+	// Registration
+	navigator.serviceWorker.register('/sw.js').then(function(registration) {
+		console.log('Registration successful');
+	}).catch(function(error) {
+		console.log('Registration failed' + error);
+	});
+}
+
+
+//Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
 
+//Confiurations
 app.config(function($mdThemingProvider) {
   	$mdThemingProvider.theme('default')
     .accentPalette('blue');
 });
 
+//Main Controller
 app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 	$scope.gridLay = true;
+	
+	//For scrolling Adjectives
 	$scope.counter = 0;
 	$scope.adjective = ["A Web Developer", "A Programmer", "Google Play Rising Star", "Loves OpenSource", "A Linux Admin", "Elon Musk Fan", "Philomath", "Tech Enthusiast"];
 	$interval(function() { 
@@ -17,10 +33,12 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 		}
 	}, 5000);
 
+	//Trusting urls using SCE
 	$scope.trust = function(url) {
 		$sce.trustAsUrl(url);
 	};
 
+	//Recompiling the DOM on page loads through PJAX
 	$scope.refresh = function() {
 		$scope.target = angular.element(document).find('md-content');
 		$compile($scope.target.contents())($scope);
@@ -30,11 +48,14 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 		$scope.gridLay = false;
 	}
 
+	//Navigating to external locations
 	$scope.go = function (dest) {
 		$window.location.href = $sce.trustAsResourceUrl(dest);
 	}
 });
 
+
+// Controller for share feature
 app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
 	$scope.copy = true;
 	$scope.title = angular.element(window.document)[0].title;
@@ -54,6 +75,8 @@ app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
 	}
 });
 
+
+// Directive Declarations
 app.directive('tile', function() {
 	return {
 		restrict: 'E',
