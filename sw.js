@@ -8,9 +8,9 @@ self.addEventListener('install', function(event) {
 	  '/',
 	  '/css/style.css',
 	  '/scripts/main.js',
-	  'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js',
-	  'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.js',
-	  'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js',
+	  'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js',
+	  'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js',
+	  'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js',
 	  'https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css',
 	  'https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js'
 	];
