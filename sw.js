@@ -8,6 +8,7 @@ self.addEventListener('install', function(event) {
 	  '/',
 	  '/css/style.css',
 	  '/scripts/main.js',
+	  '/scripts/pjax-standalone.min.js',
 	  'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js',
 	  'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js',
 	  'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js',

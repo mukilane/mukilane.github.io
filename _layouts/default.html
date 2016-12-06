@@ -34,7 +34,7 @@
     </md-content>
     
     <!--PJAX Standalone-->
-    <script src="/scripts/pjax-standalone.min.js"></script>
+    <script src="/scripts/pjax-standalone.min.js" async></script>
     <script type="text/javascript">
       document.getElementById("main").addEventListener('beforeSend', function(event) {
         angular.element(document.getElementById('ctrl')).scope().trust(event.data.url);
