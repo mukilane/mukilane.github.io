@@ -1,0 +1,22 @@
+{
+  "name": "mukilane.github.io",
+  "version": "1.0.0",
+  "description": "Mukil Elango's Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mukilane/mukilane.github.io.git"
+  },
+  "author": "Mukil (mukilane@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mukilane/mukilane.github.io/issues"
+  },
+  "homepage": "https://github.com/mukilane/mukilane.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
