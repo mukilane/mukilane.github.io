@@ -6,7 +6,11 @@
   <title>{% if page.title %}{{ page.title | escape }} | {{site.title}}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+  <!--<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">-->
+
+  <link rel="preload" href="{{ "/css/main.css" | prepend: site.baseurl }}" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}"></noscript>
+
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
@@ -28,7 +32,9 @@
   <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500|Material+Icons" rel="stylesheet" />
   
   <!--Main Stylesheet-->
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <!--<link rel="stylesheet" type="text/css" href="/css/style.css">-->
+  <link rel="preload" href="/css/style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
 
   <!--Web App Manifest-->
   <link rel="manifest" href="/manifest.json">
