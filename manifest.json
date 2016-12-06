@@ -1,0 +1,21 @@
+{
+  "short_name": "Mukil Elango",
+  "name": "Mukil Elango's Portfolio",
+  "icons": [
+    {
+      "src": "/assets/launcher-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/launcher-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FAFAFA"
+}
