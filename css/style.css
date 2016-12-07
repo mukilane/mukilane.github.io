@@ -4,6 +4,9 @@ html {
   overflow-y: hidden !important; 
   background: #FAFAFA;
 }
+[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){
+    display:none !important; /*Fallback style incase MD stylsheet fails to load*/
+}
 ::selection {
   background-color: #b3d4fc;
   text-shadow: none;

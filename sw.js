@@ -1,4 +1,6 @@
 /* Service Worker - mukilane.github.io */
+/*Functions - Caches, push messages   */
+
 
 self.addEventListener('install', function(event) {
 
@@ -40,7 +42,6 @@ self.addEventListener('fetch', function(event) {
         if (response) {  //Then respond from cache
           return response;
         }
-
         return fetch(event.request);
         
         /*var request = event.request.clone();
@@ -61,3 +62,13 @@ self.addEventListener('fetch', function(event) {
     )
   );
 });
+
+/* self.addEventListener('push', function(event) {
+	const title = 'Push Codelab';
+  	const options = {
+    	body: 'Yay it works.',
+    	icon: 'images/icon.png',
+    	badge: 'images/badge.png'
+  	};		
+  event.waitUntil(self.registration.showNotification(title, options));
+}); */

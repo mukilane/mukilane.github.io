@@ -1,13 +1,42 @@
 // Service Worker
-if( 'serviceWorker' in navigator ) { //Checking whether Service worker is supported
-	// Registration
-	navigator.serviceWorker.register('/sw.js').then(function(registration) {
-		console.log('Registration successful');
-	}).catch(function(error) {
-		console.log('Registration failed' + error);
-	});
-}
+// Adapted from https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js
 
+if ('serviceWorker' in navigator) { //If Service worker is available
+  navigator.serviceWorker.register('/sw.js').then(function(registration) {
+  	console.log('Registration successful');
+  	/*registration.showNotification('Vibration Sample', {
+          body: 'Buzz! Buzz!',
+          vibrate: [200, 100, 200, 100, 200, 100, 200],
+          tag: 'vibration-sample'
+        });*/
+    registration.onupdatefound = function() { //When SW is changed
+      // The updatefound event implies that reg.installing is set; see
+      // https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
+      var installingWorker = registration.installing;
+      installingWorker.onstatechange = function() {
+        switch (installingWorker.state) {
+          case 'installed':
+            if (navigator.serviceWorker.controller) {
+              // At this point, the old content will have been purged and the fresh content will 
+              // have been added to the cache.
+              angular.element(document.getElementById('ctrl')).scope().swToast('New content available. Refresh to see', true);
+            } else {
+              // At this point, everything has been precached.
+              // It's the perfect time to display a "Content is cached for offline use." message.
+              angular.element(document.getElementById('ctrl')).scope().swToast('Content cached for offline use', false);
+            }
+            break;
+
+          case 'redundant':
+            console.error('The installing service worker became redundant.');
+            break;
+        }
+      };
+    };
+  }).catch(function(e) {
+    console.error('Error during service worker registration:', e);
+  });
+}
 
 //Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
@@ -19,7 +48,7 @@ app.config(function($mdThemingProvider) {
 });
 
 //Main Controller
-app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
+app.controller('main', function ($scope, $interval, $compile, $window, $sce, $mdToast) {
 	$scope.gridLay = true;
 	
 	//For scrolling Adjectives
@@ -46,12 +75,29 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce) {
 
 	$scope.show = function($event) {
 		$scope.gridLay = false;
-	}
+	};
 
 	//Navigating to external locations
 	$scope.go = function (dest) {
 		$window.location.href = $sce.trustAsResourceUrl(dest);
-	}
+	};
+
+	// Toasts
+	$scope.swToast = function(msg, refresh) {
+    	if (refresh) {
+      		$mdToast.show($mdToast.simple().textContent(msg).action('REFRESH').highlightAction(true))
+      		.then(function(response) {
+      			if ( response == 'ok' ) {
+      				$window.location.reload();
+      			}
+			});
+      	} else {
+      		$mdToast.showSimple(msg);
+      		// or $mdToast.show($mdToast.simple().textContent(msg));    	
+      	}	
+  	};
+
+
 });
 
 
