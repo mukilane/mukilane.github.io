@@ -1,0 +1,56 @@
+<div class="modal" layout="column">
+	<div class="modal-image">
+		<md-button class="md-icon-button modal-close" ng-click="ctrl.closePanel()" md-colors="{color: 'grey-50'}"><i class="material-icons">close</i></md-button>
+	</div>
+	<div class="modal-body" layout='column'>
+		<md-button class="md-fab modal-fab" href="{{page.dest}}" target="_blank" md-colors="{background: 'grey-50'}"><i class="material-icons">launch</i></md-button>
+		<div class="md-display-1 modal-title" layout-padding md-colors="{background: 'blue-grey-600'}">{{ page.title }}</div>
+		<!--<div layout='row' class="md-subhead modal-des" md-colors="{background: 'blue-grey-100'}" layout-padding>
+		</div>-->
+		<md-content layout-padding style="height: 200px" class="md-subhead">{{ page.content }}</md-content>
+	</div>
+</div>
+
+<style>
+.modal-container {
+	height: 100%;
+	max-width: 640px;
+	width: 100%;
+}
+.modal-image {
+	height: 60vw;
+	max-height: 360px;
+	background-image: url('{{ page.image }}');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: lightblue;
+}
+.modal-title {
+	padding: 24px 16px;
+}
+.modal-des {
+	min-height: 56px;
+	padding: 16px;
+}
+.modal-des:before {
+	content: "Built with:";
+}
+.modal md-content {
+	height: 200px;
+}
+.modal-fab {
+    position: fixed;
+    line-height: 68px !important;
+    right: 16px;
+    margin-top: -28px;
+}
+.modal-close {
+	top: 8px;
+	left: 2px;
+}
+.modal-body {
+	height: 400px;
+    overflow-y: auto;
+    display: block;
+}
+</style>

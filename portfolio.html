@@ -3,66 +3,67 @@ layout: default
 title: Projects
 permalink: /portfolio/
 ---
+<div ng-controller="ModalController as ctrl">
 <md-grid-list md-cols="1" md-cols-sm="2" md-cols-gt-sm="4" md-cols-gt-md="6"
     md-cols-gt-lg="8" md-row-height-gt-md="1:1" md-row-height="1:1"
     md-gutter="0px">
-    <md-grid-tile md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'deep-purple-600'}" md-ink-ripple="true" ng-click="go('https://scoutingeverywhere.blogspot.com');">    
+    <md-grid-tile md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'deep-purple-600'}" md-ink-ripple="true" ng-click="ctrl.showPanel('scouting')">    
         <tile-header tag="A blog about Scouting">
         Scouting Everywhere
         </tile-header>
         <tile-footer>AngularJS</tile-footer>    
     </md-grid-tile>
 
-    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'grey-800'}" md-ink-ripple="true" ng-click="go('/projects/pomodoro')">
+    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'grey-800'}" md-ink-ripple="true" ng-click="ctrl.showPanel('pomodoro')">
             <tile-header tag="(aka) Tomato timer">
             Pomodoro Clock
             </tile-header>
             <tile-footer>AngularJS</tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'indigo-400'}" md-ink-ripple="true" ng-click="go('/projects/calculator');">
+    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'indigo-400'}" md-ink-ripple="true" ng-click="ctrl.showPanel('calculator')">
             <tile-header tag="A Material Design inspired calculator">
             Calculator
             </tile-header>
             <tile-footer>AngularJS</tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'blue-grey-500'}" md-ink-ripple="true" ng-click="go('/projects/simongame');">
+    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'blue-grey-500'}" md-ink-ripple="true" ng-click="ctrl.showPanel('simon')">
             <tile-header tag="A functional mockup of the Simon game">
             Simon Game
             </tile-header>
             <tile-footer>AngularJS</tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'indigo-A200'}" md-ink-ripple="true" ng-click="go('/projects/tictactoe');"> 
+    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'indigo-A200'}" md-ink-ripple="true" ng-click="ctrl.showPanel('tictactoe')"> 
             <tile-header tag="Play against the computer">
             Tic Tac Toe
             </tile-header>
             <tile-footer>AngularJS</tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'blue-grey-600'}" md-ink-ripple="true" ng-click="go('/projects/weather');">
+    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'blue-grey-600'}" md-ink-ripple="true" ng-click="ctrl.showPanel('weather')">
             <tile-header tag="Weather at your location">
             What's the weather ?
             </tile-header>
             <tile-footer>AngularJS</tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'grey-300'}" md-ink-ripple="true" ng-click="go('/projects/quoter');">
+    <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'grey-300'}" md-ink-ripple="true" ng-click="ctrl.showPanel('quoter')">
             <tile-header tag="Random programming quotes">
             Quote Machine
             </tile-header>
             <tile-footer>AngularJS</tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'cyan-700'}" md-ink-ripple="true" ng-click="go('/projects/twitchstatus');">
+    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'cyan-700'}" md-ink-ripple="true" ng-click="ctrl.showPanel('twitch')">
             <tile-header tag="Who's streaming now ?">
             Twitch Status Viewer
             </tile-header>
             <tile-footer>AngularJS</tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'indigo-600'}" md-ink-ripple="true" ng-click="go('/projects/wikiviewer');">
+    <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: 'indigo-600'}" md-ink-ripple="true" ng-click="ctrl.showPanel('wikiviewer')">
             <tile-header tag="Search the entire Wikipedia">
             Wiki Viewer
             </tile-header>
@@ -70,3 +71,4 @@ permalink: /portfolio/
     </md-grid-tile>
     
 </md-grid-list>
+</div>

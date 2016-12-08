@@ -121,6 +121,56 @@ app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
 	}
 });
 
+app.controller('ModalController', ModalController);
+app.controller('ModalCtrl', ModalCtrl);
+
+function ModalController($mdPanel) {
+	this._mdPanel = $mdPanel;
+}
+
+ModalController.prototype.showPanel = function(dest) {
+
+	var tmpl = '/projects/' + dest + '.html';
+
+  var position = this._mdPanel.newPanelPosition()
+      .absolute()
+      .center();
+
+  var animation = this._mdPanel.newPanelAnimation()
+  .withAnimation(this._mdPanel.animation.FADE);  
+
+
+  var config = {
+  	animation: animation,
+    attachTo: angular.element(document.body),
+    controller: ModalCtrl,
+    controllerAs: 'ctrl',
+    disableParentScroll: this.disableParentScroll,
+    templateUrl: tmpl,
+    hasBackdrop: true,
+    panelClass: 'modal-container',
+    position: position,
+    trapFocus: true,
+    zIndex: 150,
+    clickOutsideToClose: true,
+    escapeToClose: true,
+    focusOnOpen: true
+  };
+
+  this._mdPanel.open(config);
+};
+
+function ModalCtrl(mdPanelRef) {
+  this._mdPanelRef = mdPanelRef;
+}
+
+ModalCtrl.prototype.closePanel = function() {
+	var panelRef = this._mdPanelRef;
+	panelRef && panelRef.close().then(function() {
+    	angular.element(document.querySelector('.demo-button')).focus();
+    	panelRef.destroy();
+  	});
+};
 
 // Directive Declarations
 app.directive('tile', function() {

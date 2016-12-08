@@ -18,5 +18,10 @@ exclude: ["package.json",
           "node_modules",
           "gulpfile.js"]
 
+# Collections
+collections:
+  projects:
+    output: true
+
 # Build settings
 markdown: kramdown

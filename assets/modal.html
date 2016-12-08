@@ -1,0 +1,37 @@
+<div class="modal" layout="column">
+	<div class="modal-image" md-colors="{background: 'grey-400'}">
+	<md-button class="md-icon-button modal-close" ng-click="ctrl.closePanel()"><i class="material-icons">close</i></md-button>
+	</div>
+	<md-button class="md-fab modal-fab" ng-click="ctrl.closePanel()"><i class="material-icons">close</i></md-button>
+	<div class="modal-body" layout='column'>
+		<div class="md-display-1" layout-padding md-colors="{background: 'grey-50'}">Title</div>
+		<div layout='row' style="min-height: 56px;" md-colors="{background: 'grey-100'}"></div>
+		<md-content style="height: 200px">Text goes here</md-content>
+	</div>
+</div>
+
+<style>
+.modal-container {
+	height: 100%;
+	max-width: 760px;
+	width: 100%;
+}
+.modal-image {
+	min-height: 360px;
+}
+.modal-fab {
+	position: absolute;
+	top: 322px;
+	right: 5%;
+	line-height: 12px !important;
+}
+.modal-close {
+	top: 8px;
+	left: 2px;
+}
+.modal-body {
+	height: 400px;
+    overflow-y: auto;
+    display: block;
+}
+</style>
