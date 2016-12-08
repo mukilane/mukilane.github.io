@@ -3,31 +3,26 @@ layout: default
 title: Blog
 permalink: /blog/
 ---
-<div class="post-wrap" layout="column" layout-align="center center">
+<md-grid-list
+      md-cols="1" md-cols-sm="2" md-cols-gt-sm="4" md-cols-gt-md="4"
+      md-cols-gt-lg="6" md-row-height-gt-md="3:4" md-row-height="3:4" 
+      md-row-height-xs="3:4"
+      md-gutter="0px" md-on-layout="show($event)" ng-hide="gridLay">
 	{% for post in site.posts %}
-	<div layout="row" layout-align="center center">
-		<div flex=33>
-			<div class="post-date">{{post.date}}</div>
-		</div>
-		<md-card class="post-card" flex=66 href="{{post.url}}" md-colors="{background: 'teal-500'}">
-			<md-card-title class="md-display-1">{{post.title}}</md-card-title>
-			<md-card-content class="md-subhead">{{post.excerpt}}</md-card-content>	
-		</md-card>
-	</div>
+	<md-grid-tile md-rowspan="1" md-colspan="1"
+                md-colspan-sm="1" md-colspan-xs="1"
+                md-rowspan-sm="1" md-rowspan-xs="1"
+                ng-class="tle" md-colors="{background: 'blue-grey-700'}" 
+                md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
+		<tile image="/assets/about.svg">
+            <tile-header tag="Learn more about me" ng-hide='gridLay'>
+            {{post.title}}
+            </tile-header>
+            <tile-footer>{{post.date}}</tile-footer>
+        </tile>
+	</md-grid-tile>
 	{% endfor %}
-</div>
+</md-grid-list>
 <style type="text/css">
-	.post-wrap {
-		max-width: 840px;
-		margin: 0px auto;
-	}
-	.post-date {
-		display: flex;
-		width: 150px;
-		height: 150px;
-		border-radius: 50%;
-		background: teal;
-		align-items: center;
-		justify-content: center;
-	}
+
 </style>

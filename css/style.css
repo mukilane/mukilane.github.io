@@ -58,7 +58,7 @@ footer a{
 }
 .banner {
   padding: 6vw 4vw;
-  margin-bottom: 5vw;
+  margin: 3vw 0 8vw 0;
   color: rgba(0,0,0,0.67);
   user-select: none;
   letter-spacing: -0.02em;

@@ -15,7 +15,8 @@
       </div>
       {% else %}
       <div class="banner md-display-4" {% if page.color %} 
-      md-colors="{background: '{{page.color}}'}" {% endif %} >
+      md-colors="{background: '{{page.color}}'}" {% endif %} 
+      {% if page.title %} style="margin: 0 0 5vw 0 !important" {% endif %} >
         {% if page.title %}
         {{ page.title | escape }}
         {% else %}
@@ -50,6 +51,12 @@
       }, false);
       document.getElementById("main").addEventListener('error', function(event) {
         pjax.invoke('/404/', 'main'); 
+      }, false);
+      window.addEventListener('offline', function(e) {
+        angular.element(document.getElementById('ctrl')).scope().swToast("You're Offline. Serving from cache!", false);
+        window.addEventListener('online', function(e) {
+          angular.element(document.getElementById('ctrl')).scope().swToast("You're Online now !", true);
+        }, false);
       }, false);
     </script> 
 
