@@ -20,7 +20,7 @@ exclude: ["package.json",
 
 # Collections
 collections:
-  projects:
+  project:
     output: true
 
 # Build settings

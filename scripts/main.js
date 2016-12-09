@@ -130,7 +130,7 @@ function ModalController($mdPanel) {
 
 ModalController.prototype.showPanel = function(dest) {
 
-	var tmpl = '/projects/' + dest + '.html';
+	var tmpl = '/project/' + dest + '.html';
 
   var position = this._mdPanel.newPanelPosition()
       .absolute()
