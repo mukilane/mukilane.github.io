@@ -5,4 +5,4 @@ dest: https://mukilane.github.io/projects/tictactoe
 image: /assets/projects/tictactoe.png
 ---
 
-Tic Tac Toe
+**Tic Tac Toe** 

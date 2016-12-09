@@ -5,7 +5,7 @@ permalink: /contact/
 color: grey-900
 ---
 
-<div layout="column" layout-gt-sm="row" layout-align="center center">
+<div layout="column" layout-gt-xs="row" layout-align="center center">
 	<div layout="column" layout-align="space-around center">
 		<md-list>
 			<md-list-item class="md-3-line">
@@ -23,7 +23,7 @@ color: grey-900
 		          	</div>
 	        </md-list-item>
 	        <md-list-item class="md-3-line">
-          		<div class="md-avatar" md-colors="{background: 'grey-900'}">{% include icon-github.svg %}</div>
+          		<div class="md-avatar" md-colors="{background: 'grey-700'}">{% include icon-github.svg %}</div>
 		          	<div class="md-list-item-text">
 			            <h3>Github</h3>
 			            <p>@mukilane</p>
@@ -41,14 +41,14 @@ color: grey-900
 		          	</div>
 	        </md-list-item>
 	        <md-list-item class="md-3-line">
-          		<div class="md-avatar" md-colors="{background: 'indigo-700'}"></div>
+          		<div class="md-avatar" md-colors="{background: 'indigo-700'}">{% include icon-linkedin.svg %}</div>
 		          	<div class="md-list-item-text">
 			            <h3>Linkedin</h3>
 			            <p>in/mukilane</p>
 		          	</div>
 	        </md-list-item>
 	        <md-list-item class="md-3-line">
-          		<div class="md-avatar" md-colors="{background: 'grey-800'}"></div>
+          		<div class="md-avatar" md-colors="{background: 'grey-900'}">{% include icon-codepen.svg %}</div>
 		          	<div class="md-list-item-text">
 			            <h3>Codepen</h3>
 			            <p>mukilane</p>
@@ -57,3 +57,18 @@ color: grey-900
 		</md-list>
 	</div>
 </div>
+<style type="text/css">
+	.md-avatar {
+		fill: white !important;
+	}
+	.md-list-item-text {
+		margin: 12px 0 !important;
+	}
+	.md-list-item-text h3 {
+		font-size: 24px !important;
+	}
+	.md-avatar {
+		width: 48px !important;
+		height: 48px !important;
+	}
+</style>
