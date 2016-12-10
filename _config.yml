@@ -16,7 +16,8 @@ twitter_username: mukilane
 github_username:  mukilane
 exclude: ["package.json",
           "node_modules",
-          "gulpfile.js"]
+          "gulpfile.js",
+          "sw-precache-config.js"]
 
 # Collections
 collections:

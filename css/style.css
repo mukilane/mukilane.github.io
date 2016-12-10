@@ -61,7 +61,7 @@ footer a{
   margin: 3vw 0 8vw 0;
   color: rgba(0,0,0,0.67);
   user-select: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 md-grid-tile {
   outline: none !important;
@@ -212,8 +212,7 @@ strong, b {
 /* Material Design Adaptive Breakpoints */
 
 /* mobile-small */
-@media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { 
-
+@media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) {   
 }
 
 /* mobile-large */
@@ -224,6 +223,15 @@ strong, b {
   }
   main {
     width: 100%;
+  }
+  .adj {
+    margin: 16px 0 32px 0;
+    font-size: 36px !important;
+    line-height: 1em;
+  }
+  .banner {
+    font-size: 96px;
+    line-height: 1em;
   }
 }
 

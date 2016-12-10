@@ -2,7 +2,7 @@
 // Adapted from https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js
 
 if ('serviceWorker' in navigator) { //If Service worker is available
-  navigator.serviceWorker.register('/sw.js').then(function(registration) {
+  navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
   	console.log('Registration successful');
   	/*registration.showNotification('Vibration Sample', {
           body: 'Buzz! Buzz!',

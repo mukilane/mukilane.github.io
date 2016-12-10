@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "Post 3"
+date:   2016-12-10 12:16:20 +0530
+categories: blog
+---
+
+Post content
