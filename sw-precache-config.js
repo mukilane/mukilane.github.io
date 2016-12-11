@@ -9,6 +9,7 @@ module.exports = {
   ],
   stripPrefix: '_site/',
   verbose: true,
+  ignoreUrlParametersMatching: [],
   // CDN Files to be cached
   runtimeCaching: [{
     urlPattern: /^https:\/\/ajax\.googleapis\.com\/ajax\/libs/,
