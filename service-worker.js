@@ -41,7 +41,7 @@ var precacheConfig = [["404/index.html","3c4b8970e44e805a5c473af984671494"],["ab
 var cacheName = 'sw-precache-v2-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
-var ignoreUrlParametersMatching = [];
+var ignoreUrlParametersMatching = [/./];
 
 
 
