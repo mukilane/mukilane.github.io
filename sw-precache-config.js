@@ -2,9 +2,10 @@ module.exports = {
   // Files to be cached
   staticFileGlobs: [
     '_site/css/**.css',
-    '_site/**.html',
+    '_site/**/index.html',
     '_site/assets/**.*',
-    '_site/scripts/**.js'
+    '_site/scripts/**.js',
+    '_site/index.html'
   ],
   stripPrefix: '_site/',
   verbose: true,
