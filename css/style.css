@@ -229,7 +229,7 @@ strong, b {
     font-size: 36px !important;
     line-height: 1em;
   }
-  .banner {
+  .banner .md-display-4 {
     font-size: 96px;
     line-height: 1em;
   }

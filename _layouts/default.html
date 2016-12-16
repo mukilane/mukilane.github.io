@@ -9,7 +9,8 @@
     <md-content id="main">
       {% if page.category %}
       <div class="banner md-display-3" {% if page.color %} 
-      md-colors="{background: '{{page.color}}'}" {% endif %}>
+      md-colors="{background: '{{page.color}}'}" {% endif %}
+      {% if page.title %} style="margin: 0 0 5vw 0 !important" {% endif %}>
         {{ page.title }}
         {% if page.description %}<div class="adj md-display-1">{{ page.description }}</div>{% endif %}
       </div>

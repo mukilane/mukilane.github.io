@@ -112,7 +112,7 @@ app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
 		  parent: angular.element(document.body),
 		  targetEvent: ev,
 		  controller: () => this,
-		  controllerAs: 'ctrl',
+		  controllerAs: 'share',
 		  clickOutsideToClose:true,
 		});
 	};
