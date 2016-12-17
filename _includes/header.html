@@ -1,4 +1,4 @@
-<md-toolbar md-scroll-shrink ng-if="true" md-colors="{background: 'grey-50'}" ng-cloak>
+<md-toolbar md-scroll-shrink ng-if="true" md-colors="{background: 'grey-50'}" >
   <div class="md-toolbar-tools" layout-align="space-between center">
     <div onclick="pjax.invoke('/', 'main')" class="home md-title">
       {% if page.title %}
@@ -6,16 +6,12 @@
       {% else %}{{ escape }}
       {% endif %}
     </div>
-    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs>
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs ng-cloak>
       <md-nav-item md-nav-click="" onclick="pjax.invoke('/about/', 'main')" name="About">ABOUT</md-nav-item>
       <md-nav-item md-nav-click="" onclick="pjax.invoke('/portfolio/', 'main')" name="Projects">PORTFOLIO</md-nav-item>
       <md-nav-item md-nav-click="" onclick="pjax.invoke('/contact/', 'main')" name="Contact">CONTACT</md-nav-item>
-      <!-- these require actual routing with ui-router or ng-route, so they won't work in the demo
-      <md-nav-item md-nav-sref="app.page4" name="page4">Page Four</md-nav-item>
-      <md-nav-item md-nav-href="#page5" name="page5">Page Five</md-nav-item>
-      -->
     </md-nav-bar>
-    <md-menu md-position-mode="target-right target" hide-gt-xs>
+    <md-menu md-position-mode="target-right target" hide-gt-xs ng-cloak>
       <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
       <i class="material-icons">more_vert</i>
       </md-button>

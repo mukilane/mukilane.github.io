@@ -4,7 +4,7 @@ layout: default
 <md-grid-list
       md-cols="1" md-cols-sm="2" md-cols-gt-sm="4" md-cols-gt-md="4"
       md-cols-gt-lg="6" md-row-height-gt-md="1:1" md-row-height="1:1" 
-      md-row-height-xs="4:3"
+      md-row-height-xs="4:3" 
       md-gutter="0px" md-on-layout="show($event)" ng-hide="gridLay">
 
   <md-grid-tile md-rowspan="2" md-colspan="4"
@@ -12,12 +12,10 @@ layout: default
                 md-rowspan-sm="1" md-rowspan-xs="1"
                 ng-class="tle" md-colors="{background: 'blue-grey-700'}" 
                 md-ink-ripple="true" onclick="pjax.invoke('/about/', 'main');">
-                <tile image="/assets/about.svg">
-                <tile-header tag="Learn more about me" ng-hide='gridLay'>
-                About Me
-                </tile-header>
-                <tile-footer>About Me</tile-footer>
-                </tile>
+    <tile image="/assets/about.svg">
+      <tile-header tag="Learn more about me" ng-hide='gridLay'>About Me</tile-header>
+      <tile-footer>About Me</tile-footer>
+    </tile>
   </md-grid-tile>
 
 
@@ -26,81 +24,83 @@ layout: default
                 md-rowspan-sm="1" md-rowspan-xs="1"
                 ng-class="tle" md-colors="{background: 'orange-600'}" 
                 md-ink-ripple="true" onclick="pjax.invoke('/portfolio/', 'main')">
-                <tile image="/assets/code.svg" opacity="0.87">
-                  <tile-header tag="Collection of my Frontend projects" ng-hide='gridLay'>Front End Projects</tile-header>
-                  <tile-footer>Experience</tile-footer>
-                </tile>
+    <tile image="/assets/code.svg" opacity="0.87">
+      <tile-header tag="Collection of my Frontend projects" ng-hide='gridLay'>Front End Projects</tile-header>
+      <tile-footer>Experience</tile-footer>
+    </tile>
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+  <md-grid-tile md-rowspan="1" md-colspan="2" 
+                md-colspan-sm="1" md-colspan-xs="1"
                 ng-class="tle" md-colors="{background: 'light-green-500'}" 
                 md-ink-ripple="true" onclick="pjax.invoke('/articles/googletc/', 'main');">
-                <tile image="/assets/tc-badge.png" pos="90% 50%" opacity="0.87" size="150px" class="tile-right">
-                <tile-header tag="Google Play Help Forum" ng-hide='gridLay'>Google Top Contributor</tile-header>
-                <tile-footer>Community</tile-footer>
-                </tile>
+    <tile image="/assets/tc-badge.png" pos="90% 50%" opacity="0.87" size="150px" class="tile-right">
+      <tile-header tag="Google Play Help Forum" ng-hide='gridLay'>Google Top Contributor</tile-header>
+      <tile-footer>Community</tile-footer>
+    </tile>
   </md-grid-tile>
-  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" 
+
+  <md-grid-tile md-rowspan="1" md-colspan="2" 
+                md-colspan-sm="1" md-colspan-xs="1" 
                 ng-class="tle" md-colors="{background: 'grey-900'}" 
                 md-ink-ripple="true" onclick="pjax.invoke('/opensource/', 'main');">
-                <tile image="/assets/github.svg" opacity="0.87" pos="90% 50%" size='150px' class="tile-right"> 
-                  <tile-header tag="How opensource changed my career" ng-hide='gridLay'>I love Opensource</tile-header>
-                  <tile-footer>OpenSource</tile-footer>
-                </tile> 
+    <tile image="/assets/github.svg" opacity="0.87" pos="90% 50%" size='150px' class="tile-right"> 
+      <tile-header tag="How opensource changed my career" ng-hide='gridLay'>I love Opensource</tile-header>
+      <tile-footer>OpenSource</tile-footer>
+    </tile> 
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="2" md-colspan-xs="1"
+  <md-grid-tile md-rowspan="1" md-colspan="2" 
+                md-colspan-sm="2" md-colspan-xs="1"
                 ng-class="tle" md-colors="{background: 'brown-700'}" 
                 md-ink-ripple="true" onclick="pjax.invoke('/articles/fcc/', 'main')">
-                <tile image="/assets/fcc.svg" opacity="0.87" size="150px" pos="90% 50%" class="tile-right">
-                  <tile-header tag="Being a student at FCC" ng-hide='gridLay'>Free Code Camp</tile-header>
-                  <tile-footer>Community</tile-footer>
-                </tile>
+    <tile image="/assets/fcc.svg" opacity="0.87" size="150px" pos="90% 50%" class="tile-right">
+      <tile-header tag="Being a student at FCC" ng-hide='gridLay'>Free Code Camp</tile-header>
+      <tile-footer>Community</tile-footer>
+    </tile>
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-sm="1" md-rowspan-xs="1" 
-                ng-class="tle" md-colors="{background: 'deep-purple-600'}" 
-                md-ink-ripple="true" onclick="pjax.invoke('/articles/scouting/', 'main')">
-                <tile image="/assets/scout-logo.svg" opacity="0.87" size="250px" >
-                  <tile-header tag="Me as a Scout" ng-hide='gridLay'>
-                  Scouting
-                  </tile-header>
-                  <tile-footer>Passion</tile-footer>
-                </tile>
-  </md-grid-tile>
-
-  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                ng-class="tle" md-colors="{background: 'amber-500'}" 
-                md-ink-ripple="true" onclick="pjax.invoke('/certificates/', 'main')">
-                <tile image="/assets/medal.svg" pos="90% 50%" size="150px" opacity="0.87" class="tile-right">
-                  <tile-header tag="Certificates that I earned" ng-hide='gridLay'>Certificates</tile-header>
-                  <tile-footer>Achievements</tile-footer>
-                </tile> 
-  </md-grid-tile>
-
-  <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+  <md-grid-tile md-rowspan="2" md-colspan="2" 
+                md-colspan-sm="1" md-colspan-xs="1"
                 md-rowspan-sm="1" md-rowspan-xs="1" 
                 ng-class="tle" md-colors="{background: 'teal-500'}" 
                 md-ink-ripple="true" onclick="pjax.invoke('/articles/arduino/', 'main')">
-                <tile image="/assets/arduino.svg" opacity="1" size="250px">
-                  <tile-header tag="Into the world of Physical Computing">
-                  Arduino
-                  </tile-header>
-                  <tile-footer>Curiosity</tile-footer>
-                </tile>
+    <tile image="/assets/arduino.svg" opacity="1" size="250px">
+      <tile-header tag="Into the world of Physical Computing">Arduino</tile-header>
+      <tile-footer>Curiosity</tile-footer>
+    </tile>
   </md-grid-tile>
 
-  <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+  <md-grid-tile md-rowspan="1" md-colspan="2" 
+                md-colspan-sm="1" md-colspan-xs="1"
+                ng-class="tle" md-colors="{background: 'amber-500'}" 
+                md-ink-ripple="true" onclick="pjax.invoke('/certificates/', 'main')">
+    <tile image="/assets/medal.svg" pos="90% 50%" size="150px" opacity="0.87" class="tile-right">
+      <tile-header tag="Certificates that I earned" ng-hide='gridLay'>Certificates</tile-header>
+      <tile-footer>Achievements</tile-footer>
+    </tile> 
+  </md-grid-tile>
+
+  <md-grid-tile md-rowspan="2" md-colspan="2" 
+                md-colspan-sm="1" md-colspan-xs="1"
+                md-rowspan-sm="1" md-rowspan-xs="1" 
+                ng-class="tle" md-colors="{background: 'deep-purple-600'}" 
+                md-ink-ripple="true" onclick="pjax.invoke('/articles/scouting/', 'main')">
+    <tile image="/assets/scout-logo.svg" opacity="0.87" size="250px" >
+      <tile-header tag="Me as a Scout" ng-hide='gridLay'>Scouting</tile-header>
+      <tile-footer>Passion</tile-footer>
+    </tile>
+  </md-grid-tile> 
+
+  <md-grid-tile md-rowspan="2" md-colspan="2" 
+                md-colspan-sm="1" md-colspan-xs="1"
                 md-rowspan-sm="1" md-rowspan-xs="1" 
                 ng-class="tle" md-colors="{background: 'pink-600'}" 
                 md-ink-ripple="true" onclick="pjax.invoke('/articles/raspberrypi/', 'main')">
-                <tile image="/assets/raspberrypi.svg" opacity="0.87" size="250px">
-                  <tile-header tag="Building a Smart Home with credit-card sized computer">
-                  Raspberry Pi
-                  </tile-header>                  
-                  <tile-footer>Passion</tile-footer>
-                </tile>
+    <tile image="/assets/raspberrypi.svg" opacity="0.87" size="250px">
+      <tile-header tag="Building a Smart Home with credit-card sized computer">Raspberry Pi</tile-header>
+      <tile-footer>Passion</tile-footer>
+    </tile>
   </md-grid-tile>
 
 </md-grid-list>
