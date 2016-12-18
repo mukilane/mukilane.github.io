@@ -75,6 +75,9 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 
 	$scope.show = function($event) {
 		$scope.gridLay = false;
+		if(navigator.onLine == false) {
+			$scope.swToast("You're offline. Serving from cache!");
+		}
 	};
 
 	//Navigating to external locations

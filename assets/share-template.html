@@ -25,13 +25,13 @@
         <md-button class="md-icon-button" ng-click="copy = false"><i class="material-icons">clear</i></md-button>
     </md-dialog-actions>
     <md-dialog-actions class="md-whiteframe-z2" layout="row" layout-align="space-around center" layout-padding ng-hide="copy">
-      <md-button href="" target="_blank" aria-label="Facebook" md-autofocus class="md-icon-button">
+      <md-button href="https://facebook.com/sharer/sharer.php?u={{share.url}}" target="_blank" aria-label="Facebook" md-autofocus class="md-icon-button">
         {% include icon-facebook.svg %}
       </md-button>
-      <md-button class="md-icon-button" aria-label="Google+" ng-click="">
+      <md-button href="https://plus.google.com/share?url={{share.url}}" target="_blank" class="md-icon-button" aria-label="Google+" ng-click="">
         {% include icon-gplus.svg %}
       </md-button>
-      <md-button class="md-icon-button" aria-label="Twitter" ng-click="">
+      <md-button href="https://twitter.com/share?url={{share.url}}&#MukilElango" target="_blank" class="md-icon-button" aria-label="Twitter" ng-click="">
         {% include icon-twitter.svg %}
       </md-button>
       <md-button class="md-icon-button" aria-label="Link" ng-click="copy = true;">

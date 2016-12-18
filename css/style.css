@@ -130,6 +130,7 @@ tile-footer {
   left:0;
   right:0;
   margin-left: 4px;
+  letter-spacing: -0.02em;
 }
 .scrolldef.ng-enter, .scrolldef.ng-leave {
   transition:0.3s ease-in-out all;
