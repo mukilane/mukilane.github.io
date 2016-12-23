@@ -1,60 +1,62 @@
+//Main JS - mukilane.github.io
 // Service Worker
 // Adapted from https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js
+if ('serviceWorker' in navigator) { // If Service worker feature is available in the browser
+	navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+	/*registration.showNotification('Vibration Sample', { // Notification with Vibration
+	body: 'Buzz! Buzz!',
+	vibrate: [200, 100, 200, 100, 200, 100, 200],
+	tag: 'vibration-sample'
+	});*/
+		registration.onupdatefound = function() { //When SW is changed
+			// The updatefound event implies that reg.installing is set; see
+			// https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
 
-if ('serviceWorker' in navigator) { //If Service worker is available
-  navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-  	console.log('Registration successful');
-  	/*registration.showNotification('Vibration Sample', {
-          body: 'Buzz! Buzz!',
-          vibrate: [200, 100, 200, 100, 200, 100, 200],
-          tag: 'vibration-sample'
-        });*/
-    registration.onupdatefound = function() { //When SW is changed
-      // The updatefound event implies that reg.installing is set; see
-      // https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
-      var installingWorker = registration.installing;
-      installingWorker.onstatechange = function() {
-        switch (installingWorker.state) {
-          case 'installed':
-            if (navigator.serviceWorker.controller) {
-              // At this point, the old content will have been purged and the fresh content will 
-              // have been added to the cache.
-              angular.element(document.getElementById('ctrl')).scope().swToast('New content available. Refresh to see', true);
-            } else {
-              // At this point, everything has been precached.
-              // It's the perfect time to display a "Content is cached for offline use." message.
-              angular.element(document.getElementById('ctrl')).scope().swToast('Content cached for offline use', false);
-            }
-            break;
-
-          case 'redundant':
-            console.error('The installing service worker became redundant.');
-            break;
-        }
-      };
-    };
-  }).catch(function(e) {
-    console.error('Error during service worker registration:', e);
-  });
+			// Get the state of the service worker
+			var installingWorker = registration.installing;
+			// Track the service worker of any changes
+			installingWorker.onstatechange = function() {
+				switch (installingWorker.state) {
+					case 'installed':
+						if (navigator.serviceWorker.controller) {
+							console.log('[SW] Registration successful');
+							// Any old content will be purged and new content will be added to the cache
+							angular.element(document.getElementById('ctrl')).scope().swToast('New content available. Refresh to see', true);
+							// Refresh is done to load overcome the network first strategy.
+							// Content will be loaded from the cache only the second time
+							// The content won't be offline ready at the first visit.
+						} else {
+							// If controller is null, then caching is complete
+							angular.element(document.getElementById('ctrl')).scope().swToast('Content cached for offline use', false);
+						}
+						break;
+					case 'redundant':
+						console.error('[SW] The installing service worker became redundant.');
+						break;
+				}
+			};
+		};
+	}).catch(function(e) {
+		console.error('[SW] Error during service worker registration:', e);
+	});
 }
-
 //Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
-
-//Confiurations
+// Angular Confiurations
 app.config(function($mdThemingProvider) {
-  	$mdThemingProvider.theme('default')
-    .accentPalette('blue');
+//Overriding Default theme
+$mdThemingProvider.theme('default')
+	.accentPalette('blue');
 });
-
 //Main Controller
 app.controller('main', function ($scope, $interval, $compile, $window, $sce, $mdToast) {
+	// Whether the main grid is painted
 	$scope.gridLay = true;
-	
+
 	//For scrolling Adjectives
 	$scope.counter = 0;
 	$scope.adjective = ["A Web Developer", "A Programmer", "Google Play Rising Star", "Loves OpenSource", "A Linux Admin", "Elon Musk Fan", "Philomath", "Tech Enthusiast"];
-	$interval(function() { 
+	$interval(function() {
 		if ($scope.counter < 7) {
 			$scope.counter++;
 		} else {
@@ -62,21 +64,26 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 		}
 	}, 5000);
 
-	//Trusting urls using SCE
+	// Trusting urls using SCE
 	$scope.trust = function(url) {
+		// Returns a trusted url
 		$sce.trustAsUrl(url);
 	};
-
-	//Recompiling the DOM on page loads through PJAX
+	
+	// Recompiling the DOM on page loads through PJAX
 	$scope.refresh = function() {
 		$scope.target = angular.element(document).find('md-content');
 		$compile($scope.target.contents())($scope);
 	};
-
+	
+	// Display the main grid after the painting completes
 	$scope.show = function($event) {
-		$scope.gridLay = false;
-		if(navigator.onLine == false) {
-			$scope.swToast("You're offline. Serving from cache!");
+		if($scope.gridLay == true) { // The first time the painting is done
+			$scope.gridLay = false;
+			if(navigator.onLine == false) {
+				// Notify if user if offline and content is served from cache after first paint
+				$scope.swToast("You're offline. Serving from cache!");
+			}
 		}
 	};
 
@@ -84,25 +91,27 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 	$scope.go = function (dest) {
 		$window.location.href = $sce.trustAsResourceUrl(dest);
 	};
-
 	// Toasts
-	$scope.swToast = function(msg, refresh) {
-    	if (refresh) {
-      		$mdToast.show($mdToast.simple().textContent(msg).action('REFRESH').highlightAction(true))
-      		.then(function(response) {
-      			if ( response == 'ok' ) {
-      				$window.location.reload();
-      			}
+	$scope.swToast = function(msg, action) {
+		if (action != '') { // Whether the toast should show an action button
+			$mdToast.show($mdToast.simple().textContent(msg).action(action).highlightAction(true))
+			.then(function(response) {
+				if ( response == 'ok' ) {
+					switch (action) {
+						case 'refresh':
+							$window.location.reload();
+							break;
+						case 'ok':
+							break;
+					}
+				}
 			});
-      	} else {
-      		$mdToast.showSimple(msg);
-      		// or $mdToast.show($mdToast.simple().textContent(msg));    	
-      	}	
-  	};
-
-
+		} else {
+			$mdToast.showSimple(msg);
+			// or $mdToast.show($mdToast.simple().textContent(msg));
+		}
+	};
 });
-
 
 // Controller for share feature
 app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
@@ -111,12 +120,12 @@ app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
 	$scope.url = $location.absUrl();
 	$scope.openShare = function(ev) {
 		$mdDialog.show({
-		  templateUrl: '/assets/share-template.html',
-		  parent: angular.element(document.body),
-		  targetEvent: ev,
-		  controller: () => this,
-		  controllerAs: 'share',
-		  clickOutsideToClose:true,
+			templateUrl: '/assets/share-template.html',
+			parent: angular.element(document.body), // Where the dialog should be appended
+			targetEvent: ev,
+			controller: () => this, // Controller for the dialog
+			controllerAs: 'share',
+			clickOutsideToClose:true,
 		});
 	};
 	$scope.close = function() {
@@ -124,58 +133,59 @@ app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
 	}
 });
 
+//Controller to invoke Panel
 app.controller('ModalController', ModalController);
+
+//Controller for the Panel itself
 app.controller('ModalCtrl', ModalCtrl);
 
 function ModalController($mdPanel) {
 	this._mdPanel = $mdPanel;
 }
 
+//Fucntion to open the panel
 ModalController.prototype.showPanel = function(dest) {
-
 	var tmpl = '/project/' + dest + '.html';
 
-  var position = this._mdPanel.newPanelPosition()
-      .absolute()
-      .center();
+	var position = this._mdPanel.newPanelPosition()
+	.absolute()
+	.center();
 
-  var animation = this._mdPanel.newPanelAnimation()
-  .withAnimation(this._mdPanel.animation.FADE);  
+	var animation = this._mdPanel.newPanelAnimation()
+	.withAnimation(this._mdPanel.animation.FADE);
 
-
-  var config = {
-  	animation: animation,
-    attachTo: angular.element(document.body),
-    controller: ModalCtrl,
-    controllerAs: 'ctrl',
-    disableParentScroll: this.disableParentScroll,
-    templateUrl: tmpl,
-    hasBackdrop: true,
-    panelClass: 'modal-container',
-    position: position,
-    trapFocus: true,
-    zIndex: 150,
-    clickOutsideToClose: true,
-    escapeToClose: true,
-    focusOnOpen: true
-  };
-
-  this._mdPanel.open(config);
+	var config = {
+		animation: animation,
+		attachTo: angular.element(document.body),
+		controller: ModalCtrl, //Controller for the panel
+		controllerAs: 'ctrl',
+		disableParentScroll: this.disableParentScroll,
+		templateUrl: tmpl,
+		hasBackdrop: true,
+		panelClass: 'modal-container',
+		position: position,
+		trapFocus: true,
+		zIndex: 150,
+		clickOutsideToClose: true,
+		escapeToClose: true,
+		focusOnOpen: true
+	};
+	this._mdPanel.open(config);
 };
 
 function ModalCtrl(mdPanelRef) {
-  this._mdPanelRef = mdPanelRef;
+	this._mdPanelRef = mdPanelRef;
 }
 
 ModalCtrl.prototype.closePanel = function() {
 	var panelRef = this._mdPanelRef;
 	panelRef && panelRef.close().then(function() {
-    	angular.element(document.querySelector('.demo-button')).focus();
-    	panelRef.destroy();
-  	});
+		angular.element(document.querySelector('.share')).focus();
+		panelRef.destroy();
+	});
 };
 
-// Directive Declarations
+// Directives Declaration
 app.directive('tile', function() {
 	return {
 		restrict: 'E',
@@ -205,16 +215,16 @@ app.directive('imageTile', function() {
 });
 
 app.directive('tileImage', function () {
-    return {
-      restrict: 'E',
-      template: "<img ng-src='{{source}}' style='opacity:{{opacity}}; width: {{width}};'/>",
-      scope: {
-        source: '@',
-        opacity: '@',
-        width: '@',
-      }
-    }
-  });
+	return {
+		restrict: 'E',
+		template: "<img ng-src='{{source}}' style='opacity:{{opacity}}; width: {{width}};'/>",
+		scope: {
+			source: '@',
+			opacity: '@',
+			width: '@',
+		}
+	}
+});
 
 app.directive('tileHeader', function() {
 	return {
@@ -227,14 +237,13 @@ app.directive('tileHeader', function() {
 		}
 	}
 });
-
 app.directive('tileFooter', function() {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: "<div layout='row' layout-align='space-between center'>" + 
-					"<h3 class='md-subhead' ng-transclude></h3>" + 
-					"<span><i class='material-icons'>chevron_right</i>" + 
+		template: 	"<div layout='row' layout-align='space-between center'>" +
+					"<h3 class='md-subhead' ng-transclude></h3>" +
+					"<span><i class='material-icons'>chevron_right</i>" +
 					"</div>",
 		scope: {
 			external: '@'
@@ -245,7 +254,7 @@ app.directive('tileFooter', function() {
 app.directive('articleImage', function() {
 	return {
 		restrict: 'E',
-		template: "<div style='background: #F3F3F3; text-align: center; float: {{pos}}; margin: {{margin}}'>" + 
+		template: 	"<div style='background: #F3F3F3; text-align: center; float: {{pos}}; margin: {{margin}}'>" +
 					"<img ng-src='{{source}}' alt='{{alt}}' width={{width}} height={{height}}/>"+
 					"<div class='md-caption'> {{alt}}</div> "+
 					"</div>",
@@ -255,6 +264,7 @@ app.directive('articleImage', function() {
 			pos: '@',
 			alt: '@'
 		},
+	
 		link: function(scope) {
 			if(scope.pos == "left") {
 				scope.margin = "0 24px 24px 0";
@@ -263,6 +273,6 @@ app.directive('articleImage', function() {
 			} else {
 				scope.margin = "24px 0 0 24px";
 			}
-    	},
+		},
 	}
 });

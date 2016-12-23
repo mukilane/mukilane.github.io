@@ -15,14 +15,18 @@
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
   <!--Resoure Hints-->
+  <!--Preconnect with base url to reduce lookup time-->
   <link rel="preconnect" href="/">
   {% if page.title %}
+  <!--Preload and Render the homepage in the background-->
   <link rel='prerender' href="/"  pr='0.9'>
   {% endif %}
   {% unless page.url == '/about/' %}
+  <!--If page is not About, then load it in the background-->
   <link rel="prerender" href="/about/" pr='0.75'>
   {% endunless %}
   {% unless page.url == '/portfolio' %}
+  <!--If page is not Portfolio, then load it in the background-->
   <link rel="prerender" href="/portfolio/">
   {% endunless %}
   
@@ -30,9 +34,9 @@
   <!-- Angular Material Dependencies-->
   <!--<link rel="preload" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css" as="style" onload="this.rel='stylesheet'">-->
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css">
-
-  <!--<link rel="preload" href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500|Material+Icons" as="style" onload="this.rel='stylesheet'">-->
+  <!--Fonts - Roboto and Material Icons-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500|Material+Icons">
+  <!--<link rel="preload" href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500|Material+Icons" as="style" onload="this.rel='stylesheet'">-->
   
   <!--Main Stylesheet-->
   <!--<link rel="stylesheet" type="text/css" href="/css/style.css">-->

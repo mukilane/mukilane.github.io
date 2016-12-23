@@ -2,41 +2,45 @@
 ---
 
 <md-dialog aria-label="Share" style="max-width: 400px;">
-    <md-toolbar md-colors="{background: 'grey-50'}" >
-      <div class="md-toolbar-tools ">
-        <span class="md-headline">Share</span><br>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="share.close();">
-          <i class="material-icons">close</i>
-        </md-button>
-      </div>
-      <div class="md-toolbar-tools">
-        <span class="md-subhead" ng-bind='share.title'></span>
-      </div>
-    </md-toolbar>
+  <md-toolbar md-colors="{background: 'grey-50'}" >
+    <div class="md-toolbar-tools ">
+      <span class="md-headline">Share<br><span class="md-subhead" ng-bind='share.title'></span></span>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="share.close();">
+        <i class="material-icons">close</i>
+      </md-button>
+    </div>
+  </md-toolbar>
 
-    <md-dialog-content>
-        <img src="/assets/fallback.jpg" width="500px">
-    </md-dialog-content>
+  <md-dialog-content>
+      <img src="/assets/fallback.jpg" width="500px">
+  </md-dialog-content>
 
-    <md-dialog-actions layout="row" layout-align="center center" layout-padding ng-show='copy' class="md-whiteframe-z2">
-        <span>Copy Link <span ng-bind='share.url'></span></span>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="copy = false"><i class="material-icons">clear</i></md-button>
-    </md-dialog-actions>
-    <md-dialog-actions class="md-whiteframe-z2" layout="row" layout-align="space-around center" layout-padding ng-hide="copy">
-      <md-button href="https://facebook.com/sharer/sharer.php?u={{share.url}}" target="_blank" aria-label="Facebook" md-autofocus class="md-icon-button">
-        {% include icon-facebook.svg %}
-      </md-button>
-      <md-button href="https://plus.google.com/share?url={{share.url}}" target="_blank" class="md-icon-button" aria-label="Google+" ng-click="">
-        {% include icon-gplus.svg %}
-      </md-button>
-      <md-button href="https://twitter.com/share?url={{share.url}}&#MukilElango" target="_blank" class="md-icon-button" aria-label="Twitter" ng-click="">
-        {% include icon-twitter.svg %}
-      </md-button>
-      <md-button class="md-icon-button" aria-label="Link" ng-click="copy = true;">
-        <i class="material-icons">link</i>
-      </md-button>
-    </md-dialog-actions> 
+  <md-dialog-actions layout="row" layout-align="center center" layout-padding ng-show='copy' class="md-whiteframe-z2">
+    <span>Copy Link <span ng-bind='share.url'></span></span>
+    <span flex></span>
+    <md-button class="md-icon-button" ng-click="copy = false"><i class="material-icons">clear</i></md-button>
+  </md-dialog-actions>
 
+  <md-dialog-actions class="md-whiteframe-z2" layout="row" layout-align="space-around center" layout-padding ng-hide="copy">
+    <md-button href="https://facebook.com/sharer/sharer.php?u={{share.url}}" target="_blank" aria-label="Facebook" md-autofocus class="md-icon-button">
+      {% include icon-facebook.svg %}
+    </md-button>
+    <md-button href="https://plus.google.com/share?url={{share.url}}" target="_blank" class="md-icon-button" aria-label="Google+" ng-click="">
+      {% include icon-gplus.svg %}
+    </md-button>
+    <md-button href="https://twitter.com/share?url={{share.url}}&#MukilElango" target="_blank" class="md-icon-button" aria-label="Twitter" ng-click="">
+      {% include icon-twitter.svg %}
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Link" ng-click="copy = true;">
+      <i class="material-icons">link</i>
+    </md-button>
+  </md-dialog-actions> 
 </md-dialog>
+
+<style type="text/css">
+  md-dialog-actions md-button {
+    width: 48px;
+    height: 48px;
+  }
+</style>
