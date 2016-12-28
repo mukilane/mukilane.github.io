@@ -43,10 +43,14 @@ if ('serviceWorker' in navigator) { // If Service worker feature is available in
 //Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
 // Angular Confiurations
-app.config(function($mdThemingProvider) {
-//Overriding Default theme
-$mdThemingProvider.theme('default')
-	.accentPalette('blue');
+app.config(function($mdThemingProvider, $interpolateProvider) {
+	//Overriding Default theme
+	$mdThemingProvider.theme('default')
+		.accentPalette('blue');
+
+	// Overriding Interpolation symbols to avoid conflict with Liquid tags
+	$interpolateProvider.startSymbol('{*');
+	$interpolateProvider.endSymbol('*}');
 });
 //Main Controller
 app.controller('main', function ($scope, $interval, $compile, $window, $sce, $mdToast) {
