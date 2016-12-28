@@ -61,7 +61,7 @@ footer a{
   margin: 3vw 0 8vw 0;
   color: rgba(0,0,0,0.67);
   user-select: none;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.06em;
 }
 md-grid-tile {
   outline: none !important;

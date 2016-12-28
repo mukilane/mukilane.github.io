@@ -1,5 +1,5 @@
-<md-toolbar md-scroll-shrink ng-if="true" md-colors="{background: 'grey-50'}" >
-  <div class="md-toolbar-tools" layout-align="space-between center">
+<md-toolbar md-scroll-shrink ng-if="true" md-colors="{background: 'grey-50'}" style="min-height: 64px;" >
+  <div class="md-toolbar-tools" layout-align="space-between center" style="max-height: 64px !important; height: 64px !important;">
     <div onclick="pjax.invoke('/', 'main')" class="home md-title">
       {% if page.title %}
         {{site.title}}

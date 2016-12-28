@@ -1,10 +1,10 @@
 ---
 ---
 
-<md-dialog aria-label="Share" style="max-width: 400px;">
+<md-dialog aria-label="Share" class="share-dialog" style="max-width: 400px;">
   <md-toolbar md-colors="{background: 'grey-50'}" >
     <div class="md-toolbar-tools ">
-      <span class="md-headline">Share<br><span class="md-subhead" ng-bind='share.title'></span></span>
+      <span class="md-headline">Share<span class="md-body-1" style="display: block;" ng-bind='share.title'></span></span>
       <span flex></span>
       <md-button class="md-icon-button" ng-click="share.close();">
         <i class="material-icons">close</i>
@@ -13,13 +13,16 @@
   </md-toolbar>
 
   <md-dialog-content>
-      <img src="/assets/fallback.jpg" width="500px">
+      <img src="/assets/art-shuttle.jpg" width="500px">
   </md-dialog-content>
 
   <md-dialog-actions layout="row" layout-align="center center" layout-padding ng-show='copy' class="md-whiteframe-z2">
-    <span>Copy Link <span ng-bind='share.url'></span></span>
+    <md-input-container class="md-block" style="margin: 0; bottom: -24px;">
+      <label>Copy Link (Ctrl+C)</label>
+      <input ng-model="share.url" md-select-on-focus >
+    </md-input-container>
     <span flex></span>
-    <md-button class="md-icon-button" ng-click="copy = false"><i class="material-icons">clear</i></md-button>
+    <md-button class="md-icon-button" ng-click="copy = false"><i class="material-icons">done</i></md-button>
   </md-dialog-actions>
 
   <md-dialog-actions class="md-whiteframe-z2" layout="row" layout-align="space-around center" layout-padding ng-hide="copy">
@@ -39,8 +42,17 @@
 </md-dialog>
 
 <style type="text/css">
-  md-dialog-actions md-button {
-    width: 48px;
-    height: 48px;
+  md-dialog-actions .md-icon-button {
+    height: 48px !important;
+    width: 48px !important;
+    background: gainsboro !important;
+    line-height: 12px !important;
+    margin: 8px 0 !important;
+    fill: #212121 !important;
+    color: #212121 !important;  
+  }
+  .share-dialog .md-toolbar-tools {
+    height: 64px !important;
+    max-height: 64px !important;
   }
 </style>
