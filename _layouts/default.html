@@ -44,6 +44,9 @@
             opacity: 1;
             will-change: opacity;
           }
+          .splash.ng-hide {
+            opacity: 0;
+          }
           .splash-svg {
             margin-top: calc(3vw + 64px);
           }
@@ -54,11 +57,10 @@
               stroke-dasharray: 650px;
               stroke-dashoffset: 650px;
               animation-name: draw;
-              animation-duration: 4s;
+              animation-duration: 3s;
               animation-fill-mode: forwards; 
               animation-iteration-count: 1; 
               animation-timing-function: linear;
-              animation-delay: 1;
             }
           @keyframes draw {
             to {
