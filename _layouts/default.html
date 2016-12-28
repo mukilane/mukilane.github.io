@@ -27,6 +27,7 @@
         </div>
         {% endif %}
       </div>
+      {% unless page.title %}
       <div class="splash" ng-show="gridLay">
         <svg xmlns="http://www.w3.org/2000/svg" class="md-display-4 banner" width="600" height="140" viewBox="0 0 600 140" class="splash-svg">
           <text x="0" y="95" style="font-family: RobotoDraft;">
@@ -69,6 +70,7 @@
           }
         </style>
       </div>
+      {% endunless %}
       {% endif %}
       <main id='content' ng-cloak>
         {{content}}
