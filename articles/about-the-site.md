@@ -11,7 +11,7 @@ description: How did I build it ?
 ## How it started
 
 
-## Frameworks and libraries used
+### Frameworks and libraries used
 
 1. AngularJS
 2. Angular Material (UI library)
@@ -19,12 +19,13 @@ description: How did I build it ?
 4. Jekyll 
 5. Firebase
 
-## Technologies used
+### Technologies used
 1. Service Workers
 2. Push Notifications
 3. Local Storage
 4. Microdata
 
-## Future plans
+### Future plans
 1. HTML5 Canvas
 2. AMP support
+

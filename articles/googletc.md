@@ -9,6 +9,8 @@ type: article
 
 ## Google Top Contributor Program
 
+<article-image source="/assets/tc-badge.png" width="175px" pos='right'> </article-image>
+
 Google Top Contributor (TC) Program is a community of people who share their knowledge and expertise in **Google Help Forums** and **Help on Social**. 
 
 **Google Help Forums** are product specific help forums where people log their queries, ask for help, and assistance in debugging errors. **Help on Social** is a help service on top of Twitter platform.

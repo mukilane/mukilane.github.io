@@ -74,6 +74,11 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 		$sce.trustAsUrl(url);
 	};
 	
+	//Header Color 
+	if(document.getElementById('main').scrollTop != 0) {
+
+	}
+
 	// Recompiling the DOM on page loads through PJAX
 	$scope.refresh = function() {
 		$scope.target = angular.element(document).find('md-content');
@@ -118,11 +123,24 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 });
 
 // Controller for share feature
-app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
+app.controller('shareCtrl', function ($scope, $mdDialog, $location, $mdToast) {
 	$scope.copy = true;
 	$scope.title = angular.element(window.document)[0].title;
 	$scope.url = $location.absUrl();
 	$scope.openShare = function(ev) {
+
+		// Web Share API (April 2017) Origin Trial
+		if(navigator.share !== undefined) {
+			navigator.share({
+				title: $scope.title, 
+				text: $scope.title, 
+				url: $scope.url
+			})
+			.then(() => $scope.toast('Thanks for sharing!'), 
+				error => $scope.toast('Error in sharing.'));
+	    return;
+    }
+
 		$mdDialog.show({
 			templateUrl: '/assets/share-template.html',
 			parent: angular.element(document.body), // Where the dialog should be appended
@@ -134,6 +152,9 @@ app.controller('shareCtrl', function ($scope, $mdDialog, $location) {
 	};
 	$scope.close = function() {
 		$mdDialog.cancel();
+	}
+	$scope.toast = function(msg) {
+		$mdToast.showSimple(msg);
 	}
 });
 
@@ -151,9 +172,7 @@ function ModalController($mdPanel) {
 ModalController.prototype.showPanel = function(dest) {
 	var tmpl = '/project/' + dest + '.html';
 
-	var position = this._mdPanel.newPanelPosition()
-	.absolute()
-	.center();
+	var position = this._mdPanel.newPanelPosition().absolute().center();
 
 	var animation = this._mdPanel.newPanelAnimation()
 	.withAnimation(this._mdPanel.animation.FADE);

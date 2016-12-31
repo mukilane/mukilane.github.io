@@ -106,7 +106,7 @@
       window.addEventListener('offline', function(e) {
         angular.element(document.getElementById('ctrl')).scope().swToast("You're Offline. Serving from cache!", false);
         window.addEventListener('online', function(e) {
-          angular.element(document.getElementById('ctrl')).scope().swToast("You're Online now !", true);
+          angular.element(document.getElementById('ctrl')).scope().swToast("You're Online now !", 'ok');
         }, false);
       }, false);
     </script> 
