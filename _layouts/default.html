@@ -101,7 +101,7 @@
         toAnim.addClass('fade-up');
       }, false);
       document.getElementById("main").addEventListener('error', function(event) {
-        pjax.invoke('/404/', 'main'); 
+        pjax.invoke('/404/', 'ctrl'); 
       }, false);
       window.addEventListener('offline', function(e) {
         angular.element(document.getElementById('ctrl')).scope().swToast("You're Offline. Serving from cache!", false);

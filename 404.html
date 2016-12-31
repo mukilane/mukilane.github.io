@@ -1,7 +1,89 @@
 ---
-layout: default
 permalink: /404/
-title: Oops! 404
+title: Oops! 404 Page Not Found
 ---
 
-Page Not Found
+<!DOCTYPE html>
+<html ng-app="port">
+	<head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	  <title>404 | Mukil Elango</title>
+	  <meta name="description" content="{{ site.description }}">
+
+	  <!--Resoure Hints-->
+	  <!--Preload and Render the homepage in the background-->
+	  <link rel='prerender' href="/"  pr='0.9'>
+	  
+	 
+
+	  <!-- Angular Material Dependencies-->
+	  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css">
+	  <!--Fonts - Roboto and Material Icons-->
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500">
+	  
+	  <!--Web App Manifest-->
+	  <link rel="manifest" href="/manifest.json">
+
+	  <!--Theme Color-->
+	  <meta name="theme-color" content="#FAFAFA">
+	</head>
+  	<body ng-controller="main" layout="column" id="ctrl">
+  		<md-content id="main" style="height: 100%">
+  			<main id='content'>
+		    	<div class="container">
+		    		<a href="/" class="md-headline" style="text-decoration: none; color: rgba(0,0,0,0.54)">Mukil Elango</a>
+		    		<span class="md-display-1 title">Oops! Page not found</span>
+					<md-card class="image md-whiteframe-z3" alt="Mars Curiosity Rover"></md-card>
+					<span class="md-subhead" style="opacity: 0.54; padding: 8px 0;">Still searching for life on Mars</span>
+				</div>
+		  	</main>
+		</md-content>
+
+		<style type="text/css">
+			body {
+				background: #FAFAFA;
+			}
+			#content {
+				height: 100%; 
+				width: 100%;
+				overflow: hidden;
+				margin: 0;
+			}
+			.container {
+				width: ; 
+				display: flex; 
+				flex-direction: column;
+				justify-content: center; 
+				align-items: center;
+				height:100%;
+			}
+			.image {
+				width: 30vw;
+			    min-width: 360px;
+			    min-height: 360px;
+			    height: 30vw;
+			    max-width: 450px;
+			    max-height: 450px;
+			    border-radius: 50%;
+			    background: url(/assets/rover.jpg) 50%;
+			    background-size: cover;
+			}
+			.title {
+				padding: 8px 0 32px 0;
+				color: rgba(0,0,0,0.54);
+			}
+		</style>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('port', ['ngMaterial']);
+		</script>
+	</body>
+
+</html>
+
