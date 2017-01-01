@@ -43,7 +43,7 @@ if ('serviceWorker' in navigator) { // If Service worker feature is available in
 //Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
 // Angular Confiurations
-app.config(function($mdThemingProvider, $interpolateProvider) {
+app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $compileProvider) {
 	//Overriding Default theme
 	$mdThemingProvider.theme('default')
 		.accentPalette('blue');
@@ -51,9 +51,23 @@ app.config(function($mdThemingProvider, $interpolateProvider) {
 	// Overriding Interpolation symbols to avoid conflict with Liquid tags
 	$interpolateProvider.startSymbol('{*');
 	$interpolateProvider.endSymbol('*}');
+
+	// Performance configurations
+	//Handling simultaneous requests and 'apply' in the next digest cycle
+	$httpProvider.useApplyAsync(true);
+
+	// Disable debug info - removes ng-scope and ng-isolate scope classes
+	$compileProvider.debugInfoEnabled(false);
+	// Disable checking for css class directives
+	$compileProvider.cssClassDirectivesEnabled(false);
+	// Disable checking for comment directives
+	$compileProvider.commentDirectivesEnabled(false);
 });
+
+
 //Main Controller
 app.controller('main', function ($scope, $interval, $compile, $window, $sce, $mdToast) {
+
 	// Whether the main grid is painted
 	$scope.gridLay = true;
 
@@ -68,17 +82,20 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 		}
 	}, 5000);
 
+	//Listening to network changes
+	$window.addEventListener("offline", function() {
+	  $scope.swToast("You're Offline. Serving from cache!", false);
+        $window.addEventListener('online', function(e) {
+          $scope.swToast("You're Online now !", 'ok');
+        }, false);
+	}, false);
+
 	// Trusting urls using SCE
 	$scope.trust = function(url) {
 		// Returns a trusted url
 		$sce.trustAsUrl(url);
 	};
 	
-	//Header Color 
-	if(document.getElementById('main').scrollTop != 0) {
-
-	}
-
 	// Recompiling the DOM on page loads through PJAX
 	$scope.refresh = function() {
 		$scope.target = angular.element(document).find('md-content');
@@ -213,7 +230,7 @@ app.directive('tile', function() {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: "<div class='tile-wrap' style='background-image: url({{image}}); opacity: {{opacity}}; background-position: {{pos}}; background-size: {{size}}' ng-transclude></div>",
+		template: "<div class='tile-wrap' style='background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}' ng-transclude></div>",
 		scope: {
 			image: '@',
 			opacity: '@',
@@ -227,7 +244,7 @@ app.directive('imageTile', function() {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: "<div class='tile-wrap' style='background-image: url({{image}}); opacity: {{opacity}}; background-position: {{pos}}; background-size: {{size}}'><div class='image-tile' ng-transclude></div></div>",
+		template: "<div class='tile-wrap' style='background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}'><div class='image-tile' ng-transclude></div></div>",
 		scope: {
 			image: '@',
 			opacity: '@',
@@ -240,7 +257,7 @@ app.directive('imageTile', function() {
 app.directive('tileImage', function () {
 	return {
 		restrict: 'E',
-		template: "<img ng-src='{{source}}' style='opacity:{{opacity}}; width: {{width}};'/>",
+		template: "<img ng-src='{{::source}}' style='opacity:{{::opacity}}; width: {{::width}};'/>",
 		scope: {
 			source: '@',
 			opacity: '@',
@@ -253,7 +270,7 @@ app.directive('tileHeader', function() {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: "<span class='tile-title' ng-transclude></span><br/><span style='opacity: 0.67'>{{tag}}</span>",
+		template: "<span class='tile-title' ng-transclude></span><br/><span style='opacity: 0.67'>{{::tag}}</span>",
 		scope: {
 			name: '@',
 			tag: '@'
@@ -277,9 +294,9 @@ app.directive('tileFooter', function() {
 app.directive('articleImage', function() {
 	return {
 		restrict: 'E',
-		template: 	"<div style='background: #F3F3F3; text-align: center; float: {{pos}}; margin: {{margin}}'>" +
-					"<img ng-src='{{source}}' alt='{{alt}}' width={{width}} height={{height}}/>"+
-					"<div class='md-caption'> {{alt}}</div> "+
+		template: 	"<div style='background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}'>" +
+					"<img ng-src='{{::source}}' alt='{{::alt}}' width={{::width}} height={{::height}}/>"+
+					"<div class='md-caption'> {{::alt}}</div> "+
 					"</div>",
 		scope: {
 			source: '@',
@@ -298,4 +315,28 @@ app.directive('articleImage', function() {
 			}
 		},
 	}
+});
+
+//PJAX events listener
+app.directive('pjaxNav', function(){ 
+	return {
+		restrict: 'A', 
+		link: function(scope, elem) {
+			elem.bind('beforeSend', function(e) {
+				scope.trust(e.data.url);
+        var toAnim = angular.element(document.getElementById('content'));
+        toAnim.removeClass('fade-up');
+        toAnim.addClass('fade-down');
+			});
+			elem.bind('success', function(e) {
+				scope.refresh();
+        var toAnim = angular.element(document.getElementById('content'));
+        toAnim.removeClass('fade-down');
+        toAnim.addClass('fade-up');
+			});
+			elem.bind('error', function() {
+				pjax.invoke('/404/', 'main');
+			});
+		}
+	};
 });

@@ -5,7 +5,7 @@
 
   <body ng-controller="main" layout="column" id="ctrl">
     {% include header.html %}
-    <md-content id="main">
+    <md-content id="main" pjax-nav>
       {% if page.category %}
       <div class="banner md-display-3" {% if page.color %} 
       md-colors="{background: '{{page.color}}'}" {% endif %}
@@ -87,34 +87,11 @@
     
     <!--PJAX Standalone-->
     <script src="/scripts/pjax-standalone.min.js" async></script>
-    <script type="text/javascript">
-      document.getElementById("main").addEventListener('beforeSend', function(event) {
-        angular.element(document.getElementById('ctrl')).scope().trust(event.data.url);
-        var toAnim = angular.element(document.getElementById('content'));
-        toAnim.removeClass('fade-up');
-        toAnim.addClass('fade-down');
-      }, false);
-      document.getElementById("main").addEventListener('success', function(event){ 
-        angular.element(document.getElementById('ctrl')).scope().refresh();
-        var toAnim = angular.element(document.getElementById('content'));
-        toAnim.removeClass('fade-down');
-        toAnim.addClass('fade-up');
-      }, false);
-      document.getElementById("main").addEventListener('error', function(event) {
-        pjax.invoke('/404/', 'ctrl'); 
-      }, false);
-      window.addEventListener('offline', function(e) {
-        angular.element(document.getElementById('ctrl')).scope().swToast("You're Offline. Serving from cache!", false);
-        window.addEventListener('online', function(e) {
-          angular.element(document.getElementById('ctrl')).scope().swToast("You're Online now !", 'ok');
-        }, false);
-      }, false);
-    </script> 
 
     <!-- Angular Dependencies-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-aria.min.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.min.js"></script>
 
     <!-- Angular Material Dependencies-->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>

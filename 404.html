@@ -40,42 +40,47 @@ title: Oops! 404 Page Not Found
 					<span class="md-subhead" style="opacity: 0.54; padding: 8px 0;">Still searching for life on Mars</span>
 				</div>
 		  	</main>
+		  	<style type="text/css">
+				body {
+					background: #FAFAFA;
+				}
+				md-toolbar {
+					display: none !important;
+				}
+				#main {
+					height: 100%;
+				}
+				#content {
+					height: 100%; 
+					width: 100%;
+					overflow: hidden;
+					margin: 0;
+				}
+				.container {
+					width: ; 
+					display: flex; 
+					flex-direction: column;
+					justify-content: center; 
+					align-items: center;
+					height:100%;
+				}
+				.image {
+					width: 30vw;
+				    min-width: 360px;
+				    min-height: 360px;
+				    height: 30vw;
+				    max-width: 450px;
+				    max-height: 450px;
+				    border-radius: 50%;
+				    background: url(/assets/rover.jpg) 50%;
+				    background-size: cover;
+				}
+				.title {
+					padding: 8px 0 32px 0;
+					color: rgba(0,0,0,0.54);
+				}
+			</style>
 		</md-content>
-
-		<style type="text/css">
-			body {
-				background: #FAFAFA;
-			}
-			#content {
-				height: 100%; 
-				width: 100%;
-				overflow: hidden;
-				margin: 0;
-			}
-			.container {
-				width: ; 
-				display: flex; 
-				flex-direction: column;
-				justify-content: center; 
-				align-items: center;
-				height:100%;
-			}
-			.image {
-				width: 30vw;
-			    min-width: 360px;
-			    min-height: 360px;
-			    height: 30vw;
-			    max-width: 450px;
-			    max-height: 450px;
-			    border-radius: 50%;
-			    background: url(/assets/rover.jpg) 50%;
-			    background-size: cover;
-			}
-			.title {
-				padding: 8px 0 32px 0;
-				color: rgba(0,0,0,0.54);
-			}
-		</style>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 		<script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
