@@ -8,6 +8,7 @@ if ('serviceWorker' in navigator) { // If Service worker feature is available in
 	vibrate: [200, 100, 200, 100, 200, 100, 200],
 	tag: 'vibration-sample'
 	});*/
+		var toaster = angular.element(document.getElementById('ctrl')).injector().get('Toast');
 		registration.onupdatefound = function() { //When SW is changed
 			// The updatefound event implies that reg.installing is set; see
 			// https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
@@ -21,13 +22,13 @@ if ('serviceWorker' in navigator) { // If Service worker feature is available in
 						if (navigator.serviceWorker.controller) {
 							console.log('[SW] Registration successful');
 							// Any old content will be purged and new content will be added to the cache
-							angular.element(document.getElementById('ctrl')).scope().swToast('New content available. Refresh to see', 'refresh');
+							toaster('New content available. Refresh to see', 'refresh');
 							// Refresh is done to load overcome the network first strategy.
 							// Content will be loaded from the cache only the second time
 							// The content won't be offline ready at the first visit.
 						} else {
 							// If controller is null, then caching is complete
-							angular.element(document.getElementById('ctrl')).scope().swToast('Content cached for offline use', 'ok');
+							toaster('Content cached for offline use', 'ok');
 						}
 						break;
 					case 'redundant':
@@ -138,6 +139,28 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 		}
 	};
 });
+
+app.factory('Toast', ['$mdToast', function($mdToast) {
+   return function(msg, action) {
+   	if (action !== '') { // Whether the toast should show an action button
+				$mdToast.show($mdToast.simple().textContent(msg).action(action).highlightAction(true))
+				.then(function(response) {
+					if ( response == 'ok' ) {
+						switch (action) {
+							case 'refresh':
+								$window.location.reload();
+								break;
+							case 'ok':
+								break;
+						}
+					}
+				});
+			} else {
+				$mdToast.showSimple(msg);
+				// or $mdToast.show($mdToast.simple().textContent(msg));
+			}
+   };
+ }]);
 
 // Controller for share feature
 app.controller('shareCtrl', function ($scope, $mdDialog, $location, $mdToast) {
