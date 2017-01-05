@@ -8,6 +8,7 @@ if ('serviceWorker' in navigator) { // If Service worker feature is available in
 	vibrate: [200, 100, 200, 100, 200, 100, 200],
 	tag: 'vibration-sample'
 	});*/
+		// Get a handle for the toast service 
 		var toaster = angular.element(document.getElementById('ctrl')).injector().get('Toast');
 		registration.onupdatefound = function() { //When SW is changed
 			// The updatefound event implies that reg.installing is set; see
@@ -140,8 +141,9 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 	};
 });
 
+// Factory for displaying toasts
 app.factory('Toast', ['$mdToast', function($mdToast) {
-   return function(msg, action) {
+  return function(msg, action) {
    	if (action !== '') { // Whether the toast should show an action button
 				$mdToast.show($mdToast.simple().textContent(msg).action(action).highlightAction(true))
 				.then(function(response) {
@@ -159,8 +161,8 @@ app.factory('Toast', ['$mdToast', function($mdToast) {
 				$mdToast.showSimple(msg);
 				// or $mdToast.show($mdToast.simple().textContent(msg));
 			}
-   };
- }]);
+  };
+}]);
 
 // Controller for share feature
 app.controller('shareCtrl', function ($scope, $mdDialog, $location, $mdToast) {
@@ -300,6 +302,7 @@ app.directive('tileHeader', function() {
 		}
 	}
 });
+
 app.directive('tileFooter', function() {
 	return {
 		restrict: 'E',
