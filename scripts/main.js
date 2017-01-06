@@ -23,7 +23,7 @@ if ('serviceWorker' in navigator) { // If Service worker feature is available in
 						if (navigator.serviceWorker.controller) {
 							console.log('[SW] Registration successful');
 							// Any old content will be purged and new content will be added to the cache
-							toaster('New content available. Refresh to see', 'refresh');
+							toaster('New content available.', 'refresh');
 							// Refresh is done to load overcome the network first strategy.
 							// Content will be loaded from the cache only the second time
 							// The content won't be offline ready at the first visit.

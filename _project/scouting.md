@@ -2,7 +2,7 @@
 layout: project
 title: Scouting Everywhere
 dest: https://scoutingeverywhere.blogspot.com
-image: /assets/projects/pomodoro.png
+image: /assets/projects/sc.png
 ---
 
 **Scouting Everywhere** is a blog, running on Blogger platform. As the name implies, it a blog about Scouting. As of December 2016, it's total pageviews was *1 million*. 

@@ -214,7 +214,23 @@ strong, b {
 /* Material Design Adaptive Breakpoints */
 
 /* mobile-small */
-@media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) {   
+@media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { 
+  .tile-wrap {
+    background-position: 50% 50% !important;
+    background-size: 125px !important;
+  }  
+  main {
+    width: 100%;
+  }
+  .adj {
+    margin: 16px 0 32px 0;
+    font-size: 36px !important;
+    line-height: 1em;
+  }
+  .banner .md-display-4 {
+    font-size: 96px;
+    line-height: 1em;
+  }
 }
 
 /* mobile-large */
