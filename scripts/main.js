@@ -142,7 +142,7 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 });
 
 // Factory for displaying toasts
-app.factory('Toast', ['$mdToast', function($mdToast) {
+app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
   return function(msg, action) {
    	if (action !== '') { // Whether the toast should show an action button
 				$mdToast.show($mdToast.simple().textContent(msg).action(action).highlightAction(true))

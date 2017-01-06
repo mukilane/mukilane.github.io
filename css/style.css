@@ -95,10 +95,10 @@ tile-header {
   z-index: 1;
   opacity: 1;
 }
-tile-header.ng-hide-add , tile-header.ng-hide-remove {
+md-grid-list.ng-hide-add , md-grid-list.ng-hide-remove {
   transition: all .3s cubic-bezier(0.4, 0.0, 1, 1);
 }
-tile-header.ng-hide {
+md-grid-list.ng-hide {
   top: 48px;
   opacity: 0;
 }
