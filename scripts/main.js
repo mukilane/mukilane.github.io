@@ -1,47 +1,4 @@
 //Main JS - mukilane.github.io
-// Service Worker
-// Adapted from https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js
-if ('serviceWorker' in navigator) { // If Service worker feature is available in the browser
-	navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-	/*registration.showNotification('Vibration Sample', { // Notification with Vibration
-	body: 'Buzz! Buzz!',
-	vibrate: [200, 100, 200, 100, 200, 100, 200],
-	tag: 'vibration-sample'
-	});*/
-		// Get a handle for the toast service 
-		var toaster = angular.element(document.getElementById('ctrl')).injector().get('Toast');
-		registration.onupdatefound = function() { //When SW is changed
-			// The updatefound event implies that reg.installing is set; see
-			// https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
-
-			// Get the state of the service worker
-			var installingWorker = registration.installing;
-			// Track the service worker of any changes
-			installingWorker.onstatechange = function() {
-				switch (installingWorker.state) {
-					case 'installed':
-						if (navigator.serviceWorker.controller) {
-							console.log('[SW] Registration successful');
-							// Any old content will be purged and new content will be added to the cache
-							toaster('New content available.', 'refresh');
-							// Refresh is done to load overcome the network first strategy.
-							// Content will be loaded from the cache only the second time
-							// The content won't be offline ready at the first visit.
-						} else {
-							// If controller is null, then caching is complete
-							toaster('Content cached for offline use', 'ok');
-						}
-						break;
-					case 'redundant':
-						console.error('[SW] The installing service worker became redundant.');
-						break;
-				}
-			};
-		};
-	}).catch(function(e) {
-		console.error('[SW] Error during service worker registration:', e);
-	});
-}
 //Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
 // Angular Confiurations
@@ -68,7 +25,7 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 
 
 //Main Controller
-app.controller('main', function ($scope, $interval, $compile, $window, $sce, $mdToast) {
+app.controller('main', function ($scope, $interval, $compile, $window, $sce, Toast) {
 
 	// Whether the main grid is painted
 	$scope.gridLay = true;
@@ -86,9 +43,9 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 
 	//Listening to network changes
 	$window.addEventListener("offline", function() {
-	  $scope.swToast("You're Offline. Serving from cache!", false);
+	  Toast("You're Offline. Serving from cache!", false);
         $window.addEventListener('online', function(e) {
-          $scope.swToast("You're Online now !", 'ok');
+          Toast("You're Online now !", 'ok');
         }, false);
 	}, false);
 
@@ -110,7 +67,7 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 			$scope.gridLay = false;
 			if(navigator.onLine == false) {
 				// Notify if user if offline and content is served from cache after first paint
-				$scope.swToast("You're offline. Serving from cache!");
+				Toast("You're offline. Serving from cache!");
 			}
 		}
 	};
@@ -119,53 +76,39 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, $md
 	$scope.go = function (dest) {
 		$window.location.href = $sce.trustAsResourceUrl(dest);
 	};
-	// Toasts
-	$scope.swToast = function(msg, action) {
-		if (action != '') { // Whether the toast should show an action button
-			$mdToast.show($mdToast.simple().textContent(msg).action(action).highlightAction(true))
-			.then(function(response) {
-				if ( response == 'ok' ) {
-					switch (action) {
-						case 'refresh':
-							$window.location.reload();
-							break;
-						case 'ok':
-							break;
-					}
-				}
-			});
-		} else {
-			$mdToast.showSimple(msg);
-			// or $mdToast.show($mdToast.simple().textContent(msg));
-		}
-	};
 });
 
 // Factory for displaying toasts
 app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
   return function(msg, action) {
    	if (action !== '') { // Whether the toast should show an action button
-				$mdToast.show($mdToast.simple().textContent(msg).action(action).highlightAction(true))
-				.then(function(response) {
-					if ( response == 'ok' ) {
-						switch (action) {
-							case 'refresh':
-								$window.location.reload();
-								break;
-							case 'ok':
-								break;
-						}
+   		var toast = $mdToast.simple()
+      .textContent(msg)
+      .action(action)
+      .highlightAction(true);
+			$mdToast.show(toast).then(function(response) {
+				if ( response == 'ok' ) {
+					switch (action) {
+						case 'refresh':
+							$window.location.reload();
+							break;
+						case 'ok':
+							$mdToast.hide();
+							break;
 					}
-				});
-			} else {
-				$mdToast.showSimple(msg);
-				// or $mdToast.show($mdToast.simple().textContent(msg));
-			}
+				}
+			}, function(err) {
+				console.log(err);
+			});
+		} else {
+			$mdToast.showSimple(msg);
+			// or $mdToast.show($mdToast.simple().textContent(msg));
+		}
   };
 }]);
 
 // Controller for share feature
-app.controller('shareCtrl', function ($scope, $mdDialog, $location, $mdToast) {
+app.controller('shareCtrl', function ($scope, $mdDialog, $location, Toast) {
 	$scope.copy = true;
 	$scope.title = angular.element(window.document)[0].title;
 	$scope.url = $location.absUrl();
@@ -178,8 +121,8 @@ app.controller('shareCtrl', function ($scope, $mdDialog, $location, $mdToast) {
 				text: $scope.title, 
 				url: $scope.url
 			})
-			.then(() => $scope.toast('Thanks for sharing!'), 
-				error => $scope.toast('Error in sharing.'));
+			.then(() => Toast('Thanks for sharing!'), 
+				error => Toast('Error in sharing.'));
 	    return;
     }
 
@@ -194,9 +137,6 @@ app.controller('shareCtrl', function ($scope, $mdDialog, $location, $mdToast) {
 	};
 	$scope.close = function() {
 		$mdDialog.cancel();
-	}
-	$scope.toast = function(msg) {
-		$mdToast.showSimple(msg);
 	}
 });
 
@@ -366,3 +306,46 @@ app.directive('pjaxNav', function(){
 		}
 	};
 });
+
+// Service Worker
+// Adapted from https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js
+if ('serviceWorker' in navigator) { // If Service worker feature is available in the browser
+	navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+	/*registration.showNotification('Vibration Sample', { // Notification with Vibration
+	body: 'Buzz! Buzz!',
+	vibrate: [200, 100, 200, 100, 200, 100, 200],
+	tag: 'vibration-sample'
+	});*/
+		// Get a handle for the toast service 
+		var toaster = angular.element(document.getElementById('ctrl')).injector().get('Toast');
+		registration.onupdatefound = function() { //When SW is changed
+			// The updatefound event implies that reg.installing is set; see
+			// https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
+
+			// Get the state of the service worker
+			var installingWorker = registration.installing;
+			// Track the service worker of any changes
+			installingWorker.onstatechange = function() {
+				switch (installingWorker.state) {
+					case 'installed':
+						if (navigator.serviceWorker.controller) {
+							// Any old content will be purged and new content will be added to the cache
+							toaster('New content available.', 'refresh');
+							// Refresh is done to load overcome the network first strategy.
+							// Content will be loaded from the cache only the second time
+							// The content won't be offline ready at the first visit.
+						} else {
+							// If controller is null, then it is the first visit, so first time caching is complete
+							toaster('Content cached for offline use', 'ok');
+						}
+						break;
+					case 'redundant':
+						console.error('[SW] The installing service worker became redundant.');
+						break;
+				}
+			};
+		};
+	}).catch(function(e) {
+		console.error('[SW] Error during service worker registration:', e);
+	});
+}
