@@ -63,6 +63,7 @@ footer a{
   user-select: none;
   letter-spacing: -0.06em;
   background-color: #FAFAFA;
+  position: relative;
 }
 md-grid-tile {
   outline: none !important;
@@ -192,6 +193,12 @@ strong, b {
 
 .article p {
   margin: 1rem 0;
+}
+
+.sharebtn {
+  position: absolute;
+  bottom: -28px;
+  right: calc(2vw + 16px);
 }
 
 /*Certificates Page*/

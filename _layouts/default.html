@@ -9,9 +9,11 @@
       {% if page.category %}
       <div class="banner md-display-3" {% if page.color %} 
       md-colors="{background: '{{page.color}}'}" {% endif %}
-      {% if page.title %} style="margin: 0 0 5vw 0 !important" {% endif %}>
+      {% if page.title %} style="margin: 0 0 5vw 0 !important;" {% endif %}>
         {{ page.title }}
         {% if page.description %}<div class="adj md-display-1">{{ page.description }}</div>{% endif %}
+        {% if page.date %}<div class="md-headline" style="opacity: 0.54; letter-spacing: -1px">{{page.date | date_to_long_string }}</div>{% endif %}
+         {% include share-dialog.html %}
       </div>
       {% else %}
       <div class="banner md-display-4" {% if page.color %} 
@@ -89,9 +91,9 @@
     <script src="/scripts/pjax-standalone.min.js" async></script>
 
     <!-- Angular Dependencies-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-aria.min.js"></script>
-    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/{{site.angular_version}}/angular.min.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/{{site.angular_version}}/angular-aria.min.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/{{site.angular_version}}/angular-animate.min.js"></script>
 
     <!-- Angular Material Dependencies-->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>

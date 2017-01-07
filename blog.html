@@ -4,85 +4,34 @@ title: Blog
 permalink: /blog/
 ---
 <md-grid-list
-      md-cols="2" md-cols-sm="2" md-cols-gt-sm="4" md-cols-gt-md="4"
-      md-cols-gt-lg="6" md-row-height-gt-md="1:1" md-row-height="1:1" 
-      md-row-height-xs="1:1"
-      md-gutter="2px" md-on-layout="show($event)" ng-hide="gridLay" style="max-width: 960px; margin: 0px auto;">
+      md-cols="1" md-cols-sm="2" md-cols-gt-sm="6" md-cols-gt-md="8"
+      md-cols-gt-lg="8" md-row-height-gt-md="3:4" md-row-height="16:9" 
+      md-gutter="2px" md-on-layout="show($event)" ng-hide="gridLay">
 	
-	<md-grid-tile md-rowspan="1" md-colspan="2"
+  {% for post in site.posts %}
+  <md-grid-tile md-rowspan="2" md-colspan="2"
                 md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-sm="1" md-rowspan-xs="1"
-                ng-class="tle" md-colors="{background: 'blue-grey-900'}" 
+                md-rowspan-sm="2" md-rowspan-xs="1"
+                class="post-tile" md-colors="{background: 'grey-700'}" 
                 md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
-		<tile image="/assets/about.svg">
-      <tile-header tag="Learn more about me" ng-hide='gridLay'>
-        {{post.title}}
-        </tile-header>
-      <tile-footer>{{post.date}}</tile-footer>
-    </tile>
-	</md-grid-tile>
-  <md-grid-tile md-rowspan="1" md-colspan="1"
-                md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-sm="1" md-rowspan-xs="1"
-                ng-class="tle" md-colors="{background: 'blue-grey-900'}" 
-                md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
-    <tile image="/assets/about.svg">
-      <tile-header tag="Learn more about me" ng-hide='gridLay'>
-        {{post.title}}
-        </tile-header>
-      <tile-footer>{{post.date}}</tile-footer>
-    </tile>
+    <div class="tile-wrap" layout="column" layout-xs="row">
+      <div flex>
+      </div>
+      <div layout="column" class="theader" md-colors="{background: '{{ post.color }}'}" >
+        <div class="md-headline">{{post.title}}</div>
+        <div class="md-subhead">{{post.description}}</div>
+        <div layout='row' layout-align='space-between center' style="padding-top:10px;">
+          <h3 class='md-body-1'>{{ post.date | date_to_string }}</h3>
+          <span><i class='material-icons'>chevron_right</i>
+        </div>
+      </div>
+    </div>
   </md-grid-tile>
-  <md-grid-tile md-rowspan="1" md-colspan="1"
-                md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-sm="1" md-rowspan-xs="1"
-                ng-class="tle" md-colors="{background: 'blue-grey-900'}" 
-                md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
-    <tile image="/assets/about.svg">
-      <tile-header tag="Learn more about me" ng-hide='gridLay'>
-        {{post.title}}
-        </tile-header>
-      <tile-footer>{{post.date}}</tile-footer>
-    </tile>
-  </md-grid-tile>
-  <md-grid-tile md-rowspan="1" md-colspan="1"
-                md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-sm="1" md-rowspan-xs="1"
-                ng-class="tle" md-colors="{background: 'blue-grey-900'}" 
-                md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
-    <tile image="/assets/about.svg">
-      <tile-header tag="Learn more about me" ng-hide='gridLay'>
-        {{post.title}}
-        </tile-header>
-      <tile-footer>{{post.date}}</tile-footer>
-    </tile>
-  </md-grid-tile>
-  <md-grid-tile md-rowspan="1" md-colspan="1"
-                md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-sm="1" md-rowspan-xs="1"
-                ng-class="tle" md-colors="{background: 'blue-grey-900'}" 
-                md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
-    <tile image="/assets/about.svg">
-      <tile-header tag="Learn more about me" ng-hide='gridLay'>
-        {{post.title}}
-        </tile-header>
-      <tile-footer>{{post.date}}</tile-footer>
-    </tile>
-  </md-grid-tile>
-  <md-grid-tile md-rowspan="1" md-colspan="2"
-                md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-sm="1" md-rowspan-xs="1"
-                ng-class="tle" md-colors="{background: 'blue-grey-900'}" 
-                md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
-    <tile image="/assets/about.svg">
-      <tile-header tag="Learn more about me" ng-hide='gridLay'>
-        {{post.title}}
-        </tile-header>
-      <tile-footer>{{post.date}}</tile-footer>
-    </tile>
-  </md-grid-tile>
-	
+  {% endfor %}
+		
 </md-grid-list>
 <style type="text/css">
-
+.theader {
+  padding: 16px;
+}
 </style>

@@ -3,13 +3,28 @@ layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
+  <!--<header class="post-header">
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
     <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
+  </header>-->
 
-  <div class="post-content" itemprop="articleBody">
+  <div class="post-content article md-headline" itemprop="articleBody">
     {{ content }}
   </div>
+
+  <style type="text/css">
+  	#markdown-toc {
+  		border-left: 4px solid #bdbdbd;
+  		list-style: none;
+  		color: #b0b0b0;
+  		padding: 8px 16px;
+  		font-size: 18px;
+  		line-height: 36px;
+  		margin: 16px 0;
+  	}
+  	#markdown-toc:before {
+  		content: 'Contents';
+  	}
+  </style>
 
 </article>

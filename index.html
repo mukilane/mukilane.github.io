@@ -116,3 +116,9 @@ excerpt: I'm Mukil. A Web Developer and Tech Enthusiast. Know more about me, my 
   </md-grid-tile> 
 
 </md-grid-list>
+
+{% if site.greetings != "" %}
+<div layout="row" layout-align="center center" class="md-subhead" layout-padding style="width: 100%; color: rgba(0,0,0,0.67)">
+{{ site.greeting }}
+</div>
+{% endif %}
