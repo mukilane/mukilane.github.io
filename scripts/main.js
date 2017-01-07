@@ -11,11 +11,12 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 	$interpolateProvider.startSymbol('{*');
 	$interpolateProvider.endSymbol('*}');
 
-	// Performance configurations
-	//Handling simultaneous requests and 'apply' in the next digest cycle
+	// Performance configurations	
+	// Deferring digest cycles for multiple http requests
+	// Handling simultaneous requests and '$apply' in the next digest cycle
 	$httpProvider.useApplyAsync(true);
 
-	// Disable debug info - removes ng-scope and ng-isolate scope classes
+	// Disable debug info - removes 'ng-scope' and 'ng-isolate' classes
 	$compileProvider.debugInfoEnabled(false);
 	// Disable checking for css class directives
 	$compileProvider.cssClassDirectivesEnabled(false);
@@ -25,10 +26,14 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 
 
 //Main Controller
-app.controller('main', function ($scope, $interval, $compile, $window, $sce, Toast) {
+app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 
 	// Whether the main grid is painted
 	$scope.gridLay = true;
+
+	/*	var gridwatch = $scope.$watch('gridLay', () => {
+		gridwatch();
+	});*/
 
 	//For scrolling Adjectives
 	$scope.counter = 0;
@@ -54,18 +59,12 @@ app.controller('main', function ($scope, $interval, $compile, $window, $sce, Toa
 		// Returns a trusted url
 		$sce.trustAsUrl(url);
 	};
-	
-	// Recompiling the DOM on page loads through PJAX
-	$scope.refresh = function() {
-		$scope.target = angular.element(document).find('md-content');
-		$compile($scope.target.contents())($scope);
-	};
-	
+		
 	// Display the main grid after the painting completes
 	$scope.show = function($event) {
 		if($scope.gridLay == true) { // The first time the painting is done
 			$scope.gridLay = false;
-			if(navigator.onLine == false) {
+			if(!navigator.onLine) {
 				// Notify if user if offline and content is served from cache after first paint
 				Toast("You're offline. Serving from cache!");
 			}
@@ -98,7 +97,7 @@ app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
 					}
 				}
 			}, function(err) {
-				console.log(err);
+				angular.noop
 			});
 		} else {
 			$mdToast.showSimple(msg);
@@ -284,19 +283,20 @@ app.directive('articleImage', function() {
 });
 
 //PJAX events listener
-app.directive('pjaxNav', function(){ 
+app.directive('pjaxNav', function($compile){ 
 	return {
 		restrict: 'A', 
-		link: function(scope, elem) {
+		link: function(scope, elem) {			
 			elem.bind('beforeSend', function(e) {
 				scope.trust(e.data.url);
-        var toAnim = angular.element(document.getElementById('content'));
+				var toAnim = angular.element(document.getElementById('content'));
         toAnim.removeClass('fade-up');
         toAnim.addClass('fade-down');
 			});
 			elem.bind('success', function(e) {
-				scope.refresh();
-        var toAnim = angular.element(document.getElementById('content'));
+				// Recompiling the DOM on page loads through PJAX
+				$compile(elem.contents())(scope);
+				var toAnim = angular.element(document.getElementById('content'));
         toAnim.removeClass('fade-down');
         toAnim.addClass('fade-up');
 			});
@@ -307,7 +307,7 @@ app.directive('pjaxNav', function(){
 	};
 });
 
-// Service Worker
+// Service Worker Registration
 // Adapted from https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js
 if ('serviceWorker' in navigator) { // If Service worker feature is available in the browser
 	navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
