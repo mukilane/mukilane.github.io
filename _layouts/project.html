@@ -11,7 +11,10 @@
 		<md-content layout-padding style="height: 200px" class="md-subhead">{{ page.content }}</md-content>
 	</div>
 </div>
-
+<script type="text/javascript">
+	ga('set', 'page', '{{ page.url }}');
+	ga('send', 'pageview');
+</script>
 <style>
 .modal-container {
 	height: 100%;

@@ -4,87 +4,99 @@
   {% include head.html %}
 
   <body ng-controller="main" layout="column" id="ctrl">
+
     {% include header.html %}
+
     <md-content id="main" pjax-nav>
+
       {% if page.category %}
-      <div class="banner md-display-3" {% if page.color %} 
-      md-colors="{background: '{{page.color}}'}" {% endif %}
-      {% if page.title %} style="margin: 0 0 5vw 0 !important;" {% endif %}>
-        {{ page.title }}
-        {% if page.description %}<div class="adj md-display-1">{{ page.description }}</div>{% endif %}
-        {% if page.date %}<div class="md-headline" style="opacity: 0.54; letter-spacing: -1px">{{page.date | date_to_long_string }}</div>{% endif %}
-         {% include share-dialog.html %}
-      </div>
-      {% else %}
-      <div class="banner md-display-4" {% if page.color %} 
-      md-colors="{background: '{{page.color}}'}" {% endif %} 
-      {% if page.title %} style="margin: 0 0 5vw 0 !important" {% endif %}>
-        {% if page.title %}
-        {{ page.title | escape }}
-        {% else %}
-        {{ site.title | escape }}
-        <div class="adj md-display-2">
-          <div class="scrolldef" ng-animate-swap="counter" ng-bind="adjective[counter]">
-          </div>
+
+        <div class="banner md-display-3 banner-mini" {% if page.color %} 
+        md-colors="{background: '{{page.color}}'}" {% endif %}
+        {% if page.title %} style="margin: 0 0 5vw 0 !important;" {% endif %}>
+          {{ page.title }}
+          {% if page.description %}<div class="adj-mini md-display-1">{{ page.description }}</div>{% endif %}
+          {% if page.date %}<div class="md-headline" style="opacity: 0.54; letter-spacing: -1px">{{page.date | date_to_long_string }}</div>{% endif %}
+           {% include share-dialog.html %}
         </div>
-        {% endif %}
-      </div>
-      {% unless page.title %}
-      <div class="splash" ng-show="gridLay" ng-hide-xs>
-        <svg xmlns="http://www.w3.org/2000/svg" class="md-display-4 banner" width="600" height="140" viewBox="0 0 600 140" class="splash-svg">
-          <text x="0" y="95" style="font-family: RobotoDraft;">
-            Mukil Elango
-          </text>
-        </svg>
-        <style type="text/css">
-          .splash {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 151;
-            background: #fafafa;
-            transition: all .3s ease-in;
-            -webkit-transition-delay: 1s;
-            transition-delay: 1s;
-            opacity: 1;
-            will-change: opacity;
-          }
-          .splash.ng-hide {
-            opacity: 0;
-          }
-          .splash-svg {
-            margin-top: calc(3vw + 64px);
-          }
-          @media (min-width: 361px) and (orientation: portrait) {
+
+      {% else %}
+
+        <div class="banner md-display-4" {% if page.color %} 
+        md-colors="{background: '{{page.color}}'}" {% endif %} 
+        {% if page.title %} style="margin: 0 0 5vw 0 !important" {% endif %}>
+          {% if page.title %}
+          {{ page.title | escape }}
+          {% else %}
+          {{ site.title | escape }}
+          <div class="adj md-display-2">
+            <div class="scrolldef" ng-animate-swap="counter" ng-bind="adjective[counter]">
+            </div>
+          </div>
+
+          {% endif %}
+        </div>
+
+        {% unless page.title %} 
+        <div class="splash" ng-show="gridLay" ng-hide-xs>
+          <svg xmlns="http://www.w3.org/2000/svg" class="md-display-4 banner" width="600" height="140" viewBox="0 0 600 140" class="splash-svg">
+            <text x="0" y="95" style="font-family: RobotoDraft;">
+              Mukil Elango
+            </text>
+          </svg>
+          <style type="text/css">
             .splash {
-              display: none !important;
+              position: absolute;
+              top: 0;
+              width: 100%;
+              z-index: 151;
+              background: #fafafa;
+              transition: all .3s ease-in;
+              -webkit-transition-delay: 1s;
+              transition-delay: 1s;
+              opacity: 1;
+              will-change: opacity;
             }
-          }
-          svg text {
-              stroke: #424242;
-              stroke-width: 2;
-              fill: transparent;
-              stroke-dasharray: 650px;
-              stroke-dashoffset: 650px;
-              animation-name: draw;
-              animation-duration: 3s;
-              animation-fill-mode: forwards; 
-              animation-iteration-count: 1; 
-              animation-timing-function: linear;
+            .splash.ng-hide {
+              opacity: 0;
             }
-          @keyframes draw {
-            to {
-              stroke-dashoffset: 0;
+            .splash-svg {
+              margin-top: calc(3vw + 64px);
             }
-          }
-        </style>
-      </div>
-      {% endunless %}
+            @media (min-width: 361px) and (orientation: portrait) {
+              .splash {
+                display: none !important;
+              }
+            }
+            svg text {
+                stroke: #424242;
+                stroke-width: 2;
+                fill: transparent;
+                stroke-dasharray: 650px;
+                stroke-dashoffset: 650px;
+                animation-name: draw;
+                animation-duration: 3s;
+                animation-fill-mode: forwards; 
+                animation-iteration-count: 1; 
+                animation-timing-function: linear;
+              }
+            @keyframes draw {
+              to {
+                stroke-dashoffset: 0;
+              }
+            }
+          </style>
+        </div>
+        {% endunless %}
+
       {% endif %}
+
       <main id='content' ng-cloak>
         {{content}}
       </main>
+
       {% include footer.html %}
+
     </md-content>
     
     <!--PJAX Standalone-->

@@ -208,7 +208,9 @@ app.directive('imageTile', function() {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: "<div class='tile-wrap' style='background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}'><div class='image-tile' ng-transclude></div></div>",
+		template: `<div class='tile-wrap' style='background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}'>
+								<div class='image-tile' ng-transclude></div>
+							</div>`,
 		scope: {
 			image: '@',
 			opacity: '@',
@@ -246,10 +248,10 @@ app.directive('tileFooter', function() {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: 	"<div layout='row' layout-align='space-between center'>" +
-					"<h3 class='md-subhead' ng-transclude></h3>" +
-					"<span><i class='material-icons'>chevron_right</i>" +
-					"</div>",
+		template: 	`<div layout='row' layout-align='space-between center'>
+									<span class='md-subhead' ng-transclude></span>
+									<span><i class='material-icons'>chevron_right</i>
+								</div>`,
 		scope: {
 			external: '@'
 		}
@@ -259,10 +261,10 @@ app.directive('tileFooter', function() {
 app.directive('articleImage', function() {
 	return {
 		restrict: 'E',
-		template: 	"<div style='background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}'>" +
-					"<img ng-src='{{::source}}' alt='{{::alt}}' width={{::width}} height={{::height}}/>"+
-					"<div class='md-caption'> {{::alt}}</div> "+
-					"</div>",
+		template: 	`<div style='background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}'>
+									<img ng-src='{{::source}}' alt='{{::alt}}' width={{::width}} height={{::height}}/>
+									<div class='md-caption'> {{::alt}}</div>
+								</div>`,
 		scope: {
 			source: '@',
 			width: '@',
