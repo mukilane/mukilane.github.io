@@ -15,6 +15,11 @@ body {
   font-family: RobotoDraft, sans-serif;
   overflow: hidden;
 }
+
+a { text-decoration: none !important; }
+figure { margin: 0; }
+pre { overflow-x: auto;}
+
 main {
   width: 90vw;
   margin: 5vw auto;  
