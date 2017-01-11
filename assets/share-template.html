@@ -26,13 +26,13 @@
   </md-dialog-actions>
 
   <md-dialog-actions class="md-whiteframe-z2" layout="row" layout-align="space-around center" layout-padding ng-hide="copy">
-    <md-button ng-href="https://facebook.com/sharer/sharer.php?u={*share.url*}" target="_blank" aria-label="Facebook" md-autofocus class="md-icon-button" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
+    <md-button ng-href="https://facebook.com/sharer/sharer.php?u={*::share.url*}" target="_blank" aria-label="Facebook" md-autofocus class="md-icon-button" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
       {% include icon-facebook.svg %}
     </md-button>
-    <md-button ng-href="https://plus.google.com/share?url={*share.url*}" target="_blank" class="md-icon-button" aria-label="Google+" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
+    <md-button ng-href="https://plus.google.com/share?url={*::share.url*}" target="_blank" class="md-icon-button" aria-label="Google+" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
       {% include icon-gplus.svg %}
     </md-button>
-    <md-button ng-href="https://twitter.com/share?url={*share.url*}&#MukilElango" target="_blank" class="md-icon-button" aria-label="Twitter" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
+    <md-button ng-href="https://twitter.com/share?url={*::share.url*}&#MukilElango" target="_blank" class="md-icon-button" aria-label="Twitter" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
       {% include icon-twitter.svg %}
     </md-button>
     <md-button class="md-icon-button" aria-label="Link" ng-click="copy = true;">
