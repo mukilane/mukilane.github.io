@@ -12,15 +12,17 @@ permalink: /blog/
   {% for post in site.posts %}
   <md-grid-tile md-rowspan="2" md-colspan="2"
                 md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-sm="2" md-rowspan-xs="1"
+                md-rowspan-md="4" md-rowspan-sm="2" md-rowspan-xs="1"
                 class="post-tile" md-colors="{background: 'grey-700'}" 
                 md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
-    <div class="tile-wrap" layout="column" layout-xs="row">
-      <div flex>
+    <div class="tile-wrap" layout="column" layout-xs="row" >
+      <div flex='60' flex-xs='50'>
       </div>
-      <div layout="column" class="theader" md-colors="{background: '{{ post.color }}'}" >
-        <div class="md-headline tt">{{post.title}}</div>
-        <div class="md-subhead tdes">{{post.description}}</div>
+      <div layout="column" flex="45" flex-xs="50" class="theader" layout-align="space-between stretch" md-colors="{background: '{{ post.color }}'}" >
+        <div>
+          <div class="md-headline tt">{{post.title}}</div>
+          <div class="md-subhead tdes">{{post.description}}</div>
+        </div>
         <div layout='row' layout-align='space-between center' style="padding-top:10px; opacity: 0.54 ">
           <h3 class='md-body-1'>{{ post.date | date_to_string }}</h3>
           <span><i class='material-icons'>chevron_right</i>

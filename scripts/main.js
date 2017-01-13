@@ -24,9 +24,8 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 	$compileProvider.commentDirectivesEnabled(false);
 });
 
-
 //Main Controller
-app.controller('main', function ($scope, $interval, $window, Toast, $sce, $anchorScroll) {
+app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 
 	// Whether the main grid is painted
 	$scope.gridLay = true;
