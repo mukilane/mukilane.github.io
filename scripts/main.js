@@ -26,7 +26,7 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 
 
 //Main Controller
-app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
+app.controller('main', function ($scope, $interval, $window, Toast, $sce, $anchorScroll) {
 
 	// Whether the main grid is painted
 	$scope.gridLay = true;
@@ -51,7 +51,11 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 	  Toast("You're Offline. Serving from cache!", false);
         $window.addEventListener('online', function(e) {
           Toast("You're Online now !", 'ok');
-        }, false);
+        }, 
+        { 
+        	once:true, 
+        	capture:false
+        });
 	}, false);
 
 	// Trusting urls using SCE
@@ -261,7 +265,7 @@ app.directive('tileFooter', function() {
 app.directive('articleImage', function() {
 	return {
 		restrict: 'E',
-		template: 	`<div style='background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}'>
+		template: 	`<div style='background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}; background: {{::bg}}'>
 									<img ng-src='{{::source}}' alt='{{::alt}}' width={{::width}} height={{::height}}/>
 									<div class='md-caption'> {{::alt}}</div>
 								</div>`,
@@ -269,7 +273,8 @@ app.directive('articleImage', function() {
 			source: '@',
 			width: '@',
 			pos: '@',
-			alt: '@'
+			alt: '@',
+			bg: '@'
 		},
 	
 		link: function(scope) {

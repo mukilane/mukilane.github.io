@@ -2,15 +2,15 @@
   <md-grid-list md-cols='4' md-cols-xs='2' md-row-height="4:3" md-row-height-xs="1:1" md-gutter="2px">
   {% for post in site.posts limit:2 %}
  	<md-grid-tile md-rowspan="1" md-colspan="2" md-colors="{background: '{{ post.color }}'}">
- 		<a onclick="pjax.invoke('{{ post.url }}', 'main')" md-ink-ripple="true">
- 		<md-card md-colors="{background: '{{ post.color }}'}">
+ 		<a onclick="pjax.invoke('{{ post.url }}', 'main')" md-ink-ripple="true" style="width: 100%; padding: 16px;">
+ 		<div md-colors="{background: '{{ post.color }}'}">
         <md-card-title>
           <md-card-title-text>
-            <span class="md-headline">{{ post.title }}</span>
-            <span class="md-subhead" style="opacity: 0.67; padding-top: 0;">{{ post.description }}</span>
+            <div class="md-headline">{{ post.title }}</div>
+            <div class="md-subhead" style="opacity: 0.67; padding-top: 0;">{{ post.description }}</div>
           </md-card-title-text>
         </md-card-title>
-      </md-card>
+      </div>
       </a>
   </md-grid-tile>
   {% endfor %} 

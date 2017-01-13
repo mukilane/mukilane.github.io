@@ -11,7 +11,7 @@ description: A list of methods to tune the performance of an AngularJS app
 {:toc}
 
 ## Introduction
-
+AngularJS is a powerful framework to build apps for the web. With so many features to use, a developer may use them at their wish, without it's effect on the performance. Some simple tweaks and precautions can help to build a better performing AngularJS app.
 
 ## Disabling Debug Info
 
@@ -52,8 +52,19 @@ yourappmodule.config(function($httpProvider) {
 
 ## Unregistering watchers
 
+Watchers are AngularJS' way of listening to events.
+
+{% highlight js %}
+var somewatcher = $scope.$watch('varToWatch', () => {
+	//Things to do
+	somewatcher(); // Call the watcher to destroy it
+});
+{% endhighlight %}
+
 ## One time binding
 
-## Avoiding ng-class 
+One time binding is a feature available from AngularJS 1.3.
 
-##
+## Conclusion
+
+Conclusion.

@@ -9,7 +9,7 @@ type: article
 
 ## Google Top Contributor Program
 
-<article-image source="/assets/tc-badge.png" width="175px" pos='right'> </article-image>
+<article-image source="/assets/tc-badge.png" width="175px" pos='right'  bg='transparent'> </article-image>
 
 Google Top Contributor (TC) Program is a community of people who share their knowledge and expertise in **Google Help Forums** and **Help on Social**. 
 
