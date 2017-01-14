@@ -18,15 +18,10 @@ permalink: /blog/
     <div class="tile-wrap" layout="column" layout-xs="row" >
       <div flex='60' flex-xs='50'>
       </div>
-      <div layout="column" flex="45" flex-xs="50" class="theader" layout-align="space-between stretch" md-colors="{background: '{{ post.color }}'}" >
-        <div>
-          <div class="md-headline tt">{{post.title}}</div>
-          <div class="md-subhead tdes">{{post.description}}</div>
-        </div>
-        <div layout='row' layout-align='space-between center' style="padding-top:10px; opacity: 0.54 ">
-          <h3 class='md-body-1'>{{ post.date | date_to_string }}</h3>
-          <span><i class='material-icons'>chevron_right</i>
-        </div>
+      <div layout="column" flex="45" flex-xs="50" class="theader" layout-align="flex-start stretch" md-colors="{background: '{{ post.color }}'}" >
+        <div class="md-title tt">{{post.title}}</div>
+        <h3 class='md-body-1' style="opacity:0.54;margin:8px 0;">{{ post.category | capitalize }} | {{ post.date | date_to_string }}</h3>
+        <div class="md-subhead tdes">{{post.description}}</div>
       </div>
     </div>
   </md-grid-tile>

@@ -2,7 +2,7 @@
 //Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
 // Angular Confiurations
-app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $compileProvider) {
+app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $compileProvider, $locationProvider) {
 	//Overriding Default theme
 	$mdThemingProvider.theme('default')
 		.accentPalette('blue');
@@ -22,6 +22,9 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 	$compileProvider.cssClassDirectivesEnabled(false);
 	// Disable checking for comment directives
 	$compileProvider.commentDirectivesEnabled(false);
+
+	$locationProvider.hashPrefix('');
+
 });
 
 //Main Controller

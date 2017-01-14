@@ -16,7 +16,7 @@
         {% if page.title %} style="margin: 0 0 5vw 0 !important;" {% endif %}>
           {{ page.title }}
           {% if page.description %}<div class="adj-mini md-display-1">{{ page.description }}</div>{% endif %}
-          {% if page.date %}<div class="md-headline" style="opacity: 0.54; letter-spacing: -1px">{{page.date | date_to_long_string }}</div>{% endif %}
+          {% if page.date %}<div class="md-headline" style="opacity: 0.54; letter-spacing: 0px">{{page.date | date_to_long_string }}</div>{% endif %}
            {% include share-dialog.html %}
         </div>
 
