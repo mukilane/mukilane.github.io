@@ -17,6 +17,11 @@
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
+  <!-- AMP Post Url-->
+  {% if page.path contains '_posts' %}
+  <link rel="amphtml" href="{{ page.id | prepend: '/amp' | prepend: site.baseurl | prepend: site.url }}">
+  {% endif %}
+
   <!--Resoure Hints-->
   <!--Preconnect with base url to reduce lookup time-->
   <link rel="preconnect" href="/">
