@@ -19,7 +19,7 @@
 
   <!-- AMP Post Url-->
   {% if page.path contains '_posts' %}
-  <link rel="amphtml" href="{{ page.id | prepend: '/amp' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="amphtml" href="{{ page.id | remove_first: '/blog' | prepend: '/amp' | prepend: site.baseurl | prepend: site.url }}">
   {% endif %}
 
   <!--Resoure Hints-->

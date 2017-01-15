@@ -1,0 +1,81 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tuning AngularJS for Performance</title>
+    <link rel="canonical" href="https://mukilane.github.io/blog/2017/01/08/angularjs-performance.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+<h1 class="post-title">
+</h1>
+<span>
+2017-01-08 19:52:20 +0530 - 
+</span>
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#disabling-debug-info" id="markdown-toc-disabling-debug-info">Disabling Debug Info</a></li>
+  <li><a href="#disabling-directives-checking" id="markdown-toc-disabling-directives-checking">Disabling Directives checking</a></li>
+  <li><a href="#defer-digest-cycle-for-simultaneous-requests" id="markdown-toc-defer-digest-cycle-for-simultaneous-requests">Defer digest cycle for simultaneous requests</a></li>
+  <li><a href="#unregistering-watchers" id="markdown-toc-unregistering-watchers">Unregistering watchers</a></li>
+  <li><a href="#one-time-binding" id="markdown-toc-one-time-binding">One time binding</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+<p>AngularJS is a powerful framework to build apps for the web. With so many features to use, a developer may use them at their wish, without it’s effect on the performance. Some simple tweaks and precautions can help to build a better performing AngularJS app.</p>
+
+<h2 id="disabling-debug-info">Disabling Debug Info</h2>
+
+<p>AngularJS, by default comes with debugging support enabled. For instance, the classes <code class="highlighter-rouge">ng-scope</code> and <code class="highlighter-rouge">ng-isolated-scope</code> are added to all elements that it processes, and the <code class="highlighter-rouge">ng-binding</code> class to the DOM elements tied to the scope. This may be useful for debugging in testing stages, using tools like Protactor or Bangarang. But on the production side, they may be additional overhead. It may delay the startup time.</p>
+
+<p>Though, disabling it is a very simple, with just one line of code.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">yourappmodule</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$compileProvider</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">$compileProvider</span><span class="p">.</span><span class="nx">debugInfoEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>But there is catch! Once disabled, you cannot access the scope of an element using <code class="highlighter-rouge">angular.element.scope()</code> method, which is actually not a good practice.</p>
+
+<h2 id="disabling-directives-checking">Disabling Directives checking</h2>
+
+<p>By default, Angular checks for all the elements, attributes, classes and comments to match with the directives. For a large app, it may be affect performance, especially at the startup.</p>
+
+<p>Checking for elements and attributes, is acceptable, since most of the directives that developers create are either of those. But class and comment attributes are not widely used. So, it’s a waste of time and resource to check for them.</p>
+
+<p>Fortunately, Angular provides a way to disable checking for them.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">yourappmodule</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$compileProvider</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">$compileProvider</span><span class="p">.</span><span class="nx">cssClassDirectivesEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+	<span class="nx">$compileProvider</span><span class="p">.</span><span class="nx">commentDirectivesEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<h2 id="defer-digest-cycle-for-simultaneous-requests">Defer digest cycle for simultaneous requests</h2>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">yourappmodule</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$httpProvider</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">$httpProvider</span><span class="p">.</span><span class="nx">useApplyAsync</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<h2 id="unregistering-watchers">Unregistering watchers</h2>
+
+<p>Watchers are AngularJS’ way of listening to events.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">somewatcher</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">$watch</span><span class="p">(</span><span class="s1">'varToWatch'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="c1">//Things to do</span>
+	<span class="nx">somewatcher</span><span class="p">();</span> <span class="c1">// Call the watcher to destroy it</span>
+<span class="p">});</span></code></pre></figure>
+
+<h2 id="one-time-binding">One time binding</h2>
+
+<p>One time binding is a feature available from AngularJS 1.3.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Conclusion.</p>
+
+</body>
+</html>
