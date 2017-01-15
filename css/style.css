@@ -72,6 +72,7 @@ footer a{
 }
 .banner-mini {
   letter-spacing: -0.03em;
+  padding: 8vw 4vw;
 }
 md-grid-tile {
   outline: none !important;
