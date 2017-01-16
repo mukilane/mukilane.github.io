@@ -47,6 +47,6 @@ Future plan path includes making the site AMP enabled and using Canvas for anima
 Copyright (c) {{ site.time | date: '%Y' }} Mukil Elango.
 Licensed under the [MIT License](https://opensource.org/licenses/MIT). You may obtain a copy of the license [here][license].
 
-[firstcommit]: [https://github.com/mukilane/mukilane.github.io/commit/d18dff0fceeeded498a224bddf7d8cb49d99717d]
-[revamp]: [https://github.com/mukilane/mukilane.github.io/commit/9d46aeac414a262e1ac12ce04f962f61ffcfac7e]
-[license]: [https://github.com/mukilane/mukilane.github.io/blob/master/LICENSE]
+[firstcommit]: https://github.com/mukilane/mukilane.github.io/commit/d18dff0fceeeded498a224bddf7d8cb49d99717d
+[revamp]: https://github.com/mukilane/mukilane.github.io/commit/9d46aeac414a262e1ac12ce04f962f61ffcfac7e
+[license]: https://github.com/mukilane/mukilane.github.io/blob/master/LICENSE

@@ -57,18 +57,21 @@ footer a{
   color: rgba(0,0,0,0.54);
   font-weight: 400;
   cursor: pointer;
+  font-family: 'Product Sans';
 }
 .md-nav-bar {
   border: 0px !important;
 }
 .banner {
-  padding: 6vw 4vw;
+  padding: 7vw 4vw;
   margin: 3vw 0 8vw 0;
   color: rgba(0,0,0,0.67);
   user-select: none;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.04em;
   background-color: #FAFAFA;
   position: relative;
+  font-family: 'Product Sans';
+  font-weight: 400;
 }
 .banner-mini {
   letter-spacing: -0.03em;
@@ -146,7 +149,7 @@ tile-footer {
   top:0;
   left:0;
   right:0;
-  margin-left: 4px;
+  margin-left: 6px;
   letter-spacing: -0.02em;
 }
 .scrolldef.ng-enter, .scrolldef.ng-leave {
