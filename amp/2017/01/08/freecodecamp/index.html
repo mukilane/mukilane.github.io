@@ -6,6 +6,40 @@
     <link rel="canonical" href="https://mukilane.github.io/blog/2017/01/08/freecodecamp.html" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <style amp-custom>
+    html { 
+      background-color: #FAFAFA; 
+    }
+    a {
+      text-decoration: none !important; 
+      color: inherit;
+    }
+    header { 
+      height: 64px; 
+      padding: 0 32px; 
+      background-color: #424242; 
+      color: #FAFAFA; 
+      font-size: 24px;
+    }
+    header a { 
+      padding: 16px; 
+      display: inline-block;
+    }
+    .post-title { 
+      padding: 6vw 4vw; 
+      background-color: #424242; 
+      color: #f5f5f5; 
+      margin: 0px;
+      font-weight: 400;
+    }
+    .post-title h1 {
+      font-weight: 400;
+    }
+    amp-social-share {
+      border-radius: 50%; 
+      background-size: 75% !important;
+    }
+    .wrap { margin: 0px 5vw; display: flex; flex-direction: column; align-items: center;}
+    .content {font-size: 16px; line-height: 24px; color: rgba(0,0,0,0.67); max-width: 760px; width: 80%; min-width: 360px;}
     </style>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
@@ -16,9 +50,6 @@
     <header><button on='tap:sidebar.toggle'>=</button><a href="/">Mukil Elango</a></header>
     
     <amp-sidebar id='sidebar' layout="nodisplay" side="left">
-      <amp-img class='amp-close-image' src="/img/ic_close_black_18dp_2x.png"
-          width="20" height="20" alt="close sidebar" on="tap:sidebar.close"
-          role="button" tabindex="0"></amp-img>
       <ul>
         <li>
           <a href="/">Home</a>
@@ -38,21 +69,14 @@
       </ul>
     </amp-sidebar>
 
-<h1 class="post-title">
-Growing with FreeCodeCamp
-</h1>
-<span>
-08 January 2017 
-</span>
-<div>
-  <amp-social-share type="facebook" width="40" height="40"></amp-social-share>
-  <amp-social-share type="gplus" width="40" height="40"></amp-social-share>
-  <amp-social-share type="twitter" width="40" height="40"></amp-social-share>
-  <amp-social-share type="linkedin" width="40" height="40"></amp-social-share>
-  <amp-social-share type="email" width="40" height="40"></amp-social-share>
-</div>
-<div>
-<p><amp-img src="https://camo.githubusercontent.com/60c67cf9ac2db30d478d21755289c423e1f985c6/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f66726565636f646563616d702f776964652d736f6369616c2d62616e6e65722e706e67" alt="FreeCodeCamp banner" width="1500" height="500" layout="responsive"></amp-img></p>
+    <div class="post-title">
+      <h1>Growing with FreeCodeCamp</h1>
+      <h3>Being a camper at Freecodecamp</h3>
+    </div>
+
+    <div class="wrap">
+      <div class="content">
+        <p><amp-img src="https://camo.githubusercontent.com/60c67cf9ac2db30d478d21755289c423e1f985c6/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f66726565636f646563616d702f776964652d736f6369616c2d62616e6e65722e706e67" alt="FreeCodeCamp banner" width="1500" height="500" layout="responsive"></amp-img></p>
 
 <ul id="markdown-toc">
   <li><a href="#about-freecodecamp" id="markdown-toc-about-freecodecamp">About FreeCodeCamp</a></li>
@@ -106,7 +130,21 @@ Growing with FreeCodeCamp
 <h2 id="join-the-community">Join the Community</h2>
 <p>You can join the community at <a href="http://jekyllrb.com/docs/home">FreeCodeCamp</a>. Also, follow their <a href="https://medium.com/freecodecamp">Medium page</a></p>
 
+  
+      </div>
+      <span>
+      08 January 2017 
+      </span>
+      <div class="share">
+        <amp-social-share type="facebook" width="40" height="40"></amp-social-share>
+        <amp-social-share type="gplus" width="40" height="40"></amp-social-share>
+        <amp-social-share type="twitter" width="40" height="40"></amp-social-share>
+        <amp-social-share type="linkedin" width="40" height="40"></amp-social-share>
+        <amp-social-share type="email" width="40" height="40"></amp-social-share>
+      </div>
+    </div>
 
-</div>
+    
+    
 </body>
 </html>

@@ -14,6 +14,7 @@ module Jekyll
       self.data['date']          = post.data['date']
       self.data['author']        = post.data['author']
       self.data['category']      = post.data['category']
+      self.data['description']   = post.data['description']
       self.data['canonical_url'] = post.url
     end
   end

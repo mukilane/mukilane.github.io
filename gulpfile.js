@@ -5,7 +5,6 @@ const gulp = require('gulp');
 const exec = require('child_process').exec;
 const gutil = require('gulp-util');
 const del = require('del');
-const git = require('gulp-git')
 
 // Clean the amp folder to prevent dulpication during Jekyll build
 gulp.task('clean', (cb) => {
@@ -35,25 +34,28 @@ gulp.task('generate-sw', ['amp'], (callback) => {
 	});
 });
 
-
-gulp.task('add', (callback) => {
+// Add untracked files 
+gulp.task('add', ['generate-sw'], (callback) => {
 	exec('git add -A',  (err, stdout, stderr) => {
 		callback(err);
 	});
 });
 
-// Deploy to Github
+// Commit files 
 gulp.task('commit', ['add'], (callback) => {
 	exec('git commit',  (err, stdout, stderr) => {
+		gutil.log(stdout);
 		callback(err);
 	});
 });
 
+// Push to origin
 gulp.task('deploy', ['commit'], (callback) => {
 	exec('git push',  (err, stdout, stderr) => {
+		gutil.log(stdout);
 		callback(err);
 	});
 });
 // Tasks run sequentially using dependencies
 // Reminder: Update to gulp.series on 4.x
-gulp.task('default', ['generate-sw']);
+gulp.task('default', ['deploy']);
