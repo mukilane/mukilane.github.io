@@ -1,11 +1,13 @@
 module.exports = {
   // Files to be cached
+  // Excluding amp files
   staticFileGlobs: [
     '_site/css/**.css',
-    '_site/**/index.html',
+    '_site/*/index.html',
     '_site/assets/**.*',
     '_site/scripts/**.js',
-    '_site/index.html'
+    '_site/index.html',
+    '_site/!{amp,amp/**/index.html}'
   ],
   stripPrefix: '_site/',
   verbose: true,

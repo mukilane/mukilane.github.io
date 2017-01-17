@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/mukilane/mukilane.github.io#readme",
   "devDependencies": {
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
+    "run-sequence": "^1.2.2",
     "sw-precache": "^4.2.3"
+  },
+  "dependencies": {
+    "gulp-git": "^1.12.0"
   }
 }
