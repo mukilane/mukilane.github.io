@@ -49,7 +49,7 @@ gulp.task('commit', ['add'], (callback) => {
 	});
 });
 
-gulp.task('deploy', ['commit'], () => {
+gulp.task('deploy', ['commit'], (callback) => {
 	exec('git push',  (err, stdout, stderr) => {
 		callback(err);
 	});
