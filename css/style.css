@@ -62,8 +62,9 @@ footer a{
 .md-nav-bar {
   border: 0px !important;
 }
+md-nav-ink-bar { bottom: -8px; }
 .banner {
-  padding: 7vw 4vw;
+  padding: 8vw 4vw;
   margin: 3vw 0 8vw 0;
   color: rgba(0,0,0,0.67);
   user-select: none;
