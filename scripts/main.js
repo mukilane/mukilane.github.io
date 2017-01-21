@@ -3,9 +3,16 @@
 var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
 // Angular Confiurations
 app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $compileProvider, $locationProvider) {
-	//Overriding Default theme
+	// Overriding Default theme
 	$mdThemingProvider.theme('default')
 		.accentPalette('blue');
+
+	// Browser Color   
+	$mdThemingProvider.enableBrowserColor({
+    theme: 'default', 
+    palette: 'background', 
+    hue: '50'
+  });
 
 	// Overriding Interpolation symbols to avoid conflict with Liquid tags
 	$interpolateProvider.startSymbol('{*');
@@ -32,6 +39,33 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 
 	// Whether the main grid is painted
 	$scope.gridLay = true;
+
+	// During first visit
+	if(!localStorage.getItem('theme')) { 
+		localStorage.setItem('theme', 'light');
+		$scope.isDark = false;
+	} else if (localStorage.getItem('theme') == 'dark') {
+		// Dark Theme
+		$scope.isDark = true;
+		$scope.theme = { bg: 'grey-800', footer: 'grey-700' };
+	} else {
+		// Default Theme - Light
+		$scope.isDark = false;
+		$scope.theme = { bg: 'grey-50', footer: 'grey-200'};
+	}
+
+	$scope.setDark = function(e) {
+		if(e) {
+			$scope.isDark = true;
+			localStorage.setItem('theme', 'dark');	
+			Toast("Dark theme is activated. Please refresh.", 'refresh');
+		}
+		else {
+			$scope.isDark = false;
+			localStorage.setItem('theme', 'light');
+			Toast("Light theme is activated. Please refresh.", 'refresh');
+		}
+	}
 
 	/*	var gridwatch = $scope.$watch('gridLay', () => {
 		gridwatch();

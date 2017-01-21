@@ -35,10 +35,9 @@ footer {
   align-items: flex-start;
   flex-wrap: wrap-reverse;
   padding: 32px 16px;
-  color: rgba(0,0,0,0.67) !important;
 }
 footer a{
-  color: rgba(0,0,0,0.67) !important;
+  color: inherit !important;
   text-decoration: none !important;
 }
 .foot-right {
@@ -63,16 +62,16 @@ footer a{
   border: 0px !important;
 }
 md-nav-ink-bar { bottom: -8px; }
+md-nav-bar .md-button._md-nav-button.md-unselected { color: inherit !important; }
 .banner {
   padding: 8vw 4vw;
   margin: 3vw 0 8vw 0;
-  color: rgba(0,0,0,0.67);
   user-select: none;
   letter-spacing: -0.04em;
-  background-color: #FAFAFA;
   position: relative;
   font-family: 'Product Sans';
   font-weight: 400;
+  opacity: 0.77;
 }
 .banner-mini {
   letter-spacing: -0.03em;

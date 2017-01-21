@@ -7,7 +7,7 @@
 
     {% include header.html %}
 
-    <md-content id="main" pjax-nav>
+    <md-content id="main" pjax-nav md-colors="{ background: '{* ::theme.bg *}'}">
 
       {% if page.category %}
 
@@ -23,7 +23,7 @@
       {% else %}
 
         <div class="banner md-display-4" {% if page.color %} 
-        md-colors="{background: '{{page.color}}'}" {% endif %} 
+        md-colors="{background: '{{ page.color }}'}" {% endif %} 
         {% if page.title %} style="margin: 0 0 5vw 0 !important" {% endif %}>
           {% if page.title %}
           {{ page.title | escape }}

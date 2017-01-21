@@ -1,4 +1,4 @@
-<md-toolbar md-scroll-shrink md-colors="{background: 'grey-50'}" style="min-height: 64px;" >
+<md-toolbar md-scroll-shrink md-colors="{background: '{* ::theme.bg *}'}" style="min-height: 64px;" >
   <div class="md-toolbar-tools" layout-align="space-between center" style="max-height: 64px !important; height: 64px !important;">
     <div onclick="pjax.invoke('/', 'main')" class="home md-headline">
       {% if page.title %}
@@ -6,38 +6,52 @@
       {% else %}{{ escape }}
       {% endif %}
     </div>
-    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs ng-cloak>
-      <md-nav-item md-nav-click="" onclick="pjax.invoke('/blog/', 'main')" name="About">BLOG</md-nav-item>
-      <md-nav-item md-nav-click="" onclick="pjax.invoke('/portfolio/', 'main')" name="Projects">PORTFOLIO</md-nav-item>
-      <md-nav-item md-nav-click="" onclick="pjax.invoke('/contact/', 'main')" name="Contact">CONTACT</md-nav-item>
-    </md-nav-bar>
-    <md-menu md-position-mode="target-right target" hide-gt-xs ng-cloak>
-      <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-      <i class="material-icons">more_vert</i>
-      </md-button>
-      <md-menu-content width="2" >
-        <md-menu-item >
-          <md-button onclick="pjax.invoke('/blog/', 'main')">
-            <div layout="row" flex>
-              <p flex>Blog</p>
-            </div>
-          </md-button>
-        </md-menu-item>
-        <md-menu-item >
-          <md-button onclick="pjax.invoke('/contact/', 'main')">
-            <div layout="row" flex>
-              <p flex>Contact</p>
-            </div>
-          </md-button>
-        </md-menu-item>
-        <md-menu-item >
-          <md-button onclick="pjax.invoke('/portfolio/', 'main')">
-            <div layout="row" flex>
-              <p flex>Projects</p>
-            </div>
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
+    <div layout="row" style="opacity: 0.67">
+      <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs ng-cloak>
+        <md-nav-item md-nav-click="" onclick="pjax.invoke('/blog/', 'main')" name="About">BLOG</md-nav-item>
+        <md-nav-item md-nav-click="" onclick="pjax.invoke('/portfolio/', 'main')" name="Projects">PORTFOLIO</md-nav-item>
+        <md-nav-item md-nav-click="" onclick="pjax.invoke('/contact/', 'main')" name="Contact">CONTACT</md-nav-item>
+      </md-nav-bar>
+
+      <md-menu md-position-mode="target-right target" ng-cloak>
+       <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open theme menu">
+        <i class="material-icons">brightness_4</i>
+       </md-button>
+       <md-menu-content layout="row" width="2" style="padding: 8px">
+         <md-button class="md-icon-button" ng-disabled="isDark" ng-click="setDark(true)" style="margin: 0"><i class="material-icons">lens</i></md-button>
+         <md-button class="md-icon-button" ng-disabled="!isDark" ng-click="setDark(false)" style="margin: 0"><i class="material-icons">panorama_fish_eye</i></md-button>
+       </md-menu-content>
+      </md-menu>
+
+      <md-menu md-position-mode="target-right target" hide-gt-xs ng-cloak>
+        <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+        <i class="material-icons">more_vert</i>
+        </md-button>
+        <md-menu-content width="2" >
+          <md-menu-item >
+            <md-button onclick="pjax.invoke('/blog/', 'main')">
+              <div layout="row" flex>
+                <p flex>Blog</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item >
+            <md-button onclick="pjax.invoke('/contact/', 'main')">
+              <div layout="row" flex>
+                <p flex>Contact</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item >
+            <md-button onclick="pjax.invoke('/portfolio/', 'main')">
+              <div layout="row" flex>
+                <p flex>Projects</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+
   </div>
 </md-toolbar>
