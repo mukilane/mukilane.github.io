@@ -38,7 +38,7 @@
         </div>
 
         {% unless page.title %} 
-        <div class="splash" ng-show="gridLay" ng-hide-xs>
+        <div class="splash" ng-hide-xs ng-show="gridLay" ng-if="::!isDark">
           <svg xmlns="http://www.w3.org/2000/svg" class="md-display-4 banner" width="600" height="140" viewBox="0 0 600 140" class="splash-svg">
             <text x="0" y="95" style="font-family: 'Product Sans';">
               Mukil Elango
@@ -55,7 +55,7 @@
               transition-delay: 1s;
               opacity: 1;
               will-change: opacity;
-              background: inherit;
+              background: #fafafa;
             }
             .splash.ng-hide {
               opacity: 0;

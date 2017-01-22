@@ -40,30 +40,25 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 	// Whether the main grid is painted
 	$scope.gridLay = true;
 
-	// During first visit
 	if(!localStorage.getItem('theme')) { 
-		localStorage.setItem('theme', 'light');
+		// Default Theme
 		$scope.isDark = false;
-	} else if (localStorage.getItem('theme') == 'dark') {
+		$scope.theme = { bg: 'grey-50', footer: 'grey-200'};
+	} else {
 		// Dark Theme
 		$scope.isDark = true;
 		$scope.theme = { bg: 'grey-800', footer: 'grey-700' };
-	} else {
-		// Default Theme - Light
-		$scope.isDark = false;
-		$scope.theme = { bg: 'grey-50', footer: 'grey-200'};
-	}
+	} 
 
 	$scope.setDark = function(e) {
+		$scope.isDark = e;
 		if(e) {
-			$scope.isDark = true;
 			localStorage.setItem('theme', 'dark');	
-			Toast("Dark theme activated. Please refresh.", 'refresh');
+			Toast("Dark theme activated.", 'refresh');
 		}
 		else {
-			$scope.isDark = false;
-			localStorage.setItem('theme', 'light');
-			Toast("Light theme activated. Please refresh.", 'refresh');
+			localStorage.removeItem('theme');
+			Toast("Light theme activated.", 'refresh');
 		}
 	}
 
