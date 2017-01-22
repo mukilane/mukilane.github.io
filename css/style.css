@@ -76,6 +76,7 @@ md-nav-bar .md-button._md-nav-button.md-unselected { color: inherit !important; 
 .banner-mini {
   letter-spacing: -0.03em;
   padding: 8vw 4vw;
+  opacity: 1;
 }
 md-grid-tile {
   outline: none !important;

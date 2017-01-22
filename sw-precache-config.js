@@ -7,6 +7,7 @@ module.exports = {
     '_site/assets/**.*',
     '_site/scripts/**.js',
     '_site/index.html',
+    '_site/manifest.json',
     '_site/!{amp,amp/**/index.html}'
   ],
   stripPrefix: '_site/',
