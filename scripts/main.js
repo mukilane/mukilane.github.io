@@ -58,12 +58,12 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 		if(e) {
 			$scope.isDark = true;
 			localStorage.setItem('theme', 'dark');	
-			Toast("Dark theme is activated. Please refresh.", 'refresh');
+			Toast("Dark theme activated. Please refresh.", 'refresh');
 		}
 		else {
 			$scope.isDark = false;
 			localStorage.setItem('theme', 'light');
-			Toast("Light theme is activated. Please refresh.", 'refresh');
+			Toast("Light theme activated. Please refresh.", 'refresh');
 		}
 	}
 

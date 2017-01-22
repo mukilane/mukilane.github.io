@@ -53,7 +53,7 @@ footer a{
   margin: 8px 16px 8px 0;
 }
 .home {      
-  color: rgba(0,0,0,0.54);
+  opacity: 0.67;
   font-weight: 400;
   cursor: pointer;
   font-family: 'Product Sans';
@@ -205,7 +205,7 @@ strong, b {
   width: 80%;
   min-width: 320px;
   margin: 0px auto;
-  color: #424242;
+  opacity: 0.87;
   font-size: 16px !important;
 }
 
