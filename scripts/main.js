@@ -54,11 +54,11 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 		$scope.isDark = e;
 		if(e) {
 			localStorage.setItem('theme', 'dark');	
-			Toast("Dark theme activated.", 'refresh');
+			Toast("Dark theme activated", 'refresh');
 		}
 		else {
 			localStorage.removeItem('theme');
-			Toast("Light theme activated.", 'refresh');
+			Toast("Light theme activated", 'refresh');
 		}
 	}
 
@@ -368,7 +368,7 @@ if ('serviceWorker' in navigator) { // If Service worker feature is available in
 					case 'installed':
 						if (navigator.serviceWorker.controller) {
 							// Any old content will be purged and new content will be added to the cache
-							toaster('New content available.', 'refresh');
+							toaster('New content available', 'refresh');
 							// Refresh is done to load overcome the network first strategy.
 							// Content will be loaded from the cache only the second time
 							// The content won't be offline ready at the first visit.

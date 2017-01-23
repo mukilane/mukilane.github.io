@@ -18,7 +18,7 @@
         <i class="material-icons">brightness_4</i>
         <md-tooltip>Set Theme</md-tooltip>
        </md-button>
-       <md-menu-content layout="row" width="2" style="padding: 8px">
+       <md-menu-content layout="row" style="padding: 8px; min-width: 0;">
          <md-button class="md-icon-button" aria-label="Night Mode" ng-disabled="isDark" ng-click="setDark(true)" style="margin: 0"><i class="material-icons">lens</i></md-button>
          <md-button class="md-icon-button" aria-label="Light Mode" ng-disabled="!isDark" ng-click="setDark(false)" style="margin: 0"><i class="material-icons">panorama_fish_eye</i></md-button>
        </md-menu-content>
