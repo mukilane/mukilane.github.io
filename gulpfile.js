@@ -1,18 +1,32 @@
 /* Build Process */
-// Clean Amp > Jekyll > Copy amp > sw-precache 
+// Clean Amp > Closure Compile > Jekyll > Copy amp > sw-precache 
 
 const gulp = require('gulp');
 const exec = require('child_process').exec;
 const gutil = require('gulp-util');
 const del = require('del');
+const compiler = require('google-closure-compiler-js').gulp();
 
 // Clean the amp folder to prevent dulpication during Jekyll build
-gulp.task('clean', (cb) => {
+gulp.task('clean', () => {
 	return del(['amp/**/*']);
 });
 
+// Compile JS using Google Closure Compiler
+gulp.task('compile', ['clean'], () => {
+  return gulp.src('./scripts/main.js', {base: './'})
+      .pipe(compiler({
+          compilationLevel: 'WHITESPACE_ONLY',
+          warningLevel: 'DEFAULT',
+          jsOutputFile: 'main.min.js',
+          createSourceMap: true,
+          angularPass: true
+        }))
+      .pipe(gulp.dest('./scripts'));
+});
+
 // Jekyll Build
-gulp.task('jekyll', ['clean'],(callback) => {
+gulp.task('jekyll', ['compile'], (callback) => {
 	exec('jekyll build', (err, stdout, stderr) => {
 		gutil.log(stderr);
 		gutil.log(stdout);

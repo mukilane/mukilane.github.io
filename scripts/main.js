@@ -132,7 +132,7 @@ app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
 					}
 				}
 			}, function(err) {
-				angular.noop
+				angular.noop();
 			});
 		} else {
 			$mdToast.showSimple(msg);
