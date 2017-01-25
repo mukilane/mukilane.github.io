@@ -16,6 +16,7 @@ twitter_username: mukilane
 github_username:  mukilane
 greeting: "" # Display special messages
 angular_version: "1.6.1" # Version of AngularJS used 
+firebase_version: "3.6.6"
 exclude: ["package.json",
           "node_modules",
           "gulpfile.js",

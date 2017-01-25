@@ -1,18 +1,16 @@
-<!-- Firebase-->
-
-<!-- Using only Database and Storage -->
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-storage.js"></script>
-<!--<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>-->
-<!--<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>-->
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
 <script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyD8Jyc_TJwBwAwmkN8ETzUXKPWLiXGsEn0",
+    authDomain: "mukilane.github.io", // The domain whether authentication takes place
     databaseURL: "https://mukil-elango.firebaseio.com",
-    storageBucket: "mukil-elango.appspot.com"
+    storageBucket: "mukil-elango.appspot.com",
+    messagingSenderId: "771554923359"
   };
   firebase.initializeApp(config);
 </script>
