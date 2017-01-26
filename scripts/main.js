@@ -1,8 +1,10 @@
 //Main JS - mukilane.github.io
 //Angular App initialization
-var app = angular.module('port', ['ngMaterial', 'ngAnimate']);
+var app = angular.module('port', ['ngMaterial', 'ngAnimate', 'firebase']);
 // Angular Confiurations
-app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $compileProvider, $locationProvider) {
+app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $compileProvider, $locationProvider, $controllerProvider) {
+	// Reference for Controller Provider for Dynamic(Lazy) dependency injection
+	app.controllerProvider = $controllerProvider;
 	// Overriding Default theme
 	$mdThemingProvider.theme('default')
 		.accentPalette('blue');
@@ -111,6 +113,31 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 		$window.location.href = $sce.trustAsResourceUrl(dest);
 	};
 });
+
+app.controller('fireCtrl', function ($scope, $firebaseObject, $firebaseAuth) {
+	var auth = $firebaseAuth();
+	var ref = firebase.database().ref("feedback");
+	$scope.showMes = false;
+	$scope.signIn = function() {
+		$scope.showMes = true;
+    $scope.firebaseUser = null;
+    $scope.error = null;
+    auth.$signInAnonymously().then(function(firebaseUser) {
+      $scope.firebaseUser = firebaseUser;
+      $scope.data = $firebaseObject(ref.push());
+    }).catch(function(error) {
+      $scope.error = error;
+    });
+  };
+  $scope.sendMsg = function() {
+      $scope.data.$save().then(function() {
+        console.log('Feedback Sent');
+      }).catch(function(error) {
+        console.log('Error!');
+      });
+    };
+})
+
 
 // Factory for displaying toasts
 app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
