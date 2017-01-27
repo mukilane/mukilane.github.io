@@ -122,6 +122,7 @@ app.controller('fireCtrl', function ($scope, $firebaseObject, $firebaseAuth) {
 		$scope.showMes = true;
     $scope.firebaseUser = null;
     $scope.error = null;
+    // Anonymous Sign in
     auth.$signInAnonymously().then(function(firebaseUser) {
       $scope.firebaseUser = firebaseUser;
       $scope.data = $firebaseObject(ref.push());
