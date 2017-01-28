@@ -21,5 +21,13 @@ module.exports = {
   {
     urlPattern: /^https:\/\/fonts\.googleapis\.com\/css/,
     handler: 'networkFirst'
+  },
+  {
+    urlPattern: /^https:\/\/www\.gstatic\.com\/firebasejs/,
+    handler: 'networkFirst'
+  },
+  {
+    urlPattern: /^https:\/\/cdn\.firebase\.com\/libs\/angularfire/,
+    handler: 'networkFirst'
   }]
 };

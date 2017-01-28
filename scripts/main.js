@@ -42,6 +42,7 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 	// Whether the main grid is painted
 	$scope.gridLay = true;
 
+	// Set theme using Local Storage 
 	if(!localStorage.getItem('theme')) { 
 		// Default Theme
 		$scope.isDark = false;
@@ -51,7 +52,7 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 		$scope.isDark = true;
 		$scope.theme = { bg: 'grey-800', footer: 'grey-700' };
 	} 
-
+	// 
 	$scope.setDark = function(e) {
 		$scope.isDark = e;
 		if(e) {
@@ -84,11 +85,7 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 	  Toast("You're Offline. Serving from cache!", false);
         $window.addEventListener('online', function(e) {
           Toast("You're Online now !", 'ok');
-        }, 
-        { 
-        	once:true, 
-        	capture:false
-        });
+        }, { once:true, capture:false });
 	}, false);
 
 	// Trusting urls using SCE
@@ -117,24 +114,23 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 app.controller('fireCtrl', function ($scope, $firebaseObject, $firebaseAuth) {
 	var auth = $firebaseAuth();
 	var ref = firebase.database().ref("feedback");
-	$scope.showMes = false;
+	$scope.showMsg = false;
 	$scope.signIn = function() {
-		$scope.showMes = true;
+		$scope.showMsg = true;
     $scope.firebaseUser = null;
-    $scope.error = null;
     // Anonymous Sign in
     auth.$signInAnonymously().then(function(firebaseUser) {
-      $scope.firebaseUser = firebaseUser;
-      $scope.data = $firebaseObject(ref.push());
+    	$scope.firebaseUser = firebaseUser;
+    	$scope.data = $firebaseObject(ref.push());
     }).catch(function(error) {
-      $scope.error = error;
+    	console.log("Error occured during sending");
     });
   };
   $scope.sendMsg = function() {
       $scope.data.$save().then(function() {
-        console.log('Feedback Sent');
+				console.log('Feedback Sent');
       }).catch(function(error) {
-        console.log('Error!');
+      	console.log('Error!');
       });
     };
 })
