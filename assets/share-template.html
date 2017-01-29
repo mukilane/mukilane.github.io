@@ -4,9 +4,9 @@
 <md-dialog aria-label="Share" class="share-dialog" style="max-width: 400px;">
   <md-toolbar md-colors="{background: 'grey-50'}" >
     <div class="md-toolbar-tools ">
-      <span class="md-headline">Share<span class="md-body-1" style="display: block;" ng-bind='share.title'></span></span>
+      <span class="md-headline">Share<span class="md-body-1" style="display: block;" ng-bind='title'></span></span>
       <span flex></span>
-      <md-button class="md-icon-button" ng-click="share.close();">
+      <md-button class="md-icon-button" ng-click="closeShare();">
         <i class="material-icons">close</i>
       </md-button>
     </div>
@@ -16,23 +16,23 @@
       <img src="/assets/art-shuttle.jpg" width="500px" style="overflow:hidden;">
   </md-dialog-content>
 
-  <md-dialog-actions layout="row" layout-align="center center" layout-padding ng-show='copy' class="md-whiteframe-z2">
+  <md-dialog-actions layout="row" layout-align="center center" layout-padding ng-init="copy = false" ng-show='copy' class="md-whiteframe-z2">
     <md-input-container class="md-block" style="margin: 0; bottom: -24px;">
       <label>Copy Link (Ctrl+C)</label>
-      <input ng-model="share.url" md-select-on-focus ng-readonly="true" ng-copy="share.toast('Link copied!')">
+      <input ng-model="link" md-select-on-focus ng-readonly="true" ng-copy="share.toast('Link copied!')">
     </md-input-container>
     <span flex></span>
     <md-button class="md-icon-button" ng-click="copy = false"><i class="material-icons">done</i></md-button>
   </md-dialog-actions>
 
   <md-dialog-actions class="md-whiteframe-z2" layout="row" layout-align="space-around center" layout-padding ng-hide="copy">
-    <md-button ng-href="https://facebook.com/sharer/sharer.php?u={*::share.url*}" target="_blank" aria-label="Facebook" md-autofocus class="md-icon-button" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
+    <md-button ng-href="https://facebook.com/sharer/sharer.php?u={*::link*}" target="_blank" aria-label="Facebook" md-autofocus class="md-icon-button" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
       {% include icon-facebook.svg %}
     </md-button>
-    <md-button ng-href="https://plus.google.com/share?url={*::share.url*}" target="_blank" class="md-icon-button" aria-label="Google+" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
+    <md-button ng-href="https://plus.google.com/share?url={*::link*}" target="_blank" class="md-icon-button" aria-label="Google+" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
       {% include icon-gplus.svg %}
     </md-button>
-    <md-button ng-href="https://twitter.com/share?url={*::share.url*}&#MukilElango" target="_blank" class="md-icon-button" aria-label="Twitter" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
+    <md-button ng-href="https://twitter.com/share?url={*::link*}&#MukilElango" target="_blank" class="md-icon-button" aria-label="Twitter" rel="noopener" ng-click="share.toast('Thanks for sharing!')">
       {% include icon-twitter.svg %}
     </md-button>
     <md-button class="md-icon-button" aria-label="Link" ng-click="copy = true;">

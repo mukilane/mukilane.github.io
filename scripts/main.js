@@ -133,7 +133,7 @@ app.controller('fireCtrl', function ($scope, $firebaseObject, $firebaseAuth) {
       	console.log('Error!');
       });
     };
-})
+});
 
 
 // Factory for displaying toasts
@@ -164,38 +164,47 @@ app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
 		}
   };
 }]);
+// Factory for displaying Dialogs
+app.factory('Dialog', ['$mdDialog', 'Toast' , function($mdDialog, Toast) {
+	return {
+		show : function(dlg, ev) { 
+				$mdDialog.show({
+					templateUrl: '/assets/' + dlg + '-template.html',
+					parent: angular.element(document.body),
+					targetEvent: ev,
+					controller: dlg,
+					clickOutsideToClose: true
+				});
+		},
+		close : function() {
+			$mdDialog.cancel();
+			}
+		};
+}]);
 
-// Controller for share feature
-app.controller('shareCtrl', function ($scope, $mdDialog, $location, Toast) {
-	$scope.copy = true;
+// Controller for Share feature
+app.controller('share', function($scope, Dialog, Toast) {
+	$scope.link = window.location.href;
 	$scope.title = angular.element(window.document)[0].title;
-	$scope.url = $location.absUrl();
-	$scope.openShare = function(ev) {
 
+	$scope.openShare = function(ev) {
 		// Web Share API (April 2017) Origin Trial
-		if(navigator.share !== undefined) {
+		/*if(navigator.share !== undefined) {
 			navigator.share({
 				title: $scope.title, 
 				text: $scope.title, 
 				url: $scope.url
-			})
-			.then(() => Toast('Thanks for sharing!'), 
-				error => Toast('Error in sharing.'));
+			}).then(
+				() => Toast('Thanks for sharing!'), 
+				error => Toast('Error in sharing.')
+			);
 	    return;
-    }
-
-		$mdDialog.show({
-			templateUrl: '/assets/share-template.html',
-			parent: angular.element(document.body), // Where the dialog should be appended
-			targetEvent: ev,
-			controller: () => this, // Controller for the dialog
-			controllerAs: 'share',
-			clickOutsideToClose:true,
-		});
+	  }*/
+		Dialog.show('share', ev);
 	};
-	$scope.close = function() {
-		$mdDialog.cancel();
-	}
+	$scope.closeShare = function() {
+		Dialog.close();
+	};
 });
 
 //Controller to invoke Panel
