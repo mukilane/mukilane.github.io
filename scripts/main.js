@@ -127,12 +127,12 @@ app.controller('fireCtrl', function ($scope, $firebaseObject, $firebaseAuth) {
     });
   };
   $scope.sendMsg = function() {
-      $scope.data.$save().then(function() {
-				console.log('Feedback Sent');
-      }).catch(function(error) {
-      	console.log('Error!');
-      });
-    };
+    $scope.data.$save().then(function() {
+			console.log('Feedback Sent');
+    }).catch(function(error) {
+    	console.log('Error!');
+    });
+  };
 });
 
 
@@ -141,9 +141,9 @@ app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
   return function(msg, action) {
    	if (action !== '') { // Whether the toast should show an action button
    		var toast = $mdToast.simple()
-      .textContent(msg)
-      .action(action)
-      .highlightAction(true);
+	      .textContent(msg)
+	      .action(action)
+	      .highlightAction(true);
 			$mdToast.show(toast).then(function(response) {
 				if ( response == 'ok' ) {
 					switch (action) {
@@ -182,6 +182,41 @@ app.factory('Dialog', ['$mdDialog', 'Toast' , function($mdDialog, Toast) {
 		};
 }]);
 
+/*
+app.factory('Panel', ['$mdPanel', function($mdPanel) {
+	this._mdPanel = $mdPanel;
+	return function(dest) {
+		console.log("worked");
+		var tmpl = '/project/' + dest + '.html';
+		var position = this._mdPanel.newPanelPosition().absolute().center();
+		var animation = this._mdPanel.newPanelAnimation().withAnimation(this._mdPanel.animation.FADE);
+		var config = {
+			animation: animation,
+			attachTo: angular.element(document.body),
+			controller: function(mdPanelRef) { 
+				this.close = function() {
+					mdPanelRef && mdPanelRef.close().then(function() {
+						angular.element(document.querySelector('.share')).focus();
+						mdPanelRef.destroy();
+					})
+				} 
+			},
+			controllerAs: 'ctrl',
+			disableParentScroll: this.disableParentScroll,
+			templateUrl: tmpl,
+			hasBackdrop: true,
+			panelClass: 'modal-container',
+			position: position,
+			trapFocus: true,
+			zIndex: 150,
+			clickOutsideToClose: true,
+			escapeToClose: true,
+			focusOnOpen: true
+		};
+		this._mdPanel.open(config);
+		}
+}]);*/
+
 // Controller for Share feature
 app.controller('share', function($scope, Dialog, Toast) {
 	$scope.link = window.location.href;
@@ -217,7 +252,7 @@ function ModalController($mdPanel) {
 	this._mdPanel = $mdPanel;
 }
 
-//Fucntion to open the panel
+//Function to open the panel
 ModalController.prototype.showPanel = function(dest) {
 	var tmpl = '/project/' + dest + '.html';
 
