@@ -110,7 +110,7 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 		$window.location.href = $sce.trustAsResourceUrl(dest);
 	};
 });
-
+// Controller for feeback form
 app.controller('fireCtrl', function ($scope, $firebaseObject, $firebaseAuth) {
 	var auth = $firebaseAuth();
 	var ref = firebase.database().ref("feedback");
@@ -134,7 +134,36 @@ app.controller('fireCtrl', function ($scope, $firebaseObject, $firebaseAuth) {
     });
   };
 });
+// Controller for Share feature
+app.controller('share', function($scope, Dialog, Toast) {
+	$scope.link = window.location.href;
+	$scope.title = angular.element(window.document)[0].title;
 
+	$scope.openShare = function(ev) {
+		// Web Share API (April 2017) Origin Trial
+		/*if(navigator.share !== undefined) {
+			navigator.share({
+				title: $scope.title, 
+				text: $scope.title, 
+				url: $scope.url
+			}).then(
+				() => Toast('Thanks for sharing!'), 
+				error => Toast('Error in sharing.')
+			);
+	    return;
+	  }*/
+		Dialog.show('share', ev);
+	};
+	$scope.closeShare = function() {
+		Dialog.close();
+	};
+});
+//Controller for Projects
+app.controller('ProjectCtrl', function (Panel) {
+	this.show = function(dest) {
+		Panel(dest);
+	}
+});
 
 // Factory for displaying toasts
 app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
@@ -178,29 +207,28 @@ app.factory('Dialog', ['$mdDialog', 'Toast' , function($mdDialog, Toast) {
 		},
 		close : function() {
 			$mdDialog.cancel();
-			}
-		};
+		}
+	};
 }]);
-
-/*
+// Factory for displaying Panels
 app.factory('Panel', ['$mdPanel', function($mdPanel) {
-	this._mdPanel = $mdPanel;
+	// Controller for Panel instance
+	function PanelCtrl(mdPanelRef) { 
+		this.close = function() {
+			mdPanelRef && mdPanelRef.close().then(function() {
+				mdPanelRef.destroy();
+			})
+		} 
+	}
 	return function(dest) {
-		console.log("worked");
+		this._mdPanel = $mdPanel;
 		var tmpl = '/project/' + dest + '.html';
 		var position = this._mdPanel.newPanelPosition().absolute().center();
 		var animation = this._mdPanel.newPanelAnimation().withAnimation(this._mdPanel.animation.FADE);
 		var config = {
 			animation: animation,
 			attachTo: angular.element(document.body),
-			controller: function(mdPanelRef) { 
-				this.close = function() {
-					mdPanelRef && mdPanelRef.close().then(function() {
-						angular.element(document.querySelector('.share')).focus();
-						mdPanelRef.destroy();
-					})
-				} 
-			},
+			controller: PanelCtrl,
 			controllerAs: 'ctrl',
 			disableParentScroll: this.disableParentScroll,
 			templateUrl: tmpl,
@@ -215,82 +243,7 @@ app.factory('Panel', ['$mdPanel', function($mdPanel) {
 		};
 		this._mdPanel.open(config);
 		}
-}]);*/
-
-// Controller for Share feature
-app.controller('share', function($scope, Dialog, Toast) {
-	$scope.link = window.location.href;
-	$scope.title = angular.element(window.document)[0].title;
-
-	$scope.openShare = function(ev) {
-		// Web Share API (April 2017) Origin Trial
-		/*if(navigator.share !== undefined) {
-			navigator.share({
-				title: $scope.title, 
-				text: $scope.title, 
-				url: $scope.url
-			}).then(
-				() => Toast('Thanks for sharing!'), 
-				error => Toast('Error in sharing.')
-			);
-	    return;
-	  }*/
-		Dialog.show('share', ev);
-	};
-	$scope.closeShare = function() {
-		Dialog.close();
-	};
-});
-
-//Controller to invoke Panel
-app.controller('ModalController', ModalController);
-
-//Controller for the Panel itself
-app.controller('ModalCtrl', ModalCtrl);
-
-function ModalController($mdPanel) {
-	this._mdPanel = $mdPanel;
-}
-
-//Function to open the panel
-ModalController.prototype.showPanel = function(dest) {
-	var tmpl = '/project/' + dest + '.html';
-
-	var position = this._mdPanel.newPanelPosition().absolute().center();
-
-	var animation = this._mdPanel.newPanelAnimation()
-	.withAnimation(this._mdPanel.animation.FADE);
-
-	var config = {
-		animation: animation,
-		attachTo: angular.element(document.body),
-		controller: ModalCtrl, //Controller for the panel
-		controllerAs: 'ctrl',
-		disableParentScroll: this.disableParentScroll,
-		templateUrl: tmpl,
-		hasBackdrop: true,
-		panelClass: 'modal-container',
-		position: position,
-		trapFocus: true,
-		zIndex: 150,
-		clickOutsideToClose: true,
-		escapeToClose: true,
-		focusOnOpen: true
-	};
-	this._mdPanel.open(config);
-};
-
-function ModalCtrl(mdPanelRef) {
-	this._mdPanelRef = mdPanelRef;
-}
-
-ModalCtrl.prototype.closePanel = function() {
-	var panelRef = this._mdPanelRef;
-	panelRef && panelRef.close().then(function() {
-		angular.element(document.querySelector('.share')).focus();
-		panelRef.destroy();
-	});
-};
+}]);
 
 // Directives Declaration
 app.directive('tile', function() {
