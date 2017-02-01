@@ -36,8 +36,8 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 
 });
 
-//Main Controller
-app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
+// Main Controller
+app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog) {
 
 	// Whether the main grid is painted
 	$scope.gridLay = true;
@@ -104,14 +104,16 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce) {
 			}
 		}
 	};
-
+	$scope.showDlg = function(ev) {
+		Dialog.show('feedback', ev)
+	}
 	//Navigating to external locations
 	$scope.go = function (dest) {
 		$window.location.href = $sce.trustAsResourceUrl(dest);
 	};
 });
 // Controller for feeback form
-app.controller('fireCtrl', function ($scope, $firebaseObject, $firebaseAuth) {
+app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dialog) {
 	var auth = $firebaseAuth();
 	var ref = firebase.database().ref("feedback");
 	$scope.showMsg = false;
@@ -129,6 +131,7 @@ app.controller('fireCtrl', function ($scope, $firebaseObject, $firebaseAuth) {
   $scope.sendMsg = function() {
     $scope.data.$save().then(function() {
 			console.log('Feedback Sent');
+			Dialog.close();
     }).catch(function(error) {
     	console.log('Error!');
     });

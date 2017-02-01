@@ -1,22 +1,6 @@
-<div ng-controller="fireCtrl" >
-	<div layout="row" ng-hide="showMsg" ng-click="signIn()" layout-padding> 
+<div>
+	<div layout="row" ng-click="showDlg($event)" layout-padding> 
 		<i class="material-icons">feedback</i>
 		<span class="md-subhead">Send me some feedback</span>
 	</div>
-	<md-content layout="column" ng-show="showMsg" md-colors="{background: 'grey-200'}" style="min-width: 360px; width: 70vw; max-width: 720px; padding: 8px;">
-		<div layout="row">
-			<span class="md-subhead">Feedback</span>
-			<span flex></span>
-			<md-button class="md-icon-button" ng-click="showMsg=false"><i class="material-icons">close</i></md-button>
-		</div>
-		<md-input-container>
-			<label>Name</label>
-			<input ng-model="data.name">
-		</md-input-container>
-		<md-input-container class="md-block">
-			<label>Message</label>
-			<textarea ng-model="data.message" md-maxlength="150" rows="2" md-select-on-focus></textarea>
-		</md-input-container>
-		<md-button ng-click="sendMsg();">SEND</md-button>
-  </md-content>
 </div>
