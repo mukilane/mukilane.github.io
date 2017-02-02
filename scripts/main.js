@@ -116,6 +116,9 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog
 app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dialog) {
 	var auth = $firebaseAuth();
 	var ref = firebase.database().ref("feedback");
+	$scope.close = function() {
+		Dialog.close();
+	}
 	$scope.showMsg = false;
 	$scope.signIn = function() {
 		$scope.showMsg = true;

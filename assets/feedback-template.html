@@ -10,7 +10,7 @@
 				<md-button class="md-icon-button" ng-click="showMsg=false"><i class="material-icons">close</i></md-button>
 			</div>
 		</md-toolbar>
-		<md-content layout="column" md-colors="{background: 'grey-200'}" style="min-width: 360px; width: 70vw; max-width: 720px; padding: 8px;">
+		<md-content layout="column" md-colors="{background: 'grey-200'}" style="width: 100vw; max-width: 360px; padding: 8px;">
 			<md-input-container>
 				<label>Name</label>
 				<input ng-model="data.name">
@@ -19,8 +19,9 @@
 				<label>Message</label>
 				<textarea ng-model="data.message" md-maxlength="150" rows="2" md-select-on-focus></textarea>
 			</md-input-container>
-			<md-button ng-click="sendMsg();">SEND</md-button>
+			<md-card-actions layout="row" layout-align="end center">
+			<md-button ng-click="close()">CANCEL</md-button><md-button ng-click="sendMsg()">SEND</md-button>
+			</md-card-actions>
 	  	</md-content>
 	</div>
-	
 </div>
