@@ -6,6 +6,7 @@ const exec = require('child_process').exec;
 const gutil = require('gulp-util');
 const del = require('del');
 const compiler = require('google-closure-compiler-js').gulp();
+const spawn = require('child_process').spawn;
 
 // Clean the amp folder to prevent dulpication during Jekyll build
 gulp.task('clean', () => {
@@ -73,3 +74,12 @@ gulp.task('deploy', ['commit'], (callback) => {
 // Tasks run sequentially using dependencies
 // Reminder: Update to gulp.series on 4.x
 gulp.task('default', ['deploy']);
+
+// Deploy amp-ed files
+gulp.task('ampdeploy', (callback) => {
+	process.chdir('./amp/');
+	exec('git add -A && git commit && git push', (err, stdout, stderr) => {
+		gutil.log(stdout);
+		callback(err);
+	});
+});
