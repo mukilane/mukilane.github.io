@@ -144,7 +144,7 @@ app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dia
 app.controller('share', function($scope, Dialog, Toast) {
 	$scope.link = window.location.href;
 	$scope.title = angular.element(window.document)[0].title;
-
+	$scope.Toast = Toast;
 	$scope.openShare = function(ev) {
 		// Web Share API (April 2017) Origin Trial
 		/*if(navigator.share !== undefined) {
