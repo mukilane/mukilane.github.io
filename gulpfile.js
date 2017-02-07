@@ -65,15 +65,25 @@ gulp.task('commit', ['add'], (callback) => {
 });
 
 // Push to origin
-gulp.task('deploy', ['commit'], (callback) => {
+gulp.task('push', ['commit'], (callback) => {
 	exec('git push',  (err, stdout, stderr) => {
 		gutil.log(stdout);
 		callback(err);
 	});
 });
+
+// Upload index of posts to Firebase database
+gulp.task('postsDB', ['push'], (callback) => {
+	exec("firebase database:set /data/posts _site/assets/posts.json --confirm", (err, stdout, stderr) => {
+		gutil.log(stdout);
+		gutil.log(stderr);
+		callback(err);
+	});
+});
+
 // Tasks run sequentially using dependencies
 // Reminder: Update to gulp.series on 4.x
-gulp.task('default', ['deploy']);
+gulp.task('default', ['postsDB']);
 
 // Deploy amp-ed files
 gulp.task('ampdeploy', (callback) => {
