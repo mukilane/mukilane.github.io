@@ -1,5 +1,15 @@
-/* Build Process */
-// Clean Amp > Closure Compile > Jekyll > Copy amp > sw-precache 
+/* Build Process 
+Procedure
+1. Clean amp folder to avoid replication during build
+2. Compile the js files using Google Closure Compiler
+3. Jekyll build
+4. Copy the generated amp files back to the amp/ folder
+5. Generate service worker using sw-precache
+6. Add all unwatched files to git and commmit
+7. Push to source (mukilane/mukilane.github.io)
+8. Upload an index of posts to firebase for use in search
+9. Deploy the generated amp files to separate repository (mukilane/amp)
+*/
 
 const gulp = require('gulp');
 const exec = require('child_process').exec;
@@ -50,15 +60,8 @@ gulp.task('generate-sw', ['amp'], (callback) => {
 });
 
 // Add untracked files 
-gulp.task('add', ['generate-sw'], (callback) => {
-	exec('git add -A',  (err, stdout, stderr) => {
-		callback(err);
-	});
-});
-
-// Commit files 
-gulp.task('commit', ['add'], (callback) => {
-	exec('git commit',  (err, stdout, stderr) => {
+gulp.task('commit', ['generate-sw'], (callback) => {
+	exec('git add -A && git commit',  (err, stdout, stderr) => {
 		gutil.log(stdout);
 		callback(err);
 	});
