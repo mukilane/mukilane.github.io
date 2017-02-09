@@ -1,5 +1,4 @@
 /* Build Process 
-Procedure
 1. Clean amp folder to avoid replication during build
 2. Compile the js files using Google Closure Compiler
 3. Jekyll build
