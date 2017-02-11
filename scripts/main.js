@@ -131,6 +131,12 @@ app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dia
     	console.log("Error occured during sending");
     });
   };
+  $scope.thumbs = function(e) {
+  	$scope.data = $firebaseObject(ref.push());
+  	$scope.data.$save().then(function() {
+  		
+  	});
+  }
   $scope.sendMsg = function() {
     $scope.data.$save().then(function() {
 			console.log('Feedback Sent');
