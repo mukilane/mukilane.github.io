@@ -29,3 +29,5 @@ collections:
 
 # Build settings
 markdown: kramdown
+
+exculde: [vendor]
