@@ -1,10 +1,10 @@
 ---
-layout: page
-title: Google Top Contributor
-permalink: /articles/googletc/
-category: articles
+layout: post
+title: Being a Google Top Contributor
+date:	2017-02-15 15:05:20 +0530
+category: blog
 color: green-500
-type: article
+description: Helping the community, one answer at a time
 ---
 
 ## Google Top Contributor Program

@@ -304,7 +304,7 @@ app.directive('tileHeader', function() {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: "<span class='tile-title' ng-transclude></span><br/><span style='opacity: 0.67'>{{::tag}}</span>",
+		template: "<span class='tile-title' ng-transclude></span><br/><span style='opacity: 0.67; margin-top: 4px;'>{{::tag}}</span>",
 		scope: {
 			name: '@',
 			tag: '@'
