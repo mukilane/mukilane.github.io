@@ -75,7 +75,7 @@ gulp.task('push', ['commit'], (callback) => {
 });
 
 // Upload index of posts to Firebase database
-gulp.task('postsDB', ['push'], (callback) => {
+gulp.task('fireDB', ['push'], (callback) => {
 	exec("firebase database:set /data/posts _site/assets/posts.json --confirm", (err, stdout, stderr) => {
 		gutil.log(stdout);
 		gutil.log(stderr);
@@ -85,13 +85,20 @@ gulp.task('postsDB', ['push'], (callback) => {
 
 // Tasks run sequentially using dependencies
 // Reminder: Update to gulp.series on 4.x
-gulp.task('default', ['postsDB']);
+gulp.task('default', ['fireDB']);
 
-// Deploy amp-ed files
+// Deploy amp-ed files to separate repository
 gulp.task('ampdeploy', (callback) => {
 	process.chdir('./amp/');
-	exec('git add -A && git commit && git push', (err, stdout, stderr) => {
-		gutil.log(stdout);
+	// Check if any new files are generated
+	exec('git status --porcelain', (err, stdout, stderr) => {
+		if (err) {
+			exec('git add -A && git commit && git push', (e, sOut, sErr) => {
+				gutil.log(sOut);
+				callback(e);
+			})
+		}
+		gutil.log("Nothing to commit");
 		callback(err);
 	});
 });
