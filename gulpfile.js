@@ -37,7 +37,7 @@ gulp.task('compile', ['clean'], () => {
 
 // Jekyll Build
 gulp.task('jekyll', ['compile'], (callback) => {
-	exec('jekyll build', (err, stdout, stderr) => {
+	exec('bundle exec jekyll build', (err, stdout, stderr) => {
 		gutil.log(stderr);
 		gutil.log(stdout);
 		callback(err);
