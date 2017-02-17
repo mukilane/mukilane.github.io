@@ -54,6 +54,7 @@ footer a{
 }
 .home {      
   opacity: 0.67;
+  font-size: 22px;
   font-weight: 400;
   cursor: pointer;
   font-family: 'Product Sans';
