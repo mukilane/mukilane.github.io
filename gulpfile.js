@@ -85,13 +85,12 @@ gulp.task('fireDB', ['push'], (callback) => {
 
 // Tasks run sequentially using dependencies
 // Reminder: Update to gulp.series on 4.x
-gulp.task('default', ['fireDB']);
+gulp.task('default', ['fireDB', 'ampdeploy']);
 
 // Deploy amp-ed files to separate repository
 gulp.task('ampdeploy', (callback) => {
-	process.chdir('./amp/');
 	// Check if any new files are generated
-	exec('git status --porcelain', (err, stdout, stderr) => {
+	exec('cd amp && git status --porcelain', (err, stdout, stderr) => {
 		if (err) {
 			exec('git add -A && git commit && git push', (e, sOut, sErr) => {
 				gutil.log(sOut);
