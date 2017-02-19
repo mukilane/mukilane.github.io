@@ -6,7 +6,8 @@
       "title": "{{ post.title }}",
       "category": "{{ post.category }}",
       "url": "{{ post.url }}",
-      "description": "{{ post.description }}"
+      "description": "{{ post.description }}",
+      "name": "{{ post.title }}"
     }
     {% unless forloop.last %},{% endunless %}
   {% endfor %}

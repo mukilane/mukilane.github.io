@@ -97,7 +97,7 @@ gulp.task('ampdeploy', (callback) => {
 				callback(e);
 			})
 		}
-		gutil.log("Nothing to commit");
+		gutil.log("Nothing to commit in amp");
 		callback(err);
 	});
 });

@@ -146,6 +146,17 @@ app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dia
     });
   };
 });
+// Controller for search
+app.controller('search', function($scope, $firebaseObject) {
+	$scope.posts = [];
+	var ref = firebase.database().ref('data/posts').once('value').then(function(snapshot) {
+  	var obj =  snapshot.val();
+  	angular.forEach(obj, function(val) {
+      $scope.posts.push(val);
+    });
+  	console.log($scope.posts);
+  });
+});
 // Controller for Share feature
 app.controller('share', function($scope, Dialog, Toast) {
 	$scope.link = window.location.href;

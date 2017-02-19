@@ -6,7 +6,17 @@ permalink: /search/
 color: blue-500
 ---
 
-<div layout="column" layout-align="center center">
-	<div><md-input-container></md-input-container></div>
-	<div class="results"></div>
+<div layout="column" layout-align="center center" ng-controller="search">
+	<div><md-input-container> <label>Search</label><input ng-model="searchText"></md-input-container></div>
+	<md-list class="results" layout="column">
+		 <md-list-item class="md-3-line" ng-repeat="post in posts | filter:searchText" >
+          <img class="md-avatar" alt="{{item.who}}" />
+          <div class="md-list-item-text" layout="column">
+            <h3>{* post.name *}</h3>
+            <h4>{* post.category *}</h4>
+            <p>{* post.description *}</p>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
+	</md-list>
 </div>
