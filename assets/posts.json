@@ -2,7 +2,8 @@
 ---
 {
 	{% for post in site.posts %}
-	"{{ post.title }}": {
+	"{{ forloop.index }}": {
+		"title": "{{ post.title }}",
 		"category": "{{ post.category }}",
 		"url": "{{ post.url }}",
 		"description": "{{ post.description }}"
