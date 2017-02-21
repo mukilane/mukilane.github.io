@@ -10,7 +10,7 @@ color: blue-500
 	<div><md-input-container> <label>Search</label><input ng-model="searchText"></md-input-container></div>
 	<md-list class="results" layout="column" ng-show="searchText != ''">
 		 <md-list-item class="md-3-line" ng-repeat="post in posts | filter:searchText" >
-          <div class="md-list-item-text" layout="column">
+          <div class="md-list-item-text" layout="column" onclick="pjax.invoke('{* post.url *}', 'main')">
             <h3>{* post.title *}</h3>
             <h4>{* post.date *}</h4>
             <p>{* post.description *}</p>
