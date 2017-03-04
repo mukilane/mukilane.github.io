@@ -1,0 +1,56 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/bin/nodejs /usr/local/bin/firebase database:set /data/posts _site/assets/posts.json --confirm
+[debug] CLI Version:  3.0.7
+[debug] Platform:     linux
+[debug] Node Version: v4.2.6
+[debug] Time:         Tue Feb 21 2017 22:02:29 GMT+0530 (IST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/mukil-elango 
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/mukil-elango/tokens 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[error] 
+[error] Error: HTTP Error: 500, Internal server error.
+[debug] Error Context: {
+  "body": {
+    "error": "Internal server error."
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": "Internal server error."
+    },
+    "headers": {
+      "server": "nginx",
+      "date": "Tue, 21 Feb 2017 16:32:42 GMT",
+      "content-type": "text/html",
+      "content-length": "41",
+      "connection": "close",
+      "etag": "\"585afa73-29\"",
+      "strict-transport-security": "max-age=31556926; includeSubDomains; preload"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "mukil-elango.firebaseio.com",
+        "port": 443,
+        "hostname": "mukil-elango.firebaseio.com",
+        "hash": null,
+        "search": "?",
+        "query": "",
+        "pathname": "/data/posts.json",
+        "path": "/data/posts.json?",
+        "href": "https://mukil-elango.firebaseio.com/data/posts.json?"
+      },
+      "method": "PUT"
+    }
+  }
+}

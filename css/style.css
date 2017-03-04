@@ -171,10 +171,10 @@ tile-footer {
   opacity: 0;
 }
 .fade-down {
-  animation: fade-down 0.5s cubic-bezier(0.4, 0.0, 1, 1);
+  animation: fade-down 0.5s cubic-bezier(0.4, 0.0, 1, 1) forwards;
 }
 .fade-up {
-  animation: fade-up 0.5s cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation: fade-up 0.5s cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
 }
 strong, b {
   font-weight: 500;
