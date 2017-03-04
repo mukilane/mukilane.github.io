@@ -1,4 +1,4 @@
-## mukilane.github.io
+## mukilane.github.io [![Build Status](https://travis-ci.org/mukilane/mukilane.github.io.svg?branch=master)](https://travis-ci.org/mukilane/mukilane.github.io)
 My personal portfolio page 
 
 ## How it started
