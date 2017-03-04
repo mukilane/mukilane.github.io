@@ -1,9 +1,11 @@
 language: ruby
+cache: bundler
 rvm:
 - 2.3.3
 
 before_script:
  - chmod +x ./scripts/cibuild 
+ - bundle install htmlproofer
 
 script: ./scripts/cibuild
 
