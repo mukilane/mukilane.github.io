@@ -20,7 +20,8 @@ firebase_version: "3.6.10"
 exclude: ["package.json",
           "node_modules",
           "gulpfile.js",
-          "sw-precache-config.js"]
+          "sw-precache-config.js",
+          "vendor"]
 ampdir: amp # Amp files are stored here
 # Collections
 collections:
@@ -29,5 +30,3 @@ collections:
 
 # Build settings
 markdown: kramdown
-
-exculde: [vendor]
