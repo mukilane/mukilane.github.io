@@ -1,6 +1,7 @@
 {
   "short_name": "Mukil Elango",
   "name": "Mukil Elango's Portfolio",
+  "description": "A place for my works and articles",
   "icons": [
     {
       "src": "/assets/launcher-96.png",
@@ -14,9 +15,11 @@
     }
   ],
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "orientation": "landscape",
   "background_color": "#FAFAFA",
   "theme_color": "#FAFAFA",
-  "gcm_sender_id": "103953800507"
+  "gcm_sender_id": "103953800507",
+  "dir": "ltr",
+  "lang": "en"
 }
