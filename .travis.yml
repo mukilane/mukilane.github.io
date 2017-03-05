@@ -1,6 +1,10 @@
 language: ruby
 dist: trusty
-cache: bundler
+cache: 
+ bundler: true
+ directories:
+  - node_modules
+
 node_js: 
 - "4.2"
 rvm:

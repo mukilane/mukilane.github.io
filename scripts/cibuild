@@ -4,4 +4,4 @@ set -e # halt script on error
 npm install -g lighthouse
 bundle install
 bundle exec jekyll build
-lighthouse https://mukilane.github.io
+lighthouse --output=pretty https://mukilane.github.io
