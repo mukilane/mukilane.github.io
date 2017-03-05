@@ -1,0 +1,40 @@
+---
+---
+<md-bottom-sheet class="md-grid" layout="column">
+  <div layout="row" layout-align="center center" ng-cloak>
+    <h4>Share</h4>
+  </div>
+  <div ng-cloak>
+    <md-list flex layout="row" layout-align="center center">
+
+      <md-list-item>
+        <md-button ng-href="https://facebook.com/sharer/sharer.php?u={*::link*}" target="_blank" aria-label="Facebook" md-autofocus class="md-grid-item-content" rel="noopener" ng-click="Toast('Thanks for sharing!'); $mdBottomSheet.hide();">
+          <md-icon>{% include icon-facebook.svg %}</md-icon>
+          <div class="md-grid-text"> Facebook </div>
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-button ng-href="https://plus.google.com/share?url={*::link*}" target="_blank" class="md-grid-item-content" aria-label="Google+" rel="noopener" ng-click="Toast('Thanks for sharing!'); $mdBottomSheet.hide();">
+          <md-icon>{% include icon-gplus.svg %}</md-icon>
+          <div class="md-grid-text"> Google+ </div>
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-button ng-href="https://twitter.com/share?url={*::link*}&#MukilElango" target="_blank" class="md-grid-item-content" aria-label="Twitter" rel="noopener" ng-click="Toast('Thanks for sharing!'); $mdBottomSheet.hide();">
+          <md-icon>{% include icon-twitter.svg %}</md-icon>
+          <div class="md-grid-text"> Twitter </div>
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-button class="md-grid-item-content" aria-label="Link" ng-click="$mdBottomSheet.hide($index);">
+          <md-icon><i class="material-icons">link</i></md-icon>
+          <div class="md-grid-text"> Copy Link </div>
+        </md-button>
+      </md-list-item>
+
+    </md-list>
+  </div>
+</md-bottom-sheet>
