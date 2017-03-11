@@ -2,6 +2,7 @@
 set -e # halt script on error
 
 npm install -g lighthouse
+npm install -g firebase-tools
 bundle install
 bundle exec jekyll build
 lighthouse --output=pretty https://mukilane.github.io
