@@ -4,3 +4,4 @@ _site
 public
 node_modules
 amp
+functions/node_modules
