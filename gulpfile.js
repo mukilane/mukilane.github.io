@@ -16,21 +16,25 @@ const gutil = require('gulp-util');
 const del = require('del');
 const compiler = require('google-closure-compiler-js').gulp();
 const spawn = require('child_process').spawn;
+const ngAnnotate = require('gulp-ng-annotate');
+const replace = require('gulp-replace');
 
 // Clean the amp folder to prevent dulpication during Jekyll build
 gulp.task('clean', () => {
 	return del(['amp/**/*']);
 });
 
-// Compile JS using Google Closure Compiler
+// Compile JS using Google Closure Compiler 
+// Using ng-Annotate to annotate angular dependencies
 gulp.task('compile', ['clean'], () => {
   return gulp.src('./scripts/main.js', {base: './'})
+  		.pipe(ngAnnotate())
+  		.pipe(replace(/["']ngInject["'];*/g, ""))
       .pipe(compiler({
-          compilationLevel: 'WHITESPACE_ONLY',
+          compilationLevel: 'SIMPLE',
           warningLevel: 'DEFAULT',
           jsOutputFile: 'main.min.js',
-          createSourceMap: true,
-          angularPass: true
+          createSourceMap: true
         }))
       .pipe(gulp.dest('./scripts'));
 });

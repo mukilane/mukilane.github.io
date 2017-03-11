@@ -3,6 +3,7 @@
 var app = angular.module('port', ['ngMaterial', 'ngAnimate', 'firebase']);
 // Angular Confiurations
 app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $compileProvider, $locationProvider, $controllerProvider) {
+	"ngInject";
 	// Reference for Controller Provider for Dynamic(Lazy) dependency injection
 	app.controllerProvider = $controllerProvider;
 	// Overriding Default theme
@@ -33,15 +34,9 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 	$compileProvider.commentDirectivesEnabled(false);
 
 	$locationProvider.hashPrefix('');
-
 });
 
-// Main Controller
-app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog) {
-
-	// Whether the main grid is painted
-	$scope.gridLay = true;
-
+app.run(function() {
 	// Set theme using Local Storage 
 	if(!localStorage.getItem('theme')) { 
 		// Default Theme
@@ -52,7 +47,14 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog
 		$scope.isDark = true;
 		$scope.theme = { bg: 'grey-800', footer: 'grey-700' };
 	} 
-	// 
+});
+
+// Main Controller
+app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog) {
+	"ngInject";
+	// Whether the main grid is painted
+	$scope.gridLay = true;
+	
 	$scope.setDark = function(e) {
 		$scope.isDark = e;
 		if(e) {
@@ -114,6 +116,7 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog
 });
 // Controller for feeback form
 app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dialog) {
+	"ngInject";
 	var auth = $firebaseAuth();
 	var ref = firebase.database().ref("feedback");
 	$scope.close = function() {
@@ -149,6 +152,7 @@ app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dia
 
 // Controller for search
 app.controller('search', function($scope, $firebaseObject) {
+	"ngInject";
 	$scope.posts = [];
 	var ref = firebase.database().ref('data/posts').once('value').then(function(snapshot) {
   	var obj =  snapshot.val();
@@ -160,6 +164,7 @@ app.controller('search', function($scope, $firebaseObject) {
 
 // Controller for Share feature
 app.controller('share', function($scope, Dialog, Toast, $mdMedia, $mdBottomSheet) {
+	"ngInject";
 	$scope.link = window.location.href;
 	$scope.title = angular.element(window.document)[0].title;
 	$scope.Toast = Toast;
@@ -194,11 +199,11 @@ app.controller('share', function($scope, Dialog, Toast, $mdMedia, $mdBottomSheet
 	};
 });
 //Controller for Projects
-app.controller('ProjectCtrl', function (Panel) {
+app.controller('ProjectCtrl', ['Panel', function (Panel) {
 	this.show = function(dest) {
 		Panel(dest);
 	}
-});
+}]);
 
 // Factory for displaying toasts
 app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
@@ -248,7 +253,7 @@ app.factory('Dialog', ['$mdDialog', 'Toast' , function($mdDialog, Toast) {
 // Factory for displaying Panels
 app.factory('Panel', ['$mdPanel', function($mdPanel) {
 	// Controller for Panel instance
-	function PanelCtrl(mdPanelRef) { 
+	/*@ngInject*/ function PanelCtrl(mdPanelRef) { 
 		this.close = function() {
 			mdPanelRef && mdPanelRef.close().then(function() {
 				mdPanelRef.destroy();
@@ -281,7 +286,7 @@ app.factory('Panel', ['$mdPanel', function($mdPanel) {
 }]);
 
 // Directives Declaration
-app.directive('tile', function() {
+app.directive('tile', () => {
 	return {
 		restrict: 'E',
 		transclude: true,
@@ -295,7 +300,7 @@ app.directive('tile', function() {
 	}
 });
 
-app.directive('imageTile', function() {
+app.directive('imageTile', () => {
 	return {
 		restrict: 'E',
 		transclude: true,
@@ -311,7 +316,7 @@ app.directive('imageTile', function() {
 	}
 });
 
-app.directive('tileImage', function () {
+app.directive('tileImage', () => {
 	return {
 		restrict: 'E',
 		template: "<img ng-src='{{::source}}' style='opacity:{{::opacity}}; width: {{::width}};'/>",
@@ -323,7 +328,7 @@ app.directive('tileImage', function () {
 	}
 });
 
-app.directive('tileHeader', function() {
+app.directive('tileHeader', () => {
 	return {
 		restrict: 'E',
 		transclude: true,
@@ -335,7 +340,7 @@ app.directive('tileHeader', function() {
 	}
 });
 
-app.directive('tileFooter', function() {
+app.directive('tileFooter', () => {
 	return {
 		restrict: 'E',
 		transclude: true,
@@ -349,7 +354,7 @@ app.directive('tileFooter', function() {
 	}
 });
 
-app.directive('articleImage', function() {
+app.directive('articleImage', () => {
 	return {
 		restrict: 'E',
 		template: 	`<div style='background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}; background: {{::bg}}'>
@@ -377,7 +382,7 @@ app.directive('articleImage', function() {
 });
 
 //PJAX events listener
-app.directive('pjaxNav', function($compile){ 
+app.directive('pjaxNav', ['$compile', function($compile){ 
 	return {
 		restrict: 'A', 
 		link: function(scope, elem) {			
@@ -399,7 +404,7 @@ app.directive('pjaxNav', function($compile){
 			});
 		}
 	};
-});
+}]);
 
 // Service Worker Registration
 // Adapted from https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js

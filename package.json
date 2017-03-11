@@ -19,6 +19,9 @@
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-replace": "^0.5.4",
+    "ng-annotate": "^1.2.1",
     "run-sequence": "^1.2.2",
     "sw-precache": "^4.2.3"
   },
