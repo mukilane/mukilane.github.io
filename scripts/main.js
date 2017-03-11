@@ -36,8 +36,12 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 	$locationProvider.hashPrefix('');
 });
 
-app.run(function($scope) {
+// Main Controller
+app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog) {
 	"ngInject";
+	// Whether the main grid is painted
+	$scope.gridLay = true;
+	
 	// Set theme using Local Storage 
 	if(!localStorage.getItem('theme')) { 
 		// Default Theme
@@ -48,14 +52,7 @@ app.run(function($scope) {
 		$scope.isDark = true;
 		$scope.theme = { bg: 'grey-800', footer: 'grey-700' };
 	} 
-});
 
-// Main Controller
-app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog) {
-	"ngInject";
-	// Whether the main grid is painted
-	$scope.gridLay = true;
-	
 	$scope.setDark = function(e) {
 		$scope.isDark = e;
 		if(e) {
@@ -305,9 +302,7 @@ app.directive('imageTile', () => {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: `<div class='tile-wrap' style='background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}'>
-								<div class='image-tile' ng-transclude></div>
-							</div>`,
+		template: "<div class='tile-wrap' style='background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}'><div class='image-tile' ng-transclude></div></div>",
 		scope: {
 			image: '@',
 			opacity: '@',
@@ -345,10 +340,7 @@ app.directive('tileFooter', () => {
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: 	`<div layout='row' layout-align='space-between center'>
-									<span class='md-subhead' ng-transclude></span>
-									<span><i class='material-icons'>chevron_right</i>
-								</div>`,
+		template: 	"<div layout='row' layout-align='space-between center'><span class='md-subhead' ng-transclude></span><span><i class='material-icons'>chevron_right</i></div>",
 		scope: {
 			external: '@'
 		}
@@ -358,10 +350,7 @@ app.directive('tileFooter', () => {
 app.directive('articleImage', () => {
 	return {
 		restrict: 'E',
-		template: 	`<div style='background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}; background: {{::bg}}'>
-									<img ng-src='{{::source}}' alt='{{::alt}}' width={{::width}} height={{::height}}/>
-									<div class='md-caption'> {{::alt}}</div>
-								</div>`,
+		template: 	"<div style='background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}; background: {{::bg}}'><img ng-src='{{::source}}' alt='{{::alt}}' width={{::width}} height={{::height}}/><div class='md-caption'> {{::alt}}</div></div>",
 		scope: {
 			source: '@',
 			width: '@',
