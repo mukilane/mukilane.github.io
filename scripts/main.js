@@ -36,7 +36,8 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 	$locationProvider.hashPrefix('');
 });
 
-app.run(function() {
+app.run(function($scope) {
+	"ngInject";
 	// Set theme using Local Storage 
 	if(!localStorage.getItem('theme')) { 
 		// Default Theme
