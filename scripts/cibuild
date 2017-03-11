@@ -6,4 +6,4 @@ npm install -g firebase-tools
 bundle install
 bundle exec jekyll build
 lighthouse --output=pretty https://mukilane.github.io
-firebase --token $FIREBASE_TOKEN database:set /data/posts _site/assets/posts.json --confirm
+firebase database:set /data/posts _site/assets/posts.json --confirm --token $FIREBASE_TOKEN
