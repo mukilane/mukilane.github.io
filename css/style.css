@@ -2,7 +2,7 @@
 
 html {
   overflow-y: hidden !important; 
-  background: #FAFAFA;
+  background: rgb(255, 255, 255);
 }
 [ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){
     display:none !important; /*Fallback style incase MD stylsheet fails to load*/
@@ -34,7 +34,7 @@ footer {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap-reverse;
-  padding: 32px 16px;
+  padding: 4vw 5vw;
 }
 footer a{
   color: inherit !important;
@@ -136,7 +136,7 @@ tile-footer {
 .adj {
   position: relative;
   height: 50px;
-  opacity: 0.67;
+  opacity: 0.77;
   letter-spacing: -0.01em;
 }
 .adj-mini {

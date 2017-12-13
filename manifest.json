@@ -17,8 +17,8 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#FAFAFA",
-  "theme_color": "#FAFAFA",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
   "gcm_sender_id": "103953800507",
   "dir": "ltr",
   "lang": "en"

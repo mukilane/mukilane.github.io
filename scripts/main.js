@@ -12,9 +12,9 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 
 	// Browser Color   
 	$mdThemingProvider.enableBrowserColor({
-    theme: 'default', 
-    palette: 'background', 
-    hue: '50'
+		theme: 'default', 
+		palette: 'background', 
+		hue: '50'
   });
 
 	// Overriding Interpolation symbols to avoid conflict with Liquid tags
@@ -46,7 +46,7 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog
 	if(!localStorage.getItem('theme')) { 
 		// Default Theme
 		$scope.isDark = false;
-		$scope.theme = { bg: 'grey-50', footer: 'grey-200'};
+		$scope.theme = { bg: 'grey-A100', footer: 'grey-A100'};
 	} else {
 		// Dark Theme
 		$scope.isDark = true;

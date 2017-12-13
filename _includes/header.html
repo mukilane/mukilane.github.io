@@ -6,14 +6,14 @@
       {% else %}{{ escape }}
       {% endif %}
     </div>
-    <div layout="row" style="opacity: 0.67">
+    <div layout="row" style="opacity: 0.87">
       <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs ng-cloak>
         <md-nav-item md-nav-click="" onclick="pjax.invoke('/blog/', 'main')" name="About">BLOG</md-nav-item>
         <md-nav-item md-nav-click="" onclick="pjax.invoke('/portfolio/', 'main')" name="Projects">PORTFOLIO</md-nav-item>
         <md-nav-item md-nav-click="" onclick="pjax.invoke('/contact/', 'main')" name="Contact">CONTACT</md-nav-item>
       </md-nav-bar>
 
-      <md-menu md-position-mode="target-right target" ng-cloak>
+      <!-- <md-menu md-position-mode="target-right target" ng-cloak>
        <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open theme menu">
         <i class="material-icons">brightness_4</i>
         <md-tooltip>Set Theme</md-tooltip>
@@ -22,7 +22,7 @@
          <md-button class="md-icon-button" aria-label="Night Mode" ng-disabled="isDark" ng-click="setDark(true)" style="margin: 0"><i class="material-icons">lens</i></md-button>
          <md-button class="md-icon-button" aria-label="Light Mode" ng-disabled="!isDark" ng-click="setDark(false)" style="margin: 0"><i class="material-icons">panorama_fish_eye</i></md-button>
        </md-menu-content>
-      </md-menu>
+      </md-menu> -->
 
       <md-menu md-position-mode="target-right target" hide-gt-xs ng-cloak>
         <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">

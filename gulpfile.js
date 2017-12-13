@@ -19,6 +19,28 @@ const spawn = require('child_process').spawn;
 const ngAnnotate = require('gulp-ng-annotate');
 const replace = require('gulp-replace');
 
+
+gulp.task('compileTemp', () => {
+	return gulp.src('./scripts/main.js', {base: './'})
+			.pipe(ngAnnotate())
+			.pipe(replace(/["']ngInject["'];*/g, ""))
+		.pipe(compiler({
+			compilationLevel: 'SIMPLE',
+			warningLevel: 'DEFAULT',
+			jsOutputFile: 'main.min.js',
+			createSourceMap: true
+		  }))
+		.pipe(gulp.dest('./scripts'));
+  });
+  
+    gulp.task('serve', ['compileTemp'], (callback) => {
+	  exec('bundle exec jekyll serve', (err, stdout, stderr) => {
+		  gutil.log(stderr);
+		  gutil.log(stdout);
+		  callback(err);
+	  });
+  });
+
 // Clean the amp folder to prevent dulpication during Jekyll build
 gulp.task('clean', () => {
 	return del(['amp/**/*']);
