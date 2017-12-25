@@ -34,7 +34,7 @@ footer {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap-reverse;
-  padding: 4vw 5vw;
+  padding: 5vw;
 }
 footer a{
   color: inherit !important;
@@ -51,6 +51,12 @@ footer a{
   background: #E0E0E0;
   border-radius: 50%;
   margin: 8px 16px 8px 0;
+}
+.foot-right a:nth-last-child() {
+  margin: 8px 0;
+}
+.foot-border {
+  
 }
 .home {      
   opacity: 0.67;
@@ -84,7 +90,8 @@ md-grid-tile {
   cursor: pointer;
 }
 md-grid-tile:hover {
-  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
+  opacity: 0.87;
+  /* box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12); */
   z-index: 10;
   transition: all .3s ease-in;
 }

@@ -5,20 +5,20 @@ permalink: /blog/
 ---
 
 <md-grid-list
-      md-cols="1" md-cols-sm="2" md-cols-gt-sm="6" md-cols-gt-md="8"
+      md-cols="1" md-cols-sm="2" md-cols-gt-sm="6" md-cols-gt-md="6"
       md-cols-gt-lg="8" md-row-height-gt-md="3:4" md-row-height="16:9" 
-      md-gutter="2px" md-on-layout="show($event)" ng-hide="gridLay">
+      md-gutter="8px" md-gutter-xs="2px" md-on-layout="show($event)" ng-hide="gridLay">
 	
   {% for post in site.posts %}
   <md-grid-tile md-rowspan="2" md-colspan="2"
                 md-colspan-sm="1" md-colspan-xs="1"
-                md-rowspan-md="4" md-rowspan-sm="2" md-rowspan-xs="1"
-                class="post-tile" md-colors="{background: 'grey-700'}" >
+                md-rowspan-md="4" md-rowspan-gt-md="2" md-rowspan-sm="2" md-rowspan-xs="1"
+                class="post-tile" md-colors="{background: 'grey-300'}" >
     <div class="tile-wrap" layout="column" layout-xs="row" md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
       <div flex='60' flex-xs='50'>
       </div>
       <div layout="column" flex="45" flex-xs="50" class="theader" layout-align="flex-start stretch" md-colors="{background: '{{ post.color }}'}" >
-        <div class="md-title tt">{{post.title}}</div>
+        <div class="md-headline">{{post.title}}</div>
         <h3 class='md-body-1' style="opacity:0.54;margin:8px 0;">{{ post.category | capitalize }} | {{ post.date | date_to_string }}</h3>
         <div class="md-subhead tdes">{{post.description}}</div>
       </div>
@@ -31,6 +31,5 @@ permalink: /blog/
 .theader {
   padding: 16px;
 }
-.tt { opacity: 0.87 }
 .tdes { opacity: 0.67 }
 </style>
