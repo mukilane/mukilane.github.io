@@ -1,0 +1,28 @@
+---
+---
+[
+    {
+        "date": "December 17, 2017",
+        "title": "Day 1",
+        "displayDate": "17",
+        "displayMonth": "Dec",
+        "description": "description",
+        "url": "https://github.com/mukilane"
+    },
+    {
+        "date": "December 18, 2017",
+        "title": "Day 2",
+        "displayDate": "18",
+        "displayMonth": "Dec",
+        "description": "description",
+        "url": "https://github.com/mukilane"
+    },
+    {
+        "date": "December 19, 2017",
+        "title": "Day 3",
+        "displayDate": "19",
+        "displayMonth": "Dec",
+        "description": "description",
+        "url": "https://github.com/mukilane"
+    }
+]

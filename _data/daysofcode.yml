@@ -1,0 +1,56 @@
+- title: Day 1, Sunday
+  url: https://github.com/mukilane/projects/electron/Calculator
+  displayDay: 17
+  displayMonth: Dec
+  progress: Polished an electron app - Calculator. Started building a native Google assistant using GTK+Python
+  thoughts: Native Gtk app development is a new frontier for me. Hoping to develop a decent polished Google assistant desktop client.
+  color: cyan-400
+  
+- title: Day 2, Monday
+  url: https://github.com/mukilane/projects/arduino/webhooks
+  displayDay: 18
+  displayMonth: Dec
+  progress: Made a simple arduino webhook setup, where a press of a button triggers an IFTTT webhook
+  thoughts: Arduino development is easy, though the python-serial communication was a learning today(simple though). Also interfacing with LCD was fun.
+  color: purple-400
+
+- title: Day 3, Tuesday
+  url: https://github.com/mukilane/projects/arduino/processing
+  displayDay: 19
+  displayMonth: Dec
+  progress: Made a simple interface for getting the orientation of the Accelerometer (ADXL335) in Text through Processing.
+  thoughts: Interfacing Arduino and Processing is easy and fun. Working with the drawing APIS of Processing was a learning today.
+  color: amber-400
+
+- title: Day 4, Wednesday
+  url: https://github.com/mukilane/projects/arduino/level
+  displayDay: 20
+  displayMonth: Dec
+  progress: Made a level guage using Arduino + ADXL335 Accelerometer and display the angle using Processing.
+  thoughts: Working with processing is always fun.
+  color: red-400
+
+- title: Day 5, Saturday
+  url: https://github.com/mukilane/jarvis
+  displayDay: 23
+  displayMonth: Dec
+  progress: Updated the Assistant SDK and added Pubsub and Cloud functions for Jarvis
+  thoughts: PubSub is a new exciting frontier with great potential for IOT
+  color: deep-purple-400
+
+- title: Day 6, Sunday
+  url: https://github.com/mukilane/projects/arduino/mouse
+  displayDay: 23
+  displayMonth: Dec
+  progress: Started doing a Acclerometer powered mouse with Arduino.
+  thoughts: Though of mimicking a Wii controller using my accelerometer
+  color: pink-400
+  
+- title: Day 7, Tuesday
+  url: https://github.com/mukilane/mukilane.github.io
+  displayDay: 26
+  displayMonth: Dec
+  progress: Created a new timeline log for this challenge on my blog.
+  thoughts: Wanted my log to be more visually appealing and interactive.
+  color: blue-grey-400
+  

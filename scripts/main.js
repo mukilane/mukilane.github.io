@@ -203,6 +203,27 @@ app.controller('ProjectCtrl', ['Panel', function (Panel) {
 	}
 }]);
 
+// Controller for 100DaysOfCode
+app.controller('HdocCtrl', function($scope, $http) {
+	$scope.date = new Date();
+	this.myDate = new Date();
+	this.minDate = new Date(
+		this.myDate.getFullYear(),
+		this.myDate.getMonth() - 2,
+		this.myDate.getDate()
+	  );
+	  this.maxDate = new Date(
+		this.myDate.getFullYear(),
+		this.myDate.getMonth() - 1,
+		this.myDate.getDate()
+	  );
+	// $http.get('/assets/100daysofcode.json')
+	// 	.then((res) => {
+	// 		$scope.data = res.data;
+	// 	});
+});
+
+
 // Factory for displaying toasts
 app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
   return function(msg, action) {
