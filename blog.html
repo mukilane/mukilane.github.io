@@ -4,6 +4,10 @@ title: Blog
 permalink: /blog/
 ---
 
+<div ng-controller="notifications">
+  <md-button ng-click="enableNotifications()">NOTIFICATIONS<i class="material-icons">notifications_active</i></md-button>
+</div>
+
 <md-grid-list
       md-cols="1" md-cols-sm="2" md-cols-gt-sm="6" md-cols-gt-md="6"
       md-cols-gt-lg="8" md-row-height-gt-md="3:4" md-row-height="16:9" 
@@ -25,6 +29,7 @@ permalink: /blog/
     </div>
   </md-grid-tile>
   {% endfor %}
+
 		
 </md-grid-list>
 <style type="text/css">
