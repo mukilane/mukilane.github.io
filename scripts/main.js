@@ -123,6 +123,7 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog
 	$scope.go = function (dest) {
 		$window.location.href = $sce.trustAsResourceUrl(dest);
 	};
+
 });
 // Controller for feeback form
 app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dialog) {
@@ -158,6 +159,31 @@ app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dia
     	console.log('Error!');
     });
   };
+});
+
+// Controller for Notifications
+app.controller('notifications', function($scope, $firebaseObject) {
+	"ngInject";
+	const messaging = firebase.messaging();
+	$scope.enableNotifications = () => {
+		messaging.requestPermission()
+			.then(() => {
+				console.log('Granted');
+				$scope.getToken();
+			})
+			.catch((err) => console.log(err));
+	}
+	$scope.getToken = () => {
+		messaging.getToken()
+			.then((currentToken) => {
+				if(currentToken) {
+					firebase.database().ref('data/users/notificationToken/').push(currentToken);
+					firebase.database().ref('/data/users/notificationToken').once('value')
+						.then((data) => console.log(data.val()));
+				}
+			})
+	}
+	messaging.onMessage((payload) => console.log(payload));
 });
 
 // Controller for search
