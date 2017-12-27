@@ -13,6 +13,10 @@ module.exports = {
   stripPrefix: '_site/',
   verbose: true,
   ignoreUrlParametersMatching: [/./],
+  //Template file
+  templateFilePath: './scripts/service-worker.tmpl',
+  // Scripts to be imported
+  importScripts: ['./node_modules/sw-offline-google-analytics/build/importScripts/sw-offline-google-analytics.prod.v0.0.25.js'],
   // CDN Files to be cached
   runtimeCaching: [{
     urlPattern: /^https:\/\/ajax\.googleapis\.com\/ajax\/libs/,
