@@ -2,7 +2,11 @@
 set -e # halt script on error
 
 npm install -g firebase-tools
+npm install -g lighthouse
 bundle install
 bundle exec jekyll build
+bundle exec jekyll serve
+lighthouse http://localhost:4000/
+killall jekyll
 firebase use mukilane
 firebase database:set /data/posts _site/assets/posts.json --confirm --token $FIREBASE_TOKEN
