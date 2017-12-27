@@ -1,17 +1,17 @@
 <md-toolbar md-scroll-shrink md-colors="{background: '{* ::theme.bg *}'}" style="min-height: 64px;" >
   <div class="md-toolbar-tools" layout-align="space-between center" style="max-height: 64px !important; height: 64px !important;">
-    <div onclick="pjax.invoke('/', 'main')" class="home md-headline">
-      {% if page.title %}
-        {{site.title}}
-      {% else %}{{ escape }}
-      {% endif %}
+    <div ng-click="navigate('/')" class="home md-headline">
+      <div ng-hide="hideHomeButton">
+        {{ site.title }}
+      </div>
     </div>
     <div layout="row" style="opacity: 0.87">
       <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs ng-cloak>
-        <md-nav-item md-nav-click="" onclick="pjax.invoke('/blog/', 'main')" name="About">BLOG</md-nav-item>
-        <md-nav-item md-nav-click="" onclick="pjax.invoke('/portfolio/', 'main')" name="Projects">PORTFOLIO</md-nav-item>
-        <md-nav-item md-nav-click="" onclick="pjax.invoke('/contact/', 'main')" name="Contact">CONTACT</md-nav-item>
+        <md-nav-item md-nav-click="navigate('/blog/')" aria-label="Blog" name="About">BLOG</md-nav-item>
+        <md-nav-item md-nav-click="navigate('/portfolio/')" aria-label="Portfolio" name="Projects">PORTFOLIO</md-nav-item>
+        <md-nav-item md-nav-click="navigate('/contact/')" aria-label="Contact" name="Contact">CONTACT</md-nav-item>
       </md-nav-bar>
+
 
       <!-- <md-menu md-position-mode="target-right target" ng-cloak>
        <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open theme menu">
@@ -30,21 +30,21 @@
         </md-button>
         <md-menu-content width="2" >
           <md-menu-item >
-            <md-button onclick="pjax.invoke('/blog/', 'main')">
+            <md-button ng-click="navigate('/blog/')">
               <div layout="row" flex>
                 <p flex>Blog</p>
               </div>
             </md-button>
           </md-menu-item>
           <md-menu-item >
-            <md-button onclick="pjax.invoke('/contact/', 'main')">
+            <md-button ng-click="navigate('/contact/')">
               <div layout="row" flex>
                 <p flex>Contact</p>
               </div>
             </md-button>
           </md-menu-item>
           <md-menu-item >
-            <md-button onclick="pjax.invoke('/portfolio/', 'main')">
+            <md-button ng-click="navigate('/portfolio/')">
               <div layout="row" flex>
                 <p flex>Projects</p>
               </div>

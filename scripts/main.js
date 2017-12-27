@@ -65,6 +65,18 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog
 		}
 	}
 
+	$scope.isHomePage = () => {
+		if(window.location.pathname === "/") return true;
+		return false;
+	}
+
+	// Navigation 
+	$scope.navigate = (page) => {
+		pjax.invoke(page, 'main');
+		$scope.hideHomeButton = $scope.isHomePage();
+	}
+	$scope.hideHomeButton = $scope.isHomePage();
+
 	/*	var gridwatch = $scope.$watch('gridLay', () => {
 		gridwatch();
 	});*/
