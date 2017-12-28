@@ -16,12 +16,13 @@ twitter_username: mukilane
 github_username:  mukilane
 greeting: "" # Display special messages
 angular_version: "1.6.2" # Version of AngularJS used 
-firebase_version: "3.6.10"
+firebase_version: "4.8.1"
 exclude: ["package.json",
           "node_modules",
           "gulpfile.js",
           "sw-precache-config.js",
-          "vendor"]
+          "vendor",
+          "functions"]
 ampdir: amp # Amp files are stored here
 # Collections
 collections:

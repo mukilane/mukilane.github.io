@@ -4,8 +4,15 @@ title: Blog
 permalink: /blog/
 ---
 
-<div ng-controller="notifications">
-  <md-button ng-click="enableNotifications()">NOTIFICATIONS<i class="material-icons">notifications_active</i></md-button>
+<div layout="row" layout-align="space-between center" class="notify" ng-hide="isNotificationEnabled" ng-controller="notifications">
+  <div style="padding: 0 16px">
+    <i class="material-icons" style="color: #0288D1; vertical-align: -6px;">notifications_active</i>
+    <span>Stay in the loop! Enable Push Notifications to know when new posts arrive.</span>
+  </div>
+  <div>
+    <md-button ng-click="isNotificationEnabled=true">LATER</md-button>
+    <md-button class="md-raised md-primary" ng-click="enableNotifications()">ENABLE</md-button>
+  </div>
 </div>
 
 <md-grid-list
@@ -37,4 +44,8 @@ permalink: /blog/
   padding: 16px;
 }
 .tdes { opacity: 0.67 }
+.notify {
+  margin-bottom: 8px;
+  background-color: #eee;
+}
 </style>
