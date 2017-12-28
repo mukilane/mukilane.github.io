@@ -4,13 +4,23 @@
   "description": "A place for my works and articles",
   "icons": [
     {
-      "src": "/assets/launcher-96.png",
+      "src": "/assets/icons/launcher_96.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "/assets/launcher-144.png",
+      "src": "/assets/icons/launcher_144.png",
       "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/launcher_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/launcher_512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
