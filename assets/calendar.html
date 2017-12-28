@@ -1,0 +1,12 @@
+---
+---
+
+<div class="md-headline">Select a Day</div>
+<table class="md-calendar">
+    <tbody>
+        <span style="display:none">{% increment counter %}</span>
+        {% for j in (1..10) %} {% tablerow i in (1..7) %}
+        <span class="md-calendar-date-selection-indicator" ng-click="scrollTo({{counter}})">{% increment counter %}</span>
+        {% endtablerow %} {% endfor%}
+    </tbody>
+</table>

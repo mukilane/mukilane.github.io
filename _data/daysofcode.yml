@@ -53,4 +53,19 @@
   progress: Created a new timeline log for this challenge on my blog.
   thoughts: Wanted my log to be more visually appealing and interactive.
   color: blue-grey-400
-  
+
+- title: Day 8, Wednesday
+  url: https://github.com/mukilane/mukilane.github.io
+  displayDay: 27
+  displayMonth: Dec
+  progress: Worked on push notifications, Firebase cloudstore, FCM and google analytics for my blog.
+  thoughts: Working with Firestore was easy. Push notifications is one of the important features for my blog that I wanted to do. Made good progress today
+  color: amber-400  
+
+- title: Day 9, Thursday
+  url: https://github.com/mukilane/mukilane.github.io
+  displayDay: 28
+  displayMonth: Dec
+  progress: Implemented Push notifications. Implemented a day picker for the log.
+  thoughts: Finally push notification support is done. Cloud Functions makes it easy to set up the backend needed to push the notifications.
+  color: cyan-400  

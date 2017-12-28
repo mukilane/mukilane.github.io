@@ -15,7 +15,7 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 		theme: 'default', 
 		palette: 'background', 
 		hue: '50'
-  });
+  	});
 
 	// Overriding Interpolation symbols to avoid conflict with Liquid tags
 	$interpolateProvider.startSymbol('{*');
@@ -268,24 +268,32 @@ app.controller('ProjectCtrl', ['Panel', function (Panel) {
 }]);
 
 // Controller for 100DaysOfCode
-app.controller('HdocCtrl', function($scope, $http) {
-	$scope.date = new Date();
-	this.myDate = new Date();
-	this.minDate = new Date(
-		this.myDate.getFullYear(),
-		this.myDate.getMonth() - 2,
-		this.myDate.getDate()
-	  );
-	  this.maxDate = new Date(
-		this.myDate.getFullYear(),
-		this.myDate.getMonth() - 1,
-		this.myDate.getDate()
-	  );
+app.controller('HdocCtrl', function($scope, $http, $anchorScroll, $location) {
+	
+	$scope.scrollTo = (day) => {
+		var hash = 'day' + day;
+		if($location.hash() !== hash) {
+			$location.hash(hash);
+		} else {
+			$anchorScroll();
+		}
+	}
+
 	// $http.get('/assets/100daysofcode.json')
 	// 	.then((res) => {
 	// 		$scope.data = res.data;
 	// 	});
 });
+
+app.directive('calendar', function($mdSticky, $compile) {
+    return {
+      restrict: 'E',
+      templateUrl: '/assets/calendar.html',
+      link: function(scope,element) {
+        $mdSticky(scope, element);
+      }
+    };
+  });
 
 
 // Factory for displaying toasts

@@ -1,34 +1,40 @@
 ---
-layout: page
-permalink: /articles/100-days-of-code/
-title: 100 Days Of Code
-type: article
+layout: page 
+permalink: /articles/100-days-of-code/ 
+title: 100 Days Of Code 
+type: article 
 ---
 
-<div layout='row' ng-controller="HdocCtrl">
-    <div class="chooser" flex="40">
-        <md-calendar ng-model="HdocCtrl.myDate" md-min-date="HdocCtrl.minDate" md-max-date="HdocCtrl.maxDate"></md-calendar>
+<div layout="row" layout-align="center start" ng-controller="HdocCtrl">
+    <div class="chooser" flex="30">
+        <!-- <md-calendar ng-hide ng-model="HdocCtrl.myDate" md-min-date="HdocCtrl.minDate" md-max-date="HdocCtrl.maxDate"></md-calendar> -->
+        <div style="margin: 0px auto">
+            <calendar></calendar>
+        </div>
     </div>
-    <div class="log" flex="60">
-    <md-list flex>
-        {% for codeday in site.data.daysofcode %}
-        <md-list-item class="md-3-line">
-            <div class="md-avatar">
-                <span class="date">{{ codeday.displayDay }}</span>
-                <span class="month">{{ codeday.displayMonth }}</span>
-            </div>
-            <div class="md-list-item-text" layout="column">
-                <md-card md-colors="{background: '{{ codeday.color }}'}">
-                    <md-card-title class="md-title">{{ codeday.title }}</md-card-title>
-                    <md-card-content>
-                        <div><span style="font-weight: 500">Progress: </span>{{codeday.progress}}</div>
-                        <div><span style="font-weight: 500">Thoughts: </span>{{codeday.thoughts}}</div>
-                    </md-card-content>
-                </md-card>
-            </div>
-        </md-list-item>
-        {% endfor %}
-    </md-list>
+
+    <div class="log" flex="70">
+        <md-list flex>
+            {% for codeday in site.data.daysofcode %}
+            <md-list-item class="md-3-line" id="day{{forloop.index}}">
+                <div class="md-avatar">
+                    <span class="date">{{ codeday.displayDay }}</span>
+                    <span class="month">{{ codeday.displayMonth }}</span>
+                </div>
+                <div class="md-list-item-text" layout="column">
+                    <md-card md-colors="{background: '{{ codeday.color }}'}">
+                        <md-card-title class="md-title">{{ codeday.title }}</md-card-title>
+                        <md-card-content>
+                            <div>
+                                <span style="font-weight: 500">Progress: </span>{{codeday.progress}}</div>
+                            <div>
+                                <span style="font-weight: 500">Thoughts: </span>{{codeday.thoughts}}</div>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </md-list-item>
+            {% endfor %}
+        </md-list>
     </div>
 </div>
 
@@ -38,26 +44,52 @@ type: article
         text-align: center;
         margin-top: 24px !important;
     }
+
     .date {
         font-size: 32px;
         font-weight: 500;
     }
+
     .month {
         opacity: 0.87;
         font-size: 20px;
     }
+
     .md-list-item-text {
         margin-left: 50px;
     }
+
     .article {
         width: 100%;
         max-width: 100%;
     }
+
     md-card-title {
         padding: 16px !important;
     }
+
     .log {
         max-height: 600px;
         overflow-y: auto;
+    }
+    .md-calendar {
+        background-color: #f1f1f1;
+    }
+    .md-calendar tbody,
+    .md-calendar td,
+    .md-calendar tr {
+        height: 44px;
+        width: 44px;
+        text-align: center;
+        padding: 0;
+        border: none;
+        box-sizing: content-box;
+        font-size: 12px;
+    }
+
+    .md-calendar-date-selection-indicator:focus {
+        background: rgb(63, 81, 181);
+        color: rgba(255, 255, 255, 0.87);
+        border-color: transparent;
     }
 </style>
