@@ -3,39 +3,49 @@ layout: page
 permalink: /articles/100-days-of-code/ 
 title: 100 Days Of Code 
 type: article 
+description: Round 1
 ---
 
-<div layout="row" layout-align="center start" ng-controller="HdocCtrl">
-    <div class="chooser" flex="30">
-        <!-- <md-calendar ng-hide ng-model="HdocCtrl.myDate" md-min-date="HdocCtrl.minDate" md-max-date="HdocCtrl.maxDate"></md-calendar> -->
-        <div style="margin: 0px auto">
-            <calendar></calendar>
-        </div>
-    </div>
+<div ng-controller="HdocCtrl">
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Log">
+            <md-content class="md-padding" layout="row">
+                <div class="chooser" flex="30">
+                    <!-- <md-calendar ng-hide ng-model="HdocCtrl.myDate" md-min-date="HdocCtrl.minDate" md-max-date="HdocCtrl.maxDate"></md-calendar> -->
+                    <div style="margin: 0px auto">
+                        <calendar></calendar>
+                    </div>
+                </div>
+            
+                <div class="log" flex="70">
+                    <md-list flex>
+                        {% for codeday in site.data.daysofcode %}
+                        <md-list-item class="md-3-line" id="day{{forloop.index}}">
+                            <div class="md-avatar">
+                                <span class="date">{{ codeday.displayDay }}</span>
+                                <span class="month">{{ codeday.displayMonth }}</span>
+                            </div>
+                            <div class="md-list-item-text" layout="column">
+                                <md-card md-colors="{background: '{{ codeday.color }}'}">
+                                    <md-card-title class="md-title">{{ codeday.title }}</md-card-title>
+                                    <md-card-content>
+                                        <div>
+                                            <span style="font-weight: 500">Progress: </span>{{codeday.progress}}</div>
+                                        <div>
+                                            <span style="font-weight: 500">Thoughts: </span>{{codeday.thoughts}}</div>
+                                    </md-card-content>
+                                </md-card>
+                            </div>
+                        </md-list-item>
+                        {% endfor %}
+                    </md-list>
+                </div>
+            </md-content>
+        </md-tab>
+        <md-tab label="Works"></md-tab>
+        <md-tab label="Highlights"></md-tab>
+    </md-tabs>
 
-    <div class="log" flex="70">
-        <md-list flex>
-            {% for codeday in site.data.daysofcode %}
-            <md-list-item class="md-3-line" id="day{{forloop.index}}">
-                <div class="md-avatar">
-                    <span class="date">{{ codeday.displayDay }}</span>
-                    <span class="month">{{ codeday.displayMonth }}</span>
-                </div>
-                <div class="md-list-item-text" layout="column">
-                    <md-card md-colors="{background: '{{ codeday.color }}'}">
-                        <md-card-title class="md-title">{{ codeday.title }}</md-card-title>
-                        <md-card-content>
-                            <div>
-                                <span style="font-weight: 500">Progress: </span>{{codeday.progress}}</div>
-                            <div>
-                                <span style="font-weight: 500">Thoughts: </span>{{codeday.thoughts}}</div>
-                        </md-card-content>
-                    </md-card>
-                </div>
-            </md-list-item>
-            {% endfor %}
-        </md-list>
-    </div>
 </div>
 
 <style>
@@ -75,6 +85,9 @@ type: article
     .md-calendar {
         background-color: #f1f1f1;
     }
+    md-content {
+        background: white;
+    }
     .md-calendar tbody,
     .md-calendar td,
     .md-calendar tr {
@@ -86,7 +99,9 @@ type: article
         box-sizing: content-box;
         font-size: 12px;
     }
-
+    .md-calendar-date-selection-indicator {
+        outline: none;
+    }
     .md-calendar-date-selection-indicator:focus {
         background: rgb(63, 81, 181);
         color: rgba(255, 255, 255, 0.87);

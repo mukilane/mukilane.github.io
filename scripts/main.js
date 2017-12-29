@@ -458,7 +458,7 @@ app.directive('articleImage', () => {
 			} else if(scope.pos == "right") {
 				scope.margin = "0 0 24px 24px";
 			} else {
-				scope.margin = "24px 0 0 24px";
+				scope.margin = "24px 0 24px 0";
 			}
 		},
 	}
