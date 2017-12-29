@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Calculator
-dest: https://mukilane.github.io/projects/calculator
+dest: https://mukilane.github.io/projects/frontend/calculator
 image: /assets/projects/calculator.png
 ---
 

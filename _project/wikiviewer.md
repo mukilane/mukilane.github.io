@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Wiki Viewer
-dest: https://mukilane.github.io/projects/wikisearch
+dest: https://mukilane.github.io/projects/frontend/wikisearch
 image: /assets/projects/wikisearch.png
 built:
 - angularjs

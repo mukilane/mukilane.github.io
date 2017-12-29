@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Pomodoro Clock
-dest: https://mukilane.github.io/projects/pomodoro
+dest: https://mukilane.github.io/projects/frontend/pomodoro
 image: /assets/projects/pomodoro.png
 ---
 

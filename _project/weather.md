@@ -1,7 +1,7 @@
 ---
 layout: project
 title: What's the Weather
-dest: https://mukilane.github.io/projects/weather
+dest: https://mukilane.github.io/projects/frontend/weather
 image: /assets/projects/weather.png
 ---
 

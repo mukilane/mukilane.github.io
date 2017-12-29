@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Quote Machine
-dest: https://mukilane.github.io/projects/quoter
+dest: https://mukilane.github.io/projects/frontend/quoter
 image: /assets/projects/quoter.png
 ---
 
