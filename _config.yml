@@ -15,7 +15,7 @@ url: "https://mukilane.github.io" # the base hostname & protocol for your site
 twitter_username: mukilane
 github_username:  mukilane
 greeting: "" # Display special messages
-angular_version: "1.6.2" # Version of AngularJS used 
+angular_version: "1.6.7" # Version of AngularJS used 
 firebase_version: "4.8.1"
 exclude: ["package.json",
           "node_modules",
