@@ -1,18 +1,17 @@
 <md-toolbar md-scroll-shrink md-colors="{background: '{* ::theme.bg *}'}" style="min-height: 64px;" >
-  <div class="md-toolbar-tools" layout-align="space-between center" style="max-height: 64px !important; height: 64px !important;">
+  <div class="md-toolbar-tools" ng-hide="showAssist" layout-align="space-between center" style="max-height: 64px !important; height: 64px !important;">
     <div ng-click="navigate('/')" class="home md-headline">
       <div ng-hide="hideHomeButton">
         {{ site.title }}
       </div>
     </div>
-    <div layout="row" style="opacity: 0.87">
-      <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs ng-cloak>
+    <div layout="row" style="opacity: 0.87" ng-cloak>
+      <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="border: 0px;" hide-xs>
         <md-nav-item md-nav-click="navigate('/blog/')" aria-label="Blog" name="About">BLOG</md-nav-item>
         <md-nav-item md-nav-click="navigate('/portfolio/')" aria-label="Portfolio" name="Projects">PORTFOLIO</md-nav-item>
         <md-nav-item md-nav-click="navigate('/contact/')" aria-label="Contact" name="Contact">CONTACT</md-nav-item>
       </md-nav-bar>
-
-
+      <md-button class="md-icon-button" ng-hide="showAssist" ng-click="showAssist=true" style="top: 3px"><i class="material-icons">assistant</i></md-button>
       <!-- <md-menu md-position-mode="target-right target" ng-cloak>
        <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open theme menu">
         <i class="material-icons">brightness_4</i>
@@ -25,7 +24,7 @@
       </md-menu> -->
 
       <md-menu md-position-mode="target-right target" hide-gt-xs ng-cloak>
-        <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+        <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
         <i class="material-icons">more_vert</i>
         </md-button>
         <md-menu-content width="2" >
@@ -55,4 +54,32 @@
     </div>
 
   </div>
+  <div class="md-toolbar-tools assist-bar" layout-padding ng-show="showAssist" layout-algin="center center" style="max-height: 64px !important; height: 64px !important;" ng-cloak>
+    <i class="material-icons">assistant</i>
+    <div class="assistant" ng-controller="Assistant">
+      <form ng-submit="send()">
+      <md-input-container md-no-float class="md-block" ng-show="showAssist">
+        <input ng-model="query" autocomplete="off" placeholder="Hey, what's up? I'm Mukil.">
+      </md-input-container>
+      </form>
+    </div>
+    <md-button class="md-icon-button" ng-click="showAssist=false" style="margin-right: 6px"><i class="material-icons">close</i></md-button>
+  </div>
 </md-toolbar>
+<style>
+  .assistant {
+    padding: 0 1vw;
+    width: 100%;
+    font-size: 16px;
+  }
+  .assistant md-input-container {
+    margin: 0 !important;
+  }
+  .assistant input {
+    border-bottom: 6px solid white !important;
+    position: absolute;
+  }
+  .assist-bar {  
+    border-bottom: 1px solid #EEEEEE;
+  }
+</style>
