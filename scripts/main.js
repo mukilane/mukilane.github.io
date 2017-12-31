@@ -42,6 +42,7 @@ app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog
 	// Whether the main grid is painted
 	$scope.gridLay = true;
 	
+	$scope.showAssist = false;
 	// Set theme using Local Storage 
 	if(!localStorage.getItem('theme')) { 
 		// Default Theme
@@ -269,7 +270,6 @@ app.controller('ProjectCtrl', ['Panel', function (Panel) {
 
 // Controller for 100DaysOfCode
 app.controller('HdocCtrl', function($scope, $http, $anchorScroll, $location) {
-	
 	$scope.scrollTo = (day) => {
 		var hash = 'day' + day;
 		if($location.hash() !== hash) {
@@ -278,11 +278,38 @@ app.controller('HdocCtrl', function($scope, $http, $anchorScroll, $location) {
 			$anchorScroll();
 		}
 	}
+});
 
-	// $http.get('/assets/100daysofcode.json')
-	// 	.then((res) => {
-	// 		$scope.data = res.data;
-	// 	});
+// Controller for Assistant
+app.controller('Assistant', function($scope, Conversation, $timeout) {
+
+	var assistant = new ApiAi.ApiAiClient({accessToken: "bd52bb26359c45ceb2da599fe21a94c9" });
+	$scope.result = "";
+	$scope.query = "";
+	$scope.send = ()=> {
+		if($scope.query !== "") {
+			assistant.textRequest($scope.query)
+			.then((response) => {
+				$scope.parse(response.result);
+				$scope.query = "";
+			}).catch((error) => console.log(error));
+		}
+	};
+
+	$scope.parse = (result) => {
+		switch(result.metadata.intentName) {
+			case "portfolio":
+				Conversation("Transporting you to my portfolio");
+				$timeout(pjax.invoke('/portfolio/', 'main'), 2000, 1);
+				break;
+			case "resume":
+				Conversation("Opening my resume");
+				$timeout(window.open("https://goo.gl/zajpYF", "_blank"), 2000, 1);
+				break;
+			default:
+				Conversation(result.fulfillment.speech);
+		}
+	}
 });
 
 app.directive('calendar', function($mdSticky, $compile) {
@@ -293,8 +320,21 @@ app.directive('calendar', function($mdSticky, $compile) {
         $mdSticky(scope, element);
       }
     };
-  });
+});
 
+// Factory for Assistant conversation
+app.factory('Conversation', ['$mdToast', '$window', function($mdToast, $window) {
+	return function(msg) {
+		var toast = $mdToast.simple()
+			.textContent(msg)
+			.capsule(true)
+			.parent(document.querySelectorAll(".assist-bar"))
+			.hideDelay(4000)
+			.toastClass("assist-toast")
+			.position("top right");
+		$mdToast.show(toast);
+	};
+  }]);
 
 // Factory for displaying toasts
 app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {

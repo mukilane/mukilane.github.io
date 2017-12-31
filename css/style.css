@@ -228,6 +228,12 @@ strong, b {
   right: calc(2vw + 16px);
 }
 
+/* Assistant conversation */
+.assist-toast .md-toast-content {
+  background: #1E88E5 !important;
+  border-radius: 0 24px 24px 24px !important;
+}
+
 /*Certificates Page*/
 .cert md-grid-tile:hover {
   box-shadow: none !important;
