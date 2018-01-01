@@ -14,17 +14,33 @@ angular.module('port')
 	};
 
 	$scope.parse = (result) => {
-		switch(result.metadata.intentName) {
+		switch(result.action) {
 			case "portfolio":
 				Conversation("Transporting you to my portfolio");
-				$timeout(pjax.invoke('/portfolio/', 'main'), 2000, 1);
+				$timeout(pjax.invoke('/portfolio/', 'main'), 2000);
 				break;
 			case "resume":
 				Conversation("Opening my resume");
-				$timeout(window.open("https://goo.gl/zajpYF", "_blank"), 2000, 1);
+				$timeout(window.open("https://goo.gl/zajpYF", "_blank"), 2000);
+				break;
+			case "navigate":
+				Conversation("Transporting!")
+				$timeout($scope.transport(result.parameters.page), 2000);
 				break;
 			default:
 				Conversation(result.fulfillment.speech);
 		}
 	}
+
+	$scope.transport = (page) => {
+		var list = ['blog', 'about', 'portfolio', 'contact', 'certificates', 'home'];
+		if(list.indexOf(page) !== -1) {
+			let dest = '/' + page + '/' ;
+			if (page === 'home') { dest = '/'; }
+			pjax.invoke(dest, 'main');
+		} else {
+			Conversation('Sorry, the page does not exist');
+		}
+	}
+
 });
