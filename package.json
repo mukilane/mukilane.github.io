@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "google-closure-compiler-js": "^20161201.0.1",
+    "gulp-concat": "^2.6.1",
     "gulp-git": "^1.12.0"
   }
 }

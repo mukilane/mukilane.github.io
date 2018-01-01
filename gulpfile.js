@@ -18,6 +18,7 @@ const compiler = require('google-closure-compiler-js').gulp();
 const spawn = require('child_process').spawn;
 const ngAnnotate = require('gulp-ng-annotate');
 const replace = require('gulp-replace');
+const concat = require('gulp-concat');
 
 
 gulp.task('compileTemp', () => {
@@ -46,9 +47,29 @@ gulp.task('clean', () => {
 	return del(['amp/**/*']);
 });
 
+// Bundle
+gulp.task('bundle', ['clean'], () => {
+	gulp.src([
+		'./scripts/angular/app.js',
+		'./scripts/angular/*.ctrl.js',
+		'./scripts/angular/directives.js',
+		'./scripts/angular/factories.js',
+		'./scripts/angular/serviceworker.js'
+	])
+	.pipe(concat('main.js'))
+	.pipe(gulp.dest('./scripts'));
+	gulp.src([
+		'./scripts/pjax-standalone.min.js',
+		'./scripts/ApiAi.min.js'
+	])
+	.pipe(concat('vendor.min.js'))
+	.pipe(gulp.dest('./scripts'));
+});
+
+
 // Compile JS using Google Closure Compiler 
 // Using ng-Annotate to annotate angular dependencies
-gulp.task('compile', ['clean'], () => {
+gulp.task('compile', ['bundle'], () => {
   return gulp.src('./scripts/main.js', {base: './'})
   		.pipe(ngAnnotate())
   		.pipe(replace(/["']ngInject["'];*/g, ""))

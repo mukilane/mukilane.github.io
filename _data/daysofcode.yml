@@ -68,4 +68,28 @@
   displayMonth: Dec
   progress: Implemented Push notifications. Implemented a day picker for the log.
   thoughts: Finally push notification support is done. Cloud Functions makes it easy to set up the backend needed to push the notifications.
-  color: cyan-400  
+  color: cyan-400
+
+- title: Day 10, Friday
+  url: https://github.com/mukilane/mukilane.github.io
+  displayDay: 29
+  displayMonth: Dec
+  progress: Working on Firebase Cloud functions to do backend services for my static blog.
+  thoughts: Cloud functions has got more potential to build a barebone backend in the cloud.
+  color: pink-400
+
+- title: Day 11, Saturday
+  url: https://github.com/mukilane/projects/tree/master/google/pubsub
+  displayDay: 30
+  displayMonth: Dec
+  progress: Created a simple communication tool between my devices using Google Pub/Sub
+  thoughts: Google Pub/Sub provides a low latency, simple service to push and receive messages between devices. I am going to use it in my IOT projects
+  color: blue-grey-400
+
+- title: Day 12, Sunday
+  url: https://github.com/mukilane/mukilane.github.io
+  displayDay: 31
+  displayMonth: Dec
+  progress: Integrated a Dialogflow Agent aka a digital assistant in my blog
+  thoughts: Dialogflow provides an easy way to create smart assistant interfaces and easily APIs to integrate with the applications. SmallTalk is very easy to get started and gives the assistant a character.
+  color: red-400
