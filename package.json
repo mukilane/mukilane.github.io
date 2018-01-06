@@ -27,6 +27,7 @@
     "sw-precache": "^4.2.3"
   },
   "dependencies": {
+    "angular": "^1.6.7",
     "google-closure-compiler-js": "^20161201.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-git": "^1.12.0"

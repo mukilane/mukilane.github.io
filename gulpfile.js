@@ -22,13 +22,13 @@ const concat = require('gulp-concat');
 
 
 gulp.task('compileTemp', () => {
-	return gulp.src('./scripts/main.js', {base: './'})
+	return gulp.src('./scripts/bundle.js', {base: './'})
 			.pipe(ngAnnotate())
 			.pipe(replace(/["']ngInject["'];*/g, ""))
 		.pipe(compiler({
 			compilationLevel: 'SIMPLE',
 			warningLevel: 'DEFAULT',
-			jsOutputFile: 'main.min.js',
+			jsOutputFile: 'bundle.min.js',
 			createSourceMap: true
 		  }))
 		.pipe(gulp.dest('./scripts'));
@@ -56,7 +56,7 @@ gulp.task('bundle', ['clean'], () => {
 		'./scripts/angular/factories.js',
 		'./scripts/angular/serviceworker.js'
 	])
-	.pipe(concat('main.js'))
+	.pipe(concat('bundle.js'))
 	.pipe(gulp.dest('./scripts'));
 	gulp.src([
 		'./scripts/pjax-standalone.min.js',
@@ -70,13 +70,13 @@ gulp.task('bundle', ['clean'], () => {
 // Compile JS using Google Closure Compiler 
 // Using ng-Annotate to annotate angular dependencies
 gulp.task('compile', ['bundle'], () => {
-  return gulp.src('./scripts/main.js', {base: './'})
+  return gulp.src('./scripts/bundle.js', {base: './'})
   		.pipe(ngAnnotate())
   		.pipe(replace(/["']ngInject["'];*/g, ""))
       .pipe(compiler({
           compilationLevel: 'SIMPLE',
           warningLevel: 'DEFAULT',
-          jsOutputFile: 'main.min.js',
+          jsOutputFile: 'bundle.min.js',
           createSourceMap: true
         }))
       .pipe(gulp.dest('./scripts'));
