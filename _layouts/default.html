@@ -105,20 +105,12 @@
 
     </md-content>
     
-    <!--PJAX Standalone-->
-    <script src="/scripts/vendor.min.js" async></script>
-
-    <!-- Angular Dependencies-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/{{site.angular_version}}/angular.min.js"></script>
-    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/{{site.angular_version}}/angular-aria.min.js"></script>
-    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/{{site.angular_version}}/angular-animate.min.js"></script>
-
-    <!-- Angular Material Dependencies-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
-
-    {% include firebase.html %}
-    <script src="/scripts/bundle.min.js"></script>
+    <script src="/scripts/vendor.bundle.js"></script>
+    
+    <script defer src="/scripts/main.bundle.js"></script>
+    
     {% include google-analytics.html %}
+
   </body>
 
 </html>

@@ -19,36 +19,21 @@ const spawn = require('child_process').spawn;
 const ngAnnotate = require('gulp-ng-annotate');
 const replace = require('gulp-replace');
 const concat = require('gulp-concat');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const append = require('gulp-append');
 
-
-gulp.task('compileTemp', () => {
-	return gulp.src('./scripts/bundle.js', {base: './'})
-			.pipe(ngAnnotate())
-			.pipe(replace(/["']ngInject["'];*/g, ""))
-		.pipe(compiler({
-			compilationLevel: 'SIMPLE',
-			warningLevel: 'DEFAULT',
-			jsOutputFile: 'bundle.min.js',
-			createSourceMap: true
-		  }))
-		.pipe(gulp.dest('./scripts'));
-  });
-  
-    gulp.task('serve', ['compileTemp'], (callback) => {
-	  exec('bundle exec jekyll serve', (err, stdout, stderr) => {
-		  gutil.log(stderr);
-		  gutil.log(stdout);
-		  callback(err);
-	  });
-  });
-
-// Clean the amp folder to prevent dulpication during Jekyll build
-gulp.task('clean', () => {
-	return del(['amp/**/*']);
+// Browserify
+gulp.task('browserify', (callback) => {
+	exec('browserify scripts/vendor.module.js -o scripts/vendor.js', (err, stdout, stderr) => {
+		gutil.log(stderr);
+		gutil.log(stdout);
+		callback(err);
+	});
 });
 
 // Bundle
-gulp.task('bundle', ['clean'], () => {
+gulp.task('bundle', ['browserify'], () => {
 	gulp.src([
 		'./scripts/angular/app.js',
 		'./scripts/angular/*.ctrl.js',
@@ -56,34 +41,42 @@ gulp.task('bundle', ['clean'], () => {
 		'./scripts/angular/factories.js',
 		'./scripts/angular/serviceworker.js'
 	])
-	.pipe(concat('bundle.js'))
-	.pipe(gulp.dest('./scripts'));
+		.pipe(concat('main.js'))
+		.pipe(gulp.dest('./scripts'));
 	gulp.src([
+		'./scripts/ApiAi.min.js',
 		'./scripts/pjax-standalone.min.js',
-		'./scripts/ApiAi.min.js'
+		'./scripts/vendor.js'
 	])
-	.pipe(concat('vendor.min.js'))
-	.pipe(gulp.dest('./scripts'));
+		.pipe(concat('vendor.bundle.js'))
+		.pipe(gulp.dest('./scripts/'))
 });
-
 
 // Compile JS using Google Closure Compiler 
 // Using ng-Annotate to annotate angular dependencies
 gulp.task('compile', ['bundle'], () => {
-  return gulp.src('./scripts/bundle.js', {base: './'})
-  		.pipe(ngAnnotate())
-  		.pipe(replace(/["']ngInject["'];*/g, ""))
-      .pipe(compiler({
-          compilationLevel: 'SIMPLE',
-          warningLevel: 'DEFAULT',
-          jsOutputFile: 'bundle.min.js',
-          createSourceMap: true
-        }))
-      .pipe(gulp.dest('./scripts'));
+	return gulp.src('./scripts/main.js', { base: './' })
+		.pipe(ngAnnotate())
+		.pipe(replace(/["']ngInject["'];*/g, ""))
+		.pipe(compiler({
+			compilationLevel: 'SIMPLE',
+			warningLevel: 'DEFAULT',
+			jsOutputFile: 'main.bundle.js',
+			createSourceMap: true
+		}))
+		.pipe(gulp.dest('./scripts'));
+});
+
+// Clean the amp folder to prevent dulpication during Jekyll build
+gulp.task('clean', ['compile'], () => {
+	return del([
+		'amp/**/*',
+		'scripts/vendor.js'
+	]);
 });
 
 // Jekyll Build
-gulp.task('jekyll', ['compile'], (callback) => {
+gulp.task('jekyll', ['clean'], (callback) => {
 	exec('bundle exec jekyll build', (err, stdout, stderr) => {
 		gutil.log(stderr);
 		gutil.log(stdout);
@@ -107,7 +100,7 @@ gulp.task('generate-sw', ['amp'], (callback) => {
 
 // Add untracked files 
 gulp.task('commit', ['generate-sw'], (callback) => {
-	exec('git add -A && git commit',  (err, stdout, stderr) => {
+	exec('git add -A && git commit', (err, stdout, stderr) => {
 		gutil.log(stdout);
 		callback(err);
 	});
@@ -115,7 +108,7 @@ gulp.task('commit', ['generate-sw'], (callback) => {
 
 // Push to origin
 gulp.task('push', ['commit'], (callback) => {
-	exec('git push',  (err, stdout, stderr) => {
+	exec('git push', (err, stdout, stderr) => {
 		gutil.log(stdout);
 		callback(err);
 	});
