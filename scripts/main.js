@@ -1,4 +1,13 @@
 // Main JS - mukilane.github.io
+var config = {
+    apiKey: "AIzaSyD8Jyc_TJwBwAwmkN8ETzUXKPWLiXGsEn0",
+    authDomain: "mukilane.github.io",
+    databaseURL: "https://mukil-elango.firebaseio.com",
+    projectId: "mukil-elango",
+    storageBucket: "mukil-elango.appspot.com",
+    messagingSenderId: "771554923359"
+};
+firebase.initializeApp(config);
 // Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate', 'firebase']);
 // Angular Confiurations
