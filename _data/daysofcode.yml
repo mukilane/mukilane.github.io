@@ -93,3 +93,43 @@
   progress: Integrated a Dialogflow Agent aka a digital assistant in my blog
   thoughts: Dialogflow provides an easy way to create smart assistant interfaces and easily APIs to integrate with the applications. SmallTalk is very easy to get started and gives the assistant a character.
   color: red-400
+
+- title: Day 13, Monday
+  url: https://github.com/mukilane/mukilane.github.io
+  displayDay: 1
+  displayMonth: Jan
+  progress: Improved the navigation flow of my blog, using the Dialogflow agent.
+  thoughts: New Year !! Implemeted a new practice of separating controller files in AngularJs. Also worked on the assistant navigation for my blog.
+  color: teal-400
+
+- title: Day 14, Tuesday
+  url: https://github.com/mukilane/go
+  displayDay: 2
+  displayMonth: Jan
+  progress: Got started with the Go language, and the Gobot.io framework for robotics and IOT
+  thoughts: Go is an exciting new language, mostly aimed at performance. So, I just started with it in my field of IOT/Robotics using the Gobot.io framework.
+  color: green-400
+
+- title: Day 15, Wednesday
+  url: https://github.com/mukilane/
+  displayDay: 3
+  displayMonth: Jan
+  progress: Working on Google Maps API with Python
+  thoughts: Started working with Google Maps API for an academic project with Python.
+  color: yellow-400
+  
+- title: Day 16, Saturday
+  url: https://github.com/mukilane/mukilane.github.io
+  displayDay: 6
+  displayMonth: Jan
+  progress: Working of bundling the dependencies of my blog using Browserify.
+  thoughts: Bundling up the dependencies will reduce the requests and makes my code clean and simple.
+  color: indigo-400
+
+- title: Day 17, Sunday
+  url: https://github.com/mukilane/mukilane.github.io
+  displayDay: 7
+  displayMonth: Jan
+  progress: Completed Browserify-ing my blog.
+  thoughts: The code is now all bundled up into a nice single file. The only issue was the non-CommonJs libraries that Browserify does not support, which I just concated with the bundle.
+  color: orange-400
