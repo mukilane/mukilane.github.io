@@ -10,14 +10,14 @@ description: Round 1
     <md-tabs md-dynamic-height md-border-bottom>
         <md-tab label="Log">
             <md-content class="md-padding" layout="row">
-                <div class="chooser" flex="30">
+                <div class="chooser" flex="30" hide-xs hide-sm>
                     <!-- <md-calendar ng-hide ng-model="HdocCtrl.myDate" md-min-date="HdocCtrl.minDate" md-max-date="HdocCtrl.maxDate"></md-calendar> -->
                     <div style="margin: 0px auto">
                         <calendar></calendar>
                     </div>
                 </div>
             
-                <div class="log" flex="70">
+                <div class="log" flex="70" flex-xs="100" flex-sm="80">
                     <md-list flex>
                         {% for codeday in site.data.daysofcode %}
                         <md-list-item class="md-3-line" id="day{{forloop.index}}">

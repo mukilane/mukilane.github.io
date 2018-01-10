@@ -133,3 +133,27 @@
   progress: Completed Browserify-ing my blog.
   thoughts: The code is now all bundled up into a nice single file. The only issue was the non-CommonJs libraries that Browserify does not support, which I just concated with the bundle.
   color: orange-400
+
+- title: Day 18, Monday
+  url: https://github.com/mukilane/projects/tree/master/mqtt/
+  displayDay: 8
+  displayMonth: Jan
+  progress: Started working with the MQTT protocol for IOT with Adafruit IO.
+  thoughts: MQTT is the standard recommended protocol for IOT communication. It is simple. The Adafruit IO platform is an easy tool to get started with MQTT and IOT.
+  color: teal-400
+
+- title: Day 19, Tuesday
+  url: https://github.com/mukilane/projects/tree/master/mqtt/
+  displayDay: 9
+  displayMonth: Jan
+  progress: Working on MQTT + Raspberry Pi + Adafruit IO
+  thoughts: MQTT is the standard recommended protocol for IOT communication. It is simple. The Adafruit IO platform is an easy tool to get started with MQTT and IOT.
+  color: red-400
+
+- title: Day 20, Wednesday
+  url: https://github.com/mukilane/mukilane.github.io
+  displayDay: 10
+  displayMonth: Jan
+  progress: Layout adjustments to blog
+  thoughts: Also learned more about MQTT.
+  color: orange-400

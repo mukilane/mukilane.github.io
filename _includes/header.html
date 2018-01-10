@@ -11,7 +11,10 @@
         <md-nav-item md-nav-click="navigate('/portfolio/')" aria-label="Portfolio" name="Projects">PORTFOLIO</md-nav-item>
         <md-nav-item md-nav-click="navigate('/contact/')" aria-label="Contact" name="Contact">CONTACT</md-nav-item>
       </md-nav-bar>
-      <md-button class="md-icon-button" ng-hide="showAssist" ng-click="showAssist=true" style="top: 3px"><i class="material-icons">assistant</i></md-button>
+      <md-button class="md-icon-button" ng-hide="showAssist" ng-click="showAssist=true" style="top: 3px">
+        <md-tooltip >Assistant</md-tooltip>
+        <i class="material-icons">assistant</i>
+      </md-button>
       <!-- <md-menu md-position-mode="target-right target" ng-cloak>
        <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open theme menu">
         <i class="material-icons">brightness_4</i>
@@ -26,6 +29,7 @@
       <md-menu md-position-mode="target-right target" hide-gt-xs ng-cloak>
         <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
         <i class="material-icons">more_vert</i>
+        <md-tooltip>Menu</md-tooltip>
         </md-button>
         <md-menu-content width="2" >
           <md-menu-item >

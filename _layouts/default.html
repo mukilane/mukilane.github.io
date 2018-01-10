@@ -9,7 +9,7 @@
 
     <md-content id="main" pjax-nav md-colors="{ background: '{* ::theme.bg *}'}">
 
-      {% if page.category %}
+      {% if page.category or page.type == 'article' %}
 
         <div class="banner md-display-3 banner-mini" {% if page.color %} 
         md-colors="{background: '{{page.color}}'}" {% endif %}
