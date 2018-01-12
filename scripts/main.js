@@ -1,4 +1,5 @@
 // Main JS - mukilane.github.io
+// Firebase initialization
 var config = {
     apiKey: "AIzaSyD8Jyc_TJwBwAwmkN8ETzUXKPWLiXGsEn0",
     authDomain: "mukilane.github.io",
@@ -44,8 +45,8 @@ app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $co
 
 	$locationProvider.hashPrefix('');
 });
-angular.module('port')
-.controller('Assistant', function($scope, Conversation, $timeout) {
+app.controller('Assistant', function($scope, Conversation, $timeout) {
+	"ngInject";
     var assistant = new ApiAi.ApiAiClient({accessToken: "bd52bb26359c45ceb2da599fe21a94c9" });
 	$scope.result = "";
 	$scope.query = "";
@@ -73,6 +74,15 @@ angular.module('port')
 				Conversation("Transporting!")
 				$timeout($scope.transport(result.parameters.page), 2000);
 				break;
+			case "smalltalk.greetings.bye":
+				Conversation(result.fulfillment.speech);
+				$scope.showAssist = false;
+			case "smalltalk.agent.acquaintance":
+				Conversation("I'm Mukil. Know more about me here");
+				$timeout($scope.transport('about'), 1000);
+			case "blog.newposts":
+				Conversation(result.fulfillment.speech);
+				$timeout($scope.transport('blog'), 1000);
 			default:
 				Conversation(result.fulfillment.speech);
 		}

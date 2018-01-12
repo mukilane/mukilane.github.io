@@ -1,4 +1,5 @@
 // Main JS - mukilane.github.io
+// Firebase initialization
 var config = {
     apiKey: "AIzaSyD8Jyc_TJwBwAwmkN8ETzUXKPWLiXGsEn0",
     authDomain: "mukilane.github.io",
