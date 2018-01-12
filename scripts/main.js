@@ -78,12 +78,15 @@ angular.module('port')
 			case "smalltalk.greetings.bye":
 				Conversation(result.fulfillment.speech);
 				$scope.showAssist = false;
+				break;
 			case "smalltalk.agent.acquaintance":
 				Conversation("I'm Mukil. Know more about me here");
 				$timeout($scope.transport('about'), 1000);
+				break;
 			case "blog.newposts":
 				Conversation(result.fulfillment.speech);
 				$timeout($scope.transport('blog'), 1000);
+				break;
 			default:
 				Conversation(result.fulfillment.speech);
 		}
