@@ -104,18 +104,25 @@ app.directive('pjaxNav', ['$compile', function($compile){
 			elem.bind('beforeSend', function(e) {
 				scope.trust(e.data.url);
 				var toAnim = angular.element(document.getElementById('content'));
-        toAnim.removeClass('fade-up');
-        toAnim.addClass('fade-down');
+				toAnim.removeClass('fade-up');
+				toAnim.addClass('fade-down');
+				var title = angular.element(document.getElementsByClassName('banner'));
+				title.removeClass('fade-right');
+				title.addClass('fade-left');
 			});
 			elem.bind('success', function(e) {
 				// Recompiling the DOM on page loads through PJAX
 				$compile(elem.contents())(scope);
 				var toAnim = angular.element(document.getElementById('content'));
-        toAnim.removeClass('fade-down');
-        toAnim.addClass('fade-up');
+				toAnim.removeClass('fade-down');
+				toAnim.addClass('fade-up');
+				var title = angular.element(document.getElementsByClassName('banner'));
+				title.removeClass('fade-left');
+				title.addClass('fade-right');
 			});
 			elem.bind('error', function() {
 				pjax.invoke('/404/', 'main');
+				$compile(elem.contents())(scope);
 			});
 		}
 	};

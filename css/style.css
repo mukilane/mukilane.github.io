@@ -184,6 +184,12 @@ tile-footer {
 .fade-up {
   animation: fade-up 0.5s cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
 }
+.fade-left {
+  animation: fade-left 0.5s cubic-bezier(0.4, 0.0, 1, 1) forwards;
+}
+.fade-right {
+  animation: fade-right 0.5s cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
+}
 strong, b {
   font-weight: 500;
 }
@@ -205,6 +211,27 @@ strong, b {
   to {
     opacity: 1;
     top: 0px;
+  }
+}
+@keyframes fade-right {
+  from {
+    opacity: 0;
+    left: -25px;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes fade-left {
+  from {
+    opacity: 1;
+    left: 0;
+  }
+  to {
+    opacity: 0;
+    left: -25px;
   }
 }
 

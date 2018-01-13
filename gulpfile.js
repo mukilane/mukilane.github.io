@@ -22,6 +22,7 @@ const concat = require('gulp-concat');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const append = require('gulp-append');
+const inquirer = require('inquirer');
 
 // Browserify
 gulp.task('browserify', (callback) => {
@@ -99,11 +100,18 @@ gulp.task('generate-sw', ['amp'], (callback) => {
 });
 
 // Add untracked files 
-gulp.task('commit', ['generate-sw'], (callback) => {
-	exec('git add -A && git commit', (err, stdout, stderr) => {
-		gutil.log(stdout);
-		callback(err);
+gulp.task('commit',  (callback) => {
+	inquirer.prompt([{
+		type: 'input',
+		name: 'message',
+		message: 'Enter commit message:',	
+	}], (result) => {
+		exec('git add -A && git commit -m "' + result.message + '"', (err, stdout, stderr) => {
+			gutil.log(stdout);
+			callback(err);
+		});
 	});
+	
 });
 
 // Push to origin
@@ -127,6 +135,16 @@ gulp.task('fireDB', (callback) => {
 // Tasks run sequentially using dependencies
 // Reminder: Update to gulp.series on 4.x
 gulp.task('default', ['push', 'ampdeploy']);
+
+
+// Jekyll Serve
+gulp.task('serve', ['clean'], (callback) => {
+	exec('bundle exec jekyll serve', (err, stdout, stderr) => {
+		gutil.log(stderr);
+		gutil.log(stdout);
+		callback(err);
+	});
+});
 
 // Deploy amp-ed files to separate repository
 gulp.task('ampdeploy', (callback) => {
