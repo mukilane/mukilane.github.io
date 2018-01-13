@@ -469,6 +469,7 @@ app.directive('pjaxNav', ['$compile', function($compile){
 			});
 			elem.bind('error', function() {
 				pjax.invoke('/404/', 'main');
+				$compile(elem.contents())(scope);
 			});
 		}
 	};

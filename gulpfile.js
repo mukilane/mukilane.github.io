@@ -100,7 +100,7 @@ gulp.task('generate-sw', ['amp'], (callback) => {
 });
 
 // Add untracked files 
-gulp.task('commit',  (callback) => {
+gulp.task('commit', ['generate-sw'], (callback) => {
 	inquirer.prompt([{
 		type: 'input',
 		name: 'message',
