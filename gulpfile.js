@@ -116,7 +116,7 @@ gulp.task('commit', ['generate-sw'], (callback) => {
 
 // Push to origin
 gulp.task('push', ['commit'], (callback) => {
-	exec('git push', (err, stdout, stderr) => {
+	exec('git push origin HEAD', (err, stdout, stderr) => {
 		gutil.log(stdout);
 		callback(err);
 	});
