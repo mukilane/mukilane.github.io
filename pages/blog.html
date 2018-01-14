@@ -3,8 +3,8 @@ layout: default
 title: Blog 
 permalink: /blog/
 ---
-
-<div layout="row" layout-align="space-between center" class="notify" ng-hide="isNotificationEnabled" ng-controller="notifications">
+<span ng-init="currentNavItem='Blog'"></span>
+<div layout="row" layout-align="space-between center" class="notify" ng-hide="isNotificationEnabled" ng-controller="notifications" >
   <div style="padding: 0 16px">
     <i class="material-icons" style="color: #0288D1; vertical-align: -6px;">notifications_active</i>
     <span>Stay in the loop! Enable Push Notifications to know when new posts arrive.</span>
