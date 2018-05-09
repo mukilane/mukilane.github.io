@@ -59,6 +59,10 @@ footer a{
 .foot-border {
   
 }
+.feedback-snack {
+  background: #eee;
+  border-radius: 30px 30px 30px 30px;
+}
 .home {      
   opacity: 0.67;
   font-size: 22px;

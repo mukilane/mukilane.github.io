@@ -22,10 +22,17 @@ exclude: ["package.json",
           "Gemfile.lock",
           "README.md"]
 ampdir: amp # Amp files are stored here
-# Collections
-collections:
-  project:
-    output: true
+# # Collections
+# collections:
+#   project:
+#     output: true
+
+# Data Page Generator
+page_gen:
+  - data: projects
+    template: project
+    dir: 'project'
+    name: page_name
 
 # Build settings
 markdown: kramdown

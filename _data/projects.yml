@@ -1,0 +1,204 @@
+- title: Scouting Everywhere
+  page_name: scouting
+  short_description: A blog about Scouting
+  dest: https://scoutingeverywhere.blogspot.com
+  color: purple
+  tag:
+    - material-design
+    - blogger
+  image: /assets/projects/sc.png
+  languages: 
+    - AngularJS
+    - HTML5
+    - CSS3
+  description: >
+    Scouting Everywhere is a blog, running on Blogger platform. 
+    As the name implies, it a blog about Scouting. As of May 2018, 
+    it’s total pageviews was 2.6 million.
+  features:
+    - Complete Material Design UI
+    - Google Sign In
+    - Search using speech (Implemented using Webkit Speech API)
+    - Responsiv UI
+    - Schematic Structure (Schema markup)
+  date: 
+
+- title: Pomodoro Clock
+  page_name: pomodoro
+  short_description: (aka) Tomato Timer
+  dest: https://mukilane.github.io/projects/frontend/pomodoro
+  color: black
+  tag:
+    - AngularJS
+    - Material Design
+  image: /assets/projects/pomodoro.png
+  languages:
+    - AngularJS
+    - HTML
+    - CSS3
+  description: >
+    Pomodoro Clock is a timer whose session length can be set 
+    (default 25 mins) and break length (default 5 mins). The 
+    timer goes off when the session completes and restarts after 
+    the break completes. The time is measured using AngularJS’s 
+    interval() function.
+  features:
+    - Material Design
+    - Alerts the user with a beep
+  date:
+
+- title: Simon Game
+  page_name: simon
+  short_description: A functional mockup of the Simon game
+  dest: https://mukilane.github.io/projects/frontend/simongame
+  color: blue-grey
+  tag:
+    - AngularJS
+    - Material Design
+  image: /assets/projects/simon.png
+  languages:
+    - AngularJS
+    - HTML
+    - CSS3
+  description: >
+    Simon Game is a functional mockup of the original Simon toy. 
+    It generates a random increasing sequence of colors which is 
+    shown to the user and the user has to correctly press the 
+    colors of the sequence to advance to the next updated sequence. 
+    When the user reaches 20 colors, the game completes. It will 
+    notifiy if there is the sequence didn’t match for one time in 
+    normal mode. In Strict mode, any mismatch will abort the game.
+  features:
+    - Different sounds for each color/button press to aid user memory.
+    - Strict and Normal mode
+  date: 
+
+- title: Tic Tac Toe
+  page_name: tictactoe
+  short_description: Tic Tac Toe
+  dest: https://mukilane.github.io/projects/frontend/tictactoe
+  color: 
+  tag:
+    - AngularJS
+    - Material Design
+  image: /assets/projects/tictactoe.png
+  languages:
+    - AngularJS
+    - HTML
+    - CSS3
+  description: >
+    Tic Tac Toe
+  features:
+    - Play with the computer
+    - Play with a friend
+  date: 
+
+- title: Twitch Status Viewer
+  page_name: twitch
+  short_description: Who's streaming now?
+  dest: https://mukilane.github.io/projects/frontend/twitchstatus
+  color: 
+  tag:
+    - AngularJS
+    - Material Design
+  image: /assets/projects/twitch.png
+  languages:
+    - AngularJS
+    - HTML
+    - CSS3
+  description: >
+    Get a list of who is streaming currently
+  features:
+    - 
+    - 
+  date: 
+
+
+- title: What's the Weather
+  page_name: weather
+  short_description: Weather at your location
+  dest: https://mukilane.github.io/projects/frontend/weather
+  color: 
+  tag:
+    - AngularJS
+    - Material Design
+  image: /assets/projects/weather.png
+  languages:
+    - AngularJS
+    - HTML
+    - CSS
+  description: >
+    What’s the weather? is a tool to find the weather at local area. 
+    It uses the Geolocation API to find the user’s location and 
+    Darksky API for weather data.
+  features:
+    - Shows the weather at user’s location.
+    - Forecast for a week.
+    - Related icons for displaying weather.
+    - Both Celsius and Fahrenheit scale.
+  date: 
+
+- title: Calculator
+  page_name: calculator
+  short_description: An Android Calculator for the web.
+  dest: https://mukilane.github.io/projects/frontend/calculator
+  color:
+  tag:
+    - AngularJS
+    - Material Design
+  image: /assets/projects/calculator.png
+  languages:
+    - AngularJS
+    - HTML
+    - CSS3
+    - MathJS
+  description: >
+    This Calculator is a completely functional calculator with all 
+    general functions and many scientific functions.
+  features:
+    - Supports most mathematical functions. (using MathJS)
+    - Material Design interface
+    - Animations
+    - Remembers last answer
+  date:
+
+- title: Quote Machine
+  page_name: quoter
+  short_description: Random programming quotes
+  dest: https://mukilane.github.io/projects/frontend/quoter
+  color: 
+  tag:
+    - Material Design
+  image: /assets/projects/quoter.png
+  languages:
+    - HTML
+    - CSS
+  description: >
+    Quote Machine displays a random programming-related quote. Quotes 
+    are obtained from StormConsultancy Quotes API. AJAX is used to recieve 
+    quotes.
+  features:
+    - Material Design
+    - Share the quote through a tweet
+  date:
+
+- title: Wiki Viewer
+  page_name: wikiviewer
+  short_description: Search the entire Wikipedia
+  dest: https://mukilane.github.io/projects/frontend/wikisearch
+  color:
+  tag:
+    - AngularJS
+    - Material Design
+  image: /assets/projects/wikisearch.png
+  languages: 
+    - AngularJS
+    - HTML
+    - CSS
+  description: >
+    Wiki Search is a tool to search the entire Wikipedia repository 
+    using the MediaWiki API.
+  features:
+    - Search the entire Wikipedia
+    - Rich results
+  date:

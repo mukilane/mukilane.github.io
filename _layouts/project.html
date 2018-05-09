@@ -8,7 +8,19 @@
 		<div class="md-display-1 modal-title" layout-padding md-colors="{background: 'blue-grey-600'}">{{ page.title }}</div>
 		<!--<div layout='row' class="md-subhead modal-des" md-colors="{background: 'blue-grey-100'}" layout-padding>
 		</div>-->
-		<md-content layout-padding style="height: 200px" class="md-subhead">{{ page.content }}</md-content>
+		<md-content layout-padding style="height: 200px" class="md-subhead">
+			<p>{{page.description}}</p>
+			<p><strong>Built With:</strong></p>
+			<ol>
+				{% for item in page.languages %}<li>{{item}}</li>{% endfor %}
+			</ol>
+			<p><strong>Features:</strong></p>
+			<ol>
+				{% for item in page.features %}
+				<li>{{item}}</li>
+				{% endfor %}
+			</ol>
+		</md-content>
 	</div>
 </div>
 <script type="text/javascript">

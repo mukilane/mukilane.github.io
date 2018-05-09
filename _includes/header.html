@@ -62,8 +62,8 @@
     <i class="material-icons">assistant</i>
     <div class="assistant" ng-controller="Assistant">
       <form ng-submit="send()">
-      <md-input-container md-no-float class="md-block" ng-show="showAssist">
-        <input ng-model="query" autocomplete="off" placeholder="Hey, what's up? I'm Mukil.">
+      <md-input-container md-no-float class="md-block" >
+        <input ng-model="query" autocomplete="off" placeholder="Hey, what's up? I'm Mukil." autofocus>
       </md-input-container>
       </form>
     </div>
