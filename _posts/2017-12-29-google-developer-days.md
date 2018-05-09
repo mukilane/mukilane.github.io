@@ -5,6 +5,7 @@ date:   2017-12-29 14:16:20 +0530
 category: blog
 color: blue-600
 description: Google's biggest developer event in India
+image: /assets/blog/gdd-india.png
 ---
 
 <img src="/assets/blog/github-heatmap.png" alt="Github Heatmap">
