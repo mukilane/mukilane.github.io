@@ -5,6 +5,7 @@ date:   2017-01-08 19:52:20 +0530
 category: blog
 color: red-700
 description: A list of methods to tune the performance of an AngularJS app
+image: /assets/blog/angular-js.jpg
 ---
 
 * TOC

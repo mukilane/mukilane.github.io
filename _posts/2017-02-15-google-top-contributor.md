@@ -5,6 +5,7 @@ date:	2017-02-15 15:05:20 +0530
 category: blog
 color: green-500
 description: Helping the community, one answer at a time
+image: /assets/blog/top-contributor.jpg
 ---
 
 ## Google Top Contributor Program

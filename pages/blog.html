@@ -18,7 +18,7 @@ permalink: /blog/
 <md-grid-list
       md-cols="1" md-cols-sm="2" md-cols-gt-sm="6" md-cols-gt-md="6"
       md-cols-gt-lg="8" md-row-height-gt-md="3:4" md-row-height="16:9" 
-      md-gutter="8px" md-gutter-xs="2px" md-on-layout="show($event)" ng-hide="gridLay">
+      md-gutter="8px" md-on-layout="show($event)" ng-hide="gridLay">
 	
   {% for post in site.posts %}
   <md-grid-tile md-rowspan="2" md-colspan="2"
@@ -26,7 +26,7 @@ permalink: /blog/
                 md-rowspan-md="4" md-rowspan-gt-md="2" md-rowspan-sm="2" md-rowspan-xs="1"
                 class="post-tile" md-colors="{background: 'grey-300'}" >
     <div class="tile-wrap" layout="column" layout-xs="row" md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
-      <div flex='60' flex-xs='50'>
+      <div flex='60' flex-xs='50' style="filter: brightness(0.8); background: url({{ post.image }}) no-repeat 50% 50%; background-size: cover; background-position: 50% 50%;">
       </div>
       <div layout="column" flex="45" flex-xs="50" class="theader" layout-align="flex-start stretch" md-colors="{background: '{{ post.color }}'}" >
         <div class="md-headline">{{post.title}}</div>
@@ -47,5 +47,9 @@ permalink: /blog/
 .notify {
   margin-bottom: 8px;
   background-color: #eee;
+}
+md-grid-list md-grid-tile {
+  border-radius: 15px;
+  overflow: hidden;
 }
 </style>

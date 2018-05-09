@@ -5,6 +5,7 @@ date:	2017-01-08 15:05:20 +0530
 category: blog
 color: grey-800
 description: The process behind building this site
+image: /assets/blog/github-heatmap.png
 ---
 
 * TOC

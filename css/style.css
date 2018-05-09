@@ -93,6 +93,7 @@ md-grid-tile {
   outline: none !important;
   user-select: none;
   cursor: pointer;
+  border-radius: 15px;
 }
 md-grid-tile:hover {
   opacity: 0.87;
@@ -323,7 +324,7 @@ strong, b {
     background-size: 125px !important;
   }
   main {
-    width: 100%;
+    width: calc(100% - 8vw);
   }
   .adj {
     margin: 16px 0 32px 0;
