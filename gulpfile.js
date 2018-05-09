@@ -72,12 +72,23 @@ gulp.task('compile', ['bundle'], () => {
 gulp.task('clean', ['compile'], () => {
 	return del([
 		'amp/**/*',
+		'_project/*',
 		'scripts/vendor.js'
 	]);
 });
 
+// Jekyll Pagemaster ( For generating project pages )
+// Generates .md files into a collection '_project'
+gulp.task('pagemaster', ['clean'], (callback) => {
+	exec('bundle exec jekyll pagemaster project', (err, stdout, stderr) => {
+		gutil.log(stderr);
+		gutil.log(stdout);
+		callback(err);
+	})
+});
+
 // Jekyll Build
-gulp.task('jekyll', ['clean'], (callback) => {
+gulp.task('jekyll', ['pagemaster'], (callback) => {
 	exec('bundle exec jekyll build', (err, stdout, stderr) => {
 		gutil.log(stderr);
 		gutil.log(stdout);

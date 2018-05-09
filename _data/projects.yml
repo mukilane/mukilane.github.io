@@ -21,8 +21,8 @@
     - Search using speech (Implemented using Webkit Speech API)
     - Responsiv UI
     - Schematic Structure (Schema markup)
-  date: 
-
+  date: 2017-01-08 15:05:20 +0530 
+ 
 - title: Pomodoro Clock
   page_name: pomodoro
   short_description: (aka) Tomato Timer
@@ -45,8 +45,8 @@
   features:
     - Material Design
     - Alerts the user with a beep
-  date:
-
+  date: 2017-01-08 15:05:20 +0530
+ 
 - title: Simon Game
   page_name: simon
   short_description: A functional mockup of the Simon game
@@ -65,14 +65,14 @@
     It generates a random increasing sequence of colors which is 
     shown to the user and the user has to correctly press the 
     colors of the sequence to advance to the next updated sequence. 
-    When the user reaches 20 colors, the game completes. It will 
+     When the user reaches 20 colors, the game completes. It will 
     notifiy if there is the sequence didn’t match for one time in 
     normal mode. In Strict mode, any mismatch will abort the game.
   features:
     - Different sounds for each color/button press to aid user memory.
     - Strict and Normal mode
-  date: 
-
+  date: 2017-01-08 15:05:20 +0530 
+ 
 - title: Tic Tac Toe
   page_name: tictactoe
   short_description: Tic Tac Toe
@@ -91,8 +91,8 @@
   features:
     - Play with the computer
     - Play with a friend
-  date: 
-
+  date: 2017-01-08 15:05:20 +0530 
+ 
 - title: Twitch Status Viewer
   page_name: twitch
   short_description: Who's streaming now?
@@ -111,8 +111,8 @@
   features:
     - 
     - 
-  date: 
-
+  date: 2017-01-08 15:05:20 +0530 
+ 
 
 - title: What's the Weather
   page_name: weather
@@ -136,8 +136,8 @@
     - Forecast for a week.
     - Related icons for displaying weather.
     - Both Celsius and Fahrenheit scale.
-  date: 
-
+  date: 2017-01-08 15:05:20 +0530 
+ 
 - title: Calculator
   page_name: calculator
   short_description: An Android Calculator for the web.
@@ -160,8 +160,8 @@
     - Material Design interface
     - Animations
     - Remembers last answer
-  date:
-
+  date: 2017-01-08 15:05:20 +0530
+ 
 - title: Quote Machine
   page_name: quoter
   short_description: Random programming quotes
@@ -180,8 +180,8 @@
   features:
     - Material Design
     - Share the quote through a tweet
-  date:
-
+  date: 2017-01-08 15:05:20 +0530
+ 
 - title: Wiki Viewer
   page_name: wikiviewer
   short_description: Search the entire Wikipedia
@@ -201,4 +201,4 @@
   features:
     - Search the entire Wikipedia
     - Rich results
-  date:
+  date: 2017-01-08 15:05:20 +0530 
