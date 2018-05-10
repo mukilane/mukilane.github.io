@@ -35,7 +35,7 @@ footer {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap-reverse;
-  padding: 5vw;
+  padding: 5vw 4vw;
 }
 footer a{
   color: inherit !important;
@@ -51,7 +51,7 @@ footer a{
   fill: #757575;
   background: #E0E0E0;
   border-radius: 50%;
-  margin: 8px 16px 8px 0;
+  margin: 8px 0 8px 16px;
 }
 .foot-right a:nth-last-child() {
   margin: 8px 0;

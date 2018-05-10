@@ -116,7 +116,7 @@ gulp.task('commit', ['generate-sw'], (callback) => {
 		type: 'input',
 		name: 'message',
 		message: 'Enter commit message:',	
-	}], (result) => {
+	}]).then((result) => {
 		exec('git add -A && git commit -m "' + result.message + '"', (err, stdout, stderr) => {
 			gutil.log(stdout);
 			callback(err);

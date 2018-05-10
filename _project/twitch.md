@@ -1,9 +1,10 @@
 ---
 title: Twitch Status Viewer
 page_name: twitch
+category: frontend
 short_description: Who's streaming now?
 dest: https://mukilane.github.io/projects/frontend/twitchstatus
-color: 
+color: cyan-700
 tag:
 - AngularJS
 - Material Design

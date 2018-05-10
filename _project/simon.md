@@ -1,9 +1,10 @@
 ---
 title: Simon Game
 page_name: simon
+category: frontend
 short_description: A functional mockup of the Simon game
 dest: https://mukilane.github.io/projects/frontend/simongame
-color: blue-grey
+color: blue-grey-500
 tag:
 - AngularJS
 - Material Design

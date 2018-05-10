@@ -1,28 +1,43 @@
 <div class="modal" layout="column">
-	<div class="modal-image">
-		<md-button class="md-icon-button modal-close" ng-click="ctrl.close()" md-colors="{color: 'grey-50'}"><i class="material-icons">close</i></md-button>
-		<md-button class="md-fab modal-fab" href="{{page.dest}}" target="_blank" rel="noopener" md-colors="{background: 'grey-50'}"><md-tooltip>Launch</md-tooltip><i class="material-icons">launch</i></md-button>
-		
-	</div>
-	<div class="modal-body" layout='column'>
-		<div class="md-display-1 modal-title" layout-padding md-colors="{background: 'blue-grey-600'}">{{ page.title }}</div>
-		<!--<div layout='row' class="md-subhead modal-des" md-colors="{background: 'blue-grey-100'}" layout-padding>
-		</div>-->
-		<md-content layout-padding style="height: 200px" class="md-subhead">
-			<p>{{page.description}}</p>
-			<p><strong>Built With:</strong></p>
-			<ol>
-				{% for item in page.languages %}<li>{{item}}</li>{% endfor %}
-			</ol>
-			<p><strong>Features:</strong></p>
-			<ol>
-				{% for item in page.features %}
-				<li>{{item}}</li>
-				{% endfor %}
-			</ol>
-		</md-content>
-	</div>
+	<md-toolbar md-colors="{background: 'grey-A100'}">
+		<div class="md-toolbar-tools" layout="column" layout-align="center stretch"  style="max-height: 64px !important; height: 64px !important;">
+			<div layout="row" layout-align="space-between center">
+				<md-button class="md-icon-button" ng-click="ctrl.close()">
+			        <md-tooltip >Back</md-tooltip>
+					<i class="material-icons">arrow_back</i>
+			    </md-button>
+			    <md-button class="md-primary md-raised" href="{{page.dest}}" target="_blank" rel="noopener" style="border-radius: 25px;">
+					OPEN
+				</md-button>
+			</div>
+		</div>
+	</md-toolbar>
+	<md-content md-colors="{background: 'grey-A100'}" layout="column" layout-gt-sm="row" layout-align="center stretch">
+		<div flex-gt-sm="40" flex="100" layout-padding>
+			<div class="md-display-2 modal-title" >
+				{{ page.title }}
+			</div>
+			<div layout-padding class="md-subhead">
+				<p>{{page.description}}</p>
+				<p><strong>Built With:</strong></p>
+				<ol>
+					{% for item in page.languages %}<li>{{item}}</li>{% endfor %}
+				</ol>
+				<p><strong>Features:</strong></p>
+				<ol>
+					{% for item in page.features %}
+					<li>{{item}}</li>
+					{% endfor %}
+				</ol>
+			</div>
+		</div>
+		<div flex-gt-sm="60" flex="100" layout-padding>
+			<div class="modal-image">
+			</div>
+		</div>
+	</md-content>
 </div>
+
 <script type="text/javascript">
 	ga('set', 'page', '{{ page.url }}');
 	ga('send', 'pageview');
@@ -31,51 +46,31 @@
 .modal-container {
 	height: 100%;
 	width: 100%;
-	max-width: 640px;
+	max-width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 .modal {
-	max-width: 640px;
+	height: 100%;
+	max-width: 100%;
 	width: 100%;
 }
 .modal-image {
-	height: 60vw;
-	max-height: 360px;
-	position: relative;
+	margin-top: 24px;
+	min-height: 500px;
 	background-image: url('{{ page.image }}');
-	background-size: cover;
+	background-size: contain;
 	background-repeat: no-repeat;
-	background-color: #BBDEFB;
-	background-position: 50% 50%;
+	background-position: 50% 0%;
 }
 .modal-title {
-	padding: 24px 16px;
-}
-.modal-des {
-	min-height: 56px;
-	padding: 16px;
-}
-.modal-des:before {
-	content: "Built with:";
+	font-family: 'Product Sans', 'RobotoDraft', sans-serif;
+	padding: 24px 16px 8px 16px;
 }
 .modal md-content {
-	height: 200px;
-}
-.modal-fab {
-    position: absolute;
-    line-height: 68px !important;
-    bottom: 0;
-    margin-bottom: -28px;
-    right: 4%;
-}
-.modal-close {
-	top: 8px;
-	left: 2px;
-}
-.modal-body {
+	height: 100%;
     overflow-y: auto;
-    display: block;
+    padding: 0 8px;
 }
 </style>

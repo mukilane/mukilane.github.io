@@ -30,8 +30,14 @@ permalink: /blog/
       </div>
       <div layout="column" flex="45" flex-xs="50" class="theader" layout-align="flex-start stretch" md-colors="{background: '{{ post.color }}'}" >
         <div class="md-headline">{{post.title}}</div>
-        <h3 class='md-body-1' style="opacity:0.54;margin:8px 0;">{{ post.category | capitalize }} | {{ post.date | date_to_string }}</h3>
+        <h3 class='md-body-1' style="opacity:0.54;margin:8px 0;">{{ post.date | date_to_string }}</h3>
         <div class="md-subhead tdes">{{post.description}}</div>
+        <div class="md-subhead category" hide-sm>
+          {{ post.category | capitalize }} 
+        </div>
+        <div class="arrow" show-gt-sm>
+          <i class="material-icons">chevron_right</i>
+        </div>
       </div>
     </div>
   </md-grid-tile>
@@ -51,5 +57,18 @@ permalink: /blog/
 md-grid-list md-grid-tile {
   border-radius: 15px;
   overflow: hidden;
+}
+.category {
+  border: 2px solid rgba(250, 250, 250, 0.5);
+  padding: 4px 16px;
+  border-radius: 24px;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+.arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
 }
 </style>

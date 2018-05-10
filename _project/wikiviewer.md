@@ -1,9 +1,10 @@
 ---
 title: Wiki Viewer
 page_name: wikiviewer
+category: frontend
 short_description: Search the entire Wikipedia
 dest: https://mukilane.github.io/projects/frontend/wikisearch
-color: 
+color: indigo-600
 tag:
 - AngularJS
 - Material Design

@@ -1,9 +1,10 @@
 ---
 title: Pomodoro Clock
 page_name: pomodoro
+category: frontend
 short_description: "(aka) Tomato Timer"
 dest: https://mukilane.github.io/projects/frontend/pomodoro
-color: black
+color: grey-800
 tag:
 - AngularJS
 - Material Design

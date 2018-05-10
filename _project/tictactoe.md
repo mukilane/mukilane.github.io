@@ -1,9 +1,10 @@
 ---
 title: Tic Tac Toe
 page_name: tictactoe
+category: frontend
 short_description: Tic Tac Toe
 dest: https://mukilane.github.io/projects/frontend/tictactoe
-color: 
+color: indigo-A200
 tag:
 - AngularJS
 - Material Design

@@ -1,5 +1,5 @@
 <h2 class="md-headline" style="margin: 32px 0 8px 0; opacity: 0.67;">Recent Posts</h2>
-  <md-grid-list md-cols='4' md-cols-xs='2' md-row-height="4:3" md-row-height-xs="1:1" md-gutter="2px">
+  <md-grid-list md-cols='4' md-cols-xs='2' md-row-height="4:3" md-row-height-xs="1:1" md-gutter="8px">
   {% for post in site.posts limit:2 %}
  	<md-grid-tile md-rowspan="1" md-colspan="2" md-colors="{background: '{{ post.color }}'}">
  		<a onclick="pjax.invoke('{{ post.url }}', 'main')" md-ink-ripple="true" style="width: 100%; padding: 16px;">

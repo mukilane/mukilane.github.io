@@ -1,9 +1,10 @@
 ---
 title: What's the Weather
 page_name: weather
+category: frontend
 short_description: Weather at your location
 dest: https://mukilane.github.io/projects/frontend/weather
-color: 
+color: blue-grey-600
 tag:
 - AngularJS
 - Material Design

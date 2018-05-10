@@ -1,9 +1,10 @@
 ---
 title: Calculator
 page_name: calculator
+category: frontend
 short_description: An Android Calculator for the web.
 dest: https://mukilane.github.io/projects/frontend/calculator
-color: 
+color: indigo-400
 tag:
 - AngularJS
 - Material Design

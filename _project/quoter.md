@@ -1,9 +1,10 @@
 ---
 title: Quote Machine
 page_name: quoter
+category: frontend
 short_description: Random programming quotes
 dest: https://mukilane.github.io/projects/frontend/quoter
-color: 
+color: grey-300
 tag:
 - Material Design
 image: "/assets/projects/quoter.png"

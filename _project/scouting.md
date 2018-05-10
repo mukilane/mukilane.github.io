@@ -1,9 +1,10 @@
 ---
 title: Scouting Everywhere
 page_name: scouting
+category: frontend
 short_description: A blog about Scouting
 dest: https://scoutingeverywhere.blogspot.com
-color: purple
+color: deep-purple-600
 tag:
 - material-design
 - blogger
