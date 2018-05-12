@@ -347,6 +347,10 @@ strong, b {
   .banner .md-headline {
     font-size: 16px;
   }
+  .category {
+    background: white;
+    color: #212121;
+  }
 }
 
 /* mobile-small-landscape */

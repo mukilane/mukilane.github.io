@@ -8,9 +8,10 @@ color: blue-400
 tag:
 - Dart
 - Command line
-image: 
+image: "/assets/projects/spacewatch.png"
 languages:
 - Dart
+- Open Notify API
 description: 'A command line tool built using Dart to get the status of various space  related
   things like ISS location, expected overhead passage and the list  of people currently
   in space.
