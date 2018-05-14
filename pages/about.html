@@ -4,18 +4,15 @@ title: About
 permalink: /about/
 ---
 <div class="post-content about-container article">
-  <div class="about-section" layout="row" >
+  <div class="about-section" layout="column" layout-gt-sm="row">
     <div class="heading md-headline" flex="100" flex-gt-sm="30">Summary</div>
     <div class="about-content md-subhead" flex="70">
       <p>I am a self-taught Developer, but currently pursuing Instrumentation Engineering full
         time. </p>
-      <p>Feeding upon the daily trends and developments in technology and science for survival, Mukil has a zeal to be in the cutting edge of technology.</p>
-      <p>Frontend Web Development is one area which he has good experience with. Some of the frameworks that he has experience with are: AngularJS, Polymer, JQuery upon CSS3 &amp; HTML5.</p>
-      <p>Responsiveness, semantics and good design are his top priorities in building a website.
-      Furthermore, he has experience with:</p>
+      <p>I have experience in Web Development, Internet-Of-Things and Embedded Systems.</p>
     </div>
   </div>
-  <div class="about-section" layout="row">
+  <div class="about-section" layout="column" layout-gt-sm="row">
     <div class="heading md-headline"  flex="100" flex-gt-sm="30">Experience</div>
     <div class="about-content md-subhead" flex="70">
       <div class="exp">
@@ -30,7 +27,7 @@ permalink: /about/
       </div>
     </div>
   </div>
-  <div class="about-section" layout="row">
+  <div class="about-section" layout="column" layout-gt-sm="row">
     <div class="heading md-headline" flex="100" flex-gt-sm="30">Education</div>
     <div class="about-content md-subhead" flex="70">
       <div class="edu">
@@ -68,18 +65,26 @@ permalink: /about/
       </div>
     </div>
   </div>
-  <div class="about-section" layout="row">
+  <div class="about-section" layout="column" layout-gt-sm="row">
     <div class="heading md-headline" flex="100" flex-gt-sm="30">Achievements</div>
     <div class="about-content md-subhead" flex="70">
-      
+       <div class="edu">
+        <div class="edu-title">Rajya Puraskar (Governor) Award</div>
+        <div>
+          <span class="edu-inst">Governor of Tamilnadu, Dr.K Rosaiah</span> | 
+          <span class="edu-area">Bharat Scouts & Guides</span>
+        </div>
+        <div class="edu-date">2014</div>
+        <div class="edu-summary">Have received the Governor award for participation in social activities, earning proficiency badges under Scouting.</div>
+      </div>
     </div>
   </div>
-  <div class="about-section" layout="row">
+  <div class="about-section" layout="column" layout-gt-sm="row">
     <div class="heading md-headline" flex="100" flex-gt-sm="30">Social Activities</div>
     <div class="about-content md-subhead" flex="70">
-      <p>Apart from these,he serves the community by organizing and participating in many social activities. He is a founding member of a social group, ‘Ezhuvaai Ondraga’ (Raise, Together) which aims at helping underprivileged and  neglected children and elders as far as they could.</p>
-      <p>He’s been a very active member of Scouting. He has participated in various camps, events and awareness drives, earned a dozen of proficiency badges in various disciplines and has earned Governor Award and Best Scout Award in the District.</p>
-      <p>He’s also a <strong>Rising Star</strong> in the Google Play Help Forum, helping users on issues related to Google Play and its services.</p>
+      <p>Apart from these,I serve the community by organizing and participating in many social activities. I am a founding member of a social group, ‘Ezhuvaai Ondraga’ (Raise, Together) which aims at helping underprivileged and  neglected children and elders as far as they could.</p>
+      <p>I have been a very active member of Scouting. I have participated in various camps, events and awareness drives, earned a dozen of proficiency badges in various disciplines and has earned Governor Award and Best Scout Award in the District.</p>
+      <p>I have also been a <strong>Rising Star</strong> in the Google Play Help Forum, helping users on issues related to Google Play and its services.</p>
     </div>
   </div>
 </div>
@@ -87,12 +92,19 @@ permalink: /about/
   .about-container {
     max-width: 960px;
     width: 100%;
+    text-align: justify;
   }
   .about-section {
     margin: 8px 0;
   }
   .about-container .heading {
     padding-top: 16px;
+  }
+  .about-content {
+    padding: 8px 0;
+  }
+  .edu {
+    padding-bottom: 8px;
   }
   .exp-title, .edu-title {
     font-size: 18px;

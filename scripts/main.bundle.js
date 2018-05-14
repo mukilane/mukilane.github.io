@@ -1,28 +1,630 @@
-var config={apiKey:"AIzaSyD8Jyc_TJwBwAwmkN8ETzUXKPWLiXGsEn0",authDomain:"mukilane.github.io",databaseURL:"https://mukil-elango.firebaseio.com",projectId:"mukil-elango",storageBucket:"mukil-elango.appspot.com",messagingSenderId:"771554923359"};firebase.initializeApp(config);var app=angular.module("port",["ngMaterial","ngAnimate","firebase"]);
-app.config(["$mdThemingProvider","$interpolateProvider","$httpProvider","$compileProvider","$locationProvider","$controllerProvider",function(a,d,b,c,e,f){app.controllerProvider=f;a.theme("default").accentPalette("blue");a.enableBrowserColor({theme:"default",palette:"background",hue:"50"});d.startSymbol("{*");d.endSymbol("*}");b.useApplyAsync(!0);c.debugInfoEnabled(!1);c.cssClassDirectivesEnabled(!1);c.commentDirectivesEnabled(!1);e.hashPrefix("")}]);
-angular.module("port").controller("Assistant",["$scope","Conversation","$timeout",function(a,d,b){var c=new ApiAi.ApiAiClient({accessToken:"bd52bb26359c45ceb2da599fe21a94c9"});a.result="";a.query="";a.send=function(){""!==a.query&&c.textRequest(a.query).then(function(b){a.parse(b.result);a.query=""}).catch(function(a){return console.log(a)})};a.parse=function(c){switch(c.action){case "portfolio":d("Transporting you to my portfolio");b(pjax.invoke("/portfolio/","main"),2E3);break;case "resume":d("Opening my resume");
-b(window.open("https://goo.gl/zajpYF","_blank"),2E3);break;case "navigate":d("Transporting!");b(a.transport(c.parameters.page),2E3);break;case "smalltalk.greetings.bye":d(c.fulfillment.speech);a.showAssist=!1;break;case "smalltalk.agent.acquaintance":d("I'm Mukil. Know more about me here");b(a.transport("about"),1E3);break;case "blog.newposts":d(c.fulfillment.speech);b(a.transport("blog"),1E3);break;default:d(c.fulfillment.speech)}};a.transport=function(a){if(-1!=="blog about portfolio contact certificates home".split(" ").indexOf(a)){var b=
-"/"+a+"/";"home"===a&&(b="/");pjax.invoke(b,"main")}else d("Sorry, the page does not exist")}}]);
-app.controller("feedback",["$scope","$firebaseObject","$firebaseAuth","Dialog",function(a,d,b,c){var e=b(),f=firebase.database().ref("feedback");a.close=function(){c.close()};a.showMsg=!1;a.signIn=function(){a.showMsg=!0;a.firebaseUser=null;e.$signInAnonymously().then(function(b){a.firebaseUser=b;a.data=d(f.push())}).catch(function(a){console.log("Error occured during sending")})};a.thumbs=function(b){a.data=d(f.push());a.data.$save().then(function(){})};a.sendMsg=function(){a.data.$save().then(function(){console.log("Feedback Sent");
-c.close()}).catch(function(a){console.log("Error!")})}}]);
-app.controller("main",["$scope","$interval","$window","Toast","$sce","Dialog",function(a,d,b,c,e,f){a.gridLay=!0;a.showAssist=!1;localStorage.getItem("theme")?(a.isDark=!0,a.theme={bg:"grey-800",footer:"grey-700"}):(a.isDark=!1,a.theme={bg:"grey-A100",footer:"grey-A100"});a.setDark=function(b){(a.isDark=b)?(localStorage.setItem("theme","dark"),c("Dark theme activated","refresh")):(localStorage.removeItem("theme"),c("Light theme activated","refresh"))};a.isHomePage=function(){return"/"===window.location.pathname?
-!0:!1};a.navigate=function(b){pjax.invoke(b,"main");a.hideHomeButton=a.isHomePage()};a.hideHomeButton=a.isHomePage();a.counter=0;a.adjective="A Web Developer;A Programmer;Google Play Rising Star;Loves OpenSource;A Linux Admin;Elon Musk Fan;Philomath;Tech Enthusiast".split(";");d(function(){7>a.counter?a.counter++:a.counter=0},5E3);b.addEventListener("offline",function(){c("You're Offline. Serving from cache!",!1);b.addEventListener("online",function(a){c("You're Online now !","ok")},{once:!0,capture:!1})},
-!1);a.trust=function(a){e.trustAsUrl(a)};a.show=function(b){1==a.gridLay&&(a.gridLay=!1,navigator.onLine||c("You're offline. Serving from cache!"))};a.showDlg=function(a){f.show("feedback",a)};a.go=function(a){b.location.href=e.trustAsResourceUrl(a)}}]);
-app.controller("notifications",["$scope","$firebaseObject","Toast",function(a,d,b){a.isNotificationEnabled=!1;localStorage.getItem("isNotificationEnabled")&&(a.isNotificationEnabled=!0);a.setEnabled=function(){localStorage.setItem("isNotificationEnabled","true");a.isNotificationEnabled=!0};var c=firebase.messaging();a.enableNotifications=function(){c.requestPermission().then(function(){b("Notifications are enabled");a.setEnabled();a.getToken()}).catch(function(a){console.log(a);b("Notifications blocked!. To enable, go to site settings.")})};
-a.getToken=function(){c.getToken().then(function(a){if(a){var b=[];firebase.firestore().collection("users").doc("data").get().then(function(c){b=c.data().notificationTokens;b.push(a);firebase.firestore().collection("users").doc("data").update({notificationTokens:b})})}})};c.onMessage(function(a){return b(a)})}]);app.controller("search",["$scope","$firebaseObject",function(a,d){a.posts=[];firebase.database().ref("data/posts").once("value").then(function(b){b=b.val();angular.forEach(b,function(b){a.posts.push(b)})})}]);
-app.controller("share",["$scope","Dialog","Toast","$mdMedia","$mdBottomSheet",function(a,d,b,c,e){a.link=window.location.href;a.title=angular.element(window.document)[0].title;a.Toast=b;a.openShare=function(a){1==c("xs")?e.show({templateUrl:"/assets/sharebtm-template.html",clickOutsideToClose:!0,controller:"share"}):d.show("share",a)};a.closeShare=function(){d.close()}}]);app.controller("ProjectCtrl",["Panel",function(a){this.show=function(d){a(d)}}]);
-app.controller("HdocCtrl",["$scope","$http","$anchorScroll","$location",function(a,d,b,c){a.scrollTo=function(a){a="day"+a;c.hash()!==a?c.hash(a):b()}}]);app.directive("calendar",["$mdSticky","$compile",function(a,d){return{restrict:"E",templateUrl:"/assets/calendar.html",link:function(b,c){a(b,c)}}}]);
-app.directive("tile",function(){return{restrict:"E",transclude:!0,template:"\x3cdiv class\x3d'tile-wrap' style\x3d'background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}' ng-transclude\x3e\x3c/div\x3e",scope:{image:"@",opacity:"@",pos:"@",size:"@"}}});
-app.directive("imageTile",function(){return{restrict:"E",transclude:!0,template:"\x3cdiv class\x3d'tile-wrap' style\x3d'background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}'\x3e\x3cdiv class\x3d'image-tile' ng-transclude\x3e\x3c/div\x3e\x3c/div\x3e",scope:{image:"@",opacity:"@",pos:"@",size:"@"}}});
-app.directive("tileImage",function(){return{restrict:"E",template:"\x3cimg ng-src\x3d'{{::source}}' style\x3d'opacity:{{::opacity}}; width: {{::width}};'/\x3e",scope:{source:"@",opacity:"@",width:"@"}}});app.directive("tileHeader",function(){return{restrict:"E",transclude:!0,template:"\x3cspan class\x3d'tile-title' ng-transclude\x3e\x3c/span\x3e\x3cbr/\x3e\x3cspan style\x3d'opacity: 0.67; margin-top: 4px;'\x3e{{::tag}}\x3c/span\x3e",scope:{name:"@",tag:"@"}}});
-app.directive("tileFooter",function(){return{restrict:"E",transclude:!0,template:"\x3cdiv layout\x3d'row' layout-align\x3d'space-between center'\x3e\x3cspan class\x3d'md-subhead' ng-transclude\x3e\x3c/span\x3e\x3cspan\x3e\x3ci class\x3d'material-icons'\x3echevron_right\x3c/i\x3e\x3c/div\x3e",scope:{external:"@"}}});
-app.directive("articleImage",function(){return{restrict:"E",template:"\x3cdiv style\x3d'background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}; background: {{::bg}}'\x3e\x3cimg ng-src\x3d'{{::source}}' alt\x3d'{{::alt}}' width\x3d{{::width}} height\x3d{{::height}}/\x3e\x3cdiv class\x3d'md-caption'\x3e {{::alt}}\x3c/div\x3e\x3c/div\x3e",scope:{source:"@",width:"@",pos:"@",alt:"@",bg:"@"},link:function(a){a.margin="left"==a.pos?"0 24px 24px 0":"right"==a.pos?"0 0 24px 24px":
-"24px 0 24px 0"}}});
-app.directive("pjaxNav",["$compile",function(a){return{restrict:"A",link:function(d,b){b.bind("beforeSend",function(a){d.trust(a.data.url);a=angular.element(document.getElementById("content"));a.removeClass("fade-up");a.addClass("fade-down");a=angular.element(document.getElementsByClassName("banner"));a.removeClass("fade-right");a.addClass("fade-left")});b.bind("success",function(c){a(b.contents())(d);c=angular.element(document.getElementById("content"));c.removeClass("fade-down");c.addClass("fade-up");
-c=angular.element(document.getElementsByClassName("banner"));c.removeClass("fade-left");c.addClass("fade-right")});b.bind("error",function(){pjax.invoke("/404/","main");a(b.contents())(d)})}}}]);app.factory("Conversation",["$mdToast","$window",function(a,d){return function(b){b=a.simple().textContent(b).capsule(!0).parent(document.querySelectorAll(".assist-bar")).hideDelay(4E3).toastClass("assist-toast").position("top right");a.show(b)}}]);
-app.factory("Toast",["$mdToast","$window",function(a,d){return function(b,c){""!==c?(b=a.simple().textContent(b).action(c).highlightAction(!0),a.show(b).then(function(b){if("ok"==b)switch(c){case "refresh":d.location.reload();break;case "ok":a.hide()}},function(a){angular.noop()})):a.showSimple(b)}}]);
-app.factory("Dialog",["$mdDialog","Toast",function(a,d){return{show:function(b,c){a.show({templateUrl:"/assets/"+b+"-template.html",parent:angular.element(document.body),targetEvent:c,controller:b,clickOutsideToClose:!0})},close:function(){a.cancel()}}}]);
-app.factory("Panel",["$mdPanel",function(a){function d(a){this.close=function(){a&&a.close().then(function(){a.destroy()})}}d.$inject=["mdPanelRef"];return function(b){this._mdPanel=a;b="/project/"+b+".html";var c=this._mdPanel.newPanelPosition().absolute().center();b={animation:this._mdPanel.newPanelAnimation().withAnimation(this._mdPanel.animation.FADE),attachTo:angular.element(document.body),controller:d,controllerAs:"ctrl",disableParentScroll:this.disableParentScroll,templateUrl:b,hasBackdrop:!0,
-panelClass:"modal-container",position:c,trapFocus:!0,zIndex:150,clickOutsideToClose:!0,escapeToClose:!0,focusOnOpen:!0};this._mdPanel.open(b)}}]);
-"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js").then(function(a){var d=angular.element(document.getElementById("ctrl")).injector().get("Toast");a.onupdatefound=function(){var b=a.installing;b.onstatechange=function(){switch(b.state){case "installed":navigator.serviceWorker.controller?d("New content available","refresh"):d("Content cached for offline use","ok");break;case "redundant":console.error("[SW] The installing service worker became redundant.")}}}}).catch(function(a){console.error("[SW] Error during service worker registration:",
-a)});
+// Main JS - mukilane.github.io
+// Firebase initialization
+var config = {
+    apiKey: "AIzaSyD8Jyc_TJwBwAwmkN8ETzUXKPWLiXGsEn0",
+    authDomain: "mukilane.github.io",
+    databaseURL: "https://mukil-elango.firebaseio.com",
+    projectId: "mukil-elango",
+    storageBucket: "mukil-elango.appspot.com",
+    messagingSenderId: "771554923359"
+};
+firebase.initializeApp(config);
+// Angular App initialization
+var app = angular.module('port', ['ngMaterial', 'ngAnimate', 'firebase']);
+// Angular Confiurations
+app.config(function($mdThemingProvider, $interpolateProvider, $httpProvider, $compileProvider, $locationProvider, $controllerProvider) {
+	"ngInject";
+	// Reference for Controller Provider for Dynamic(Lazy) dependency injection
+	app.controllerProvider = $controllerProvider;
+	// Overriding Default theme
+	$mdThemingProvider.theme('default')
+		.accentPalette('blue');
+
+	// Browser Color   
+	$mdThemingProvider.enableBrowserColor({
+		theme: 'default', 
+		palette: 'background', 
+		hue: '50'
+  	});
+
+	// Overriding Interpolation symbols to avoid conflict with Liquid tags
+	$interpolateProvider.startSymbol('{*');
+	$interpolateProvider.endSymbol('*}');
+
+	// Performance configurations	
+	// Deferring digest cycles for multiple http requests
+	// Handling simultaneous requests and '$apply' in the next digest cycle
+	$httpProvider.useApplyAsync(true);
+
+	// Disable debug info - removes 'ng-scope' and 'ng-isolate' classes
+	$compileProvider.debugInfoEnabled(false);
+	// Disable checking for css class directives
+	$compileProvider.cssClassDirectivesEnabled(false);
+	// Disable checking for comment directives
+	$compileProvider.commentDirectivesEnabled(false);
+
+	$locationProvider.hashPrefix('');
+});
+angular.module('port')
+.controller('Assistant', function($scope, Conversation, $timeout, $document) {
+	"ngInject";
+    var assistant = new ApiAi.ApiAiClient({accessToken: "bd52bb26359c45ceb2da599fe21a94c9" });
+	$scope.result = "";
+	$scope.query = "";
+	$scope.send = ()=> {
+		if($scope.query !== "") {
+			assistant.textRequest($scope.query)
+			.then((response) => {
+				$scope.parse(response.result);
+				$scope.query = "";
+			}).catch((error) => console.log(error));
+		}
+	};
+
+	$scope.parse = (result) => {
+		switch(result.action) {
+			case "portfolio":
+				Conversation("Transporting you to my portfolio");
+				$timeout(pjax.invoke('/portfolio/', 'main'), 2000);
+				break;
+			case "resume":
+				Conversation("Opening my resume");
+				$timeout(window.open("https://goo.gl/zajpYF", "_blank"), 2000);
+				break;
+			case "navigate":
+				Conversation("Transporting!")
+				$timeout($scope.transport(result.parameters.page), 2000);
+				break;
+			case "smalltalk.greetings.bye":
+				Conversation(result.fulfillment.speech);
+				$scope.showAssist = false;
+				break;
+			case "smalltalk.agent.acquaintance":
+				Conversation("I'm Mukil. Know more about me here");
+				$timeout($scope.transport('about'), 1000);
+				break;
+			case "blog.newposts":
+				Conversation(result.fulfillment.speech);
+				$timeout($scope.transport('blog'), 1000);
+				break;
+			default:
+				Conversation(result.fulfillment.speech);
+		}
+	}
+
+	$scope.transport = (page) => {
+		var list = ['blog', 'about', 'portfolio', 'contact', 'certificates', 'home'];
+		if(list.indexOf(page) !== -1) {
+			let dest = '/' + page + '/' ;
+			if (page === 'home') { dest = '/'; }
+			pjax.invoke(dest, 'main');
+		} else {
+			Conversation('Sorry, the page does not exist');
+		}
+	}
+
+});
+// Controller for feeback form
+app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dialog) {
+	"ngInject";
+	var auth = $firebaseAuth();
+	var ref = firebase.database().ref("feedback");
+	$scope.close = function() {
+		Dialog.close();
+	}
+	$scope.showMsg = false;
+	$scope.signIn = function() {
+		$scope.showMsg = true;
+    $scope.firebaseUser = null;
+    // Anonymous Sign in
+    auth.$signInAnonymously().then(function(firebaseUser) {
+    	$scope.firebaseUser = firebaseUser;
+    	$scope.data = $firebaseObject(ref.push());
+    }).catch(function(error) {
+    	console.log("Error occured during sending");
+    });
+  };
+  $scope.thumbs = function(e) {
+  	$scope.data = $firebaseObject(ref.push());
+  	$scope.data.$save().then(function() {
+  		
+  	});
+  }
+  $scope.sendMsg = function() {
+    $scope.data.$save().then(function() {
+			console.log('Feedback Sent');
+			Dialog.close();
+    }).catch(function(error) {
+    	console.log('Error!');
+    });
+  };
+});
+// Main Controller
+app.controller('main', function ($scope, $interval, $window, Toast, $sce, Dialog) {
+	"ngInject";
+	// Whether the main grid is painted
+	$scope.gridLay = true;
+	$scope.test = () => console.log('Done');
+	$scope.showAssist = false;
+	// Set theme using Local Storage 
+	if(!localStorage.getItem('theme')) { 
+		// Default Theme
+		$scope.isDark = false;
+		$scope.theme = { bg: 'grey-A100', footer: 'grey-A100'};
+	} else {
+		// Dark Theme
+		$scope.isDark = true;
+		$scope.theme = { bg: 'grey-800', footer: 'grey-700' };
+	} 
+
+	$scope.setDark = function(e) {
+		$scope.isDark = e;
+		if(e) {
+			localStorage.setItem('theme', 'dark');	
+			Toast("Dark theme activated", 'refresh');
+		}
+		else {
+			localStorage.removeItem('theme');
+			Toast("Light theme activated", 'refresh');
+		}
+	}
+
+	$scope.isHomePage = () => {
+		if(window.location.pathname === "/") return true;
+		return false;
+	}
+
+	// Navigation 
+	$scope.navigate = (page) => {
+		pjax.invoke(page, 'main');
+		$scope.hideHomeButton = $scope.isHomePage();
+	}
+	$scope.hideHomeButton = $scope.isHomePage();
+
+	/*	var gridwatch = $scope.$watch('gridLay', () => {
+		gridwatch();
+	});*/
+
+	//For scrolling Adjectives
+	$scope.counter = 0;
+	$scope.adjective = ["A Web Developer", "A Programmer", "Google Play Rising Star", "Loves OpenSource", "A Linux Admin", "Elon Musk Fan", "Philomath", "Tech Enthusiast"];
+	$interval(function() {
+		if ($scope.counter < 7) {
+			$scope.counter++;
+		} else {
+			$scope.counter = 0;
+		}
+	}, 5000);
+
+	//Listening to network changes
+	$window.addEventListener("offline", function() {
+	  Toast("You're Offline. Serving from cache!", false);
+        $window.addEventListener('online', function(e) {
+          Toast("You're Online now !", 'ok');
+        }, { once:true, capture:false });
+	}, false);
+
+	// Trusting urls using SCE
+	$scope.trust = function(url) {
+		// Returns a trusted url
+		$sce.trustAsUrl(url);
+	};
+		
+	// Display the main grid after the painting completes
+	$scope.show = function($event) {
+		if($scope.gridLay == true) { // The first time the painting is done
+			$scope.gridLay = false;
+			if(!navigator.onLine) {
+				// Notify if user if offline and content is served from cache after first paint
+				Toast("You're offline. Serving from cache!");
+			}
+		}
+	};
+	$scope.showDlg = function(ev) {
+		Dialog.show('feedback', ev)
+	}
+	//Navigating to external locations
+	$scope.go = function (dest) {
+		$window.location.href = $sce.trustAsResourceUrl(dest);
+	};
+
+});
+// Controller for Notifications
+app.controller('notifications', function($scope, $firebaseObject, Toast) {
+	"ngInject";
+	$scope.isNotificationEnabled = false;
+
+	// Store the state of notification permission in LocalStorage
+	if(localStorage.getItem('isNotificationEnabled')) { 
+		$scope.isNotificationEnabled = true;
+	}
+
+	$scope.setEnabled = () => {
+		localStorage.setItem('isNotificationEnabled', 'true');
+		$scope.isNotificationEnabled = true;
+	};
+	
+	const messaging = firebase.messaging();
+
+	$scope.enableNotifications = () => {
+		messaging.requestPermission()
+			.then(() => {
+				Toast('Notifications are enabled');
+				$scope.setEnabled();
+				$scope.getToken();
+			})
+			.catch((err) => {
+				console.log(err);
+				Toast('Notifications blocked!. To enable, go to site settings.');
+			});
+	};
+	
+	$scope.getToken = () => {
+		messaging.getToken()
+			.then((currentToken) => {
+				if(currentToken) {
+					let tokens = [];
+					// Add Tokens to Firestore
+					firebase.firestore().collection("users").doc("data").get()
+					.then(data => {
+							tokens = data.data()['notificationTokens'];
+							tokens.push(currentToken);
+							firebase.firestore().collection("users").doc("data").update({
+								'notificationTokens': tokens
+							});
+					});
+				}
+			})
+	}
+	// If a Push Notification is received when the app is active, display a Toast
+	messaging.onMessage((payload) => Toast(payload));
+});
+// Controller for search
+app.controller('search', function($scope, $firebaseObject) {
+	"ngInject";
+	$scope.posts = [];
+	var ref = firebase.database().ref('data/posts').once('value').then(function(snapshot) {
+  	var obj =  snapshot.val();
+  	angular.forEach(obj, function(val) {
+      $scope.posts.push(val);
+    });
+  });
+});
+
+// Controller for Share feature
+app.controller('share', function($scope, Dialog, Toast, $mdMedia, $mdBottomSheet) {
+	"ngInject";
+	$scope.link = window.location.href;
+	$scope.title = angular.element(window.document)[0].title;
+	$scope.Toast = Toast;
+	$scope.openShare = function(ev) {
+
+		// If Web Share API is available, open native share dialog
+		/*if(navigator.share !== undefined) {
+			navigator.share({
+				title: $scope.title, 
+				text: $scope.title, 
+				url: $scope.url
+			}).then(
+				() => Toast('Thanks for sharing!'), 
+				error => Toast('Error in sharing.')
+			);
+	    return;
+	  }*/
+	  // Else if the device is mobile, open bottomsheet
+	  if($mdMedia('xs') == true) {
+		  $mdBottomSheet.show({
+		  	templateUrl: '/assets/sharebtm-template.html',
+		  	clickOutsideToClose: true,
+		  	controller: 'share'
+			});
+			return;
+	  }
+	  // Else open default share dialog
+		Dialog.show('share', ev);
+	};
+	$scope.closeShare = function() {
+		Dialog.close();
+	};
+});
+//Controller for Projects
+app.controller('ProjectCtrl', ['Panel', function (Panel) {
+	this.show = function(dest) {
+		Panel(dest);
+	}
+}]);
+
+// Controller for 100DaysOfCode
+app.controller('HdocCtrl', function($scope, $http, $anchorScroll, $location) {
+	$scope.scrollTo = (day) => {
+		var hash = 'day' + day;
+		if($location.hash() !== hash) {
+			$location.hash(hash);
+		} else {
+			$anchorScroll();
+		}
+	}
+});
+// Directives Declaration
+app.directive('calendar', function($mdSticky, $compile) {
+    return {
+      restrict: 'E',
+      templateUrl: '/assets/calendar.html',
+      link: function(scope,element) {
+        $mdSticky(scope, element);
+      }
+    };
+});
+
+app.directive('tile', () => {
+	return {
+		restrict: 'E',
+		transclude: true,
+		template: "<div class='tile-wrap' style='background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}' ng-transclude></div>",
+		scope: {
+			image: '@',
+			opacity: '@',
+			pos: '@',
+			size: '@'
+		}
+	}
+});
+
+app.directive('imageTile', () => {
+	return {
+		restrict: 'E',
+		transclude: true,
+		template: "<div class='tile-wrap' style='background-image: url({{::image}}); opacity: {{::opacity}}; background-position: {{::pos}}; background-size: {{::size}}'><div class='image-tile' ng-transclude></div></div>",
+		scope: {
+			image: '@',
+			opacity: '@',
+			pos: '@',
+			size: '@'
+		}
+	}
+});
+
+app.directive('tileImage', () => {
+	return {
+		restrict: 'E',
+		template: "<img ng-src='{{::source}}' style='opacity:{{::opacity}}; width: {{::width}};'/>",
+		scope: {
+			source: '@',
+			opacity: '@',
+			width: '@',
+		}
+	}
+});
+
+app.directive('tileHeader', () => {
+	return {
+		restrict: 'E',
+		transclude: true,
+		template: "<span class='tile-title' ng-transclude></span><br/><span style='opacity: 0.67; margin-top: 4px;'>{{::tag}}</span>",
+		scope: {
+			name: '@',
+			tag: '@'
+		}
+	}
+});
+
+app.directive('tileFooter', () => {
+	return {
+		restrict: 'E',
+		transclude: true,
+		template: 	"<div layout='row' layout-align='space-between center'><span class='md-subhead' ng-transclude></span><span><i class='material-icons'>chevron_right</i></div>",
+		scope: {
+			external: '@'
+		}
+	}
+});
+
+app.directive('articleImage', () => {
+	return {
+		restrict: 'E',
+		template: 	"<div style='background: #F3F3F3; text-align: center; float: {{::pos}}; margin: {{::margin}}; background: {{::bg}}'><img ng-src='{{::source}}' alt='{{::alt}}' width={{::width}} height={{::height}}/><div class='md-caption'> {{::alt}}</div></div>",
+		scope: {
+			source: '@',
+			width: '@',
+			pos: '@',
+			alt: '@',
+			bg: '@'
+		},
+	
+		link: function(scope) {
+			if(scope.pos == "left") {
+				scope.margin = "0 24px 24px 0";
+			} else if(scope.pos == "right") {
+				scope.margin = "0 0 24px 24px";
+			} else {
+				scope.margin = "24px 0 24px 0";
+			}
+		},
+	}
+});
+
+//PJAX events listener
+app.directive('pjaxNav', ['$compile', function($compile){ 
+	return {
+		restrict: 'A', 
+		link: function(scope, elem) {			
+			elem.bind('beforeSend', function(e) {
+				scope.trust(e.data.url);
+				var toAnim = angular.element(document.getElementById('content'));
+				toAnim.removeClass('fade-up');
+				toAnim.addClass('fade-down');
+				var title = angular.element(document.getElementsByClassName('banner'));
+				title.removeClass('fade-right');
+				title.addClass('fade-left');
+			});
+			elem.bind('success', function(e) {
+				// Recompiling the DOM on page loads through PJAX
+				$compile(elem.contents())(scope);
+				var toAnim = angular.element(document.getElementById('content'));
+				toAnim.removeClass('fade-down');
+				toAnim.addClass('fade-up');
+				var title = angular.element(document.getElementsByClassName('banner'));
+				title.removeClass('fade-left');
+				title.addClass('fade-right');
+			});
+			elem.bind('error', function() {
+				pjax.invoke('/404/', 'main');
+				$compile(elem.contents())(scope);
+			});
+		}
+	};
+}]);
+
+// Shortcut event listener
+app.directive('shortcut', ['$document', function($document) {
+	return {
+		restrict: 'A',
+		controller: 'main',
+		link: function(scope, elem, attr, ctrl) {
+			$document.bind('keypress', function(event) {
+				if (event.which == 47) {
+					if(event.target.nodeName != 'INPUT') {
+						scope.$apply(attr.shortcut);
+						event.preventDefault();
+					}
+				}
+			});
+		} 
+	}
+}]);
+
+// Factory for Assistant conversation
+app.factory('Conversation', ['$mdToast', '$window', function($mdToast, $window) {
+	return function(msg) {
+		var toast = $mdToast.simple()
+			.textContent(msg)
+			.capsule(true)
+			.parent(document.querySelectorAll(".assist-bar"))
+			.hideDelay(4000)
+			.toastClass("assist-toast")
+			.position("top right");
+		$mdToast.show(toast);
+	};
+  }]);
+
+// Factory for displaying toasts
+app.factory('Toast', ['$mdToast', '$window', function($mdToast, $window) {
+  return function(msg, action) {
+   	if (action !== '') { // Whether the toast should show an action button
+   		var toast = $mdToast.simple()
+	      .textContent(msg)
+	      .action(action)
+	      .highlightAction(true);
+			$mdToast.show(toast).then(function(response) {
+				if ( response == 'ok' ) {
+					switch (action) {
+						case 'refresh':
+							$window.location.reload();
+							break;
+						case 'ok':
+							$mdToast.hide();
+							break;
+					}
+				}
+			}, function(err) {
+				angular.noop();
+			});
+		} else {
+			$mdToast.showSimple(msg);
+			// or $mdToast.show($mdToast.simple().textContent(msg));
+		}
+  };
+}]);
+// Factory for displaying Dialogs
+app.factory('Dialog', ['$mdDialog', 'Toast' , function($mdDialog, Toast) {
+	return {
+		show : function(dlg, ev) { 
+				$mdDialog.show({
+					templateUrl: '/assets/' + dlg + '-template.html',
+					parent: angular.element(document.body),
+					targetEvent: ev,
+					controller: dlg,
+					clickOutsideToClose: true
+				});
+		},
+		close : function() {
+			$mdDialog.cancel();
+		}
+	};
+}]);
+// Factory for displaying Panels
+app.factory('Panel', ['$mdPanel', function($mdPanel) {
+	// Controller for Panel instance
+	/*@ngInject*/ function PanelCtrl(mdPanelRef) { 
+		this.close = function() {
+			mdPanelRef && mdPanelRef.close().then(function() {
+				mdPanelRef.destroy();
+			})
+		} 
+	}
+	return function(dest) {
+		this._mdPanel = $mdPanel;
+		var tmpl = '/project/' + dest + '.html';
+		var position = this._mdPanel.newPanelPosition().absolute().center();
+		var animation = this._mdPanel.newPanelAnimation().withAnimation(this._mdPanel.animation.FADE);
+		var config = {
+			animation: animation,
+			attachTo: angular.element(document.body),
+			controller: PanelCtrl,
+			controllerAs: 'ctrl',
+			disableParentScroll: this.disableParentScroll,
+			templateUrl: tmpl,
+			hasBackdrop: true,
+			panelClass: 'modal-container',
+			position: position,
+			trapFocus: true,
+			zIndex: 150,
+			clickOutsideToClose: true,
+			escapeToClose: true,
+			focusOnOpen: true
+		};
+		this._mdPanel.open(config);
+		}
+}]);
+// Service Worker Registration
+// Adapted from https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js
+if ('serviceWorker' in navigator) { // If Service worker feature is available in the browser
+	navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+	/*registration.showNotification('Vibration Sample', { // Notification with Vibration
+	body: 'Buzz! Buzz!',
+	vibrate: [200, 100, 200, 100, 200, 100, 200],
+	tag: 'vibration-sample'
+	});*/
+		// Get a handle for the toast service 
+		var toaster = angular.element(document.getElementById('ctrl')).injector().get('Toast');
+		registration.onupdatefound = function() { //When SW is changed
+			// The updatefound event implies that reg.installing is set; see
+			// https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
+
+			// Get the state of the service worker
+			var installingWorker = registration.installing;
+			// Track the service worker of any changes
+			installingWorker.onstatechange = function() {
+				switch (installingWorker.state) {
+					case 'installed':
+						if (navigator.serviceWorker.controller) {
+							// Any old content will be purged and new content will be added to the cache
+							toaster('New content available', 'refresh');
+							// Refresh is done to load overcome the network first strategy.
+							// Content will be loaded from the cache only the second time
+							// The content won't be offline ready at the first visit.
+						} else {
+							// If controller is null, then it is the first visit, so first time caching is complete
+							toaster('Content cached for offline use', 'ok');
+						}
+						break;
+					case 'redundant':
+						console.error('[SW] The installing service worker became redundant.');
+						break;
+				}
+			};
+		};
+	}).catch(function(e) {
+		console.error('[SW] Error during service worker registration:', e);
+	});
+}
