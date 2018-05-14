@@ -127,3 +127,21 @@ app.directive('pjaxNav', ['$compile', function($compile){
 		}
 	};
 }]);
+
+// Shortcut event listener
+app.directive('shortcut', ['$document', function($document) {
+	return {
+		restrict: 'A',
+		controller: 'main',
+		link: function(scope, elem, attr, ctrl) {
+			$document.bind('keypress', function(event) {
+				if (event.which == 47) {
+					if(event.target.nodeName != 'INPUT') {
+						scope.$apply(attr.shortcut);
+						event.preventDefault();
+					}
+				}
+			});
+		} 
+	}
+}]);

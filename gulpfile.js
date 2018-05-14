@@ -148,8 +148,21 @@ gulp.task('fireDB', (callback) => {
 gulp.task('default', ['push', 'ampdeploy']);
 
 
+// Bundle for testing
+gulp.task('bundletest', () => {
+	gulp.src([
+		'./scripts/angular/app.js',
+		'./scripts/angular/*.ctrl.js',
+		'./scripts/angular/directives.js',
+		'./scripts/angular/factories.js',
+		'./scripts/angular/serviceworker.js'
+	])
+		.pipe(concat('main.bundle.js'))
+		.pipe(gulp.dest('./scripts'));
+});
+
 // Jekyll Serve
-gulp.task('serve', ['clean'], (callback) => {
+gulp.task('serve', ['bundletest'], (callback) => {
 	exec('bundle exec jekyll serve', (err, stdout, stderr) => {
 		gutil.log(stderr);
 		gutil.log(stdout);
