@@ -338,12 +338,29 @@ app.controller('ProjectCtrl', ['Panel', '$scope', '$http', function (Panel, $sco
 	$scope.categories = ['hardware', 'frontend', 'native'];
 	$scope.projects = [];
 	$http.get(baseUrl + '/assets/projects.json')
-       .then(function(res){
+       .then((res) => {
           for(project in res.data) {
           	$scope.projects.push(res.data[project]);
           }
         });
 }]);
+
+// Controller for Blog posts
+app.controller('BlogCtrl', function($scope, $http) {
+	var baseUrl = location.protocol + "//" + location.host;
+	$scope.posts = [];
+	$scope.filter = "";
+	$scope.categories = ['events'];
+	$http.get(baseUrl + '/assets/posts.json')
+		.then((response) => {
+			for(post in response.data) {
+				$scope.posts.push(response.data[post]);
+			}
+		});
+	$scope.navigate = (index) => {
+		pjax.invoke($scope.posts[index].url, 'main');
+	};
+});
 
 // Controller for 100DaysOfCode
 app.controller('HdocCtrl', function($scope, $http, $anchorScroll, $location) {

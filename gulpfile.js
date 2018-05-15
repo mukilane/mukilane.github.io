@@ -82,6 +82,12 @@ gulp.task('clean', ['compile'], () => {
 // Generates .md files into a collection '_project'
 gulp.task('pagemaster', ['clean'], (callback) => {
 	exec('bundle exec jekyll pagemaster project', (err, stdout, stderr) => {
+		if(!err) {
+			exec('yaml2json _data/projects.yml > assets/projects.json', (e, sOut, sErr) => {
+				gutil.log(sErr);
+				gutil.log(sOut);
+			});
+		}
 		gutil.log(stderr);
 		gutil.log(stdout);
 		callback(err);

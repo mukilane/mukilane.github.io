@@ -7,7 +7,9 @@
 		"category": "{{ post.category }}",
 		"url": "{{ post.url }}",
 		"description": "{{ post.description }}",
-		"date": "{{ post.date | date_to_string }}"
+		"date": "{{ post.date | date_to_string }}",
+		"image": "{{ post.image }}",
+		"color": "{{ post.color }}"
 	}{% unless forloop.last %},{% endunless %}
 	{% endfor %}	
 }

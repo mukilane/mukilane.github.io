@@ -15,25 +15,26 @@ permalink: /blog/
   </div>
 </div>
 
+<div ng-controller="BlogCtrl">
 <md-grid-list
       md-cols="1" md-cols-sm="2" md-cols-gt-sm="6" md-cols-gt-md="6"
       md-cols-gt-lg="8" md-row-height-gt-md="3:4" md-row-height="16:9" 
-      md-gutter="8px" md-on-layout="show($event)" ng-hide="gridLay">
+      md-gutter="8px">
 	
-  {% for post in site.posts %}
   <md-grid-tile md-rowspan="2" md-colspan="2"
                 md-colspan-sm="1" md-colspan-xs="1"
                 md-rowspan-md="4" md-rowspan-gt-md="2" md-rowspan-sm="2" md-rowspan-xs="1"
-                class="post-tile" md-colors="{background: 'grey-300'}" >
-    <div class="tile-wrap" layout="column" layout-xs="row" md-ink-ripple="true" onclick="pjax.invoke('{{ post.url }}', 'main');">
-      <div flex='60' flex-xs='50' style="filter: brightness(0.8); background: url({{ post.image }}) no-repeat 50% 50%; background-size: cover; background-position: 50% 50%;">
+                class="post-tile animate-repeat" md-colors="{background: 'grey-300'}"
+                ng-repeat="post in posts track by $index" >
+    <div class="tile-wrap" layout="column" layout-xs="row" md-ink-ripple="true" ng-click="navigate($index)">
+      <div flex='60' flex- xs='50' style="filter: brightness(0.8); background: url({* post.image *}) no-repeat 50% 50%; background-size: cover; background-position: 50% 50%;">
       </div>
-      <div layout="column" flex="45" flex-xs="50" class="theader" layout-align="flex-start stretch" md-colors="{background: '{{ post.color }}'}" >
-        <div class="md-headline">{{post.title}}</div>
-        <h3 class='md-body-1' style="opacity:0.54;margin:8px 0;">{{ post.date | date_to_string }}</h3>
-        <div class="md-subhead tdes">{{post.description}}</div>
+      <div layout="column" flex="45" flex-xs="50" class="theader" layout-align="flex-start stretch" md-colors="{background: '{* post.color *}'}" >
+        <div class="md-headline">{* post.title *}</div>
+        <h3 class='md-body-1' style="opacity:0.54;margin:8px 0;">{* post.date *}</h3>
+        <div class="md-subhead tdes">{* post.description *}</div>
         <div class="md-subhead category" hide-sm>
-          {{ post.category | capitalize }} 
+          {* post.category *} 
         </div>
         <div class="arrow" show-gt-sm>
           <i class="material-icons">chevron_right</i>
@@ -41,10 +42,8 @@ permalink: /blog/
       </div>
     </div>
   </md-grid-tile>
-  {% endfor %}
-
-		
 </md-grid-list>
+</div>
 <style type="text/css">
 .theader {
   padding: 16px;
@@ -70,5 +69,35 @@ md-grid-list md-grid-tile {
   position: absolute;
   bottom: 16px;
   right: 16px;
+}
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  transition:all linear 0.4s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:0;
+  /*top: 64px;*/
+  transform: scale(0.8);
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  /*top: 0;*/
+  transform: scale(1);
+}
+
+.animate-repeat.ng-enter-stagger,
+.animate-repeat.ng-move-stagger,
+.animate-repeat.ng-leave-stagger {
+    transition-delay: 0.1s ;
+    -webkit-transition-delay: 0.1s ;
+    transition-duration: 0s ;
+    -webkit-transition-duration: 0s ;
 }
 </style>
