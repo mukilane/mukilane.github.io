@@ -49,14 +49,14 @@ app.controller('share', function($scope, Dialog, Toast, $mdMedia, $mdBottomSheet
 
 //Controller for Projects
 app.controller('ProjectCtrl', ['Panel', '$scope', '$http', function (Panel, $scope, $http) {
-	
+	var baseUrl = location.protocol + "//" + location.host;
 	$scope.show = function(dest) {
 		Panel(dest);
 	}
 	$scope.filter = "";
 	$scope.categories = ['hardware', 'frontend', 'native'];
 	$scope.projects = [];
-	$http.get('http://localhost:4000/assets/projects.json')
+	$http.get(baseUrl + '/assets/projects.json')
        .then(function(res){
           for(project in res.data) {
           	$scope.projects.push(res.data[project]);
