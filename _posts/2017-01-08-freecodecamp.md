@@ -28,7 +28,7 @@ There are four certifications namely:
 
 ## My status
 
-Currently, I have completed the [Front End Certification][https://www.freecodecamp.com/mukilane/front-end-certification] for which I had to complete several small programs and algorithms, 4 mini projects and 5 small projects. 
+Currently, I have completed the [Front End Certification](https://www.freecodecamp.com/mukilane/front-end-certification) for which I had to complete several small programs and algorithms, 4 mini projects and 5 small projects. 
 
 ## Mini Projects
 These are pretty basic projects involving mostly using `XmlHttpRequest` ( more broadly know as `AJAX` ) for getting data from third party API's of Twtich & Wikipedia. The personal portfolio page is `this` site itself, which I later revamped into a more professional site.
