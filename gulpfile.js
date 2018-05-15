@@ -40,6 +40,7 @@ gulp.task('bundle', ['browserify'], () => {
 		'./scripts/angular/*.ctrl.js',
 		'./scripts/angular/directives.js',
 		'./scripts/angular/factories.js',
+		'./scripts/angular/filters.js',
 		'./scripts/angular/serviceworker.js'
 	])
 		.pipe(concat('main.js'))

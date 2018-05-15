@@ -327,11 +327,22 @@ app.controller('share', function($scope, Dialog, Toast, $mdMedia, $mdBottomSheet
 		Dialog.close();
 	};
 });
+
 //Controller for Projects
-app.controller('ProjectCtrl', ['Panel', function (Panel) {
-	this.show = function(dest) {
+app.controller('ProjectCtrl', ['Panel', '$scope', '$http', function (Panel, $scope, $http) {
+	
+	$scope.show = function(dest) {
 		Panel(dest);
 	}
+	$scope.filter = "";
+	$scope.categories = ['hardware', 'frontend', 'native'];
+	$scope.projects = [];
+	$http.get('http://localhost:4000/assets/projects.json')
+       .then(function(res){
+          for(project in res.data) {
+          	$scope.projects.push(res.data[project]);
+          }
+        });
 }]);
 
 // Controller for 100DaysOfCode
@@ -565,7 +576,19 @@ app.factory('Panel', ['$mdPanel', function($mdPanel) {
 		this._mdPanel = $mdPanel;
 		var tmpl = '/project/' + dest + '.html';
 		var position = this._mdPanel.newPanelPosition().absolute().center();
-		var animation = this._mdPanel.newPanelAnimation().withAnimation(this._mdPanel.animation.FADE);
+		var animation = this._mdPanel.newPanelAnimation().withAnimation(this._mdPanel.animation.SLIDE);
+		animation.openFrom({
+			top: document.documentElement.clientHeight,
+			left: 0
+		});
+		animation.closeTo({
+			top: document.documentElement.clientHeight,
+			left: 0
+		});
+		animation.duration({
+			open: 500,
+			close: 300
+		});
 		var config = {
 			animation: animation,
 			attachTo: angular.element(document.body),
@@ -585,6 +608,12 @@ app.factory('Panel', ['$mdPanel', function($mdPanel) {
 		this._mdPanel.open(config);
 		}
 }]);
+// Filter for capitalizing 
+app.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+});
 // Service Worker Registration
 // Adapted from https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js
 if ('serviceWorker' in navigator) { // If Service worker feature is available in the browser

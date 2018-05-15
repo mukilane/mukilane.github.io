@@ -71,7 +71,19 @@ app.factory('Panel', ['$mdPanel', function($mdPanel) {
 		this._mdPanel = $mdPanel;
 		var tmpl = '/project/' + dest + '.html';
 		var position = this._mdPanel.newPanelPosition().absolute().center();
-		var animation = this._mdPanel.newPanelAnimation().withAnimation(this._mdPanel.animation.FADE);
+		var animation = this._mdPanel.newPanelAnimation().withAnimation(this._mdPanel.animation.SLIDE);
+		animation.openFrom({
+			top: document.documentElement.clientHeight,
+			left: 0
+		});
+		animation.closeTo({
+			top: document.documentElement.clientHeight,
+			left: 0
+		});
+		animation.duration({
+			open: 500,
+			close: 300
+		});
 		var config = {
 			animation: animation,
 			attachTo: angular.element(document.body),

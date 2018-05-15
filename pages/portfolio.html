@@ -4,17 +4,71 @@ title: Projects
 permalink: /portfolio/
 ---
 <span ng-init="currentNavItem='Portfolio'"></span>
-<div ng-controller="ProjectCtrl as ctrl">
-<md-grid-list md-cols="1" md-cols-sm="2" md-cols-gt-sm="6" md-cols-gt-md="8"
-    md-cols-gt-lg="8" md-row-height-gt-md="3:4" md-row-height-gt-xs="3:4" md-row-height="16:9" 
+<div ng-controller="ProjectCtrl">
+    <div style="height: 48px">
+        <div style="float: right;">
+            <span ng-hide="filter !== ''"><i class="material-icons">filter_list</i></span>
+            <span ng-show="filter !== ''">
+                <md-button class="md-icon-button" ng-click="filter=''" style="margin: 0; top: -6px;">
+                <i class="material-icons">clear</i>
+                <md-tooltip>Clear Filter</md-tooltip>
+                </md-button>
+            </span>
+            <span>
+                <md-input-container style="margin: 0; padding-bottom: 16px;">
+                <label>Filter</label>
+                <md-select ng-model="filter" placeholder="Category" class="md-no-underline">
+                <md-option ng-repeat="category in categories" ng-value="category">
+                {*category | capitalize *}
+                </md-option>
+                </md-select>
+                </md-input-container>
+            </span>
+            
+        </div>
+    </div>
+    <md-grid-list md-cols="1" md-cols-sm="2" md-cols-gt-sm="6" md-cols-gt-md="8"
+    md-cols-gt-lg="8" md-row-height-gt-md="3:4" md-row-height-gt-xs="3:4" md-row-height="16:9"
     md-gutter="8px">
-    {% for project in site.data.projects %}
-    <md-grid-tile md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile" md-colors="{background: '{{project.color}}'}" md-ink-ripple="true" ng-click="ctrl.show('{{project.page_name}}')">
-        <tile-header tag="{{project.short_description}}">
-            {{project.title}}
-        </tile-header>
-        <tile-footer>{{project.languages[0]}}</tile-footer>
+    <md-grid-tile ng-repeat="project in projects | filter:filter track by project.page_name "  md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1" class="image-tile animate-repeat" md-colors="{background: '{* project.color*}'}" md-ink-ripple="true" ng-click="show(project.page_name)">
+    <tile-header tag="{* project.short_description *}">
+    {* project.title *}
+    </tile-header>
+    <tile-footer>{* project.languages[0] *}</tile-footer>
     </md-grid-tile>
-    {% endfor%}
-</md-grid-list>
+    </md-grid-list>
 </div>
+
+<style type="text/css">
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  transition:all linear 0.4s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:0;
+  /*top: 64px;*/
+  transform: scale(0.8);
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  /*top: 0;*/
+  transform: scale(1);
+}
+
+.animate-repeat.ng-enter-stagger,
+.animate-repeat.ng-move-stagger,
+.animate-repeat.ng-leave-stagger {
+    transition-delay: 0.1s ;
+    -webkit-transition-delay: 0.1s ;
+    transition-duration: 0s ;
+    -webkit-transition-duration: 0s ;
+}
+   
+</style>

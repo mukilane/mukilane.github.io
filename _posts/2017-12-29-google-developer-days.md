@@ -8,15 +8,15 @@ description: Google's biggest developer event in India
 image: /assets/blog/gdd-india.png
 ---
 
-<img src="/assets/blog/github-heatmap.png" alt="Github Heatmap">
+<b>Google Developer Days (GDD)</b> is a series of developer events around the world showcasing various products of Google. They provide a platform for developer engagement as well as provide an opportunity to meet the teams behind the products.
 
-I've made a public commitment.
+<img src="/assets/blog/gdd-india.png" alt="Google Developer Days, India">
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I&#39;ve joined the <a href="https://twitter.com/hashtag/100DaysOfCode?src=hash&amp;ref_src=twsrc%5Etfw">#100DaysOfCode</a> Challenge.</p>&mdash; Mukil Elango (@mukilane) <a href="https://twitter.com/mukilane/status/942381656551260161?ref_src=twsrc%5Etfw">December 17, 2017</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+GDD events have taken place over many countries, starting all the way from 2007. And the GDD India 2017 is the first biggest Google developer event to take place in India. And the host city is nothing but India's Silicon Valley, the Bangalore city. The huge developer base of India has captured the attention of the tech giant and it is a no-brainer to conduct an event here. 
 
+GDD India took place between December 1 and 2, at the Bengaluru International Exhibition Centre. Google offered travel and accomodation discounts, and provided shuttles for the city. 
 
-## What is 100 Days of Code ?
+Spanning the 2 days are various sessions, from speeches, 
 
 The 100 Days Of Code Challenge is a self imposed challenge to build our habit of coding everyday. It was created by a developer, Alexander Kallaway. It relies on the concept of [purposeful practice][practice], where mastery can be acheived through constant delibrate practice.
 
