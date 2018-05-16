@@ -9,6 +9,9 @@ var config = {
     messagingSenderId: "771554923359"
 };
 firebase.initializeApp(config);
+const firestore = firebase.firestore();
+const settings = { timestampsInSnapshots: true };
+firestore.settings(settings);
 // Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate', 'firebase']);
 // Angular Confiurations

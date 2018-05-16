@@ -154,7 +154,6 @@ gulp.task('fireDB', (callback) => {
 // Reminder: Update to gulp.series on 4.x
 gulp.task('default', ['push', 'ampdeploy']);
 
-
 // Bundle for testing
 gulp.task('bundletest', () => {
 	gulp.src([

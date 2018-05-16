@@ -9,7 +9,7 @@ twitter_username: mukilane
 github_username:  mukilane
 greeting: "" # Display special messages
 angular_version: "1.6.7" # Version of AngularJS used 
-firebase_version: "4.8.1"
+firebase_version: "5.0.2"
 exclude: ["package.json",
           "node_modules",
           "gulpfile.js",

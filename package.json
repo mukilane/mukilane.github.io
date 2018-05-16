@@ -37,6 +37,7 @@
     "angular-route": "^1.6.10",
     "angularfire": "^2.3.0",
     "api-ai-javascript": "^2.0.0-beta.21",
+    "firebase": "^5.0.2",
     "google-closure-compiler-js": "^20161201.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-git": "^1.15.1"

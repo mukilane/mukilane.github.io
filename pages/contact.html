@@ -4,11 +4,68 @@ title: Contact
 permalink: /contact/
 ---
 
-<div layout="column" layout-gt-xs="row" layout-align="center center" md-colors="{background: 'grey-800'}" ng-init="currentNavItem='Contact'" style="margin:0 0 32px 0; height: 400px; padding: 32px;">
-	<div flex=50 layout="row" layout-align="center center"> <div><i class="material-icons" style="font-size: 144px;">mail_outline</i></div></div>
-	<div layout="column" layout-align="flex-start center" flex=50>
-		<h2 class="md-display-1">Want to say a Hi? Or talk about Space exploration?</h2>
-		<h3 class="md-headline" style="padding: 16px 0; opacity: 0.87">Mail me at  <a href="mailto:mukilane@gmail.com" style="color: #eee; font-family: monospace;">mukilane@gmail.com</a></h3>
+<div ng-controller="ContactCtrl">
+	<div layout="column" layout-gt-xs="row" layout-align="center center" md-colors="{background: 'grey-100'}" style="margin:0 0 32px 0; min-height: 400px; padding: 32px; border-radius: 16px;">
+		<div flex=50 layout="row" layout-align="center center" style="min-height: 100%; overflow: hidden;">
+			<img src="/assets/contact.jpg" style="max-height: 450px;">
+		</div>
+		<div layout="column" class="md-subhead" layout-align="flex-start stretch" flex=50 ng-hide="showForm">
+			<div ng-hide="showNi || showEi">
+				<div class="md-headline" style="margin-bottom: 8px;">Hi,</div>
+				<p class="md-subhead"> 
+					So you want to reach out to me to discuss on a possible job, a meetup, a piece of work or just wanted to say a 'Hi'. Whatever be the reason, this is the unified interface to reach out to me the quickest. Just get an identity (for blocking spams) and use the form to ping me. I'll ping you back at the earliest.
+				</p>
+			</div>
+			<md-card-actions ng-hide="showNi || showEi">
+				<md-button class="md-raised" md-colors="{background: 'blue-500'}" ng-click="showNi=true;">Create new identity</md-button>
+				<md-button class="md-raised" md-colors="{background: 'blue-500'}" ng-click="showEi=true;">Use existing identity</md-button>
+			</md-card-actions>
+			<div ng-show="showNi" class="new-identity">
+				<div class="md-headline">Create a new identity</div>
+				<md-input-container>
+					<label>Email</label>
+					<input type="email" ng-model="data.email">
+				</md-input-container>
+				<md-input-container>
+					<label>Password</label>
+					<input type="password" ng-model="data.password">
+				</md-input-container>
+				<md-card-actions layout="row" layout-align="space-between center">
+					<md-button class="md-raised" ng-click="showNi=false;showEi=false;">Back</md-button>
+					<md-button class="md-raised" md-colors="{background: 'blue-500'}" ng-click="createUser()">Create</md-button>
+				</md-card-actions>
+			</div>
+			<div ng-show="showEi" class="existing-identity">
+				<div class="md-headline">Use an existing identity</div>
+				<md-input-container>
+					<label>Email</label>
+					<input ng-model="data.email">
+				</md-input-container>
+				<md-input-container>
+					<label>Password</label>
+					<input type="password" ng-model="data.password">
+				</md-input-container>
+				<md-card-actions layout="row" layout-align="space-between center">
+					<md-button class="md-raised" ng-click="showNi=false;showEi=false;">Back</md-button>
+					<md-button class="md-raised" md-colors="{background: 'blue-500'}" ng-click="signIn()">Use</md-button>
+				</md-card-actions>
+			</div>
+		</div>
+		<div layout="column" layout-align="flex-start center" flex=50 ng-show="showForm">
+			Signed in
+			<!-- <form name="userForm">
+				<md-input-container>
+					<label></label>
+					<input ng-model="">
+				</md-input-container>
+				<md-input-container>
+					<label></label>
+					<input ng-model="">
+				</md-input-container>
+			</form> -->
+			
+			<md-button ng-click="signout()">Sign out</md-button>
+		</div>
 	</div>
 </div>
 
@@ -76,6 +133,7 @@ permalink: /contact/
 		</md-list>
 	</div>
 </div>
+
 <style type="text/css">
 	.md-avatar {
 		fill: white !important;
@@ -93,5 +151,21 @@ permalink: /contact/
 	}
 	a {
 		text-decoration: none !important;
+	}
+	md-card-actions .md-raised {
+		margin-top: 16px;
+	}
+	.md-raised {
+		border-radius: 20px;
+    	margin: 0 8px 0 0;
+    	padding: 0 16px;
+	}
+	.new-identity, .existing-identity {
+		padding: 16px;
+    	border: 2px solid #d0d0d0;
+    	border-radius: 16px;
+	}
+	md-input-container .md-errors-spacer {
+		display: none;
 	}
 </style>

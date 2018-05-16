@@ -13,6 +13,7 @@ module.exports = {
   stripPrefix: '_site/',
   verbose: true,
   ignoreUrlParametersMatching: [/./],
+  maximumFileSizeToCacheInBytes: 2510200,
   //Template file
   templateFilePath: './scripts/service-worker.tmpl',
   // Scripts to be imported

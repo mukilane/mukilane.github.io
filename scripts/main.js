@@ -9,6 +9,9 @@ var config = {
     messagingSenderId: "771554923359"
 };
 firebase.initializeApp(config);
+const firestore = firebase.firestore();
+const settings = { timestampsInSnapshots: true };
+firestore.settings(settings);
 // Angular App initialization
 var app = angular.module('port', ['ngMaterial', 'ngAnimate', 'firebase']);
 // Angular Confiurations
@@ -104,39 +107,91 @@ angular.module('port')
 	}
 
 });
+// Controller for Contact page
+app.controller("ContactCtrl", function($scope) {
+	$scope.showForm = false;
+	$scope.data = {
+		email: "",
+		password: ""
+	};
+	$scope.createUser = () => {
+		firebase.auth().createUserWithEmailAndPassword($scope.data.email, $scope.data.password)
+			.catch(function(error) {
+			  	var errorCode = error.code;
+		  		var errorMessage = error.message;	  
+			});
+	}
+	$scope.signIn = () => {
+		firebase.auth().signInWithEmailAndPassword($scope.data.email, $scope.data.password)
+			.catch(function(error) {
+			  	var errorCode = error.code;
+		  		var errorMessage = error.message;	  
+			});
+	}
+	$scope.signout = () => {
+		firebase.auth().signOut().then(function() {
+		  	$scope.showForm = false;
+		}).catch(function(error) {
+		  // An error happened.	
+		});
+	}
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+	    // User is signed in.
+	    
+	    $scope.showForm = true;
+	    var displayName = user.displayName;
+	    var email = user.email;
+	    var emailVerified = user.emailVerified;
+	    var photoURL = user.photoURL;
+	    var isAnonymous = user.isAnonymous;
+	    var uid = user.uid;
+	    var providerData = user.providerData;
+	    console.log(displayName, email, photoURL);
+
+	  } else {
+	    // User is signed out.
+	    // ...
+	  }
+});
+});
 // Controller for feeback form
 app.controller('feedback', function ($scope, $firebaseObject, $firebaseAuth, Dialog) {
-	"ngInject";
-	var auth = $firebaseAuth();
-	var ref = firebase.database().ref("feedback");
-	$scope.close = function() {
-		Dialog.close();
-	}
-	$scope.showMsg = false;
-	$scope.signIn = function() {
-		$scope.showMsg = true;
-    $scope.firebaseUser = null;
-    // Anonymous Sign in
-    auth.$signInAnonymously().then(function(firebaseUser) {
-    	$scope.firebaseUser = firebaseUser;
-    	$scope.data = $firebaseObject(ref.push());
-    }).catch(function(error) {
-    	console.log("Error occured during sending");
-    });
+  "ngInject";
+  var auth = $firebaseAuth();
+  $scope.close = function() {
+    Dialog.close();
+  }
+  $scope.showMsg = false;
+  $scope.signIn = function() {
+    $scope.showMsg = true;
+      $scope.firebaseUser = null;
+      // Anonymous Sign in
+      auth.$signInAnonymously().then(function(firebaseUser) {
+        $scope.firebaseUser = firebaseUser;
+      }).catch(function(error) {
+        console.log("Error occured during sending");
+      });
   };
   $scope.thumbs = function(e) {
-  	$scope.data = $firebaseObject(ref.push());
-  	$scope.data.$save().then(function() {
-  		
-  	});
+    // $scope.data = $firebaseObject(ref.push());
+    // $scope.data.$save().then(function() {
+      
+    // });
   }
   $scope.sendMsg = function() {
-    $scope.data.$save().then(function() {
-			console.log('Feedback Sent');
-			Dialog.close();
-    }).catch(function(error) {
-    	console.log('Error!');
-    });
+    firestore.collection("feedback").add({
+      username: $scope.data.username,
+      message: $scope.data.message,
+      timestamp: new Date() 
+    })
+    .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+      Dialog.close();
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
   };
 });
 // Main Controller
