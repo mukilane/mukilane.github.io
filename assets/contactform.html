@@ -1,0 +1,96 @@
+<div class="modal" layout="column">
+	<md-toolbar md-colors="{background: 'grey-A100'}">
+		<div class="md-toolbar-tools" layout="column" layout-align="center stretch"  style="max-height: 64px !important; height: 64px !important;">
+			<div layout="row" layout-align="flex-start center">
+				<md-button class="md-icon-button" ng-click="ctrl.close()">
+			        <md-tooltip >Back</md-tooltip>
+					<i class="material-icons">arrow_back</i>
+			    </md-button>
+			</div>
+		</div>
+	</md-toolbar>
+	<md-content md-colors="{background: 'grey-A100'}" layout="column" layout-gt-sm="row" layout-align="flex-start stretch" ng-controller="ContactFormCtrl">
+		<div flex-gt-sm="50" flex="100" layout-padding>
+			<div class="md-display-2 modal-title" >
+				Contact Form
+			</div>
+			<div class="md-subhead">
+				<div ng-show="existingForm">
+					Select existing form
+				</div>
+				<md-input-container>
+		        	<label>Name</label>
+		        	<input ng-model="contact.name">
+		      	</md-input-container>
+		      	<md-input-container>
+		        	<label>Company</label>
+		        	<input ng-model="contact.company">
+		      	</md-input-container>
+		      	<md-input-container>
+		        	<label>Email for contact</label>
+		        	<input type="email" ng-model="contact.email">
+		      	</md-input-container>
+		      	<md-input-container>
+		        	<label>Purpose</label>
+		        	<input ng-model="contact.purpose">
+		      	</md-input-container>
+			</div>
+		</div>
+		<div flex-gt-sm="50" flex="100" layout-padding>
+			<div class="md-subhead">
+				<md-input-container>
+		        	<label>Title</label>
+		        	<input required ng-model="contact.title">
+		      	</md-input-container>
+				<md-input-container>
+		        	<label>Name</label>
+		        	<input ng-model="contact.name">
+		      	</md-input-container>
+		      	<md-input-container class="md-block">
+		        	<label>Comments</label>
+		          	<textarea ng-model="contact.comments" md-maxlength="150"  md-select-on-focus></textarea>
+        		</md-input-container>
+        		<md-card-actions layout="row" layout-align="flex-end center">
+        			<md-button class="md-raised" ng-click="submit()" md-colors="{background: 'blue-500'}">Submit</md-button>
+        			<md-button class="md-raised" ng-click="ctrl.close()">Cancel</md-button>
+        		</md-card-actions>
+			</div>
+		</div>
+	</md-content>
+</div>
+
+<script type="text/javascript">
+	ga('set', 'page', '/project/calculator.html');
+	ga('send', 'pageview');
+</script>
+<style>
+.modal-container {
+	height: 100%;
+	width: 100%;
+	max-width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.modal {
+	height: 100%;
+	max-width: 100%;
+	width: 100%;
+}
+.modal-image {
+	margin-top: 24px;
+	min-height: 500px;
+	background-image: url('/assets/projects/calculator.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 0%;
+}
+.modal-title {
+	font-family: 'Product Sans', 'RobotoDraft', sans-serif;
+}
+.modal md-content {
+	height: 100%;
+    overflow-y: auto;
+    padding: 0 16px;
+}
+</style>

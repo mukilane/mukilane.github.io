@@ -51,7 +51,7 @@ app.controller('share', function($scope, Dialog, Toast, $mdMedia, $mdBottomSheet
 app.controller('ProjectCtrl', ['Panel', '$scope', '$http', function (Panel, $scope, $http) {
 	var baseUrl = location.protocol + "//" + location.host;
 	$scope.show = function(dest) {
-		Panel(dest);
+		Panel('/project/' + dest);
 	}
 	$scope.filter = "";
 	$scope.categories = ['hardware', 'frontend', 'native'];

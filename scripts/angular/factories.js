@@ -69,7 +69,7 @@ app.factory('Panel', ['$mdPanel', function($mdPanel) {
 	}
 	return function(dest) {
 		this._mdPanel = $mdPanel;
-		var tmpl = '/project/' + dest + '.html';
+		var tmpl = dest + '.html';
 		var position = this._mdPanel.newPanelPosition().absolute().center();
 		var animation = this._mdPanel.newPanelAnimation().withAnimation(this._mdPanel.animation.SLIDE);
 		animation.openFrom({

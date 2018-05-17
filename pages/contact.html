@@ -52,7 +52,22 @@ permalink: /contact/
 			</div>
 		</div>
 		<div layout="column" layout-align="flex-start center" flex=50 ng-show="showForm">
-			Signed in
+			<div>Great, let's continue.</div>
+			<div class="first-form" ng-show="isNewForm">
+				<p class="md-subhead">It seems that this is the first time you are contacting me. So let's start with a new form.</p>
+				<md-card-actions layout="row" layout-align="flex-start center">
+					<md-button class="md-raised" md-colors="{background: 'blue-500'}" ng-click="newForm()">New form</md-button>
+					<md-button class="md-raised" ng-click="signout()">Sign out</md-button>
+				</md-card-actions>
+			</div>
+			<div class="existing-form" ng-hide="isNewForm">
+				<p class="md-subhead">It seems that you have already contacted me. For reasons, you may want to ping me again. You can either use the existing form and make changes or start with a fresh form.</p>
+				<md-card-actions layout="row" layout-align="flex-start center">
+					<md-button class="md-raised" md-colors="{background: 'blue-500'}" ng-click="newForm()">New form</md-button>
+					<md-button class="md-raised" md-colors="{background: 'blue-500'}" ng-click="existingForm()">Existing form</md-button>
+					<md-button class="md-raised" ng-click="signout()">Sign out</md-button>
+				</md-card-actions>
+			</div>
 			<!-- <form name="userForm">
 				<md-input-container>
 					<label></label>
@@ -63,8 +78,6 @@ permalink: /contact/
 					<input ng-model="">
 				</md-input-container>
 			</form> -->
-			
-			<md-button ng-click="signout()">Sign out</md-button>
 		</div>
 	</div>
 </div>
@@ -167,5 +180,24 @@ permalink: /contact/
 	}
 	md-input-container .md-errors-spacer {
 		display: none;
+	}
+
+	md-input-container {
+		background: #ececec;
+	    padding: 16px 0 0;
+	    margin-right: 4px;
+	    border-radius: 4px 4px 0 0;
+	}
+	md-input-container label:not(.md-container-ignore) {
+		bottom: 85%;
+		padding-left: 8px !important;
+		color: rgba(0, 0, 0, 0.67);
+	}
+	md-input-container.md-input-focused label:not(.md-no-float), md-input-container.md-input-has-placeholder label:not(.md-no-float), md-input-container.md-input-has-value label:not(.md-no-float) {
+		margin-bottom: -14px;
+		top: -2px;
+	}
+	md-input-container .md-input {
+		padding-left: 8px;
 	}
 </style>
