@@ -16,7 +16,14 @@
 			</div>
 			<div class="md-subhead">
 				<div ng-show="existingForm">
-					Select existing form
+					<md-input-container>
+						<label>Select a form</label>
+						<md-select ng-model="contact" ng-change="selectForm()">
+			            	<md-option ng-repeat="form in forms" ng-value="form">
+			              	{* form.title *}<div class="md-select-description">{* form.name *}</div>
+			        		</md-option>
+			        	</md-select>
+			    	</md-input-container>
 				</div>
 				<md-input-container>
 		        	<label>Name</label>
@@ -51,7 +58,8 @@
 		          	<textarea ng-model="contact.comments" md-maxlength="150"  md-select-on-focus></textarea>
         		</md-input-container>
         		<md-card-actions layout="row" layout-align="flex-end center">
-        			<md-button class="md-raised" ng-click="submit()" md-colors="{background: 'blue-500'}">Submit</md-button>
+        			<md-button class="md-raised" ng-click="submit(ctrl.close())" ng-hide="existingForm" md-colors="{background: 'blue-500'}">Submit</md-button>
+        			<md-button class="md-raised" ng-click="submit(ctrl.close())" ng-show="existingForm" md-colors="{background: 'blue-500'}">Update</md-button>
         			<md-button class="md-raised" ng-click="ctrl.close()">Cancel</md-button>
         		</md-card-actions>
 			</div>
@@ -92,5 +100,12 @@
 	height: 100%;
     overflow-y: auto;
     padding: 0 16px;
+}
+.md-select-menu-container.md-active {
+	z-index: 151;
+}
+.md-select-description {
+    opacity: 0.67;
+    font-size: 14px;
 }
 </style>
