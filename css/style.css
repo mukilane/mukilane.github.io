@@ -35,7 +35,7 @@ footer {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap-reverse;
-  padding: 5vw 4vw;
+  padding: 5vw;
 }
 footer a{
   color: inherit !important;
@@ -335,6 +335,10 @@ strong, b {
     margin: 8px 0;
     font-size: 24px;
     line-height: 24px;
+  }
+  .banner {
+    font-size: 82px;
+    line-height: 82px;
   }
   .banner .md-display-4 {
     font-size: 96px;

@@ -50,19 +50,18 @@ app.controller("ContactCtrl", function($scope, Panel, ContactService) {
 
 app.controller('ContactFormCtrl', function($scope, ContactService, $timeout, Toast) {
 	$scope.existingForm = ContactService.useExistingForm();
-	$scope.contact = {};
 	$scope.forms = [];
-	$scope.selectedForm = {}; // Todo
+	$scope.selectedForm = {};
 	ContactService.getForms().then((data) => $scope.forms = data );
 	$scope.selectForm = () => {
-		console.log($scope.contact.id);
-		ContactService.selectForm($scope.contact.id);
+		console.log($scope.selectedForm.id);
+		ContactService.selectForm($scope.selectedForm.id);
 	}
 	$scope.submit = (close) => {
-		ContactService.update($scope.contact)
+		ContactService.update($scope.selectedForm)
 			.then(function() {
 				console.log("set out");
-				Toast("Done. Reply soon!")
+				Toast("Done. I'll reply soon.")
 				close();
 			});
 	}

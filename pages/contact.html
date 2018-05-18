@@ -62,7 +62,7 @@ permalink: /contact/
 			</div>
 			<div class="existing-form" ng-hide="isNewForm">
 				<p class="md-subhead">It seems that you have already contacted me. For reasons, you may want to ping me again. You can either use the existing form and make changes or start with a fresh form.</p>
-				<md-card-actions layout="row" layout-align="flex-start center">
+				<md-card-actions>
 					<md-button class="md-raised" md-colors="{background: 'blue-500'}" ng-click="newForm()">New form</md-button>
 					<md-button class="md-raised" md-colors="{background: 'blue-500'}" ng-click="existingForm()">Existing form</md-button>
 					<md-button class="md-raised" ng-click="signout()">Sign out</md-button>
@@ -177,6 +177,9 @@ permalink: /contact/
 		padding: 16px;
     	border: 2px solid #d0d0d0;
     	border-radius: 16px;
+	}
+	.existing-form {
+		width: 100%;
 	}
 	md-input-container .md-errors-spacer {
 		display: none;

@@ -18,7 +18,7 @@
 				<div ng-show="existingForm">
 					<md-input-container>
 						<label>Select a form</label>
-						<md-select ng-model="contact" ng-change="selectForm()">
+						<md-select ng-model="selectedForm" ng-change="selectForm()">
 			            	<md-option ng-repeat="form in forms" ng-value="form">
 			              	{* form.title *}<div class="md-select-description">{* form.name *}</div>
 			        		</md-option>
@@ -27,19 +27,19 @@
 				</div>
 				<md-input-container>
 		        	<label>Name</label>
-		        	<input ng-model="contact.name">
+		        	<input ng-model="selectedForm.name">
 		      	</md-input-container>
 		      	<md-input-container>
 		        	<label>Company</label>
-		        	<input ng-model="contact.company">
+		        	<input ng-model="selectedForm.company">
 		      	</md-input-container>
 		      	<md-input-container>
 		        	<label>Email for contact</label>
-		        	<input type="email" ng-model="contact.email">
+		        	<input type="email" ng-model="selectedForm.email">
 		      	</md-input-container>
 		      	<md-input-container>
 		        	<label>Purpose</label>
-		        	<input ng-model="contact.purpose">
+		        	<input ng-model="selectedForm.purpose">
 		      	</md-input-container>
 			</div>
 		</div>
@@ -47,15 +47,15 @@
 			<div class="md-subhead">
 				<md-input-container>
 		        	<label>Title</label>
-		        	<input required ng-model="contact.title">
+		        	<input required ng-model="selectedForm.title">
 		      	</md-input-container>
 				<md-input-container>
 		        	<label>Name</label>
-		        	<input ng-model="contact.name">
+		        	<input ng-model="selectedForm.name">
 		      	</md-input-container>
 		      	<md-input-container class="md-block">
 		        	<label>Comments</label>
-		          	<textarea ng-model="contact.comments" md-maxlength="150"  md-select-on-focus></textarea>
+		          	<textarea ng-model="selectedForm.comments" md-maxlength="150"  md-select-on-focus></textarea>
         		</md-input-container>
         		<md-card-actions layout="row" layout-align="flex-end center">
         			<md-button class="md-raised" ng-click="submit(ctrl.close())" ng-hide="existingForm" md-colors="{background: 'blue-500'}">Submit</md-button>
