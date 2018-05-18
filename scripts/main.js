@@ -174,6 +174,18 @@ app.controller('ContactFormCtrl', function($scope, ContactService, $timeout, Toa
 				close();
 			});
 	}
+	$scope.delete = (close) => {
+		ContactService.deleteForm()
+			.then(() => {
+				console.log("Form deleted").
+				Toast("Form deleted.");
+				close();
+			}).catch((error) => {
+				console.log("Error in deleting the form");
+				Toast("Error deleting the form.");
+				close();
+			});
+	}
 });
 
 app.service('ContactService', function($timeout) {
@@ -249,6 +261,18 @@ app.service('ContactService', function($timeout) {
 		
 		return docRef.set(data, {merge: true});
 	} 
+
+	var deleteForm = () => {
+		if(selectedForm) {
+			var _doc = {}; 
+			docRef = ref.collection('forms').doc();
+			_doc = doc.data()
+			_doc.formCount = _doc.formCount - 1;
+			docRef.set(_doc, {merge: true});
+			
+			return ref.collection('forms').doc(selectedForm).delete();
+		}
+	}
 	return {
 		isNewForm: isNewForm,
 		selectedForm: selectedForm,
@@ -256,7 +280,8 @@ app.service('ContactService', function($timeout) {
 		update: update,
 		setForm: setForm,
 		useExistingForm: useExistingForm,
-		getForms: getForms
+		getForms: getForms,
+		deleteForm: deleteForm
 	}
 });
 // Controller for feeback form

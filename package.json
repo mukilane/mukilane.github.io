@@ -17,11 +17,12 @@
   },
   "homepage": "https://github.com/mukilane/mukilane.github.io#readme",
   "devDependencies": {
-    "browserify": "^15.0.0",
+    "browserify": "^15.2.0",
     "del": "^2.2.2",
     "gulp-append": "^0.3.4",
-    "gulp-ng-annotate": "^2.0.0",
+    "gulp-ng-annotate": "^2.1.0",
     "gulp-replace": "^0.5.4",
+    "inquirer": "^5.2.0",
     "ng-annotate": "^1.2.1",
     "run-sequence": "^1.2.2",
     "sw-offline-google-analytics": "0.0.25",
@@ -29,6 +30,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
+    "acorn": "^5.5.3",
     "angular": "^1.6.10",
     "angular-animate": "^1.6.10",
     "angular-aria": "^1.6.10",
@@ -37,8 +39,9 @@
     "angular-route": "^1.6.10",
     "angularfire": "^2.3.0",
     "api-ai-javascript": "^2.0.0-beta.21",
-    "firebase": "^5.0.2",
+    "firebase": "^5.0.3",
     "google-closure-compiler-js": "^20161201.0.1",
+    "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-git": "^1.15.1"
   }

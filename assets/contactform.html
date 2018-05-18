@@ -58,8 +58,9 @@
 		          	<textarea ng-model="selectedForm.comments" md-maxlength="150"  md-select-on-focus></textarea>
         		</md-input-container>
         		<md-card-actions layout="row" layout-align="flex-end center">
-        			<md-button class="md-raised" ng-click="submit(ctrl.close())" ng-hide="existingForm" md-colors="{background: 'blue-500'}">Submit</md-button>
-        			<md-button class="md-raised" ng-click="submit(ctrl.close())" ng-show="existingForm" md-colors="{background: 'blue-500'}">Update</md-button>
+        			<md-button class="md-raised" ng-click="submit(ctrl.close)" ng-hide="existingForm" md-colors="{background: 'blue-500'}">Submit</md-button>
+        			<md-button class="md-raised" ng-click="submit(ctrl.close)" ng-show="existingForm" md-colors="{background: 'blue-500'}">Update</md-button>
+        			<md-button class="md-raised" ng-click="delete(ctrl.close)" ng-show="existingForm" md-colors="{background: 'red-500'}">Delete</md-button>
         			<md-button class="md-raised" ng-click="ctrl.close()">Cancel</md-button>
         		</md-card-actions>
 			</div>
