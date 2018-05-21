@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["404/index.html","6fc978349cf79f284585d8f17e926b3b"],["about/index.html","3a20365702b7477097448314b82eb667"],["assets/100daysofcode.json","010f1900fb5b88e918beabff8ac2b9e5"],["assets/about.svg","17a06494bb4ad406bd9eb4bc8743958f"],["assets/arduino.png","8c8a08b5c9605a7c1ab354fdf2c444fb"],["assets/arduino.svg","dfe15b6d030dc297fd0466449fcd585b"],["assets/art-shuttle.jpg","de713f29ced8835106cd054c49ac8334"],["assets/calendar.html","9bf56010407b3139802b403244051159"],["assets/code.svg","0e9a25d472e19403aded20e0cb1b1e62"],["assets/contact.jpg","6a35ce6a6d52d37e50a6b391d4c55ae9"],["assets/contactform.html","3f9a579856ee45b0e0493904f6d70ebb"],["assets/extra.svg","6cef4e17f27cdfffef55cabbbf42f501"],["assets/fallback-2.png","9980ab17ba4a05ab4a9e26173a08e874"],["assets/fallback.jpg","7524724d29a30ed296732d36fd56d10e"],["assets/favourite.svg","c61fbd7b767f0cde8aa80e0a8cb30a85"],["assets/fcc.svg","12a186aa800bbf8679b014b7ef263761"],["assets/feedback-template.html","dc497e4e35c8243017754dc11dc34d7f"],["assets/feedback.html","d0934a6de4c23149a0ea10286cbd974e"],["assets/github.svg","3e6bfc0125ae9e299607e266340bfbb2"],["assets/index.html","1ad13254448fd59d57d821578621e49a"],["assets/launcher-144.png","318414a86c3341c42a6d64e9cc20dd4a"],["assets/launcher-96.png","ae3c51fbce0463d126e2fb49cabd1bfb"],["assets/launcher.png","e3b8d243862e12f60802e7c95c762f10"],["assets/medal.svg","246995479729a3daac7d0293f0eaa8bf"],["assets/modal.html","ecb88710c0c7c538fe8fb05b00bd47e5"],["assets/posts.json","c804005e2b27660960b52becd122ea27"],["assets/projects.json","1ab08a24ed82e819c364401297a6eec4"],["assets/raspberrypi.svg","0c1dd00c2a7b8a3ce5de5d67cbcf7c0b"],["assets/rover.jpg","0ee385ab0d29c5c6a3dd2c4e17f799b6"],["assets/scout-logo.svg","44aac38c73951442be938db62416f51a"],["assets/share-template.html","ff686b7c417dbbbab1c99b34b86e36d6"],["assets/sharebtm-template.html","01c68eccdb20397520ad174d06bb111e"],["assets/tc-badge.png","9ba6e02b90789c76bac298b6d40ed2a5"],["blog/index.html","2c0fbf0ff8b0eb094bc1ab6ec6cf0e8c"],["certificates/index.html","2df1cc48c960ce312910015c763bf2d5"],["contact/index.html","ccaf353d32a5b0b21a36a39eb203f743"],["css/main.css","d1c2e9aabfbc5e53b1445c35a4501b81"],["css/style.css","8c48be6e7f53fc6b7580a6773c45378f"],["extra/index.html","5775f0c110d05733c0b63856693a9bc7"],["index.html","d53fb65cd79de2bc74a2eccb7bcdc4b1"],["manifest.json","ef3184432f19d9c031eca9c8e4eb7962"],["portfolio/index.html","c07c415c43522bfa65982f9d738c4bb5"],["scripts/ApiAi.min.js","10cc7b6a667d0df52a097c8f9537b192"],["scripts/main.bundle.js","d25e5f51f1152c8c7cd89a453933997c"],["scripts/main.js","59e45e0bf1e61b63604a5b8c54524af1"],["scripts/pjax-standalone.min.js","56f7934cd6dd718193a7ca77b5cacb24"],["scripts/sw-offline-google-analytics.prod.v0.0.25.js","55db6f581ecba045d7ce3f833b800869"],["scripts/vendor.bundle.js","c04888040f28f25ca7cbdb1b2700019c"],["scripts/vendor.module.js","7cf399836b5c521533728928ee83b006"],["search/index.html","fceb36e69fb4b5e30440ce40523d1d15"]];
+var precacheConfig = [["404/index.html","6fc978349cf79f284585d8f17e926b3b"],["about/index.html","3a20365702b7477097448314b82eb667"],["assets/100daysofcode.json","010f1900fb5b88e918beabff8ac2b9e5"],["assets/about.svg","17a06494bb4ad406bd9eb4bc8743958f"],["assets/arduino.png","8c8a08b5c9605a7c1ab354fdf2c444fb"],["assets/arduino.svg","dfe15b6d030dc297fd0466449fcd585b"],["assets/art-shuttle.jpg","de713f29ced8835106cd054c49ac8334"],["assets/calendar.html","9bf56010407b3139802b403244051159"],["assets/code.svg","0e9a25d472e19403aded20e0cb1b1e62"],["assets/contact.jpg","6a35ce6a6d52d37e50a6b391d4c55ae9"],["assets/contactform.html","3f9a579856ee45b0e0493904f6d70ebb"],["assets/extra.svg","6cef4e17f27cdfffef55cabbbf42f501"],["assets/fallback-2.png","9980ab17ba4a05ab4a9e26173a08e874"],["assets/fallback.jpg","7524724d29a30ed296732d36fd56d10e"],["assets/favourite.svg","c61fbd7b767f0cde8aa80e0a8cb30a85"],["assets/fcc.svg","12a186aa800bbf8679b014b7ef263761"],["assets/feedback-template.html","dc497e4e35c8243017754dc11dc34d7f"],["assets/feedback.html","d0934a6de4c23149a0ea10286cbd974e"],["assets/github.svg","3e6bfc0125ae9e299607e266340bfbb2"],["assets/index.html","1ad13254448fd59d57d821578621e49a"],["assets/launcher-144.png","318414a86c3341c42a6d64e9cc20dd4a"],["assets/launcher-96.png","ae3c51fbce0463d126e2fb49cabd1bfb"],["assets/launcher.png","e3b8d243862e12f60802e7c95c762f10"],["assets/medal.svg","246995479729a3daac7d0293f0eaa8bf"],["assets/modal.html","ecb88710c0c7c538fe8fb05b00bd47e5"],["assets/posts.json","c804005e2b27660960b52becd122ea27"],["assets/projects.json","f915e0633bc373f4b99f89d1bb0e28d2"],["assets/raspberrypi.svg","0c1dd00c2a7b8a3ce5de5d67cbcf7c0b"],["assets/rover.jpg","0ee385ab0d29c5c6a3dd2c4e17f799b6"],["assets/scout-logo.svg","44aac38c73951442be938db62416f51a"],["assets/share-template.html","ff686b7c417dbbbab1c99b34b86e36d6"],["assets/sharebtm-template.html","01c68eccdb20397520ad174d06bb111e"],["assets/tc-badge.png","9ba6e02b90789c76bac298b6d40ed2a5"],["blog/index.html","2c0fbf0ff8b0eb094bc1ab6ec6cf0e8c"],["certificates/index.html","2df1cc48c960ce312910015c763bf2d5"],["contact/index.html","ccaf353d32a5b0b21a36a39eb203f743"],["css/main.css","d1c2e9aabfbc5e53b1445c35a4501b81"],["css/style.css","8c48be6e7f53fc6b7580a6773c45378f"],["extra/index.html","5775f0c110d05733c0b63856693a9bc7"],["index.html","d53fb65cd79de2bc74a2eccb7bcdc4b1"],["manifest.json","ef3184432f19d9c031eca9c8e4eb7962"],["portfolio/index.html","c07c415c43522bfa65982f9d738c4bb5"],["scripts/ApiAi.min.js","10cc7b6a667d0df52a097c8f9537b192"],["scripts/main.bundle.js","d25e5f51f1152c8c7cd89a453933997c"],["scripts/main.js","59e45e0bf1e61b63604a5b8c54524af1"],["scripts/pjax-standalone.min.js","56f7934cd6dd718193a7ca77b5cacb24"],["scripts/sw-offline-google-analytics.prod.v0.0.25.js","55db6f581ecba045d7ce3f833b800869"],["scripts/vendor.bundle.js","4e269d35711590c2da004bb93ab86d4a"],["scripts/vendor.module.js","7cf399836b5c521533728928ee83b006"],["search/index.html","fceb36e69fb4b5e30440ce40523d1d15"]];
 var cacheName = 'sw-precache-v2-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
@@ -45,7 +45,7 @@ var ignoreUrlParametersMatching = [/./];
 
 
 
-var addDirectoryIndex = function(originalUrl, index) {
+var addDirectoryIndex = function (originalUrl, index) {
     var url = new URL(originalUrl);
     if (url.pathname.slice(-1) === '/') {
       url.pathname += index;
@@ -53,7 +53,7 @@ var addDirectoryIndex = function(originalUrl, index) {
     return url.toString();
   };
 
-var createCacheKey = function(originalUrl, paramName, paramValue,
+var createCacheKey = function (originalUrl, paramName, paramValue,
                            dontCacheBustUrlsMatching) {
     // Create a new URL object to avoid modifying originalUrl.
     var url = new URL(originalUrl);
@@ -69,7 +69,7 @@ var createCacheKey = function(originalUrl, paramName, paramValue,
     return url.toString();
   };
 
-var isPathWhitelisted = function(whitelist, absoluteUrlString) {
+var isPathWhitelisted = function (whitelist, absoluteUrlString) {
     // If the whitelist is empty, then consider all URLs to be whitelisted.
     if (whitelist.length === 0) {
       return true;
@@ -82,7 +82,7 @@ var isPathWhitelisted = function(whitelist, absoluteUrlString) {
     });
   };
 
-var stripIgnoredUrlParameters = function(originalUrl,
+var stripIgnoredUrlParameters = function (originalUrl,
     ignoreUrlParametersMatching) {
     var url = new URL(originalUrl);
 
