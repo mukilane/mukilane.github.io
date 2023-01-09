@@ -3,8 +3,8 @@
   "description": "Cloud Functions for Firebase",
   "dependencies": {
     "@google-cloud/firestore": "^0.14.0",
-    "firebase-admin": "^5.12.1",
-    "firebase-functions": "^1.0.2",
+    "firebase-admin": "^11.4.1",
+    "firebase-functions": "^4.1.1",
     "grpc": "^1.8.0",
     "nodemailer": "^4.6.4"
   },
