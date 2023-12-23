@@ -6,11 +6,11 @@ export class Footer extends Component {
     return (
       <nav>
         <NavLink className="nav-logo" to="/">
-          ME
+          M
         </NavLink>
     
         <div className="nav-container">
-          <NavLink to="about" className="nav-item" unstable_viewTransition>
+          <NavLink to="#about" className="nav-item" unstable_viewTransition>
             About
           </NavLink>
           <NavLink to="projects" className="nav-item" unstable_viewTransition>

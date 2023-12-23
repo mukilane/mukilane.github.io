@@ -10,26 +10,30 @@ export class MainLayout extends Component {
     // track the mouse position and set the cursor position
     document.addEventListener('mousemove', e => {
       let element = document.elementFromPoint(e.clientX, e.clientY);
+      let x, y, scale;
 
-      let transform = null;
+      x = e.clientX - 10;
+      y = e.clientY - 10;
 
       if (element) {
-        if (element.classList.contains('nav-item')) {
-          // let borderRadius = window.getComputedStyle(element).getPropertyValue('border-radius');
-          // transform = `translate(${element.offsetLeft}px, ${element.offsetTop}px); width: ${element.clientWidth}px; height: ${element.clientHeight}px; border-radius: ${borderRadius}; transform-origin: ${e.clientX - element.offsetLeft + element.offsetWidth / 2}px ${e.clientY - element.offsetTop + element.offsetHeight / 2 }px;}`;
-          transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px) scale(2);`;
-        } else if (element.classList.contains('nav-logo')) {
-          transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px) scale(2);`;
+        if (element.classList.contains('nav-item') || element.classList.contains('nav-logo')) {
+          scale = 2;
         } else if (element.classList.contains('name')) {
-          transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px) scale(4);`;
-        } else {
-          transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px);`;
+          scale = 4;
         }
-      } else {
-        transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px);`;
       }
 
-      cursor.setAttribute("style", `transform: ${transform}`);
+      if (x > window.innerWidth - 20 || y > window.innerHeight - 20) return;
+
+      // let prevX = +cursor.getAttribute('data-x'), prevY = +cursor.getAttribute('data-y');
+      // let deltaX = prevX - x, deltaY = prevY - y;
+      // let borderRadius = `${deltaX || '20'}px ${deltaY || '20'}px`
+
+      // setTimeout(() => {
+      //   cursor.setAttribute('data-x', x);
+      //   cursor.setAttribute('data-y', y);
+      // }, 50)
+      cursor.setAttribute("style", `transform: translate(${x}px, ${y}px); ${scale ? `scale(${scale})`: ''}`);
     });
   }
 

@@ -1,6 +1,8 @@
 /* Reset */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -16,6 +18,11 @@ a {
 body {
   font-family: "Lato", sans-serif;
   background-color: var(--background-color);
+  scroll-behavior: smooth;
+  /* background-image: radial-gradient(circle at 1px 1px, #262626 2px, transparent 0);
+  background-size: 2em 2em;
+  background-position: calc(-1em + 2px) calc(-1em + 2px);
+  background-attachment: fixed; */
 }
 
 .material-symbols-outlined {
@@ -27,15 +34,25 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: var(--body-padding);
-  background-image: radial-gradient(circle at 1px 1px, #262626 2px, transparent 0);
-  background-size: 2em 2em;
-  background-position: calc(-1em + 2px) calc(-1em + 2px);
+  overflow: auto;
+  scroll-snap-type: both proximity;
+  scroll-behavior: smooth;
+
+  scroll-timeline: --bodyTimeline y;
+  scroll-timeline: --bodyTimeline vertical;
+
 }
 
 main {
   flex: 1;
   position: relative;
+}
+
+.section {
+  /* height: 100vh; */
+  margin-bottom: var(--body-padding);
+  padding: var(--body-padding);
+  scroll-snap-align: start;
 }
 
 .hero {
@@ -45,9 +62,10 @@ main {
   justify-content: center;
   flex-direction: column;
   text-align: left;
-  height: 100%;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'League Gothic', sans-serif;
+  text-transform: uppercase;
   line-height: 6rem;
+  height: 100dvh;
 }
 
 .hero .name {
@@ -83,6 +101,15 @@ main {
   transition: 0.2s ease-in;
   transition-property: width, height, top, left;
   transform-origin: center center;
+}
+
+#herocanvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
 }
 
 .bg-grid {
@@ -137,4 +164,87 @@ main {
 .name:hover span {
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+/* -------------------------------- Hero Card ------------------------------- */
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 1em;
+  width: 100%;
+  transition: 0.2s ease-in-out;
+  transition-delay: 0.3s;
+  width: 100%;
+  /* height: 100%; */
+}
+
+.card-header {
+  font-size: 10rem;
+  font-weight: bold;
+  font-family: 'Bebas Neue', sans-serif;
+  position: sticky;
+  margin-top: 1em;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  letter-spacing: 5px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  top: 1em;
+}
+
+.card-header:before {
+  position: absolute;
+  content: attr(data-section);
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  height: 0;
+  animation-name: fill-up;
+  animation-timeline: --reveal;
+  view-timeline: --reveal block;
+  animation-fill-mode: both;
+  color: white;
+}
+
+.card-body {
+  font-size: 2rem;
+  flex: 1;
+  text-align: left;
+  padding: 6em;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.about-para {
+  flex-grow: 1;
+}
+
+.about-para span {
+  position: sticky;
+  top: 4em;
+}
+
+@keyframes fill-up {
+  0% {
+    height: 0;
+  }
+
+  10% {
+    height: 5%;
+  }
+
+  /* 55% {
+    height: 100%;
+  } */
+
+  100% {
+    height: 100%;
+  }
+
+  100% {
+    height: 100%;
+  }
 }
