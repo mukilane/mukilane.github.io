@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export class Footer extends Component {
   render() {
@@ -10,9 +10,9 @@ export class Footer extends Component {
         </NavLink>
     
         <div className="nav-container">
-          <NavLink to="#about" className="nav-item" unstable_viewTransition>
+          <a href="#about" className="nav-item">
             About
-          </NavLink>
+          </a>
           <NavLink to="projects" className="nav-item" unstable_viewTransition>
             Projects
           </NavLink>

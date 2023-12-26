@@ -68,8 +68,27 @@ main {
   height: 100dvh;
 }
 
+.hero div {
+  line-height: 1;
+  opacity: 0.87;
+}
+
 .hero .name {
+  margin: 8px 0;
   font-size: 8rem;
+  opacity: 1;
+}
+
+
+@media (max-width: 500px) {
+  :root {
+    --body-padding: 2rem;
+  }
+
+  .hero {
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .page-layout {
@@ -110,6 +129,15 @@ main {
   height: 100vh;
   width: 100vw;
   z-index: -1;
+  display: none;
+}
+
+#test {
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
 }
 
 .bg-grid {
@@ -240,7 +268,7 @@ main {
     height: 100%;
   } */
 
-  100% {
+  80% {
     height: 100%;
   }
 
