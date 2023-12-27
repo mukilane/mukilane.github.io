@@ -19,30 +19,27 @@ export default class CanvasGrid extends Component {
   constructor() {
     super(...arguments);
 
+    const max = Math.max(window.innerHeight, window.innerWidth);
+
     const gap = 48,
-      itemsX = Math.floor(window.innerWidth / 48) * 2,
-      itemsY = Math.floor(window.innerHeight / 48) * 2;
+      itemsX = Math.floor(max / 48) * 2,
+      itemsY = Math.floor(max / 48) * 2;
 
     const numParticles = itemsX * itemsY;
 
-    const positions = new Float32Array(numParticles * 3);
-    const scales = new Float32Array(numParticles);
+    const
+      positions = new Float32Array(numParticles * 3),
+      scales = new Float32Array(numParticles).fill(12),
+      offsetX = (itemsX * gap) / 2,
+      offsetY = (itemsY * gap) / 2;
 
-    let i = 0,
-      j = 0;
-
-    const offsetX = (itemsX * gap) / 2, offsetY = (itemsY * gap) / 2;
-
-    for (let ix = 0; ix < itemsX; ix++) {
+    for (let i = 0, ix = 0; ix < itemsX; ix++) {
       for (let iy = 0; iy < itemsY; iy++) {
         positions[i] = ix * gap - offsetX; // x
         positions[i + 1] = 0; // y
         positions[i + 2] =  iy * gap - offsetY; // z
 
-        scales[j] = 1;
-
         i += 3;
-        j++;
       }
     }
 
@@ -60,26 +57,35 @@ export default class CanvasGrid extends Component {
     };
 
     this.state.geometry.setAttribute('position', new THREE.BufferAttribute( positions, 3 ) );
+    this.state.geometry.setAttribute('scale', new THREE.BufferAttribute(scales, 1));
+
+    this.positionAttribute = this.state.geometry.attributes.position;
+    this.scaleAttribute = this.state.geometry.attributes.scale;
     this.waves = false;
   }
 
   startWaves() {
     this.waves = true;
-    let position = this.state.geometry.attributes.position, count = 0;
+    let count = 0;
 
     const render = () => {
       let i = 0;
       for ( let ix = 0; ix < this.itemsX; ix ++ ) {
         for ( let iy = 0; iy < this.itemsY; iy ++ ) {
-          position.setY(i, ( Math.sin( ( ix + count ) * 0.1 ) * 50 ) +
-                  ( Math.sin( ( iy + count ) * 0.3 ) * 50 ));
+
+          let x = Math.sin((ix + count) * 0.2), y = Math.sin((iy + count) * 0.3);
+
+          this.positionAttribute.setY(i, (x * 50 ) + (y * 50 ));
+          this.scaleAttribute.setX(i, (x + 1) * 5 + (y + 1) * 5);
           i++;
         }
       }
       
       count += 0.1;
 
-      this.state.geometry.attributes.position.needsUpdate = true;
+      this.positionAttribute.needsUpdate = true;
+      this.scaleAttribute.needsUpdate = true;
+
       this.waves && requestAnimationFrame(render);
     };
 
@@ -87,18 +93,41 @@ export default class CanvasGrid extends Component {
   }
 
   stopWaves() {
+    this.waves = false;
+
     requestAnimationFrame(() => {
-      this.waves = false;
-      let position = this.state.geometry.attributes.position;
-      let i = 0;
-      for ( let ix = 0; ix < this.itemsX; ix ++ ) {
+      for (let i = 0, ix = 0; ix < this.itemsX; ix ++ ) {
         for ( let iy = 0; iy < this.itemsY; iy ++ ) {
-          position.setY(i, 0);
+          this.positionAttribute.setY(i, 0);
+          this.scaleAttribute.setX(i, 12);
           i++;
         }
       }
     
-      this.state.geometry.attributes.position.needsUpdate = true;
+      this.positionAttribute.needsUpdate = true;
+      this.scaleAttribute.needsUpdate = true;
+    });
+
+    // window.renderer.render(window.scene, window.camera)
+  }
+
+  updateCursor(props) {
+    requestAnimationFrame(() => {
+      for (let x = 0; x < this.itemsX; x ++ ) {
+        for ( let y = 0; y < this.itemsY; y ++ ) {
+          let a = props.mouseX - x * 48, b = props.mouseY - y * 48;
+          let distance = Math.sqrt(a * a + b * b);
+
+          if (distance < 50) {
+            this.scaleAttribute.setX(x, 100);
+          } else {
+            this.scaleAttribute.setX(x, 12);
+          }
+
+        }
+      }
+
+      this.scaleAttribute.needsUpdate = true;
     })
   }
 
@@ -106,6 +135,8 @@ export default class CanvasGrid extends Component {
     if (!this.state.geometry.attributes.position) {
       return;
     }
+
+    // this.updateCursor(props);
 
     if (!this.props.mainPage) {
       this.wavesTimeout = setTimeout(() => this.startWaves(), 3000);
@@ -196,17 +227,27 @@ function Points(props) {
 
     if (!ref.current) return;
 
-    flip.current = gsap.to(ref.current.rotation, {
+    let tl = gsap.timeline({ paused: true, repeat: 0 })
+
+    tl.to(ref.current.rotation, {
       x: - Math.PI / 4,
-      y: 0,
+      y: 0, //Math.PI / 3,
       duration: 2,
-      repeat: 0,
       ease: "power4.inOut",
-      paused: true,
       onUpdate: () => {
         props.renderer.render(props.scene, props.camera)
       },
-    })
+    }, 'start').to(ref.current.position, {
+      x: 0,
+      y: 500, //Math.PI / 3,
+      duration: 2,
+      ease: "power4.inOut",
+      onUpdate: () => {
+        props.renderer.render(props.scene, props.camera)
+      },
+    }, 'start');
+
+    flip.current = tl;
   }, [ref]);
 
   useEffect(() => {
@@ -229,12 +270,19 @@ function Points(props) {
         transparent
         depthWrite={false}
         uniforms={{
-          size: { value: 3.0 },
-          scale: { value: 1 },
-          color: { value: new THREE.Color('#999') },
+          size: { value: 4.0 },
+          scale: { value: 2.0 },
+          color: { value: new THREE.Color('#888') },
         }}
-        vertexShader={THREE.ShaderLib.points.vertexShader}
+        vertexShader="attribute float scale;
+          void main() {
+            vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+            gl_PointSize = scale * ( 300.0 / - mvPosition.z );
+            gl_Position = projectionMatrix * mvPosition;
+          }
+        "
         fragmentShader="uniform vec3 color;
+
           void main() {
               vec2 xy = gl_PointCoord.xy - vec2(0.5);
               float ll = length(xy);

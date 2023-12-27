@@ -78,3 +78,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 5. https://saojoaonasceaqui.com.br/
 - https://thewebshowcase.withgoogle.com/
 - https://arts-tech.hk/en/
+- https://thomasbosc.com/ content
+- https://www.vancedesignsproducts.com/ content
+- https://www.rubens.design/ 
+- https://jopecuro.com/#Experience

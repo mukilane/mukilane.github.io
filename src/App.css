@@ -51,7 +51,7 @@ main {
 .section {
   /* height: 100vh; */
   margin-bottom: var(--body-padding);
-  padding: var(--body-padding);
+  padding-inline: calc(var(--body-padding) * 2);
   scroll-snap-align: start;
 }
 
@@ -248,6 +248,7 @@ main {
 
 .about-para {
   flex-grow: 1;
+  font-family: 'Inter';
 }
 
 .about-para span {

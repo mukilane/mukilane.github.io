@@ -8,14 +8,13 @@ nav {
   overflow: hidden;
   align-items: center;
   border: 1px solid #2c2a3e;
-  width: calc(100vw - 2 * var(--body-padding));
   justify-content: space-between;
   background-color: var(--background-color);
   align-self: flex-end;
   /* view-transition-name: footer; */
   position: sticky;
   bottom: var(--body-padding);
-  right: var(--body-padding);
+  right: calc(2 * var(--body-padding));
 
   animation-name: bouncy-collapse;
   /* animation-duration: 300ms; */
@@ -69,7 +68,7 @@ nav:hover {
 /* animates the footer from full width to a collapsed state */
 @keyframes bouncy-collapse {
   0% {
-    width: calc(100vw - 2 * var(--body-padding));
+    width: calc(100vw - 4 * var(--body-padding));
   }
 
   20% {
