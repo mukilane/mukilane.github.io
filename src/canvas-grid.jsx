@@ -12,6 +12,8 @@ import React, {
 import * as THREE from 'three';
 import gsap from 'gsap';
 
+let tick = 0, amplitude = 0;
+
 export default class CanvasGrid extends Component {
   positions = signal(new Float32Array());
   scales = signal(new Float32Array());
@@ -66,22 +68,32 @@ export default class CanvasGrid extends Component {
 
   startWaves() {
     this.waves = true;
-    let count = 0;
+    let stagger = 1;
 
     const render = () => {
       let i = 0;
       for ( let ix = 0; ix < this.itemsX; ix ++ ) {
         for ( let iy = 0; iy < this.itemsY; iy ++ ) {
 
-          let x = Math.sin((ix + count) * 0.2), y = Math.sin((iy + count) * 0.3);
+          let x = Math.sin((ix + tick) * 0.2), y = Math.sin((iy + tick) * 0.3);
 
-          this.positionAttribute.setY(i, (x * 50 ) + (y * 50 ));
-          this.scaleAttribute.setX(i, (x + 1) * 5 + (y + 1) * 5);
+          this.positionAttribute.setY(i, (x * amplitude) + (y * amplitude));
+          // this.scaleAttribute.setX(i, (x + 1) * 5 + (y + 1) * 5);
           i++;
         }
       }
       
-      count += 0.1;
+      if (amplitude < 50) {
+        amplitude++;
+      }
+
+      if (stagger < this.itemsX) {
+        stagger += 0.5;
+        // tick += 0.05;
+        tick += 0.1;
+      } else {
+        tick += 0.1;
+      }
 
       this.positionAttribute.needsUpdate = true;
       this.scaleAttribute.needsUpdate = true;
@@ -94,19 +106,36 @@ export default class CanvasGrid extends Component {
 
   stopWaves() {
     this.waves = false;
+    
+    if (!tick) return;
 
-    requestAnimationFrame(() => {
+    const render = () => {
       for (let i = 0, ix = 0; ix < this.itemsX; ix ++ ) {
         for ( let iy = 0; iy < this.itemsY; iy ++ ) {
-          this.positionAttribute.setY(i, 0);
-          this.scaleAttribute.setX(i, 12);
+          let x = Math.sin((ix + tick) * 0.2), y = Math.sin((iy + tick) * 0.3);
+
+          this.positionAttribute.setY(i, (x * amplitude ) + (y * amplitude ));
+          // this.scaleAttribute.setX(i, 12);
+
           i++;
         }
       }
+
+      tick += 0.1;
     
       this.positionAttribute.needsUpdate = true;
       this.scaleAttribute.needsUpdate = true;
-    });
+
+      if (!--amplitude) {
+        tick = 0;
+        amplitude = 0;
+        return;
+      }
+
+      requestAnimationFrame(render);
+    };
+
+    requestAnimationFrame(render);
 
     // window.renderer.render(window.scene, window.camera)
   }
