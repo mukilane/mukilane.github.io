@@ -108,7 +108,7 @@ main {
 
 /* Fake cursor */
 .cursor {
-  position: absolute;
+  position: fixed ;
   top: 0;
   left: 0;
   width: 20px;
@@ -118,7 +118,10 @@ main {
   background-color: white;
   pointer-events: none;
   transition: 0.2s ease-in;
-  transition-property: width, height, top, left;
+  transform-style: preserve-3d;
+  will-change: transform;
+  /* transition-delay: .2s; */
+  transition-property: width, height, top, left, scale;
   transform-origin: center center;
 }
 
@@ -199,24 +202,22 @@ main {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   border-radius: 1em;
-  width: 100%;
   transition: 0.2s ease-in-out;
   transition-delay: 0.3s;
-  width: 100%;
-  /* height: 100%; */
+  gap: 4rem;
+  width: max(70vw, 800px);
+  margin: 0px auto;
 }
 
 .card-header {
   font-size: 10rem;
-  font-weight: bold;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Anton', sans-serif;
   position: sticky;
   margin-top: 1em;
   color: transparent;
   -webkit-text-stroke: 2px white;
-  letter-spacing: 5px;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   top: 1em;
@@ -240,7 +241,6 @@ main {
   font-size: 2rem;
   flex: 1;
   text-align: left;
-  padding: 6em;
   display: flex;
   flex-direction: column;
   align-self: flex-start;
@@ -249,6 +249,10 @@ main {
 .about-para {
   flex-grow: 1;
   font-family: 'Inter';
+}
+
+.about-para:not(:last-child) {
+  height: 100dvh;
 }
 
 .about-para span {
@@ -262,14 +266,14 @@ main {
   }
 
   10% {
-    height: 5%;
+    height: 0%;
   }
 
   /* 55% {
     height: 100%;
   } */
 
-  80% {
+  95% {
     height: 100%;
   }
 

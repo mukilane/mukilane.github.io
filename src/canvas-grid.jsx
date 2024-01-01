@@ -1,6 +1,6 @@
 import { effect, signal } from '@preact/signals-react';
 import { OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import React, {
   Component,
   memo,
@@ -148,6 +148,8 @@ export default class CanvasGrid extends Component {
           let distance = Math.sqrt(a * a + b * b);
 
           if (distance < 50) {
+            // console.log(x)
+            this.positionAttribute.setZ(x, 100)
             this.scaleAttribute.setX(x, 100);
           } else {
             this.scaleAttribute.setX(x, 12);
@@ -157,6 +159,7 @@ export default class CanvasGrid extends Component {
       }
 
       this.scaleAttribute.needsUpdate = true;
+      this.positionAttribute.needsUpdate = true;
     })
   }
 
@@ -165,7 +168,7 @@ export default class CanvasGrid extends Component {
       return;
     }
 
-    // this.updateCursor(props);
+    this.updateCursor(props);
 
     if (!this.props.mainPage) {
       this.wavesTimeout = setTimeout(() => this.startWaves(), 3000);
@@ -195,10 +198,14 @@ export default class CanvasGrid extends Component {
 
 export function GridImpl(props) {
   const canvas = useRef();
-  const camera = useRef(new THREE.PerspectiveCamera(-1000, window.innerHeight / window.innerWidth, 1, window.innerHeight * 3));
+  const camera = useRef(new THREE.PerspectiveCamera(-1000, window.innerWidth / window.innerHeight, 1, window.innerHeight * 3));
   const scene = useRef(new THREE.Scene());
   const renderer = useRef(new THREE.WebGLRenderer( { antialias: true } ));
-  const observer = useRef(new ResizeObserver(() => renderer.current?.render(scene.current, camera.current)));
+
+  const observer = useRef(new ResizeObserver(() => {
+    camera.current.updateProjectionMatrix();
+    renderer.current?.render(scene.current, camera.current);
+  }));
   const wrapper = useRef(document.querySelector('.hero'));
 
   effect(() => {
@@ -235,11 +242,11 @@ export function GridImpl(props) {
         ref={canvas}
         gl={renderer}
         eventSource={wrapper.current}
-        onPointerMove={() => console.log(1)}
+        onPointerMove={(event) => console.log(event)}
       >
-        <OrbitControls/>
+        {/* <OrbitControls/> */}
         <pointLight position={[0, 0, 10]} />
-        <Points {...props} renderer={renderer.current} scene={scene.current} camera={camera.current}/>
+        <Points {...props} renderer={renderer.current} scene={scene.current} camera={camera.current} canvas={props.canvas}/>
       </Canvas>
     </>
   );
@@ -250,6 +257,7 @@ export const Grid = memo(GridImpl)
 function Points(props) {
   const ref = useRef();
   const flip = useRef(null);
+  // const { pointer } = useThree();
 
   const insert = useCallback((node) => {
     ref.current = node;
@@ -283,7 +291,7 @@ function Points(props) {
     if (!props.mainPage) {
       flip.current?.duration(4).play();
     } else {
-      flip.current?.duration(2).reverse();
+      flip.current?.duration(4).reverse();
     }
 
   }, [props.mainPage, props.renderer, props.scene, props.camera]);
