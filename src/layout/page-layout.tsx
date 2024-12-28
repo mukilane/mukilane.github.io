@@ -1,6 +1,4 @@
-import React, { Component, ReactNode } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
-import { GridElement } from '../pages/hero-page';
+import { Component, ReactNode } from 'react';
 
 interface PageLayoutProps {
   header: ReactNode;

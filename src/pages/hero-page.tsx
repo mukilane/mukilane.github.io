@@ -18,94 +18,94 @@ function Name(props: { name: string }) {
   });
 }
 
-function setupCanvas(comp: { mainPage: boolean }) {
-  let canvas = document.getElementById('herocanvas') as HTMLCanvasElement;
-  let context = canvas.getContext('2d') as CanvasRenderingContext2D;
+// function setupCanvas(comp: { mainPage: boolean }) {
+//   let canvas = document.getElementById('herocanvas') as HTMLCanvasElement;
+//   let context = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-  let mouseX = 0,
-    mouseY = 0;
+//   let mouseX = 0,
+//     mouseY = 0;
 
-  const mouseMove = function (event: MouseEvent) {
-    setTimeout(() => {
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-      requestAnimationFrame(drawDots);
-    }, 100);
-  };
+//   const mouseMove = function (event: MouseEvent) {
+//     setTimeout(() => {
+//       mouseX = event.clientX;
+//       mouseY = event.clientY;
+//       requestAnimationFrame(drawDots);
+//     }, 100);
+//   };
 
-  window.addEventListener('mousemove', mouseMove);
+//   window.addEventListener('mousemove', mouseMove);
 
-  function getDocumentWidth() {
-    return Math.max(
-      document.documentElement.clientWidth,
-      window.innerWidth || 0
-    );
-  }
+//   function getDocumentWidth() {
+//     return Math.max(
+//       document.documentElement.clientWidth,
+//       window.innerWidth || 0
+//     );
+//   }
 
-  function getDocumentHeight() {
-    return Math.max(
-      document.documentElement.clientHeight,
-      window.innerHeight || 0
-    );
-  }
+//   function getDocumentHeight() {
+//     return Math.max(
+//       document.documentElement.clientHeight,
+//       window.innerHeight || 0
+//     );
+//   }
 
-  var vw = getDocumentWidth(),
-    vh = getDocumentHeight();
+//   var vw = getDocumentWidth(),
+//     vh = getDocumentHeight();
 
-  // resize the canvas to fill the browser window
-  window.addEventListener('resize', onResize, false);
-  function onResize() {
-    vw = getDocumentWidth();
-    vh = getDocumentHeight();
-    resizeCanvas();
-  }
+//   // resize the canvas to fill the browser window
+//   window.addEventListener('resize', onResize, false);
+//   function onResize() {
+//     vw = getDocumentWidth();
+//     vh = getDocumentHeight();
+//     resizeCanvas();
+//   }
 
-  function resizeCanvas() {
-    canvas.width = vw;
-    canvas.height = vh;
-    drawDots();
-  }
-  resizeCanvas();
+//   function resizeCanvas() {
+//     canvas.width = vw;
+//     canvas.height = vh;
+//     drawDots();
+//   }
+//   resizeCanvas();
 
-  // dots
-  function drawDots() {
-    context.clearRect(0, 0, vw, vh);
-    var r = 2,
-      cw = 30,
-      ch = 30;
-    if (!comp.mainPage) return;
+//   // dots
+//   function drawDots() {
+//     context.clearRect(0, 0, vw, vh);
+//     var r = 2,
+//       cw = 30,
+//       ch = 30;
+//     if (!comp.mainPage) return;
 
-    let count = 0;
+//     let count = 0;
 
-    for (var x = 0; x < vw; x += cw) {
-      for (var y = 0; y < vh; y += ch) {
-        let a = mouseX - x,
-          b = mouseY - y;
-        let distance = Math.sqrt(a * a + b * b);
+//     for (var x = 0; x < vw; x += cw) {
+//       for (var y = 0; y < vh; y += ch) {
+//         let a = mouseX - x,
+//           b = mouseY - y;
+//         let distance = Math.sqrt(a * a + b * b);
 
-        let t = distance < 50 ? 5 : distance < 70 ? 4 : 3;
-        // context.fillRect(x-t/2,y-t/2, t, t, 2);
+//         let t = distance < 50 ? 5 : distance < 70 ? 4 : 3;
+//         // context.fillRect(x-t/2,y-t/2, t, t, 2);
 
-        context.beginPath();
-        context.arc(x - t / 2, y - t / 2, t - 1, 2 * Math.PI, false);
-        context.fillStyle =
-          distance < 50 ? '#aaa' : distance < 70 ? '#666' : '#444444';
-        context.fill();
-        // context.arc(dot.x, dot.y, dot.radius, 0, 2 * Math.PI, false);
+//         context.beginPath();
+//         context.arc(x - t / 2, y - t / 2, t - 1, 2 * Math.PI, false);
+//         context.fillStyle =
+//           distance < 50 ? '#aaa' : distance < 70 ? '#666' : '#444444';
+//         context.fill();
+//         // context.arc(dot.x, dot.y, dot.radius, 0, 2 * Math.PI, false);
 
-        // context.fillRect((Math.sin( ( x + count ) * 0.3 ) * 150 ) + ( Math.sin( ( y + count ) * 0.5 ) * 150 ), (Math.cos( ( x + count ) * 0.3 ) * 150 ) + ( Math.cos( ( y + count ) * 0.5 ) * 150 ), t, t, 2);
-        // context.stroke();
+//         // context.fillRect((Math.sin( ( x + count ) * 0.3 ) * 150 ) + ( Math.sin( ( y + count ) * 0.5 ) * 150 ), (Math.cos( ( x + count ) * 0.3 ) * 150 ) + ( Math.cos( ( y + count ) * 0.5 ) * 150 ), t, t, 2);
+//         // context.stroke();
 
-        // (Math.sin( ( x + count ) * 0.3 ) * 50 ) + ( Math.sin( ( y + count ) * 0.5 ) * 50 );
+//         // (Math.sin( ( x + count ) * 0.3 ) * 50 ) + ( Math.sin( ( y + count ) * 0.5 ) * 50 );
 
-        // 		scales[ j ] = ( Math.sin( ( ix + count ) * 0.3 ) + 1 ) * 20 +
-        // 						( Math.sin( ( iy + count ) * 0.5 ) + 1 ) * 20;
-      }
-    }
-  }
+//         // 		scales[ j ] = ( Math.sin( ( ix + count ) * 0.3 ) + 1 ) * 20 +
+//         // 						( Math.sin( ( iy + count ) * 0.5 ) + 1 ) * 20;
+//       }
+//     }
+//   }
 
-  drawDots();
-}
+//   drawDots();
+// }
 
 interface HeroPageState {
   mainPage: boolean;
