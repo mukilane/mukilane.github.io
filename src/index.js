@@ -10,6 +10,7 @@ import {
 import { HeroPage } from './pages/hero-page';
 import { PageLayout } from './layout/page-layout';
 import { AboutPage } from './pages/about-page';
+import { BlogPage } from './pages/blog-page';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/blog',
-        element: <PageLayout header={'Blog'} content={'Blog content'} />
+        element: <PageLayout header={'Blog'} content={<BlogPage/>} />
       }
     ]
   }

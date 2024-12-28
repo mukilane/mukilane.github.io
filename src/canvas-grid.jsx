@@ -12,7 +12,7 @@ import React, {
 import * as THREE from 'three';
 import gsap from 'gsap';
 
-let tick = 0, amplitude = 0;
+let tick = 0, amplitude = 0, mouseX = 0, mouseY = 0;
 
 export default class CanvasGrid extends Component {
   positions = signal(new Float32Array());
@@ -77,8 +77,23 @@ export default class CanvasGrid extends Component {
 
           let x = Math.sin((ix + tick) * 0.2), y = Math.sin((iy + tick) * 0.3);
 
+          // let a = mouseX - ix * 48, b = mouseY - iy * 48;
+          // let distance = Math.sqrt(a * a + b * b);
+          // console.log(distance)
+
+
           this.positionAttribute.setY(i, (x * amplitude) + (y * amplitude));
+
+          // if (distance < 50) {
+          //   console.log(x)
+          //   // this.positionAttribute.setZ(x, 100)
+          //   this.scaleAttribute.setX(i, 100);
+          // } else {
+          //   this.scaleAttribute.setX(i, 12);
+          // }
+
           // this.scaleAttribute.setX(i, (x + 1) * 5 + (y + 1) * 5);
+
           i++;
         }
       }
@@ -115,7 +130,7 @@ export default class CanvasGrid extends Component {
           let x = Math.sin((ix + tick) * 0.2), y = Math.sin((iy + tick) * 0.3);
 
           this.positionAttribute.setY(i, (x * amplitude ) + (y * amplitude ));
-          // this.scaleAttribute.setX(i, 12);
+          this.scaleAttribute.setX(i, 12);
 
           i++;
         }
@@ -142,25 +157,28 @@ export default class CanvasGrid extends Component {
 
   updateCursor(props) {
     requestAnimationFrame(() => {
-      for (let x = 0; x < this.itemsX; x ++ ) {
+      for (let i = 0, x = 0; x < this.itemsX; x ++ ) {
         for ( let y = 0; y < this.itemsY; y ++ ) {
           let a = props.mouseX - x * 48, b = props.mouseY - y * 48;
           let distance = Math.sqrt(a * a + b * b);
 
+          
           if (distance < 50) {
             // console.log(x)
-            this.positionAttribute.setZ(x, 100)
-            this.scaleAttribute.setX(x, 100);
+            // this.positionAttribute.setZ(x, 100)
+            this.scaleAttribute.setX(i, 100);
           } else {
-            this.scaleAttribute.setX(x, 12);
+            this.scaleAttribute.setX(i, 12);
           }
 
+          i++;
         }
       }
 
       this.scaleAttribute.needsUpdate = true;
-      this.positionAttribute.needsUpdate = true;
-    })
+
+      window.renderer.render(window.scene, window.camera)
+    });
   }
 
   componentDidUpdate(props) {
@@ -168,7 +186,9 @@ export default class CanvasGrid extends Component {
       return;
     }
 
-    this.updateCursor(props);
+    mouseX = props.mouseX;
+    mouseY = props.mouseY;
+    // this.updateCursor(props);
 
     if (!this.props.mainPage) {
       this.wavesTimeout = setTimeout(() => this.startWaves(), 3000);
@@ -308,7 +328,7 @@ function Points(props) {
         depthWrite={false}
         uniforms={{
           size: { value: 4.0 },
-          scale: { value: 2.0 },
+          // scale: { value: 2.0 },
           color: { value: new THREE.Color('#888') },
         }}
         vertexShader="attribute float scale;

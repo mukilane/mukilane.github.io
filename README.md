@@ -82,3 +82,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - https://www.vancedesignsproducts.com/ content
 - https://www.rubens.design/ 
 - https://jopecuro.com/#Experience
+- https://monaspace.githubnext.com/
+- https://www.jetbrains.com/lp/mono/
