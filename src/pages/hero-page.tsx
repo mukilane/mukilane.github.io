@@ -1,12 +1,7 @@
-import React, {
-  Component,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
-import CanvasGrid from '../canvas-grid';
+import React, { Component, useCallback, useEffect, useState } from 'react';
+import CanvasGrid from '../canvas-grid.jsx';
 
-function Name(props) {
+function Name(props: { name: string }) {
   const [name] = useState(props.name);
 
   return name.split('').map((letter, index) => {
@@ -14,8 +9,8 @@ function Name(props) {
       <span
         key={index}
         style={{
-          '--index': index,
-        }}
+          '--index': index
+        } as React.CSSProperties}
       >
         {letter}
       </span>
@@ -23,14 +18,14 @@ function Name(props) {
   });
 }
 
-function setupCanvas(comp) {
-  let canvas = document.getElementById('herocanvas');
-  let context = canvas.getContext('2d');
+function setupCanvas(comp: { mainPage: boolean }) {
+  let canvas = document.getElementById('herocanvas') as HTMLCanvasElement;
+  let context = canvas.getContext('2d') as CanvasRenderingContext2D;
 
   let mouseX = 0,
     mouseY = 0;
 
-  const mouseMove = function (event) {
+  const mouseMove = function (event: MouseEvent) {
     setTimeout(() => {
       mouseX = event.clientX;
       mouseY = event.clientY;
@@ -112,13 +107,22 @@ function setupCanvas(comp) {
   drawDots();
 }
 
-export class HeroPage extends Component {
-  constructor() {
-    super(...arguments);
+interface HeroPageState {
+  mainPage: boolean;
+  mouseX: number;
+  mouseY: number;
+}
+
+export class HeroPage extends Component<unknown, HeroPageState> {
+  intersection!: IntersectionObserver;
+  el: HTMLElement | null = null;
+
+  constructor(props: unknown) {
+    super(props);
     this.state = {
       mainPage: false,
       mouseX: 0,
-      mouseY: 0,
+      mouseY: 0
     };
   }
 
@@ -126,9 +130,9 @@ export class HeroPage extends Component {
     let options = {
       root: document.body,
       rootMargin: '0px',
-      threshold: 0.25,
+      threshold: 0.25
     };
-    this.insersection = new IntersectionObserver((entries) => {
+    this.intersection = new IntersectionObserver((entries) => {
       let mainPage = false;
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -142,14 +146,14 @@ export class HeroPage extends Component {
         this.setState({ mainPage });
       }
     }, options);
-    this.insersection.observe(this.el);
+    this.intersection.observe(this.el!);
   }
 
-  updatePointer(event) {
+  updatePointer(event: React.PointerEvent) {
     setTimeout(() => {
       this.setState({
         mouseX: event.clientX,
-        mouseY: event.clientY,
+        mouseY: event.clientY
       });
     }, 100);
   }
@@ -164,7 +168,7 @@ export class HeroPage extends Component {
         />
         <section
           className="hero section"
-          onPointerMove={(event) => this.updatePointer(event)}
+          onPointerMove={(event: React.PointerEvent) => this.updatePointer(event)}
           ref={(el) => (this.el = el)}
         >
           <div>I'm</div>
@@ -192,13 +196,16 @@ export class HeroPage extends Component {
               <br />
               <div className="about-para">
                 <span>
-                  I'm skilled in a variety of frameworks and technologies, including React, Ember, Angular,
-                  JavaScript, TypeScript, and CSS.
+                  I'm skilled in a variety of frameworks and technologies,
+                  including React, Ember, Angular, JavaScript, TypeScript, and
+                  CSS.
                 </span>
               </div>
               <br />
               <div className="about-para">
-                I believe in writing comprehensive and effective tests to ensure the quality and reliability of my code. I have experience with Jest, Mocha, and other testing frameworks.
+                I believe in writing comprehensive and effective tests to ensure
+                the quality and reliability of my code. I have experience with
+                Jest, Mocha, and other testing frameworks.
               </div>
             </div>
           </div>
@@ -217,12 +224,12 @@ export class HeroPage extends Component {
   }
 }
 
-export function GridElement({ className }) {
+export function GridElement({ className }: { className: string }) {
   const [rows, setRows] = useState(10);
   const [cols, setCols] = useState(10);
 
   const updateGrid = useCallback(() => {
-    const hero = document.querySelector(`.${className}`);
+    const hero = document.querySelector(`.${className}`)!;
     const heroWidth = hero.clientWidth;
     const heroHeight = hero.clientHeight;
 
@@ -238,7 +245,7 @@ export function GridElement({ className }) {
     const hero = document.querySelector(`.${className}`);
     if (!hero) return;
 
-    const resizeObserver = new ResizeObserver((entries) => {
+    const resizeObserver = new ResizeObserver(() => {
       updateGrid();
     });
 
@@ -262,7 +269,7 @@ export function GridElement({ className }) {
       className="bg-grid"
       style={{
         gridTemplateColumns: `repeat(${cols}, 1fr)`,
-        gridTemplateRows: `repeat(${rows}, 1fr)`,
+        gridTemplateRows: `repeat(${rows}, 1fr)`
       }}
     >
       {grid}
